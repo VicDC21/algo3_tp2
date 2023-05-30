@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.entrega_1;
 
-import edu.fiuba.algo3.exceptions.CreditoInsuficiente;
-import edu.fiuba.algo3.exceptions.ParcelaNoConstruible;
+import edu.fiuba.algo3.modelo.CreditoInsuficiente;
+import edu.fiuba.algo3.modelo.ParcelaNoConstruible;
 import edu.fiuba.algo3.modelo.*;
 import org.junit.jupiter.api.Test;
 

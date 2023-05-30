@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.exceptions;
+package edu.fiuba.algo3.modelo;
 
 public class CreditoInsuficiente extends RuntimeException {
 }
