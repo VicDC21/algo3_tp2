@@ -6,10 +6,10 @@ Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUB
 
 ## Grupo 13
 
-* **Burgos Juan Sebastian** - [juansburgos](https://github.com/juansburgos)
-* **Cipriano Sequera Victor Daniel** - [VicDC21](https://github.com/VicDC21)
-* **Ignacio Joel Destefanis** - [ignaciodestefanis](https://github.com/ignaciodestefanis)
-* **Koo Hangyeol** - [claudekoo](https://github.com/claudekoo)
+* **Burgos, Juan Sebastian** - [juansburgos](https://github.com/juansburgos)
+* **Cipriano, Victor** - [VicDC21](https://github.com/VicDC21)
+* **DeStefanis, Ignacio Joel** - [ignaciodestefanis](https://github.com/ignaciodestefanis)
+* **Koo, Hangyeol** - [claudekoo](https://github.com/claudekoo)
 * **Integrante 5** - [integrante5](https://github.com/integrante5)
 
 Corrector: **{Corrector}**
