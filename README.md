@@ -4,12 +4,13 @@
 
 Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUBA
 
-## Grupo {13}
+## Grupo 13
 
-* **Cipriano, Victor** - [VicDC21](https://github.com/VicDC21)
-* **Integrante 2** - [integrante2](https://github.com/integrante2)
-* **Integrante 3** - [integrante3](https://github.com/integrante3)
-* **Integrante 4** - [integrante4](https://github.com/integrante4)
+* **Burgos Juan Sebastian** - [juansburgos](https://github.com/juansburgos)
+* **Cipriano Sequera Victor Daniel** - [VicDC21](https://github.com/VicDC21)
+* **Ignacio Joel Destefanis** - [ignaciodestefanis](https://github.com/ignaciodestefanis)
+* **Koo Hangyeol** - [claudekoo](https://github.com/claudekoo)
+* **Integrante 5** - [integrante5](https://github.com/integrante5)
 
 Corrector: **{Corrector}**
 
