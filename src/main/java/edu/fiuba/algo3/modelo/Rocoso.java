@@ -1,16 +1,13 @@
 package edu.fiuba.algo3.modelo;
 
-public class Tierra extends Parcela {
+public class Rocoso extends Parcela {
 
-    Torre torre;
-
-    public Tierra(int id) {
+    public Rocoso(int id) {
         super(id);
     }
-
     @Override
     public boolean puedeAlojarTorre() {
-        return torre == null;
+        return false;
     }
 
     @Override
@@ -20,13 +17,9 @@ public class Tierra extends Parcela {
 
     @Override
     public void avanzarTurno() {
-        if (torre != null) {
-            torre.avanzarTurno();
-        }
     }
 
     @Override
     public void construir(Torre torre) {
-        this.torre = torre;
     }
 }
