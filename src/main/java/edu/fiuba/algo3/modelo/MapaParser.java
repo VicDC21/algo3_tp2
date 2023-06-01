@@ -43,8 +43,21 @@ public class MapaParser {
             }
         }
         setPasarelaDeLlegada(lista, mapa);
+        linkPasarelas(lista);
         mapa.agregarParcelas(lista);
         return mapa;
+    }
+
+    private void linkPasarelas(List<Parcela> lista) {
+        int prevIndex = -1;
+        for (int i = 0; i < lista.size(); i++) {
+            if (lista.get(i) instanceof Pasarela) {
+                if (prevIndex > 0) {
+                    ((Pasarela) lista.get(prevIndex)).setPasarelaSiguiente((Pasarela) lista.get(i));
+                }
+                prevIndex = i;
+            }
+        }
     }
 
     private void setPasarelaDeLlegada(List<Parcela> lista, Mapa mapa) {
