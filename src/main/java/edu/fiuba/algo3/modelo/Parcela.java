@@ -16,6 +16,10 @@ public abstract class Parcela {
 
     public abstract void construir(Torre torre);
 
+    public int devolverCantidadDeCreditosGeneradosEnTurno() {
+        return 0;
+    }
+
     public boolean enRadioDe(int fila, int columna, int radio) {
         return (fila - radio <= this.fila) && (this.fila <= fila + radio) && (columna - radio <= this.columna) && (this.columna <= columna + radio);
     }
