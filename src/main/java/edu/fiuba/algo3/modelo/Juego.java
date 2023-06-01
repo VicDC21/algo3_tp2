@@ -1,6 +1,10 @@
 package edu.fiuba.algo3.modelo;
 
-import java.util.Scanner;
+import org.json.*;
+import org.apache.commons.io.FileUtils;
+
+import java.io.*;
+import java.util.*;
 
 public class Juego {
     Jugador jugador;
@@ -15,6 +19,16 @@ public class Juego {
     public Juego(Jugador jugador, Mapa mapa) {
         this.mapa = mapa;
         this.jugador = jugador;
+    }
+
+    public Juego(String path) {
+        MapaParser parser = new MapaParser();
+        try {
+            mapa = parser.parseMapa(path);
+        } catch (InvalidMap e) {
+            return;
+        }
+        jugador = new Jugador("test", 20, 100, new Constructor(mapa));
     }
 
     public int mostrarVidaDelJugador() {
