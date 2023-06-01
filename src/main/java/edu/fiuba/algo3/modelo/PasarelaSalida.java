@@ -5,7 +5,11 @@ import java.util.List;
 
 public class PasarelaSalida extends Pasarela {
 
-    private List<List> enemigosPorTurno = new ArrayList<List>();
+    private List<List<Enemigo>> enemigosPorTurno = new ArrayList<>();
+
+    public PasarelaSalida(int fila, int columna, Mapa mapa) {
+        super(fila, columna, mapa);
+    }
 
     public PasarelaSalida(int fila, int columna, Mapa mapa, Pasarela pasarelaSiguiente) {
         super(fila, columna, mapa, pasarelaSiguiente);
@@ -18,10 +22,7 @@ public class PasarelaSalida extends Pasarela {
 
     @Override
     public void avanzarTurno() {
-        enemigos.removeIf(Enemigo::estaMuerto);
-        for (Enemigo e : enemigos) {
-            e.avanzar();
-        }
+        super.avanzarTurno();
         if (!enemigosPorTurno.isEmpty()) {
             for (Enemigo e : (enemigosPorTurno.remove(0))) {
                 agregarEnemigo(e);
