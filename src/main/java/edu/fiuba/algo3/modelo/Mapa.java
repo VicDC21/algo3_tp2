@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Mapa {
         List<Parcela> parcelas;
+        protected int cantidadDeCreditosGeneradosEnTurno;
 
         public Mapa() {
                 parcelas = new ArrayList<Parcela>();
@@ -51,9 +52,15 @@ public class Mapa {
         }
 
         public void avanzarTurno() {
+                this.cantidadDeCreditosGeneradosEnTurno = 0;
                 for (Parcela p : parcelas) {
                         p.avanzarTurno();
+                        this.cantidadDeCreditosGeneradosEnTurno += p.devolverCantidadDeCreditosGeneradosEnTurno();
                 }
+        }
+
+        public int devolverCantidadDeCreditosGeneradosEnTurno() {
+                return this.cantidadDeCreditosGeneradosEnTurno;
         }
 
         public List<Parcela> obtenerParcelasEnArea(int fila, int columna, int radio) {

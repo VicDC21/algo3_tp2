@@ -150,23 +150,64 @@ public class JuegoTest {
     public void elJugadorPierdeCuandoSeMuere() {
 
     }
+  
+    @Test
+    public void matarUnaHormigaOtorga1Credito() {
+        int tierra = 0;
+        Hormiga.hormigasMuertas = 0;
+        Mapa mapa = new Mapa();
+        Constructor constructor = new Constructor(mapa);
+        Jugador jugador = new Jugador("Prueba", 10, 100, constructor);
+        jugador.construir("torreBlanca", tierra);
+        mapa.avanzarTurno();
+        mapa.avanzarTurno();
+        jugador.recibirCreditos(mapa.devolverCantidadDeCreditosGeneradosEnTurno());
+        assertEquals(101, jugador.mostrarCreditos());
+    }
+    @Test
+    public void matarUnaHormigaOtorga1CreditoSiMurieron10Hormigas() {
+        int tierra = 0;
+        Hormiga.hormigasMuertas = 0;
+        Mapa mapa = new Mapa();
+        Constructor constructor = new Constructor(mapa);
+        Jugador jugador = new Jugador("Prueba", 10, 100, constructor);
+        for (int i = 0; i < 10; i++) {
+            Enemigo hormiga = new Hormiga(1, 1, 1, "Vivo", null);
+            hormiga.recibirDanio(1);
+        }
+        jugador.construir("torreBlanca", tierra);
+        mapa.avanzarTurno();
+        mapa.avanzarTurno();
+        jugador.recibirCreditos(mapa.devolverCantidadDeCreditosGeneradosEnTurno());
+        assertEquals(101, jugador.mostrarCreditos());
+    }
 
+    @Test
+    public void matarUnaHormigaOtorga2CreditosSiMurieronMasDe10Hormigas() {
+        int tierra = 0;
+        Hormiga.hormigasMuertas = 0;
+        Mapa mapa = new Mapa();
+        Constructor constructor = new Constructor(mapa);
+        Jugador jugador = new Jugador("Prueba", 10, 100, constructor);
+        for (int i = 0; i < 11; i++) {
+            Enemigo hormiga = new Hormiga(1, 1, 1, "Vivo", null);
+            hormiga.recibirDanio(1);
+        }
+        jugador.construir("torreBlanca", tierra);
+        mapa.avanzarTurno();
+        mapa.avanzarTurno();
+        jugador.recibirCreditos(mapa.devolverCantidadDeCreditosGeneradosEnTurno());
+        assertEquals(102, jugador.mostrarCreditos());
+    }
 
-//    @Test
-//    public void torreBlancaTarda1TurnoEnConstruirseYLaPlateada2() {
-//        Mapa mapa = new Mapa();
-//        Constructor constructor = new Constructor(mapa);
-//        Jugador jugador = new Jugador("Prueba", 10, 100, constructor);
-//        Juego juego = new Juego(jugador, mapa);
-//
-//        jugador.construir("torreBlanca", 3);
-//        jugador.construir("torrePlateada", 5);
-//
-//        juego.avanzarTurno();
-//        assertEquals(1, juego.cantidadDeTorresOperativas());
-//
-//        juego.avanzarTurno();
-//        assertEquals(2, juego.cantidadDeTorresOperativas());
-//        assertTrue(true);
-//    }
+    @Test
+    public void matarUnaAraniaOtorgaCreditosAlAzarEntre0Y10() {
+        Mapa mapa = new Mapa();
+        Constructor constructor = new Constructor(mapa);
+        Jugador jugador = new Jugador("Prueba", 10, 100, constructor);
+        Arania arania = new Arania(1, 1, 1, "Vivo", null);
+        arania.recibirDanio(1);
+        jugador.recibirCreditos(arania.otorgarCredito());
+        assertTrue(jugador.mostrarCreditos() >= 100 && jugador.mostrarCreditos() <= 110);
+    }
 }
