@@ -39,9 +39,6 @@ public class Tierra extends Parcela {
     public void recibirDanio(int danio) {}
 
     @Override
-    public void recibirEnemigo();
-
-    @Override
     public int cantidadDeEnemigos() {
         return 0;
     }

@@ -82,4 +82,8 @@ public class Mapa {
                 }
                 return cantidad;
         }
+
+        public void agregarParcelas(List<Parcela> lista) {
+                parcelas = lista;
+        }
 }

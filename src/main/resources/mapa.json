@@ -1,0 +1,19 @@
+{
+"Mapa": {
+   "1":["Rocoso","Pasarela","Tierra","Tierra","Tierra","Tierra","Tierra","Tierra","Tierra","Tierra","Rocoso","Rocoso","Rocoso","Rocoso","Rocoso"],
+   "2":["Tierra","Pasarela","Tierra","Tierra","Tierra","Tierra","Tierra","Tierra","Tierra","Tierra","Rocoso","Rocoso","Rocoso","Rocoso","Rocoso"],
+   "3":["Tierra","Pasarela","Tierra","Tierra","Tierra","Tierra","Tierra","Tierra","Tierra","Tierra","Rocoso","Rocoso","Rocoso","Rocoso","Rocoso"],
+   "4":["Tierra","Pasarela","Tierra","Tierra","Tierra","Tierra","Tierra","Tierra","Tierra","Tierra","Rocoso","Rocoso","Rocoso","Rocoso","Rocoso"],
+   "5":["Tierra","Pasarela","Rocoso","Rocoso","Tierra","Tierra","Tierra","Tierra","Tierra","Tierra","Tierra","Tierra","Tierra","Tierra","Tierra"],
+   "6":["Tierra","Pasarela","Rocoso","Rocoso","Tierra","Tierra","Tierra","Rocoso","Tierra","Tierra","Tierra","Tierra","Tierra","Tierra","Tierra"],
+   "7":["Tierra","Pasarela","Pasarela","Pasarela","Pasarela","Pasarela","Pasarela","Pasarela","Pasarela","Tierra","Tierra","Tierra","Tierra","Tierra","Tierra"],
+   "8":["Tierra","Tierra","Tierra","Tierra","Tierra","Tierra","Tierra","Tierra","Pasarela","Tierra","Tierra","Tierra","Tierra","Tierra","Tierra"],
+   "9":["Tierra","Tierra","Tierra","Tierra","Tierra","Tierra","Tierra","Tierra","Pasarela","Tierra","Tierra","Tierra","Tierra","Tierra","Tierra"],
+   "10":["Tierra","Tierra","Tierra","Tierra","Tierra","Tierra","Tierra","Tierra","Pasarela","Rocoso","Tierra","Tierra","Tierra","Tierra","Tierra"],
+   "11":["Tierra","Tierra","Tierra","Tierra","Tierra","Tierra","Tierra","Tierra","Pasarela","Pasarela","Pasarela","Pasarela","Pasarela","Pasarela","Pasarela"],
+   "12":["Rocoso","Rocoso","Rocoso","Rocoso","Rocoso","Tierra","Tierra","Tierra","Tierra","Tierra","Tierra","Tierra","Tierra","Tierra","Tierra"],
+   "13":["Rocoso","Rocoso","Rocoso","Rocoso","Rocoso","Tierra","Tierra","Tierra","Tierra","Tierra","Tierra","Tierra","Tierra","Tierra","Tierra"],
+   "14":["Rocoso","Rocoso","Rocoso","Rocoso","Rocoso","Tierra","Tierra","Tierra","Tierra","Tierra","Tierra","Tierra","Tierra","Tierra","Tierra"],
+   "15":["Rocoso","Rocoso","Rocoso","Rocoso","Rocoso","Tierra","Tierra","Tierra","Tierra","Tierra","Tierra","Tierra","Tierra","Tierra","Tierra"]
+}
+}
