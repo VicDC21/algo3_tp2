@@ -108,6 +108,21 @@ public class JuegoTest {
         tierra.avanzarTurno();
         assertTrue(hormiga.estaMuerto());
     }
+
+    @Test
+    public void unidadesEnemigasSoloSeMuevanPorLaParcelaAutorizada(){
+        Mapa mapa = new Mapa();
+        Pasarela pasarela = new Pasarela(1,2, mapa, null);
+        Tierra tierra = new Tierra(2, 2, mapa);
+        Enemigo hormiga = new Hormiga(2, 1, 1, "Vivo", pasarela);
+        
+        pasarela.recibirEnemigo(hormiga);
+       // tierra.recibirEnemigo(hormiga);
+
+        assertEquals(true,pasarela.tieneEnemigos());
+        assertEquals(false,tierra.tieneEnemigos());
+    }
+
 //    @Test
 //    public void torreBlancaTarda1TurnoEnConstruirseYLaPlateada2() {
 //        Mapa mapa = new Mapa();
