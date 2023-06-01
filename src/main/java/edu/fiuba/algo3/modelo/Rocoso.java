@@ -2,9 +2,10 @@ package edu.fiuba.algo3.modelo;
 
 public class Rocoso extends Parcela {
 
-    public Rocoso(int id) {
-        super(id);
+    protected Rocoso(int fila, int columna) {
+        super(fila, columna);
     }
+
     @Override
     public boolean puedeAlojarTorre() {
         return false;

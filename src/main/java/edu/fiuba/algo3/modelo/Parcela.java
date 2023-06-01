@@ -1,9 +1,12 @@
 package edu.fiuba.algo3.modelo;
 
 public abstract class Parcela {
-    int id;
-    protected Parcela(int id) {
-        this.id = id;
+    protected int fila;
+    protected int columna;
+    protected Parcela(int fila, int columna)
+    {
+        this.fila = fila;
+        this.columna = columna;
     }
     public abstract boolean puedeAlojarTorre();
     public abstract boolean tieneEnemigos();

@@ -11,11 +11,11 @@ public class Mapa {
 
                 //placeholder del mapa propiamente dicho.
                 for (int i = 0; i < 5; i++) {
-                        Tierra tierra = new Tierra(i);
+                        Tierra tierra = new Tierra(i, i);
                         parcelas.add(tierra);
                 }
                 for (int i = 5; i < 9; i++) {
-                        Rocoso rocoso = new Rocoso(i);
+                        Rocoso rocoso = new Rocoso(i, i);
                         parcelas.add(rocoso);
                 }
         }

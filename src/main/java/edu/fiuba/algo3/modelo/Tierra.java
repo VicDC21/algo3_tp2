@@ -4,9 +4,10 @@ public class Tierra extends Parcela {
 
     Torre torre;
 
-    public Tierra(int id) {
-        super(id);
+    protected Tierra(int fila, int columna) {
+        super(fila, columna);
     }
+
 
     @Override
     public boolean puedeAlojarTorre() {
