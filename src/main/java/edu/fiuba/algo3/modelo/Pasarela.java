@@ -8,7 +8,7 @@ public class Pasarela extends Parcela {
     protected Pasarela pasarelaSiguiente;
     protected List<Enemigo> enemigos;
     
-    protected Pasarela(int fila, int columna, Mapa mapa, Pasarela pasarelaSiguiente) {
+    public Pasarela(int fila, int columna, Mapa mapa, Pasarela pasarelaSiguiente) {
         super(fila, columna, mapa);
         this.enemigos = new ArrayList<>();
         this.pasarelaSiguiente = pasarelaSiguiente;
@@ -46,5 +46,9 @@ public class Pasarela extends Parcela {
 
     public int cantidadDeEnemigos() {
         return enemigos.size();
+    }
+
+    public void recibirEnemigo(Enemigo enemigo) {
+        this.enemigos.add(enemigo);
     }
 }

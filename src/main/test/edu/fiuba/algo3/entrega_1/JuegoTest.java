@@ -5,7 +5,11 @@ import edu.fiuba.algo3.modelo.ParcelaNoConstruible;
 import edu.fiuba.algo3.modelo.*;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class JuegoTest {
 
@@ -85,6 +89,24 @@ public class JuegoTest {
         mapa.avanzarTurno();
         mapa.avanzarTurno();
         assertEquals(1, mapa.cantidadDeEnemigos());
+    }
+
+    @Test
+    public void unidadesEnemigasSonDaniadasDeAcuerdoAlDanioRecibido() {
+        Mapa mapa = mock(Mapa.class);
+        Pasarela pasarela = new Pasarela(1,2, mapa, null);
+        Enemigo hormiga = new Hormiga(2, 1, 1, "Vivo", pasarela);
+        pasarela.recibirEnemigo(hormiga);
+        ArrayList<Parcela> pasarelasEnRango = new ArrayList<Parcela>();
+        pasarelasEnRango.add(pasarela);
+        when(mapa.obtenerParcelasEnArea(1, 1, 2)).thenReturn(pasarelasEnRango);
+        Torre torre = new Torre(0, 0, 2, 1);
+        Tierra tierra = new Tierra(1, 1, mapa);
+        tierra.construir(torre);
+        tierra.avanzarTurno();
+        assertFalse(hormiga.estaMuerto());
+        tierra.avanzarTurno();
+        assertTrue(hormiga.estaMuerto());
     }
 //    @Test
 //    public void torreBlancaTarda1TurnoEnConstruirseYLaPlateada2() {
