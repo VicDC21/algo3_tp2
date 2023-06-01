@@ -6,6 +6,7 @@ public class Juego {
     Jugador jugador;
     Mapa mapa;
     Constructor constructor;
+    int turno = 0;
 
     public Juego() {
         mapa = new Mapa();
@@ -34,6 +35,16 @@ public class Juego {
     public void avanzarTurno() {
 //        jugador.avanzarTurno();
         mapa.avanzarTurno();
+        turno += 1;
+        this.verificarEstado();
+    }
+
+    private void verificarEstado() {
+        if !jugador.estaVivo() {
+            System.out.println("Derrota");
+        } else if !mapa.tieneEnemigos() {
+            System.out.println("Victoria");
+        }
     }
 
     public String leerNombre() {

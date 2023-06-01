@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Mapa {
         List<Parcela> parcelas;
+        List<List> enemigosPorTurno;
 
         public Mapa() {
                 parcelas = new ArrayList<Parcela>();
@@ -40,7 +41,12 @@ public class Mapa {
         }
 
         public boolean tieneEnemigos() {
-                return false;
+                for (Parcela p: parcelas) {
+                        if (p.tieneEnemigos()) {
+                                return true;
+                        }
+                }
+                return !enemigosPorTurno.isEmpty;
         }
 
         public void avanzarTurno() {
