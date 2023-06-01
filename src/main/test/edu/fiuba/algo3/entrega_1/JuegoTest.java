@@ -49,7 +49,7 @@ public class JuegoTest {
     @Test
     public void defensasSoloPuedenSerConstruidasEnTierra() {
         int parcelaTierra = 3;
-        int parcelaRocosa = 7;
+        int parcelaRocosa = 13;
         Mapa mapa = new Mapa();
         Constructor constructor = new Constructor(mapa);
         Jugador jugador = new Jugador("Prueba", 10, 100, constructor);
@@ -59,7 +59,7 @@ public class JuegoTest {
 
     @Test
     public void defensasAtacanEnRangoEsperado() {
-        int tierra = 1;
+        int tierra = 0;
         Mapa mapa = new Mapa();
         Constructor constructor = new Constructor(mapa);
         Jugador jugador = new Jugador("Prueba", 10, 100, constructor);
@@ -69,8 +69,22 @@ public class JuegoTest {
         jugador.construir("torreBlanca", tierra);
         mapa.avanzarTurno();
         mapa.avanzarTurno();
-        mapa.avanzarTurno();
         assertEquals(0, mapa.cantidadDeEnemigos());
+    }
+
+    @Test
+    public void defensasNoAtacanFueraRangoEsperado() {
+        int tierra = 8;
+        Mapa mapa = new Mapa();
+        Constructor constructor = new Constructor(mapa);
+        Jugador jugador = new Jugador("Prueba", 10, 100, constructor);
+
+        assertEquals(1, mapa.cantidadDeEnemigos());
+
+        jugador.construir("torreBlanca", tierra);
+        mapa.avanzarTurno();
+        mapa.avanzarTurno();
+        assertEquals(1, mapa.cantidadDeEnemigos());
     }
 //    @Test
 //    public void torreBlancaTarda1TurnoEnConstruirseYLaPlateada2() {
