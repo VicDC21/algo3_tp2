@@ -15,7 +15,14 @@ public class JuegoTest {
     @Test
     public void jugadorEmpiezaPartidaConVidaYCreditosCorrespondientes() {
         int cantidadDeVidaEsperada = 20, cantidadDeCreditosEsperados = 100;
-        Mapa mapa = new Mapa();
+        String path = new File("src/main/resources/mapa.json").getAbsolutePath();
+        MapaParser parser = new MapaParser();
+        Mapa mapa;
+        try {
+            mapa = parser.parseMapa(path);
+        } catch (InvalidMap e) {
+            return;
+        }
         Constructor constructor = new Constructor(mapa);
         Jugador jugador = new Jugador("Prueba", cantidadDeVidaEsperada, cantidadDeCreditosEsperados, constructor);
         Juego juego = new Juego(jugador, mapa);

@@ -32,11 +32,6 @@ public class Mapa {
 //                }
         }
 
-    public static Mapa parse(String asString) {
-            System.out.print(asString);
-            return new Mapa();
-    }
-
     public void construir(Torre torre, int numeroParcela) {
                 Parcela parcela = parcelas.get(numeroParcela);
                 if (parcela.puedeAlojarTorre()) {
