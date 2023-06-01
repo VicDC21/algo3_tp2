@@ -34,6 +34,15 @@ public class Juego {
     public void avanzarTurno() {
 //        jugador.avanzarTurno();
         mapa.avanzarTurno();
+        this.verificarEstado();
+    }
+
+    private void verificarEstado() {
+        if (!jugador.estaVivo()) {
+            System.out.println("Derrota");
+        } else if (!mapa.tieneEnemigos()) {
+            System.out.println("Victoria");
+        }
     }
 
     public String leerNombre() {

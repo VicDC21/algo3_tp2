@@ -20,12 +20,14 @@ public class Mapa {
                         parcelas.add(rocoso);
                 }
 
-                parcelas.add(new PasarelaSalida(1, 2, this, null));
+                parcelas.add(new PasarelaSalida(0, 2, this, null));
 
-                for (int i = 1; i < 10; i++) {
+                for (int i = 1; i < 9; i++) {
                         Pasarela pasarela = new Pasarela(i, 2, this, null);
                         parcelas.add(pasarela);
                 }
+
+                parcelas.add(new PasarelaLlegada(9, 2, this, null));
 
                 for (int i = 20; i < 29; i++) {
                         Pasarela pasarela = (Pasarela) parcelas.get(i);
@@ -41,6 +43,11 @@ public class Mapa {
         }
 
         public boolean tieneEnemigos() {
+                for (Parcela p: parcelas) {
+                        if (p.tieneEnemigos()) {
+                                return true;
+                        }
+                }
                 return false;
         }
 

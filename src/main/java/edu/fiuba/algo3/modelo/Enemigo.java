@@ -20,6 +20,7 @@ public abstract class Enemigo {
     }
 
     public void causarDanio() {
+        pasarelaActual.realizarDanioJugador(danio);
     }
 
     public void recibirDanio(int danio) {

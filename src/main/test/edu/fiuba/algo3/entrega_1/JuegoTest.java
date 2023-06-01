@@ -123,7 +123,34 @@ public class JuegoTest {
         assertEquals(false,tierra.tieneEnemigos());
     }
 
+    @Test
+    public void elJugadorGanaSiEstaVivoYEliminoATodosLosEnemigos() {
+        Mapa mapa = new Mapa();
+        Constructor constructor = new Constructor(mapa);
+        Jugador jugador = new Jugador("Prueba", 10, 100, constructor);
 
+        assertEquals(1, mapa.cantidadDeEnemigos());
+
+        jugador.construir("torreBlanca", 1);
+        mapa.avanzarTurno();
+        mapa.avanzarTurno();
+        mapa.avanzarTurno();
+        mapa.avanzarTurno();
+        mapa.avanzarTurno();
+        assertEquals(0, mapa.cantidadDeEnemigos());
+        assertEquals("Victoria", outContent.toString());
+    }
+
+    @Test
+    public void elJugadorGanaSiEstaVivoYEliminoATodosLosEnemigos() {
+
+    }
+
+    @Test
+    public void elJugadorPierdeCuandoSeMuere() {
+
+    }
+  
     @Test
     public void matarUnaHormigaOtorga1Credito() {
         int tierra = 0;
@@ -173,8 +200,6 @@ public class JuegoTest {
         assertEquals(102, jugador.mostrarCreditos());
     }
 
-
-
     @Test
     public void matarUnaAraniaOtorgaCreditosAlAzarEntre0Y10() {
         Mapa mapa = new Mapa();
@@ -185,21 +210,4 @@ public class JuegoTest {
         jugador.recibirCreditos(arania.otorgarCredito());
         assertTrue(jugador.mostrarCreditos() >= 100 && jugador.mostrarCreditos() <= 110);
     }
-//    @Test
-//    public void torreBlancaTarda1TurnoEnConstruirseYLaPlateada2() {
-//        Mapa mapa = new Mapa();
-//        Constructor constructor = new Constructor(mapa);
-//        Jugador jugador = new Jugador("Prueba", 10, 100, constructor);
-//        Juego juego = new Juego(jugador, mapa);
-//
-//        jugador.construir("torreBlanca", 3);
-//        jugador.construir("torrePlateada", 5);
-//
-//        juego.avanzarTurno();
-//        assertEquals(1, juego.cantidadDeTorresOperativas());
-//
-//        juego.avanzarTurno();
-//        assertEquals(2, juego.cantidadDeTorresOperativas());
-//        assertTrue(true);
-//    }
 }
