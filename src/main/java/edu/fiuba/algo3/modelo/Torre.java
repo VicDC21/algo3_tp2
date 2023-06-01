@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
+import java.util.List;
+
 public class Torre {
     int costo;
     int turnosParaConstruirse;
@@ -41,14 +43,17 @@ public class Torre {
     }
 
     public void avanzarTurno() {
-        if(!estaOperativa()) {
-            turnosParaConstruirse--;
-        } else {
-            atacar();
-        }
+        turnosParaConstruirse--;
     }
 
-    private void atacar() {
+    public void atacar(Mapa mapa, int fila, int columna) {
+        List<Parcela> parcelas = mapa.obtenerParcelasEnArea(fila, columna, rango);
+        for (Parcela p : parcelas) {
+            if (p.tieneEnemigos()) {
+                p.recibirDanio(this.danio);
+                break;
+            }
+        }
     }
 
     public boolean estaOperativa() {

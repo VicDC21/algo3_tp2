@@ -56,6 +56,22 @@ public class JuegoTest {
         assertThrows(ParcelaNoConstruible.class, () -> jugador.construir("torreBlanca", parcelaRocosa));
         assertDoesNotThrow(() -> jugador.construir("torreBlanca", parcelaTierra));
     }
+
+    @Test
+    public void defensasAtacanEnRangoEsperado() {
+        int tierra = 1;
+        Mapa mapa = new Mapa();
+        Constructor constructor = new Constructor(mapa);
+        Jugador jugador = new Jugador("Prueba", 10, 100, constructor);
+
+        assertEquals(1, mapa.cantidadDeEnemigos());
+
+        jugador.construir("torreBlanca", tierra);
+        mapa.avanzarTurno();
+        mapa.avanzarTurno();
+        mapa.avanzarTurno();
+        assertEquals(0, mapa.cantidadDeEnemigos());
+    }
 //    @Test
 //    public void torreBlancaTarda1TurnoEnConstruirseYLaPlateada2() {
 //        Mapa mapa = new Mapa();

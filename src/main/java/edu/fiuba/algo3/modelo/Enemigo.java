@@ -8,20 +8,26 @@ public abstract class Enemigo {
 
     protected Pasarela pasarelaActual;
 
+    public Enemigo(int energia, int velocidad, int danio, String estado, Pasarela pasarelaActual) {
+        this.energia = energia;
+        this.velocidad = velocidad;
+        this.danio = danio;
+        this.estado = estado;
+        this.pasarelaActual = pasarelaActual;
+    }
     public void avanzar() {
 
     }
 
     public void causarDanio() {
-
     }
 
-    public void recibirDanio() {
-
+    public void recibirDanio(int danio) {
+        this.energia -= danio;
     }
 
     public boolean estaMuerto() {
-        return this.estado.equals("Muerto");
+        return this.energia <= 0;
     }
 
     public abstract int otorgarCredito();

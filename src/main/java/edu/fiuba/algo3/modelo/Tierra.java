@@ -4,8 +4,8 @@ public class Tierra extends Parcela {
 
     Torre torre;
 
-    protected Tierra(int fila, int columna) {
-        super(fila, columna);
+    protected Tierra(int fila, int columna, Mapa mapa) {
+        super(fila, columna, mapa);
     }
 
 
@@ -22,12 +22,24 @@ public class Tierra extends Parcela {
     @Override
     public void avanzarTurno() {
         if (torre != null) {
-            torre.avanzarTurno();
+            if (torre.estaOperativa()) {
+                torre.atacar(mapa, fila, columna);
+            } else {
+                torre.avanzarTurno();
+            }
         }
     }
 
     @Override
     public void construir(Torre torre) {
         this.torre = torre;
+    }
+
+    @Override
+    public void recibirDanio(int danio) {}
+
+    @Override
+    public int cantidadDeEnemigos() {
+        return 0;
     }
 }
