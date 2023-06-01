@@ -7,6 +7,7 @@ public class Pasarela extends Parcela {
 
     protected Pasarela pasarelaSiguiente;
     protected List<Enemigo> enemigos;
+    protected int cantidadDeCreditosGeneradosEnTurno;
     
     public Pasarela(int fila, int columna, Mapa mapa, Pasarela pasarelaSiguiente) {
         super(fila, columna, mapa);
@@ -26,10 +27,23 @@ public class Pasarela extends Parcela {
 
     @Override
     public void avanzarTurno() {
+        this.cantidadDeCreditosGeneradosEnTurno = 0;
+        enemigos.stream().forEach((enemigo) -> {
+                if (enemigo.estaMuerto()) {
+                        cantidadDeCreditosGeneradosEnTurno += enemigo.otorgarCredito();
+                }
+            }
+        );
+
         enemigos.removeIf(Enemigo::estaMuerto);
+
         for (Enemigo e : enemigos) {
             e.avanzar();
         }
+    }
+
+    public int devolverCantidadDeCreditosGeneradosEnTurno() {
+        return this.cantidadDeCreditosGeneradosEnTurno;
     }
 
     @Override
