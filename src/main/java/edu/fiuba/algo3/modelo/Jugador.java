@@ -31,4 +31,6 @@ public class Jugador {
     public void recibirCreditos(int creditos) {
         this.creditos += creditos;
     }
+
+    public void recibirDanio(int danio) { this.vida -= danio; }
 }

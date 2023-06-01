@@ -45,10 +45,10 @@ public class Juego {
     public void avanzarTurno() {
 //        jugador.avanzarTurno();
         mapa.avanzarTurno();
-        this.verificarEstado();
+        this.actualizarEstado();
     }
 
-    private void verificarEstado() {
+    private void actualizarEstado() {
         if (!jugador.estaVivo()) {
             this.estado = "Derrota";
         } else if (!mapa.tieneEnemigos()) {
@@ -67,7 +67,7 @@ public class Juego {
         return name;
     }
 
-    public String getEstado(String estado) {
+    public String getEstado() {
         return this.estado;
     }
 }

@@ -2,6 +2,8 @@ package edu.fiuba.algo3.modelo;
 
 public class PasarelaLlegada extends Pasarela {
 
+    private Jugador jugador;
+
     public PasarelaLlegada(int fila, int columna, Mapa mapa) {
         super(fila, columna, mapa);
 
@@ -18,10 +20,10 @@ public class PasarelaLlegada extends Pasarela {
     @Override
     public void recibirEnemigo(Enemigo enemigo) {
         enemigos.add(enemigo);
-//        enemigo.causardanio();
+        enemigo.causarDanio();
     }
 
     public void realizarDanioJugador(int danio) {
-//        jugador.recibirDanio(danio);
+        jugador.recibirDanio(danio);
     }
 }
