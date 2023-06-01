@@ -4,7 +4,7 @@ public class Tierra extends Parcela {
 
     Torre torre;
 
-    protected Tierra(int fila, int columna, Mapa mapa) {
+    public Tierra(int fila, int columna, Mapa mapa) {
         super(fila, columna, mapa);
     }
 
