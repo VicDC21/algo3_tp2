@@ -1,9 +1,15 @@
 package edu.fiuba.algo3.modelo;
 
+import java.util.List;
+
 public class Pasarela extends Parcela {
 
-    protected Pasarela(int fila, int columna) {
+    protected Pasarela pasarelaSiguiente;
+    protected List<Enemigo> enemigos;
+    
+    protected Pasarela(int fila, int columna, Pasarela pasarelaSiguiente) {
         super(fila, columna);
+        this.pasarelaSiguiente = pasarelaSiguiente;
     }
 
     @Override
@@ -13,7 +19,7 @@ public class Pasarela extends Parcela {
 
     @Override
     public boolean tieneEnemigos() {
-        return false;
+        return !enemigos.isEmpty();
     }
 
     @Override
