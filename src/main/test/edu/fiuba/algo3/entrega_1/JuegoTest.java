@@ -5,6 +5,8 @@ import edu.fiuba.algo3.modelo.ParcelaNoConstruible;
 import edu.fiuba.algo3.modelo.*;
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -115,9 +117,9 @@ public class JuegoTest {
         Pasarela pasarela = new Pasarela(1,2, mapa, null);
         Tierra tierra = new Tierra(2, 2, mapa);
         Enemigo hormiga = new Hormiga(2, 1, 1, "Vivo", pasarela);
-        
+
         pasarela.recibirEnemigo(hormiga);
-       // tierra.recibirEnemigo(hormiga);
+        // tierra.recibirEnemigo(hormiga);
 
         assertEquals(true,pasarela.tieneEnemigos());
         assertEquals(false,tierra.tieneEnemigos());
@@ -128,29 +130,42 @@ public class JuegoTest {
         Mapa mapa = new Mapa();
         Constructor constructor = new Constructor(mapa);
         Jugador jugador = new Jugador("Prueba", 10, 100, constructor);
+        Juego juego = new Juego(jugador, mapa)
 
         assertEquals(1, mapa.cantidadDeEnemigos());
 
         jugador.construir("torreBlanca", 1);
-        mapa.avanzarTurno();
-        mapa.avanzarTurno();
-        mapa.avanzarTurno();
-        mapa.avanzarTurno();
-        mapa.avanzarTurno();
+        juego.avanzarTurno();
+        juego.avanzarTurno();
+        juego.avanzarTurno();
+        juego.avanzarTurno();
         assertEquals(0, mapa.cantidadDeEnemigos());
-        assertEquals("Victoria", outContent.toString());
+        assertEquals("Victoria", juego.getEstado());
     }
 
     @Test
-    public void elJugadorGanaSiEstaVivoYEliminoATodosLosEnemigos() {
+    public void elJugadorGanaSiLosEnemigosNoPuedenMatarlo() {
+        Mapa mapa = new Mapa();
+        Constructor constructor = new Constructor(mapa);
+        Jugador jugador = new Jugador("Prueba", 10, 100, constructor);
+        Juego juego = new Juego(jugador, mapa)
 
+        assertEquals(1, mapa.cantidadDeEnemigos());
+
+        jugador.construir("torreBlanca", 1);
+        juego.avanzarTurno();
+        juego.avanzarTurno();
+        juego.avanzarTurno();
+        juego.avanzarTurno();
+        assertEquals(0, mapa.cantidadDeEnemigos());
+        assertEquals("Victoria", juego.getEstado());
     }
 
     @Test
     public void elJugadorPierdeCuandoSeMuere() {
 
     }
-  
+
     @Test
     public void matarUnaHormigaOtorga1Credito() {
         int tierra = 0;
@@ -209,5 +224,12 @@ public class JuegoTest {
         arania.recibirDanio(1);
         jugador.recibirCreditos(arania.otorgarCredito());
         assertTrue(jugador.mostrarCreditos() >= 100 && jugador.mostrarCreditos() <= 110);
+    }
+
+    @Test
+    public void testMapa() throws IOException {
+        String path = new File("src/main/resources/mapa.json").getAbsolutePath();
+        Juego juego = new Juego (path);
+        assertEquals(20, juego.mostrarVidaDelJugador());
     }
 }

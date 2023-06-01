@@ -6,10 +6,21 @@ public class Juego {
     Jugador jugador;
     Mapa mapa;
     Constructor constructor;
+    String estado = "En juego";
 
     public Juego() {
         mapa = new Mapa();
         jugador = new Jugador(leerNombre(), 20, 100, new Constructor(mapa));
+    }
+
+    public Juego(String path) {
+        MapaParser parser = new MapaParser();
+        try {
+            mapa = parser.parseMapa(path);
+        } catch (InvalidMap e) {
+            return;
+        }
+        jugador = new Jugador("test", 20, 100, new Constructor(mapa));
     }
 
     public Juego(Jugador jugador, Mapa mapa) {
@@ -39,9 +50,9 @@ public class Juego {
 
     private void verificarEstado() {
         if (!jugador.estaVivo()) {
-            System.out.println("Derrota");
+            this.estado = "Derrota";
         } else if (!mapa.tieneEnemigos()) {
-            System.out.println("Victoria");
+            this.estado = "Victoria";
         }
     }
 
@@ -54,5 +65,9 @@ public class Juego {
         }
         in.close();
         return name;
+    }
+
+    public String getEstado(String estado) {
+        return this.estado;
     }
 }

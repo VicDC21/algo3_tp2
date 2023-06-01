@@ -19,4 +19,5 @@ public class Constructor {
             mapa.construir(torre, numeroParcela);
         } else throw new CreditoInsuficiente();
     }
+
 }
