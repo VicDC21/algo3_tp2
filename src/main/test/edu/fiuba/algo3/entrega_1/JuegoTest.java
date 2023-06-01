@@ -123,6 +123,35 @@ public class JuegoTest {
         assertEquals(false,tierra.tieneEnemigos());
     }
 
+    @Test
+    public void elJugadorGanaSiEstaVivoYEliminoATodosLosEnemigos() {
+        Mapa mapa = new Mapa();
+        Constructor constructor = new Constructor(mapa);
+        Jugador jugador = new Jugador("Prueba", 10, 100, constructor);
+
+        assertEquals(1, mapa.cantidadDeEnemigos());
+
+        jugador.construir("torreBlanca", 1);
+        mapa.avanzarTurno();
+        mapa.avanzarTurno();
+        mapa.avanzarTurno();
+        mapa.avanzarTurno();
+        mapa.avanzarTurno();
+        assertEquals(0, mapa.cantidadDeEnemigos());
+        assertEquals("Victoria", outContent.toString());
+    }
+
+    @Test
+    public void elJugadorGanaSiEstaVivoYEliminoATodosLosEnemigos() {
+
+    }
+
+    @Test
+    public void elJugadorPierdeCuandoSeMuere() {
+
+    }
+
+
 //    @Test
 //    public void torreBlancaTarda1TurnoEnConstruirseYLaPlateada2() {
 //        Mapa mapa = new Mapa();

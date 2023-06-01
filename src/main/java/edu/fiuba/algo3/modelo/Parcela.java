@@ -4,6 +4,7 @@ public abstract class Parcela {
     protected int fila;
     protected int columna;
     Mapa mapa;
+
     public Parcela(int fila, int columna, Mapa mapa)
     {
         this.fila = fila;

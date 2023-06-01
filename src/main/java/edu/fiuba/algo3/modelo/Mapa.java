@@ -5,7 +5,6 @@ import java.util.List;
 
 public class Mapa {
         List<Parcela> parcelas;
-        List<List> enemigosPorTurno;
 
         public Mapa() {
                 parcelas = new ArrayList<Parcela>();
@@ -20,12 +19,14 @@ public class Mapa {
                         parcelas.add(rocoso);
                 }
 
-                parcelas.add(new PasarelaSalida(1, 2, this, null));
+                parcelas.add(new PasarelaSalida(0, 2, this, null));
 
-                for (int i = 1; i < 10; i++) {
+                for (int i = 1; i < 9; i++) {
                         Pasarela pasarela = new Pasarela(i, 2, this, null);
                         parcelas.add(pasarela);
                 }
+
+                parcelas.add(new PasarelaLlegada(9, 2, this, null));
 
                 for (int i = 20; i < 29; i++) {
                         Pasarela pasarela = (Pasarela) parcelas.get(i);
@@ -46,7 +47,7 @@ public class Mapa {
                                 return true;
                         }
                 }
-                return !enemigosPorTurno.isEmpty;
+                return false;
         }
 
         public void avanzarTurno() {

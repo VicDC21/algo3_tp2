@@ -52,6 +52,8 @@ public class Pasarela extends Parcela {
         this.enemigos.add(enemigo);
     }
 
+    public void realizarDanioJugador(int danio) {}
+
    /*  public boolean puedeRecibirEnemigo(Enemigo enemigo){
         return true;
     }*/
