@@ -12,7 +12,7 @@ public class Constructor {
         tiposDeTorre.put("torreBlanca", new Torre(10,1,3,1));
         tiposDeTorre.put("torrePlateada", new Torre(20,2,5,2));
     }
-
+ 
     public void construir(String tipoDeTorre, int creditosDisponibles, int numeroParcela) {
         Torre torre = new Torre(tiposDeTorre.get(tipoDeTorre));
         if (torre.puedoConstruirConCreditos(creditosDisponibles)) {
