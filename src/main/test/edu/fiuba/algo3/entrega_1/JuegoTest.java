@@ -42,8 +42,7 @@ public class JuegoTest {
 
     @Test
     public void antesDeConstruirSeVerificaTenerCreditoSuficiente() {
-        int cantidadDeCreditosInsuficientes = 5;
-        int cantidadDeCreditosSuficientes = 100;
+        int cantidadDeCreditosInsuficientes = 5, cantidadDeCreditosSuficientes = 100;
         Mapa mapa = new Mapa();
         Constructor constructor = new Constructor(mapa);
         Jugador jugador = new Jugador("Prueba", 10, cantidadDeCreditosInsuficientes, constructor);
@@ -54,12 +53,12 @@ public class JuegoTest {
 
     @Test
     public void defensasSoloPuedenSerConstruidasEnTierra() {
-        int parcelaTierra = 3;
-        int parcelaRocosa = 13;
+        int parcelaTierra = 3, parcelaRocosa = 13, pasarela = 23;
         Mapa mapa = new Mapa();
         Constructor constructor = new Constructor(mapa);
         Jugador jugador = new Jugador("Prueba", 10, 100, constructor);
         assertThrows(ParcelaNoConstruible.class, () -> jugador.construir("torreBlanca", parcelaRocosa));
+        assertThrows(ParcelaNoConstruible.class, () -> jugador.construir("torreBlanca", pasarela));
         assertDoesNotThrow(() -> jugador.construir("torreBlanca", parcelaTierra));
     }
 
