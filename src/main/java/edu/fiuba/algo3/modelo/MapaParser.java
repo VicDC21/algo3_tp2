@@ -12,6 +12,7 @@ import java.util.*;
 public class MapaParser {
 
     static Map<String, Class<?>> classMap = new HashMap<String, Class<?>>();
+    static Map<String, Parcela> classMap2 = new HashMap<String, Parcela>();
     static {
         classMap.put("Pasarela", Pasarela.class);
         classMap.put("Rocoso", Rocoso.class);

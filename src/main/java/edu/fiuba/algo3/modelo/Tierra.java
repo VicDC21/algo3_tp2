@@ -8,10 +8,8 @@ public class Tierra extends Parcela {
         super(fila, columna, mapa);
     }
 
-
-    @Override
-    public boolean puedeAlojarTorre() {
-        return torre == null;
+    private boolean tieneTorre() {
+        return torre != null;
     }
 
     @Override
@@ -21,18 +19,16 @@ public class Tierra extends Parcela {
 
     @Override
     public void avanzarTurno() {
-        if (torre != null) {
-            if (torre.estaOperativa()) {
-                torre.atacar(mapa, fila, columna);
-            } else {
-                torre.avanzarTurno();
-            }
+        if (tieneTorre()) {
+            torre.avanzarTurno(mapa, fila, columna);
         }
     }
 
     @Override
     public void construir(Torre torre) {
-        this.torre = torre;
+        if (!tieneTorre()) {
+            this.torre = torre;
+        } else throw new ParcelaNoConstruible();
     }
 
     @Override

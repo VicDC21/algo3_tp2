@@ -8,10 +8,10 @@ import org.junit.jupiter.api.Test;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 public class JuegoTest {
 
@@ -28,22 +28,49 @@ public class JuegoTest {
     }
 
     @Test
-    public void torreTarda2TurnosEnConstruirse() {
+    public void torreNoPuedeAtacarHastaTerminarDeConstruirse() {
         int cantidadDeTurnosParaConstruirse = 2;
-        Torre torre = new Torre(10, cantidadDeTurnosParaConstruirse, 3, 3);
-        assertFalse(torre.estaOperativa());
+        int cantidadDeDanio = 3;
+        int rango = 3;
 
-        torre.avanzarTurno();
-        assertFalse(torre.estaOperativa());
+        Mapa mapa = mock(Mapa.class);
+        Pasarela pasarela = mock(Pasarela.class);
 
-        torre.avanzarTurno();
-        assertTrue(torre.estaOperativa());
+        when(mapa.obtenerParcelasEnArea(0, 0, rango)).thenReturn(Collections.singletonList(pasarela));
+
+        Torre torre = new Torre(10, cantidadDeTurnosParaConstruirse, rango, cantidadDeDanio);
+
+        torre.avanzarTurno(mapa, 0, 0);
+        torre.avanzarTurno(mapa, 0, 0);
+
+        verify(pasarela, times(0)).recibirDanio(cantidadDeDanio);
     }
 
     @Test
+    public void torrePuedeAtacarAlTerminarDeConstruirse() {
+        int cantidadDeTurnosParaConstruirse = 2;
+        int cantidadDeDanio = 3;
+        int rango = 3;
+
+        Mapa mapa = mock(Mapa.class);
+        Pasarela pasarela = mock(Pasarela.class);
+
+        when(mapa.obtenerParcelasEnArea(0, 0, rango)).thenReturn(Collections.singletonList(pasarela));
+        when(pasarela.tieneEnemigos()).thenReturn(true);
+
+        Torre torre = new Torre(10, cantidadDeTurnosParaConstruirse, rango, cantidadDeDanio);
+
+        torre.avanzarTurno(mapa, 0, 0);
+        torre.avanzarTurno(mapa, 0, 0);
+        torre.avanzarTurno(mapa, 0, 0);
+
+        verify(pasarela, times(1)).recibirDanio(cantidadDeDanio);
+    }
+
+
+    @Test
     public void antesDeConstruirSeVerificaTenerCreditoSuficiente() {
-        int cantidadDeCreditosInsuficientes = 5;
-        int cantidadDeCreditosSuficientes = 100;
+        int cantidadDeCreditosInsuficientes = 5, cantidadDeCreditosSuficientes = 100;
         Mapa mapa = new Mapa();
         Constructor constructor = new Constructor(mapa);
         Jugador jugador = new Jugador("Prueba", 10, cantidadDeCreditosInsuficientes, constructor);
@@ -54,13 +81,18 @@ public class JuegoTest {
 
     @Test
     public void defensasSoloPuedenSerConstruidasEnTierra() {
-        int parcelaTierra = 3;
-        int parcelaRocosa = 13;
-        Mapa mapa = new Mapa();
-        Constructor constructor = new Constructor(mapa);
-        Jugador jugador = new Jugador("Prueba", 10, 100, constructor);
-        assertThrows(ParcelaNoConstruible.class, () -> jugador.construir("torreBlanca", parcelaRocosa));
-        assertDoesNotThrow(() -> jugador.construir("torreBlanca", parcelaTierra));
+
+        Mapa mapa = mock(Mapa.class);
+        Torre torre = mock(Torre.class);
+
+        Pasarela pasarela = new Pasarela(0, 0, mapa);
+        assertThrows(ParcelaNoConstruible.class, () -> pasarela.construir(torre));
+
+        Rocoso rocoso = new Rocoso(0, 0, mapa);
+        assertThrows(ParcelaNoConstruible.class, () -> rocoso.construir(torre));
+
+        Tierra tierra = new Tierra(0, 0, mapa);
+        assertDoesNotThrow(() -> tierra.construir(torre));
     }
 
     @Test
@@ -121,8 +153,8 @@ public class JuegoTest {
         pasarela.recibirEnemigo(hormiga);
        // tierra.recibirEnemigo(hormiga);
 
-        assertEquals(true,pasarela.tieneEnemigos());
-        assertEquals(false,tierra.tieneEnemigos());
+        assertTrue(pasarela.tieneEnemigos());
+        assertFalse(tierra.tieneEnemigos());
     }
 
     @Test
