@@ -162,6 +162,7 @@ public class JuegoTest {
         Mapa mapa = new Mapa();
         Constructor constructor = new Constructor(mapa);
         Jugador jugador = new Jugador("Prueba", 10, 100, constructor);
+        Juego juego = new Juego(jugador, mapa);
 
         assertEquals(1, mapa.cantidadDeEnemigos());
 
@@ -172,12 +173,18 @@ public class JuegoTest {
         mapa.avanzarTurno();
         mapa.avanzarTurno();
         assertEquals(0, mapa.cantidadDeEnemigos());
-//        assertEquals("Victoria", outContent.toString());
+        assertEquals(1, juego.estadoJuego());
     }
 
     @Test
     public void elJugadorPierdeCuandoSeMuere() {
+        Mapa mapa = new Mapa();
+        Constructor constructor = new Constructor(mapa);
+        Jugador jugador = new Jugador("Prueba", 0, 100, constructor);
 
+        Juego juego = new Juego(jugador, mapa);
+
+        assertEquals(-1, juego.estadoJuego());
     }
   
     @Test
