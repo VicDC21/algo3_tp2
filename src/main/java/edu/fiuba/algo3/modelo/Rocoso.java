@@ -7,11 +7,6 @@ public class Rocoso extends Parcela {
     }
 
     @Override
-    public boolean puedeAlojarTorre() {
-        return false;
-    }
-
-    @Override
     public boolean tieneEnemigos() {
         return false;
     }
@@ -22,6 +17,7 @@ public class Rocoso extends Parcela {
 
     @Override
     public void construir(Torre torre) {
+        throw new ParcelaNoConstruible();
     }
 
     @Override

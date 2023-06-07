@@ -19,11 +19,6 @@ public class Pasarela extends Parcela {
     }
 
     @Override
-    public boolean puedeAlojarTorre() {
-        return false;
-    }
-
-    @Override
     public boolean tieneEnemigos() {
         return !enemigos.isEmpty();
     }
@@ -47,7 +42,9 @@ public class Pasarela extends Parcela {
     }
 
     @Override
-    public void construir(Torre torre) {}
+    public void construir(Torre torre) {
+        throw new ParcelaNoConstruible();
+    }
 
     @Override
     public void recibirDanio(int danio) {

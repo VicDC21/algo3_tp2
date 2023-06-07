@@ -11,7 +11,6 @@ public abstract class Parcela {
         this.columna = columna;
         this.mapa = mapa;
     }
-    public abstract boolean puedeAlojarTorre();
     public abstract boolean tieneEnemigos();
     public abstract void avanzarTurno();
 
