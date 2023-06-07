@@ -8,6 +8,10 @@ public class Arania extends Enemigo {
         super(energia, velocidad, danio, estado, pasarelaActual);
     }
 
+    public Arania() {
+        super(2, 2, 2, "Vivo", null);
+    }
+
     @Override
     public int otorgarCredito() {
         Random random = new Random();
