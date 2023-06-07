@@ -7,16 +7,15 @@ public class Pasarela extends Parcela {
 
     protected Pasarela pasarelaSiguiente;
     protected List<Enemigo> enemigos;
-    
+    protected int cantidadDeCreditosGeneradosEnTurno;
+
+    public Pasarela(int fila, int columna, Mapa mapa) {
+        super(fila, columna, mapa);
+    }
     public Pasarela(int fila, int columna, Mapa mapa, Pasarela pasarelaSiguiente) {
         super(fila, columna, mapa);
         this.enemigos = new ArrayList<>();
         this.pasarelaSiguiente = pasarelaSiguiente;
-    }
-
-    @Override
-    public boolean puedeAlojarTorre() {
-        return false;
     }
 
     @Override
@@ -26,14 +25,26 @@ public class Pasarela extends Parcela {
 
     @Override
     public void avanzarTurno() {
+        this.cantidadDeCreditosGeneradosEnTurno = 0;
+        for (Enemigo enemigo : enemigos) {
+            if (enemigo.estaMuerto()) {
+                cantidadDeCreditosGeneradosEnTurno += enemigo.otorgarCredito();
+            }
+        }
         enemigos.removeIf(Enemigo::estaMuerto);
         for (Enemigo e : enemigos) {
             e.avanzar();
         }
     }
 
+    public int devolverCantidadDeCreditosGeneradosEnTurno() {
+        return this.cantidadDeCreditosGeneradosEnTurno;
+    }
+
     @Override
-    public void construir(Torre torre) {}
+    public void construir(Torre torre) {
+        throw new ParcelaNoConstruible();
+    }
 
     @Override
     public void recibirDanio(int danio) {
@@ -51,6 +62,8 @@ public class Pasarela extends Parcela {
     public void recibirEnemigo(Enemigo enemigo) {
         this.enemigos.add(enemigo);
     }
+
+    public void realizarDanioJugador(int danio) {}
 
    /*  public boolean puedeRecibirEnemigo(Enemigo enemigo){
         return true;

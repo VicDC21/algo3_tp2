@@ -2,6 +2,7 @@ package edu.fiuba.algo3.modelo;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Mapa {
         List<Parcela> parcelas;
@@ -19,12 +20,14 @@ public class Mapa {
                         parcelas.add(rocoso);
                 }
 
-                parcelas.add(new PasarelaSalida(1, 2, this, null));
+                parcelas.add(new PasarelaSalida(0, 2, this, null));
 
-                for (int i = 1; i < 10; i++) {
+                for (int i = 1; i < 9; i++) {
                         Pasarela pasarela = new Pasarela(i, 2, this, null);
                         parcelas.add(pasarela);
                 }
+
+                parcelas.add(new PasarelaLlegada(9, 2, this, null));
 
                 for (int i = 20; i < 29; i++) {
                         Pasarela pasarela = (Pasarela) parcelas.get(i);
@@ -33,39 +36,37 @@ public class Mapa {
         }
 
         public void construir(Torre torre, int numeroParcela) {
-                Parcela parcela = parcelas.get(numeroParcela);
-                if (parcela.puedeAlojarTorre()) {
-                        parcela.construir(torre);
-                } else throw new ParcelaNoConstruible();
+                parcelas.get(numeroParcela).construir(torre);
         }
 
         public boolean tieneEnemigos() {
-                return false;
+                return parcelas.stream().anyMatch(Parcela::tieneEnemigos);
         }
 
         public void avanzarTurno() {
-                for (Parcela p : parcelas) {
-                        p.avanzarTurno();
-                }
+                parcelas.forEach(Parcela::avanzarTurno);
+        }
+
+        public int devolverCantidadDeCreditosGeneradosEnTurno() {
+                return parcelas.stream()
+                        .mapToInt(Parcela::devolverCantidadDeCreditosGeneradosEnTurno)
+                        .sum();
         }
 
         public List<Parcela> obtenerParcelasEnArea(int fila, int columna, int radio) {
-                List<Parcela> lista = new ArrayList<>();
-                for (Parcela p : parcelas) {
-                        if (p.enRadioDe(fila, columna, radio)) {
-                                lista.add(p);
-                        }
-                }
-                return lista;
+                return parcelas.stream()
+                        .filter(parcela -> parcela.enRadioDe(fila, columna, radio))
+                        .collect(Collectors.toList());
         }
 
-        public int cantidadDeEnemigos() {
-                int cantidad = 0;
-                for (Parcela p : parcelas) {
-                        if (p.tieneEnemigos()) {
-                                cantidad += p.cantidadDeEnemigos();
-                        }
-                }
-                return cantidad;
+        public int cantidadDeEnemigos() {       //revisar si puedo devolver long.
+                return (int) parcelas.stream()
+                        .filter(Parcela::tieneEnemigos)
+                        .count();
+        }
+
+        public void agregarParcelas(List<Parcela> lista) {
+                parcelas = lista;
+//                parcelas.addAll(lista);
         }
 }

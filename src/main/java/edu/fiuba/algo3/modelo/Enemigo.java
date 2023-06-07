@@ -20,10 +20,13 @@ public abstract class Enemigo {
     }
 
     public void causarDanio() {
+        pasarelaActual.realizarDanioJugador(danio);
     }
 
     public void recibirDanio(int danio) {
-        this.energia -= danio;
+        if (!this.estaMuerto()) {
+            this.energia -= danio;
+        }
     }
 
     public boolean estaMuerto() {

@@ -1,0 +1,41 @@
+package edu.fiuba.algo3.modelo;
+
+public class Tierra extends Parcela {
+
+    Torre torre;
+
+    public Tierra(int fila, int columna, Mapa mapa) {
+        super(fila, columna, mapa);
+    }
+
+    private boolean tieneTorre() {
+        return torre != null;
+    }
+
+    @Override
+    public boolean tieneEnemigos() {
+        return false;
+    }
+
+    @Override
+    public void avanzarTurno() {
+        if (tieneTorre()) {
+            torre.avanzarTurno(mapa, fila, columna);
+        }
+    }
+
+    @Override
+    public void construir(Torre torre) {
+        if (!tieneTorre()) {
+            this.torre = torre;
+        } else throw new ParcelaNoConstruible();
+    }
+
+    @Override
+    public void recibirDanio(int danio) {}
+
+    @Override
+    public int cantidadDeEnemigos() {
+        return 0;
+    }
+}
