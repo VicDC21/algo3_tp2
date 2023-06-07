@@ -65,4 +65,14 @@ public class Juego {
         in.close();
         return name;
     }
+
+    public int estadoJuego() {
+        if (!(this.jugador.estaVivo())) {
+            return -1;
+        } else if (this.mapa.cantidadDeEnemigos() == 0) {
+            return 1;
+        }
+
+        return 0;
+    }
 }
