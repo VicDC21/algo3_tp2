@@ -272,4 +272,30 @@ public class JuegoTest {
         Juego juego = new Juego (path);
         assertEquals(20, juego.mostrarVidaDelJugador());
     }
+
+    @Test
+    public void intentarParsearUnJSONDeMapaSinElFormatoAdecuadoLanzaUnaExcepcion() {
+        MapaParser parser = new MapaParser();
+        assertThrows(InvalidMap.class, () -> parser.parseMapa("src/main/resources/mapaFormatoInvalido.json"));
+    }
+
+    @Test
+    public void intentarParsearUnJSONDeMapaConUnErrorDeSintaxisLanzaUnaExcepcion() {
+        MapaParser parser = new MapaParser();
+        assertThrows(InvalidMap.class, () -> parser.parseMapa("src/main/resources/mapaErrorSintaxis.json"));
+    }
+
+    @Test
+    public void elMapaSeParseaCorrectamenteConUnJSONValido() {
+        MapaParser parser = new MapaParser();
+        Mapa mapaParseado = new Mapa();
+        String mapaEsperado = "[Tierra, ...]";
+
+        try {
+            mapaParseado = parser.parseMapa("src/main/resources/mapa.json");
+        } catch (InvalidMap e) {
+            fail();
+        }
+        assertEquals(mapaEsperado, mapaParseado.toString());
+    }
 }

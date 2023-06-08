@@ -2,6 +2,7 @@ package edu.fiuba.algo3.modelo;
 
 import org.apache.commons.io.FileUtils;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
@@ -29,7 +30,7 @@ public class MapaParser {
         JSONObject jsonObject;
         try {
             jsonObject = new JSONObject(FileUtils.readFileToString(new File(path)));
-        } catch (IOException e) {
+        } catch (IOException | JSONException e) {
             throw new InvalidMap();
         }
         JSONObject mapaJson = jsonObject.getJSONObject("Mapa");

@@ -27,4 +27,8 @@ public abstract class Parcela {
     public abstract void recibirDanio(int danio);
 
     public abstract int cantidadDeEnemigos();
+
+    @Override
+    public String toString() { return this.getClass().getSimpleName(); }
+
 }
