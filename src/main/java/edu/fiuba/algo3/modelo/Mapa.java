@@ -69,4 +69,8 @@ public class Mapa {
                 parcelas = lista;
 //                parcelas.addAll(lista);
         }
+
+        @Override
+        public String toString() { return this.parcelas.toString(); }
+
 }

@@ -44,15 +44,6 @@ public class Juego {
     public void avanzarTurno() {
 //        jugador.avanzarTurno();
         mapa.avanzarTurno();
-        this.verificarEstado();
-    }
-
-    private void verificarEstado() {
-        if (!jugador.estaVivo()) {
-            System.out.println("Derrota");
-        } else if (!mapa.tieneEnemigos()) {
-            System.out.println("Victoria");
-        }
     }
 
     public String leerNombre() {
@@ -66,13 +57,12 @@ public class Juego {
         return name;
     }
 
-    public int estadoJuego() {
+    public String estadoJuego() {
         if (!(this.jugador.estaVivo())) {
-            return -1;
+            return "Derrota";
         } else if (this.mapa.cantidadDeEnemigos() == 0) {
-            return 1;
+            return "Victoria";
         }
-
-        return 0;
+        return "En juego";
     }
 }
