@@ -8,9 +8,6 @@ public class PasarelaLlegada extends Pasarela {
         super(fila, columna, mapa);
 
     }
-    public PasarelaLlegada(int fila, int columna, Mapa mapa, Pasarela pasarelaSiguiente) {
-        super(fila, columna, mapa, pasarelaSiguiente);
-    }
 
     @Override
     public void avanzarTurno() {
@@ -18,10 +15,11 @@ public class PasarelaLlegada extends Pasarela {
     }
 
     @Override
-    public void recibirEnemigo(Enemigo enemigo) {
-        enemigos.add(enemigo);
-        enemigo.causarDanio();
+    public boolean esLaDeLLegada() {
+        return true;
     }
+    @Override
+    public void moverEnemigoALaPasarelaSiguiente(Enemigo enemigo) {}
 
     public void realizarDanioJugador(int danio) {
         jugador.recibirDanio(danio);

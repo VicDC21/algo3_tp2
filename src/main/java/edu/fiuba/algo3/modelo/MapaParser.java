@@ -79,7 +79,12 @@ public class MapaParser {
             if (parcelas.get(i) instanceof Pasarela) {
                 if (isFirst) {
                     isFirst = false;
+<<<<<<< Updated upstream
                     parcelas.set(i, new PasarelaSalida(key, i, mapa));
+=======
+                    PasarelaSalida pasarelaSalida = new PasarelaSalida(key, i, mapa);
+                    parcelas.set(i, pasarelaSalida);
+>>>>>>> Stashed changes
                 } else {
                     lastColumna = i;
                     lastFila = key;

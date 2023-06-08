@@ -7,7 +7,6 @@ import org.apache.commons.io.FileUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
-import org.mockito.ArgumentCaptor;
 
 import java.io.File;
 import java.io.IOException;
@@ -259,7 +258,11 @@ public class JuegoTest {
     @Test
     public void intentarParsearUnJSONDeEnemigosConUnErrorDeSintaxisLanzaUnaExcepcion() {
         EnemigosParser parser = new EnemigosParser();
+<<<<<<< Updated upstream
         assertThrows(JSONException.class, () -> parser.parseEnemigos("src/main/resources/enemigosErrorSintaxis.json", 3));
+=======
+        assertThrows(JsonDeEnemigosInvalido.class, () -> parser.parseEnemigos("src/main/resources/enemigosErrorSintaxis.json"));
+>>>>>>> Stashed changes
     }
 
     @Test
@@ -287,6 +290,7 @@ public class JuegoTest {
         assertThrows(InvalidMap.class, () -> parser.parseMapa("src/main/resources/mapaErrorSintaxis.json"));
     }
 
+<<<<<<< Updated upstream
     @Test
     public void elMapaSeParseaCorrectamenteConUnJSONValido() {
         MapaParser parser = new MapaParser();
@@ -325,3 +329,58 @@ public class JuegoTest {
         }
     }
 }
+=======
+//    @Test
+//    public void elMapaSeParseaCorrectamenteConUnJSONValido() {
+//        MapaParser parser = new MapaParser();
+//        Mapa mapaParseado;
+//        JSONObject jsonDelMapa;
+//        String pathAlJsonDelMapa = "src/main/resources/mapa.json";
+//
+//        try {
+//            jsonDelMapa = new JSONObject(FileUtils.readFileToString(new File(pathAlJsonDelMapa)));
+//        } catch (IOException | JSONException e) {
+//            fail();
+//            return;
+//        }
+//
+//        try {
+//            mapaParseado = parser.parseMapa(pathAlJsonDelMapa);
+//        } catch (InvalidMap e) {
+//            fail();
+//            return;
+//        }
+//
+//        for (int i = 1; i < 16; i++) {
+//            for (int j = 0; j < 15; j++) {      // Las filas comienzan a contarse desde el 1, pero las columnas, contenidas en un array, desde el 0
+//                String tipoDeParcelaEnPosicionEnJson = jsonDelMapa
+//                        .getJSONObject("Mapa")
+//                        .getJSONArray(Integer.toString(i)).getString(j);
+//                String tipoDeParcelaEnPosicionEnMapa = mapaParseado.obtenerParcela(i, j)
+//                        .getClass()
+//                        .getName()
+//                        .split("\\.")[4];
+//                if (tipoDeParcelaEnPosicionEnMapa.equals("PasarelaLlegada") || tipoDeParcelaEnPosicionEnMapa.equals("PasarelaSalida")) {
+//                    tipoDeParcelaEnPosicionEnMapa = "Pasarela";
+//                }
+//                assertEquals(tipoDeParcelaEnPosicionEnJson, tipoDeParcelaEnPosicionEnMapa);
+//            }
+//        }
+//    }
+
+    @Test
+    public void simulaYVerificaQueElJugadorGanaPartida() throws InvalidMap {
+        Juego juego = new Juego("src/main/resources/mapa.json", "src/main/resources/enemigos.json");
+
+        //juego.construir("torreBlanca", 4);
+        //juego.construir("torreBlanca", 6);
+
+        for (int i = 0; i < 40; i++) {
+            juego.avanzarTurno();
+        }
+
+        assertEquals(0, juego.mostrarVidaDelJugador());
+        assertEquals("En juego", juego.estadoJuego());
+    }
+}
+>>>>>>> Stashed changes

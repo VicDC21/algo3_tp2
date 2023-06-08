@@ -27,7 +27,7 @@ public class Mapa {
                         parcelas.add(pasarela);
                 }
 
-                parcelas.add(new PasarelaLlegada(9, 2, this, null));
+                parcelas.add(new PasarelaLlegada(9, 2, this));
 
                 for (int i = 20; i < 29; i++) {
                         Pasarela pasarela = (Pasarela) parcelas.get(i);
@@ -80,4 +80,19 @@ public class Mapa {
         @Override
         public String toString() { return this.parcelas.toString(); }
 
+<<<<<<< Updated upstream
 }
+=======
+        public void cargarEnemigos(ArrayList<List<Enemigo>> enemigosParseados) {
+                PasarelaSalida salida = obtenerPasarelaSalida();
+                salida.cargarEnemigos(enemigosParseados);
+        }
+
+        private PasarelaSalida obtenerPasarelaSalida() {
+                return (PasarelaSalida) parcelas.stream()
+                        .filter(parcela -> parcela instanceof PasarelaSalida)
+                        .findFirst()
+                        .orElseThrow();
+        }
+}
+>>>>>>> Stashed changes

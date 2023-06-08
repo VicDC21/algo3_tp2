@@ -25,6 +25,7 @@ public class Pasarela extends Parcela {
     @Override
     public void avanzarTurno() {
         this.cantidadDeCreditosGeneradosEnTurno = 0;
+<<<<<<< Updated upstream
         for (Enemigo enemigo : enemigos) {
             if (enemigo.estaMuerto()) {
                 cantidadDeCreditosGeneradosEnTurno += enemigo.otorgarCredito();
@@ -34,6 +35,17 @@ public class Pasarela extends Parcela {
         for (Enemigo e : enemigos) {
             e.avanzar();
         }
+=======
+        if (!tieneEnemigos()) {
+            return;
+        }
+        enemigos.stream()
+                .filter(Enemigo::estaMuerto)
+                .forEach(enemigo -> cantidadDeCreditosGeneradosEnTurno += enemigo.otorgarCredito());
+        enemigos.removeIf(Enemigo::estaMuerto);
+        enemigos.forEach(Enemigo::avanzar);
+        enemigos.removeIf(enemigo -> enemigo.estaEnEstaPasarela(this)); //ESTA REMOVIENDO TODOS LOS ENEMIGOS, NECESITO QUE SOLO REMUEVA LOS QUE SE MOVIERON A LA SIGUIENTE.
+>>>>>>> Stashed changes
     }
 
     public int devolverCantidadDeCreditosGeneradosEnTurno() {
@@ -64,7 +76,15 @@ public class Pasarela extends Parcela {
 
     public void realizarDanioJugador(int danio) {}
 
-   /*  public boolean puedeRecibirEnemigo(Enemigo enemigo){
-        return true;
-    }*/
+    public void moverEnemigoALaPasarelaSiguiente(Enemigo enemigo) {
+        pasarelaSiguiente.recibirEnemigo(enemigo);
+    }
+
+    public Pasarela obtenerPasarelaSiguiente() {
+        return pasarelaSiguiente;
+    }
+
+    public boolean esLaDeLLegada() {
+        return false;
+    }
 }
