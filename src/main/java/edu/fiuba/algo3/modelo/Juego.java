@@ -6,7 +6,6 @@ public class Juego {
     Jugador jugador;
     Mapa mapa;
     Constructor constructor;
-    String estado = "En juego";
 
     public Juego() {
         mapa = new Mapa();
@@ -45,15 +44,6 @@ public class Juego {
     public void avanzarTurno() {
 //        jugador.avanzarTurno();
         mapa.avanzarTurno();
-        this.actualizarEstado();
-    }
-
-    private void actualizarEstado() {
-        if (!jugador.estaVivo()) {
-            this.estado = "Derrota";
-        } else if (!mapa.tieneEnemigos()) {
-            this.estado = "Victoria";
-        }
     }
 
     public String leerNombre() {
@@ -67,7 +57,12 @@ public class Juego {
         return name;
     }
 
-    public String getEstado() {
-        return this.estado;
+    public String estadoJuego() {
+        if (!(this.jugador.estaVivo())) {
+            return "Derrota";
+        } else if (this.mapa.cantidadDeEnemigos() == 0) {
+            return "Victoria";
+        }
+        return "En juego";
     }
 }

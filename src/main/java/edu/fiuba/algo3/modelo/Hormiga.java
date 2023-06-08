@@ -7,6 +7,10 @@ public class Hormiga extends Enemigo {
         super(energia, velocidad, danio, estado, pasarelaActual);
     }
 
+    public Hormiga() {
+        super(1, 1, 1, "Vivo", null);
+    }
+
     @Override
     public void recibirDanio(int danio) {
         if (!this.estaMuerto()) {

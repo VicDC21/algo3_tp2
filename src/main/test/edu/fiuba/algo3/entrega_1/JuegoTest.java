@@ -3,6 +3,7 @@ package edu.fiuba.algo3.entrega_1;
 import edu.fiuba.algo3.modelo.CreditoInsuficiente;
 import edu.fiuba.algo3.modelo.ParcelaNoConstruible;
 import edu.fiuba.algo3.modelo.*;
+import org.json.JSONException;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
@@ -165,24 +166,24 @@ public class JuegoTest {
         Juego juego = new Juego(jugador, mapa);
 
         jugador.construir("torreBlanca", 1);
+
+        assertEquals(1, mapa.cantidadDeEnemigos());
         juego.avanzarTurno();
         juego.avanzarTurno();
         assertEquals(0, mapa.cantidadDeEnemigos());
-        assertEquals("Victoria", juego.getEstado());
+        assertEquals("Victoria", juego.estadoJuego());
     }
 
     @Test
     public void elJugadorPierdeCuandoSeMuere() {
         Mapa mapa = new Mapa();
         Constructor constructor = new Constructor(mapa);
-        Jugador jugador = new Jugador("Prueba", 1, 100, constructor);
+
+        Jugador jugador = new Jugador("Prueba", 0, 100, constructor);
+
         Juego juego = new Juego(jugador, mapa);
 
-        for (int i = 0; i < 15; i++) {
-            juego.avanzarTurno();
-        }
-        //assertEquals(0, mapa.cantidadDeEnemigos());
-        assertEquals("Derrota", juego.getEstado());
+        assertEquals("Derrota", juego.estadoJuego());
     }
   
     @Test
@@ -243,6 +244,26 @@ public class JuegoTest {
         arania.recibirDanio(1);
         jugador.recibirCreditos(arania.otorgarCredito());
         assertTrue(jugador.mostrarCreditos() >= 100 && jugador.mostrarCreditos() <= 110);
+    }
+
+    @Test
+    public void losEnemigosSeParseanCorrectamenteConUnJSONValido() {
+        EnemigosParser parser = new EnemigosParser();
+        ArrayList<Enemigo> enemigosParseados = parser.parseEnemigos("src/main/resources/enemigos.json", 3);
+        assertEquals(Hormiga.class, enemigosParseados.get(0).getClass());
+        assertEquals(Hormiga.class, enemigosParseados.get(1).getClass());
+        assertEquals(Arania.class, enemigosParseados.get(2).getClass());
+    }
+    @Test
+    public void intentarParsearUnJSONDeEnemigosConUnErrorDeSintaxisLanzaUnaExcepcion() {
+        EnemigosParser parser = new EnemigosParser();
+        assertThrows(JSONException.class, () -> parser.parseEnemigos("src/main/resources/enemigosErrorSintaxis.json", 3));
+    }
+
+    @Test
+    public void intentarParsearUnJSONDeEnemigosSinElFormatoAdecuadoLanzaUnaExcepcion() {
+        EnemigosParser parser = new EnemigosParser();
+        assertThrows(JsonDeEnemigosInvalido.class, () -> parser.parseEnemigos("src/main/resources/enemigosFormatoInvalido.json", 3));
     }
 
     @Test
