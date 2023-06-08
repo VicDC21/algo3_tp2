@@ -1,7 +1,5 @@
 package edu.fiuba.algo3.entrega_1;
 
-import edu.fiuba.algo3.modelo.CreditoInsuficiente;
-import edu.fiuba.algo3.modelo.ParcelaNoConstruible;
 import edu.fiuba.algo3.modelo.*;
 import org.json.JSONException;
 import org.junit.jupiter.api.Test;
@@ -256,6 +254,7 @@ public class JuegoTest {
         assertEquals(Hormiga.class, enemigosParseados.get(1).getClass());
         assertEquals(Arania.class, enemigosParseados.get(2).getClass());
     }
+
     @Test
     public void intentarParsearUnJSONDeEnemigosConUnErrorDeSintaxisLanzaUnaExcepcion() {
         EnemigosParser parser = new EnemigosParser();
@@ -266,6 +265,29 @@ public class JuegoTest {
     public void intentarParsearUnJSONDeEnemigosSinElFormatoAdecuadoLanzaUnaExcepcion() {
         EnemigosParser parser = new EnemigosParser();
         assertThrows(JsonDeEnemigosInvalido.class, () -> parser.parseEnemigos("src/main/resources/enemigosFormatoInvalido.json", 3));
+    }
+
+    @Test
+    public void simulaYVerificaQueElJugadorGanaPartida () throws InvalidMap{
+        String path = new File("src/main/resources/mapa.json").getAbsolutePath();
+        MapaParser parser = new MapaParser();
+        Mapa mapaParseado;
+        mapaParseado = parser.parseMapa(path);
+        Constructor constructor = new Constructor(mapaParseado);
+        Jugador jugador = new Jugador("prueba", 10, 100, constructor);
+        Juego juego = new Juego(jugador,mapaParseado);
+        //juego.jugar(); 
+        jugador.construir("torreBlanca", 4);
+        jugador.construir("torreBlanca", 6);
+       
+        EnemigosParser parser2 = new EnemigosParser();
+        ArrayList<Enemigo> enemigos = parser2.parseEnemigos("src/main/resources/enemigos.json", 1);
+        
+        juego.avanzarTurno(); // falla porque no se cargan los enemigosParseados en enemigos, entonces al this.enemigos = null falla
+        juego.avanzarTurno();
+        juego.avanzarTurno();
+
+        assertTrue(jugador.estaVivo() && !mapaParseado.tieneEnemigos());
     }
 
     @Test
