@@ -12,6 +12,16 @@ public class Juego {
         jugador = new Jugador(leerNombre(), 20, 100, new Constructor(mapa));
     }
 
+    public Juego(String path) {
+        MapaParser parser = new MapaParser();
+        try {
+            mapa = parser.parseMapa(path);
+        } catch (InvalidMap e) {
+            return;
+        }
+        jugador = new Jugador("test", 20, 100, new Constructor(mapa));
+    }
+
     public Juego(Jugador jugador, Mapa mapa) {
         this.mapa = mapa;
         this.jugador = jugador;
@@ -45,5 +55,14 @@ public class Juego {
         }
         in.close();
         return name;
+    }
+
+    public String estadoJuego() {
+        if (!(this.jugador.estaVivo())) {
+            return "Derrota";
+        } else if (this.mapa.cantidadDeEnemigos() == 0) {
+            return "Victoria";
+        }
+        return "En juego";
     }
 }
