@@ -6,7 +6,8 @@ import java.util.List;
 public class Pasarela extends Parcela {
 
     protected Pasarela pasarelaSiguiente;
-    protected List<Enemigo> enemigos = new ArrayList<>();
+    protected List<Enemigo> enemigos = new ArrayList<Enemigo>();
+
     protected int cantidadDeCreditosGeneradosEnTurno;
 
     public Pasarela(int fila, int columna, Mapa mapa) {
@@ -25,14 +26,16 @@ public class Pasarela extends Parcela {
     @Override
     public void avanzarTurno() {
         this.cantidadDeCreditosGeneradosEnTurno = 0;
-        for (Enemigo enemigo : enemigos) {
-            if (enemigo.estaMuerto()) {
-                cantidadDeCreditosGeneradosEnTurno += enemigo.otorgarCredito();
+        if (!enemigos.isEmpty()) {
+            for (Enemigo enemigo : enemigos) {
+                if (enemigo.estaMuerto()) {
+                    cantidadDeCreditosGeneradosEnTurno += enemigo.otorgarCredito();
+                }
             }
-        }
-        enemigos.removeIf(Enemigo::estaMuerto);
-        for (Enemigo e : enemigos) {
-            e.avanzar();
+            enemigos.removeIf(Enemigo::estaMuerto);
+            for (Enemigo e : enemigos) {
+                e.avanzar();
+            }
         }
     }
 

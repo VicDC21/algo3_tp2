@@ -38,4 +38,7 @@ public class PasarelaSalida extends Pasarela {
         return true;
     }
 
+    public void cargarEnemigos(ArrayList<List<Enemigo>> enemigosParseados) {
+        enemigosPorTurno = enemigosParseados;
+    }
 }
