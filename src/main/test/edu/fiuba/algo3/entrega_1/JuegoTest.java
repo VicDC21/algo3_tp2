@@ -5,9 +5,6 @@ import edu.fiuba.algo3.modelo.ParcelaNoConstruible;
 import edu.fiuba.algo3.modelo.*;
 import org.junit.jupiter.api.Test;
 
-import java.io.File;
-import java.io.IOException;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 public class JuegoTest {
@@ -89,11 +86,21 @@ public class JuegoTest {
         mapa.avanzarTurno();
         assertEquals(1, mapa.cantidadDeEnemigos());
     }
-
-    @Test
-    public void testMapa() throws IOException {
-        String path = new File("src/main/resources/mapa.json").getAbsolutePath();
-        Juego juego = new Juego (path);
-        assertEquals(20, juego.mostrarVidaDelJugador());
-    }
+//    @Test
+//    public void torreBlancaTarda1TurnoEnConstruirseYLaPlateada2() {
+//        Mapa mapa = new Mapa();
+//        Constructor constructor = new Constructor(mapa);
+//        Jugador jugador = new Jugador("Prueba", 10, 100, constructor);
+//        Juego juego = new Juego(jugador, mapa);
+//
+//        jugador.construir("torreBlanca", 3);
+//        jugador.construir("torrePlateada", 5);
+//
+//        juego.avanzarTurno();
+//        assertEquals(1, juego.cantidadDeTorresOperativas());
+//
+//        juego.avanzarTurno();
+//        assertEquals(2, juego.cantidadDeTorresOperativas());
+//        assertTrue(true);
+//    }
 }

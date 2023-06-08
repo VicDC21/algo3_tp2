@@ -7,37 +7,32 @@ public class Mapa {
         List<Parcela> parcelas;
 
         public Mapa() {
-//                parcelas = new ArrayList<Parcela>();
-//
-//                //placeholder del mapa propiamente dicho.
-//                for (int i = 0; i < 10; i++) {
-//                        Tierra tierra = new Tierra(i, 0, this);
-//                        parcelas.add(tierra);
-//                }
-//                for (int i = 0; i < 10; i++) {
-//                        Rocoso rocoso = new Rocoso(i, 1, this);
-//                        parcelas.add(rocoso);
-//                }
-//
-//                parcelas.add(new PasarelaSalida(1, 2, this, null));
-//
-//                for (int i = 1; i < 10; i++) {
-//                        Pasarela pasarela = new Pasarela(i, 2, this, null);
-//                        parcelas.add(pasarela);
-//                }
-//
-//                for (int i = 20; i < 29; i++) {
-//                        Pasarela pasarela = (Pasarela) parcelas.get(i);
-//                        pasarela.setPasarelaSiguiente((Pasarela) parcelas.get(i+1));
-//                }
+                parcelas = new ArrayList<Parcela>();
+
+                //placeholder del mapa propiamente dicho.
+                for (int i = 0; i < 10; i++) {
+                        Tierra tierra = new Tierra(i, 0, this);
+                        parcelas.add(tierra);
+                }
+                for (int i = 0; i < 10; i++) {
+                        Rocoso rocoso = new Rocoso(i, 1, this);
+                        parcelas.add(rocoso);
+                }
+
+                parcelas.add(new PasarelaSalida(1, 2, this, null));
+
+                for (int i = 1; i < 10; i++) {
+                        Pasarela pasarela = new Pasarela(i, 2, this, null);
+                        parcelas.add(pasarela);
+                }
+
+                for (int i = 20; i < 29; i++) {
+                        Pasarela pasarela = (Pasarela) parcelas.get(i);
+                        pasarela.setPasarelaSiguiente((Pasarela) parcelas.get(i+1));
+                }
         }
 
-    public static Mapa parse(String asString) {
-            System.out.print(asString);
-            return new Mapa();
-    }
-
-    public void construir(Torre torre, int numeroParcela) {
+        public void construir(Torre torre, int numeroParcela) {
                 Parcela parcela = parcelas.get(numeroParcela);
                 if (parcela.puedeAlojarTorre()) {
                         parcela.construir(torre);
@@ -65,17 +60,12 @@ public class Mapa {
         }
 
         public int cantidadDeEnemigos() {
-            int cantidad = 0;
-            for (Parcela p : parcelas) {
-                    if (p.tieneEnemigos()) {
-                            cantidad += p.cantidadDeEnemigos();
-                    }
-            }
-            return cantidad;
+                int cantidad = 0;
+                for (Parcela p : parcelas) {
+                        if (p.tieneEnemigos()) {
+                                cantidad += p.cantidadDeEnemigos();
+                        }
+                }
+                return cantidad;
         }
-
-    public void agregarParcelas(List<Parcela> lista) {
-        parcelas = lista;
-    }
-
 }

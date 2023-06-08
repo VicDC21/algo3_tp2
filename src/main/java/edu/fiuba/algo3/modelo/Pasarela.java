@@ -7,10 +7,6 @@ public class Pasarela extends Parcela {
 
     protected Pasarela pasarelaSiguiente;
     protected List<Enemigo> enemigos;
-
-    public Pasarela(int fila, int columna, Mapa mapa) {
-        super(fila, columna, mapa);
-    }
     
     protected Pasarela(int fila, int columna, Mapa mapa, Pasarela pasarelaSiguiente) {
         super(fila, columna, mapa);
