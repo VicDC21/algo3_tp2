@@ -7,6 +7,7 @@ public class Pasarela extends Parcela {
 
     protected Pasarela pasarelaSiguiente;
     protected List<Enemigo> enemigos = new ArrayList<Enemigo>();
+
     protected int cantidadDeCreditosGeneradosEnTurno;
 
     public Pasarela(int fila, int columna, Mapa mapa) {
@@ -14,7 +15,6 @@ public class Pasarela extends Parcela {
     }
     public Pasarela(int fila, int columna, Mapa mapa, Pasarela pasarelaSiguiente) {
         super(fila, columna, mapa);
-        this.enemigos = new ArrayList<>();
         this.pasarelaSiguiente = pasarelaSiguiente;
     }
 

@@ -9,7 +9,7 @@ public class Mapa {
         PasarelaSalida pasarelaSalida;
 
         public Mapa() {
-                parcelas = new ArrayList<Parcela>();
+                parcelas = new ArrayList<>();
 
                 //placeholder del mapa propiamente dicho.
                 for (int i = 0; i < 10; i++) {
