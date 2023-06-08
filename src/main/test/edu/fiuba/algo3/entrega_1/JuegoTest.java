@@ -12,6 +12,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -251,21 +252,22 @@ public class JuegoTest {
     @Test
     public void losEnemigosSeParseanCorrectamenteConUnJSONValido() {
         EnemigosParser parser = new EnemigosParser();
-        ArrayList<Enemigo> enemigosParseados = parser.parseEnemigos("src/main/resources/enemigos.json", 3);
-        assertEquals(Hormiga.class, enemigosParseados.get(0).getClass());
-        assertEquals(Hormiga.class, enemigosParseados.get(1).getClass());
-        assertEquals(Arania.class, enemigosParseados.get(2).getClass());
+        ArrayList<List<Enemigo>> enemigosParseados = parser.parseEnemigos("src/main/resources/enemigos.json");
+        assertEquals(Hormiga.class, (enemigosParseados.get(0)).get(0).getClass());
+        assertEquals(Hormiga.class, (enemigosParseados.get(1)).get(0).getClass());
+        assertEquals(Arania.class, (enemigosParseados.get(1)).get(1).getClass());
     }
+
     @Test
     public void intentarParsearUnJSONDeEnemigosConUnErrorDeSintaxisLanzaUnaExcepcion() {
         EnemigosParser parser = new EnemigosParser();
-        assertThrows(JSONException.class, () -> parser.parseEnemigos("src/main/resources/enemigosErrorSintaxis.json", 3));
+        assertThrows(JSONException.class, () -> parser.parseEnemigos("src/main/resources/enemigosErrorSintaxis.json"));
     }
 
     @Test
     public void intentarParsearUnJSONDeEnemigosSinElFormatoAdecuadoLanzaUnaExcepcion() {
         EnemigosParser parser = new EnemigosParser();
-        assertThrows(JsonDeEnemigosInvalido.class, () -> parser.parseEnemigos("src/main/resources/enemigosFormatoInvalido.json", 3));
+        assertThrows(JsonDeEnemigosInvalido.class, () -> parser.parseEnemigos("src/main/resources/enemigosFormatoInvalido.json"));
     }
 
     @Test

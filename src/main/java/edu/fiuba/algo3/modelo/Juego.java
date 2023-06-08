@@ -22,6 +22,23 @@ public class Juego {
         jugador = new Jugador("test", 20, 100, new Constructor(mapa));
     }
 
+    public Juego(String pathMapa, String pathEnemigos) {
+        MapaParser parserMapa = new MapaParser();
+        EnemigosParser parserEnemigos = new EnemigosParser();
+        try {
+            mapa = parserMapa.parseMapa(pathMapa);
+        } catch (InvalidMap e) {
+            return;
+        }
+        try {
+            mapa.cargarEnemigos(parserEnemigos.parseEnemigos(pathEnemigos));
+        } catch (JsonDeEnemigosInvalido e) {
+            return;
+        }
+
+        jugador = new Jugador("test", 20, 100, new Constructor(mapa));
+    }
+
     public Juego(Jugador jugador, Mapa mapa) {
         this.mapa = mapa;
         this.jugador = jugador;

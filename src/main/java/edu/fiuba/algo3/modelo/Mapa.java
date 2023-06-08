@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 
 public class Mapa {
         List<Parcela> parcelas;
+        PasarelaSalida pasarelaSalida;
 
         public Mapa() {
                 parcelas = new ArrayList<Parcela>();
@@ -80,4 +81,7 @@ public class Mapa {
         @Override
         public String toString() { return this.parcelas.toString(); }
 
+        public void cargarEnemigos(ArrayList<List<Enemigo>> enemigosParseados) {
+                pasarelaSalida.cargarEnemigos(enemigosParseados);
+        }
 }
