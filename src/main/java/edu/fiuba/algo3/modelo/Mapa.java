@@ -80,9 +80,6 @@ public class Mapa {
         @Override
         public String toString() { return this.parcelas.toString(); }
 
-<<<<<<< Updated upstream
-}
-=======
         public void cargarEnemigos(ArrayList<List<Enemigo>> enemigosParseados) {
                 PasarelaSalida salida = obtenerPasarelaSalida();
                 salida.cargarEnemigos(enemigosParseados);
@@ -95,4 +92,3 @@ public class Mapa {
                         .orElseThrow();
         }
 }
->>>>>>> Stashed changes

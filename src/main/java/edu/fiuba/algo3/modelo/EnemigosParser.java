@@ -51,24 +51,22 @@ public class EnemigosParser {
         return true;
     }
 
-    public ArrayList<Enemigo> parseEnemigos(String path, int turno) {
+    public ArrayList<List<Enemigo>> parseEnemigos(String path) {
+        ArrayList<List<Enemigo>> enemigosParseados = new ArrayList<>();
         JSONArray jsonEnemigos;
-<<<<<<< Updated upstream
-=======
         try {
             jsonEnemigos = new JSONArray(FileUtils.readFileToString(new File(path)));
         } catch (IOException | JSONException e) {
             throw new JsonDeEnemigosInvalido();
         }
         for (int i = 1; i <= jsonEnemigos.length(); i++) {
-            enemigosParseados.add(this.parseEnemigosPorTurno(i, jsonEnemigos));
+            enemigosParseados.add(parseEnemigosPorTurno(path, i, jsonEnemigos));
         }
         return enemigosParseados;
     }
 
-    public ArrayList<Enemigo> parseEnemigosPorTurno(int turno, JSONArray jsonEnemigos) {
->>>>>>> Stashed changes
-        ArrayList<Enemigo> enemigosTotales = new ArrayList<Enemigo>();
+    public ArrayList<Enemigo> parseEnemigosPorTurno(String path, int turno, JSONArray jsonEnemigos) {
+        ArrayList<Enemigo> enemigosTotales = new ArrayList<>();
 
         try {
             jsonEnemigos = new JSONArray(FileUtils.readFileToString(new File(path)));

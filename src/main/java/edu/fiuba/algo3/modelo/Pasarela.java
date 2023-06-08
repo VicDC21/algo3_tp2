@@ -7,6 +7,7 @@ public class Pasarela extends Parcela {
 
     protected Pasarela pasarelaSiguiente;
     protected List<Enemigo> enemigos = new ArrayList<>();
+
     protected int cantidadDeCreditosGeneradosEnTurno;
 
     public Pasarela(int fila, int columna, Mapa mapa) {
@@ -25,17 +26,6 @@ public class Pasarela extends Parcela {
     @Override
     public void avanzarTurno() {
         this.cantidadDeCreditosGeneradosEnTurno = 0;
-<<<<<<< Updated upstream
-        for (Enemigo enemigo : enemigos) {
-            if (enemigo.estaMuerto()) {
-                cantidadDeCreditosGeneradosEnTurno += enemigo.otorgarCredito();
-            }
-        }
-        enemigos.removeIf(Enemigo::estaMuerto);
-        for (Enemigo e : enemigos) {
-            e.avanzar();
-        }
-=======
         if (!tieneEnemigos()) {
             return;
         }
@@ -45,7 +35,6 @@ public class Pasarela extends Parcela {
         enemigos.removeIf(Enemigo::estaMuerto);
         enemigos.forEach(Enemigo::avanzar);
         enemigos.removeIf(enemigo -> enemigo.estaEnEstaPasarela(this)); //ESTA REMOVIENDO TODOS LOS ENEMIGOS, NECESITO QUE SOLO REMUEVA LOS QUE SE MOVIERON A LA SIGUIENTE.
->>>>>>> Stashed changes
     }
 
     public int devolverCantidadDeCreditosGeneradosEnTurno() {

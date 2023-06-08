@@ -37,12 +37,8 @@ public class PasarelaSalida extends Pasarela {
         }
         return true;
     }
-
-<<<<<<< Updated upstream
-=======
     public void cargarEnemigos(ArrayList<List<Enemigo>> enemigosParseados) {
         enemigosPorTurno = enemigosParseados;
         enemigosPorTurno.forEach(list -> list.forEach(enemigo -> enemigo.setPasarelaSalida(this)));
     }
->>>>>>> Stashed changes
 }

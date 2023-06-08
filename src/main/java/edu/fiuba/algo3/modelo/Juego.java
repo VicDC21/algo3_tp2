@@ -17,9 +17,6 @@ public class Juego {
         mapa = parser.parseMapa(path);
         jugador = new Jugador("test", 20, 100, new Constructor(mapa));
     }
-
-<<<<<<< Updated upstream
-=======
     public Juego(String pathMapa, String pathEnemigos) throws InvalidMap {
         MapaParser parserMapa = new MapaParser();
         EnemigosParser parserEnemigos = new EnemigosParser();
@@ -31,8 +28,6 @@ public class Juego {
     public void construir(String construible, int numeroParcela) {
         jugador.construir(construible, numeroParcela);
     }
-
->>>>>>> Stashed changes
     public Juego(Jugador jugador, Mapa mapa) {
         this.mapa = mapa;
         this.jugador = jugador;
