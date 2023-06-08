@@ -7,27 +7,29 @@ import org.apache.commons.io.FileUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
+import org.mockito.ArgumentCaptor;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 public class JuegoTest {
 
+    String mapaPath = new File("src/main/resources/mapa.json").getAbsolutePath();
+
     @Test
     public void jugadorEmpiezaPartidaConVidaYCreditosCorrespondientes() {
-        int cantidadDeVidaEsperada = 20, cantidadDeCreditosEsperados = 100;
-        Mapa mapa = new Mapa();
-        Constructor constructor = new Constructor(mapa);
-        Jugador jugador = new Jugador("Prueba", cantidadDeVidaEsperada, cantidadDeCreditosEsperados, constructor);
-        Juego juego = new Juego(jugador, mapa);
 
-        assertEquals(cantidadDeVidaEsperada, juego.mostrarVidaDelJugador());
-        assertEquals(cantidadDeCreditosEsperados, juego.mostrarCreditosActuales());
+        int cantidadDeVidaEsperada = 20, cantidadDeCreditosEsperados = 100;
+        Constructor constructor = mock(Constructor.class);
+
+        Jugador jugador = new Jugador("Prueba", cantidadDeVidaEsperada, cantidadDeCreditosEsperados, constructor);
+
+        assertEquals(cantidadDeVidaEsperada, jugador.mostrarVida());
+        assertEquals(cantidadDeCreditosEsperados, jugador.mostrarCreditos());
     }
 
     @Test
@@ -39,12 +41,13 @@ public class JuegoTest {
         Mapa mapa = mock(Mapa.class);
         Pasarela pasarela = mock(Pasarela.class);
 
-        when(mapa.obtenerParcelasEnArea(0, 0, rango)).thenReturn(Collections.singletonList(pasarela));
+        when(mapa.obtenerParcelasEnArea(any(int.class), any(int.class), any(int.class))).thenReturn(Collections.singletonList(pasarela));
 
         Torre torre = new Torre(10, cantidadDeTurnosParaConstruirse, rango, cantidadDeDanio);
 
-        torre.avanzarTurno(mapa, 0, 0);
-        torre.avanzarTurno(mapa, 0, 0);
+        for (int i = 0; i < cantidadDeTurnosParaConstruirse; i++) {
+            torre.avanzarTurno(mapa, 0, 0);
+        }
 
         verify(pasarela, times(0)).recibirDanio(cantidadDeDanio);
     }
@@ -63,23 +66,20 @@ public class JuegoTest {
 
         Torre torre = new Torre(10, cantidadDeTurnosParaConstruirse, rango, cantidadDeDanio);
 
-        torre.avanzarTurno(mapa, 0, 0);
-        torre.avanzarTurno(mapa, 0, 0);
-        torre.avanzarTurno(mapa, 0, 0);
+        for (int i = 0; i < cantidadDeTurnosParaConstruirse + 1; i++) {
+            torre.avanzarTurno(mapa, 0, 0);
+        }
 
         verify(pasarela, times(1)).recibirDanio(cantidadDeDanio);
     }
 
-
     @Test
     public void antesDeConstruirSeVerificaTenerCreditoSuficiente() {
-        int cantidadDeCreditosInsuficientes = 5, cantidadDeCreditosSuficientes = 100;
-        Mapa mapa = new Mapa();
+        int cantidadDeCreditosInsuficientes = 1, cantidadDeCreditosSuficientes = 100;
+        Mapa mapa = mock(Mapa.class);
         Constructor constructor = new Constructor(mapa);
-        Jugador jugador = new Jugador("Prueba", 10, cantidadDeCreditosInsuficientes, constructor);
-        assertThrows(CreditoInsuficiente.class, () -> jugador.construir("torreBlanca", 3));
-        jugador.recibirCreditos(cantidadDeCreditosSuficientes);
-        assertDoesNotThrow(() -> jugador.construir("torreBlanca", 3));
+        assertThrows(CreditoInsuficiente.class, () -> constructor.construir("torreBlanca", cantidadDeCreditosInsuficientes, 0));
+        assertDoesNotThrow(() -> constructor.construir("torreBlanca", cantidadDeCreditosSuficientes, 0));
     }
 
     @Test
@@ -99,7 +99,7 @@ public class JuegoTest {
     }
 
     @Test
-    public void defensasAtacanEnRangoEsperado() {
+    public void defensasAtacanEnRangoEsperado() {     //Hay que modificar este test.
         int tierra = 0;
         Mapa mapa = new Mapa();
         Constructor constructor = new Constructor(mapa);
