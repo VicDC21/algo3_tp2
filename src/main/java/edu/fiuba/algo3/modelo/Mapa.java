@@ -70,6 +70,13 @@ public class Mapa {
 //                parcelas.addAll(lista);
         }
 
+        public Parcela obtenerParcela(int fila, int columna) {
+                List<Parcela> listaDeParcelasEncontradas = this.parcelas.stream()
+                        .filter(parcela -> parcela.enRadioDe(fila, columna, 0))
+                        .collect(Collectors.toList());
+
+                return listaDeParcelasEncontradas.get(0);
+        }
         @Override
         public String toString() { return this.parcelas.toString(); }
 
