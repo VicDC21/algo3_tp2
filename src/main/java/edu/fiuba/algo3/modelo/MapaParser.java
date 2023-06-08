@@ -79,7 +79,9 @@ public class MapaParser {
             if (parcelas.get(i) instanceof Pasarela) {
                 if (isFirst) {
                     isFirst = false;
-                    parcelas.set(i, new PasarelaSalida(key, i, mapa));
+                    PasarelaSalida pasarelaSalida = new PasarelaSalida(key, i, mapa);
+                    parcelas.set(i, pasarelaSalida);
+                    mapa.setPasarelaSalida(pasarelaSalida);
                 } else {
                     lastColumna = i;
                     lastFila = key;

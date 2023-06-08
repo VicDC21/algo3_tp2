@@ -84,4 +84,8 @@ public class Mapa {
         public void cargarEnemigos(ArrayList<List<Enemigo>> enemigosParseados) {
                 pasarelaSalida.cargarEnemigos(enemigosParseados);
         }
+
+        public void setPasarelaSalida(PasarelaSalida pasarelaSalida) {
+                this.pasarelaSalida = pasarelaSalida;
+        }
 }

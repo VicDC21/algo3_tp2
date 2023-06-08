@@ -39,6 +39,10 @@ public class Juego {
         jugador = new Jugador("test", 20, 100, new Constructor(mapa));
     }
 
+    public void construir(String construible, int numeroParcela) {
+        jugador.construir(construible, numeroParcela);
+    }
+
     public Juego(Jugador jugador, Mapa mapa) {
         this.mapa = mapa;
         this.jugador = jugador;

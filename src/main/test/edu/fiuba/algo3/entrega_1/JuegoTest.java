@@ -132,7 +132,7 @@ public class JuegoTest {
     @Test
     public void unidadesEnemigasSonDaniadasDeAcuerdoAlDanioRecibido() {
         Mapa mapa = mock(Mapa.class);
-        Pasarela pasarela = new Pasarela(1,2, mapa, null);
+        Pasarela pasarela = new Pasarela(1, 2, mapa, null);
         Enemigo hormiga = new Hormiga(2, 1, 1, "Vivo", pasarela);
         pasarela.recibirEnemigo(hormiga);
         ArrayList<Parcela> pasarelasEnRango = new ArrayList<Parcela>();
@@ -148,14 +148,14 @@ public class JuegoTest {
     }
 
     @Test
-    public void unidadesEnemigasSoloSeMuevanPorLaParcelaAutorizada(){
+    public void unidadesEnemigasSoloSeMuevanPorLaParcelaAutorizada() {
         Mapa mapa = new Mapa();
-        Pasarela pasarela = new Pasarela(1,2, mapa, null);
+        Pasarela pasarela = new Pasarela(1, 2, mapa, null);
         Tierra tierra = new Tierra(2, 2, mapa);
         Enemigo hormiga = new Hormiga(2, 1, 1, "Vivo", pasarela);
-        
+
         pasarela.recibirEnemigo(hormiga);
-       // tierra.recibirEnemigo(hormiga);
+        // tierra.recibirEnemigo(hormiga);
 
         assertTrue(pasarela.tieneEnemigos());
         assertFalse(tierra.tieneEnemigos());
@@ -188,7 +188,7 @@ public class JuegoTest {
 
         assertEquals("Derrota", juego.estadoJuego());
     }
-  
+
     @Test
     public void matarUnaHormigaOtorga1Credito() {
         int tierra = 0;
@@ -202,6 +202,7 @@ public class JuegoTest {
         jugador.recibirCreditos(mapa.devolverCantidadDeCreditosGeneradosEnTurno());
         assertEquals(101, jugador.mostrarCreditos());
     }
+
     @Test
     public void matarUnaHormigaOtorga1CreditoSiMurieron10Hormigas() {
         int tierra = 0;
@@ -273,7 +274,7 @@ public class JuegoTest {
     @Test
     public void testMapa() throws IOException {
         String path = new File("src/main/resources/mapa.json").getAbsolutePath();
-        Juego juego = new Juego (path);
+        Juego juego = new Juego(path);
         assertEquals(20, juego.mostrarVidaDelJugador());
     }
 
@@ -325,5 +326,20 @@ public class JuegoTest {
                 assertEquals(tipoDeParcelaEnPosicionEnJson, tipoDeParcelaEnPosicionEnMapa);
             }
         }
+    }
+
+    @Test
+    public void simulaYVerificaQueElJugadorGanaPartida() {
+        Juego juego = new Juego("src/main/resources/mapa.json", "src/main/resources/enemigos.json");
+
+        //juego.construir("torreBlanca", 4);
+        //juego.construir("torreBlanca", 6);
+
+        for (int i = 0; i < 40; i++) {
+            juego.avanzarTurno();
+        }
+
+        assertEquals(0, juego.mostrarVidaDelJugador());
+        assertEquals("En juego", juego.estadoJuego());
     }
 }
