@@ -23,9 +23,10 @@ public class PasarelaSalida extends Pasarela {
     @Override
     public void avanzarTurno() {
         if (!enemigosPorTurno.isEmpty()) {
-            for (Enemigo e : (enemigosPorTurno.remove(0))) {
+            for (Enemigo e : enemigosPorTurno.get(0)) {
                 agregarEnemigo(e);
             }
+            enemigosPorTurno.remove(0);
         }
         super.avanzarTurno();
     }

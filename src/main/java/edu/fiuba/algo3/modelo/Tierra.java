@@ -38,4 +38,7 @@ public class Tierra extends Parcela {
     public int cantidadDeEnemigos() {
         return 0;
     }
+
+    @Override
+    public void reset() {}
 }

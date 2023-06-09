@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class MapaParser {
 
@@ -34,11 +35,14 @@ public class MapaParser {
             throw new InvalidMap();
         }
         JSONObject mapaJson = jsonObject.getJSONObject("Mapa");
+
+        List<Integer> intList = mapaJson.keySet().stream().map(Integer::parseInt).collect(Collectors.toList());
+        Collections.sort(intList);
+
         List<Parcela> lista = new ArrayList<>();
-        Set<String> keys = mapaJson.keySet();
-        for (String key : keys) {
+        for (Integer num : intList) {
             try {
-                lista.addAll(parseParcelas(Integer.parseInt(key), mapaJson.getJSONArray(key), mapa));
+                lista.addAll(parseParcelas(num, mapaJson.getJSONArray(num.toString()), mapa));
             } catch (RuntimeException | InstantiationException | IllegalAccessException | NoSuchMethodException |
                      InvocationTargetException e) {
                 return null;

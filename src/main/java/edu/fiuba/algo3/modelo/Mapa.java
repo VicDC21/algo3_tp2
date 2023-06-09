@@ -39,6 +39,11 @@ public class Mapa {
                 parcelas.get(numeroParcela).construir(torre);
         }
 
+        public void construir(Torre torre, int fila, int columna) {
+                obtenerParcela(fila, columna).construir(torre);
+
+        }
+
         public boolean tieneEnemigos() {
                 return parcelas.stream().anyMatch(Parcela::tieneEnemigos);
         }
@@ -72,7 +77,7 @@ public class Mapa {
 
         public Parcela obtenerParcela(int fila, int columna) {
                 List<Parcela> listaDeParcelasEncontradas = this.parcelas.stream()
-                        .filter(parcela -> parcela.enRadioDe(fila, columna, 0))
+                        .filter(parcela -> parcela.enRadioDe(fila, columna, 0))         //Cambiar esto.
                         .collect(Collectors.toList());
 
                 return listaDeParcelasEncontradas.get(0);
@@ -90,5 +95,20 @@ public class Mapa {
                         .filter(parcela -> parcela instanceof PasarelaSalida)
                         .findFirst()
                         .orElseThrow();
+        }
+
+        public void reset() {
+                parcelas.forEach(Parcela::reset);
+        }
+
+        public int calcularCreditos() {
+                return parcelas.stream()
+                        .mapToInt(Parcela::devolverCantidadDeCreditosGeneradosEnTurno)
+                        .sum();
+        }
+
+        public void setJugador(Jugador jugador) {
+                PasarelaLlegada pasarelaLlegada = (PasarelaLlegada) parcelas.stream().filter(parcela -> parcela instanceof PasarelaLlegada).findFirst().orElseThrow();
+                pasarelaLlegada.setJugador(jugador);
         }
 }

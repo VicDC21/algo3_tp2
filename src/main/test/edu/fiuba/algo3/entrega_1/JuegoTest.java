@@ -99,16 +99,17 @@ public class JuegoTest {
 
     @Test
     public void defensasAtacanEnRangoEsperado() {     //Hay que modificar este test.
-        int tierra = 0;
         Mapa mapa = new Mapa();
         Constructor constructor = new Constructor(mapa);
         Jugador jugador = new Jugador("Prueba", 10, 100, constructor);
 
         assertEquals(1, mapa.cantidadDeEnemigos());
 
-        jugador.construir("torreBlanca", tierra);
+        jugador.construir("torrePlateada", 3, 0);
         mapa.avanzarTurno();
+        mapa.reset();
         mapa.avanzarTurno();
+        mapa.reset();
         assertEquals(0, mapa.cantidadDeEnemigos());
     }
 
@@ -213,7 +214,9 @@ public class JuegoTest {
         }
         jugador.construir("torreBlanca", tierra);
         mapa.avanzarTurno();
+        mapa.reset();
         mapa.avanzarTurno();
+        mapa.reset();
         jugador.recibirCreditos(mapa.devolverCantidadDeCreditosGeneradosEnTurno());
         assertEquals(101, jugador.mostrarCreditos());
     }
@@ -325,15 +328,23 @@ public class JuegoTest {
     }
 
     @Test
-    public void simulaYVerificaQueElJugadorGanaPartida() throws InvalidMap {
+    public void simulaYVerificaQueElJugadorPierdeLaPartida() throws InvalidMap {
         Juego juego = new Juego("src/main/resources/mapa.json", "src/main/resources/enemigos.json");
 
+        juego.jugar();
+        assertEquals("Derrota", juego.estadoJuego());
+    }
 
-        for (int i = 0; i < 40; i++) {
-            juego.avanzarTurno();
-        }
+    @Test
+    public void simulaYVerificaQueElJugadorGanaLaPartida() throws InvalidMap {
+        Juego juego = new Juego("src/main/resources/mapa.json", "src/main/resources/enemigos.json");
 
-        assertEquals(0, juego.mostrarVidaDelJugador());
-        assertEquals("En juego", juego.estadoJuego());
+        juego.construir("torrePlateada", 60);
+        juego.construir("torrePlateada", 75);
+        juego.construir("torrePlateada", 90);
+
+        juego.jugar();
+
+        assertEquals("Victoria", juego.estadoJuego());
     }
 }

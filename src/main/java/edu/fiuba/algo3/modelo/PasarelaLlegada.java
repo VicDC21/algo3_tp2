@@ -24,4 +24,12 @@ public class PasarelaLlegada extends Pasarela {
     public void realizarDanioJugador(int danio) {
         jugador.recibirDanio(danio);
     }
+    @Override
+    public Pasarela obtenerPasarelaSiguiente() {
+        return this;
+    }
+
+    public void setJugador(Jugador jugador) {
+        this.jugador = jugador;
+    }
 }
