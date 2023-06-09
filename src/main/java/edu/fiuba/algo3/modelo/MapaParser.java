@@ -85,7 +85,6 @@ public class MapaParser {
                     isFirst = false;
                     PasarelaSalida pasarelaSalida = new PasarelaSalida(key, i, mapa);
                     parcelas.set(i, pasarelaSalida);
-                    mapa.setPasarelaSalida(pasarelaSalida);
                 } else {
                     lastColumna = i;
                     lastFila = key;

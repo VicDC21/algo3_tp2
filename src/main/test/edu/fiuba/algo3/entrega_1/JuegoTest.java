@@ -264,11 +264,7 @@ public class JuegoTest {
     @Test
     public void intentarParsearUnJSONDeEnemigosConUnErrorDeSintaxisLanzaUnaExcepcion() {
         EnemigosParser parser = new EnemigosParser();
-<<<<<<< HEAD
-        assertThrows(JSONException.class, () -> parser.parseEnemigos("src/main/resources/enemigosErrorSintaxis.json"));
-=======
         assertThrows(JsonDeEnemigosInvalido.class, () -> parser.parseEnemigos("src/main/resources/enemigosErrorSintaxis.json"));
->>>>>>> juanse
     }
 
     @Test
@@ -335,20 +331,6 @@ public class JuegoTest {
     }
 
     @Test
-<<<<<<< HEAD
-    public void simulaYVerificaQueElJugadorGanaPartida() {
-        Juego juego = new Juego("src/main/resources/mapa.json", "src/main/resources/enemigos.json");
-
-        //juego.construir("torreBlanca", 4);
-        //juego.construir("torreBlanca", 6);
-
-        for (int i = 0; i < 40; i++) {
-            juego.avanzarTurno();
-        }
-
-        assertEquals(0, juego.mostrarVidaDelJugador());
-        assertEquals("En juego", juego.estadoJuego());
-=======
     public void simulaYVerificaQueElJugadorPierdeLaPartida() throws InvalidMap {
         Juego juego = new Juego("src/main/resources/mapa.json", "src/main/resources/enemigos.json");
 
@@ -367,6 +349,5 @@ public class JuegoTest {
         juego.jugar();
 
         assertEquals("Victoria", juego.estadoJuego());
->>>>>>> juanse
     }
 }
