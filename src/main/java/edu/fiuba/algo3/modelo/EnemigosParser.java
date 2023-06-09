@@ -7,6 +7,7 @@ import org.json.JSONObject;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.*;
 
 public class EnemigosParser {
@@ -52,29 +53,21 @@ public class EnemigosParser {
     }
 
     public ArrayList<List<Enemigo>> parseEnemigos(String path) {
-        ArrayList<List<Enemigo>> enemigosParseados = new ArrayList<List<Enemigo>>();
+        ArrayList<List<Enemigo>> enemigosParseados = new ArrayList<>();
         JSONArray jsonEnemigos;
-
         try {
             jsonEnemigos = new JSONArray(FileUtils.readFileToString(new File(path)));
-        } catch (IOException exception) {
-            return enemigosParseados;     //Si falla, devuelve un ArrayList vacío.
+        } catch (IOException | JSONException e) {
+            throw new JsonDeEnemigosInvalido();
         }
         for (int i = 1; i <= jsonEnemigos.length(); i++) {
-            enemigosParseados.add(this.parseEnemigosPorTurno(path, i, jsonEnemigos));
+            enemigosParseados.add(parseEnemigosPorTurno(i, jsonEnemigos));
         }
         return enemigosParseados;
     }
 
-    public ArrayList<Enemigo> parseEnemigosPorTurno(String path, int turno, JSONArray jsonEnemigos) {
-        ArrayList<Enemigo> enemigosTotales = new ArrayList<Enemigo>();
-        /*
-        try {
-            jsonEnemigos = new JSONArray(FileUtils.readFileToString(new File(path)));
-        } catch (IOException exception) {
-            return enemigosTotales;     //Si falla, devuelve un ArrayList vacío de enemigos.
-        }
-        */
+    public ArrayList<Enemigo> parseEnemigosPorTurno(int turno, JSONArray jsonEnemigos) {
+        ArrayList<Enemigo> enemigosTotales = new ArrayList<>();
         if (this.esJSONValido(jsonEnemigos)) {
             for (int i = 0; i < jsonEnemigos.length(); i++) {
                 JSONObject enemigos = jsonEnemigos.getJSONObject(i);
@@ -90,11 +83,10 @@ public class EnemigosParser {
                             enemigosTotales.add(new Arania());
                         }
                     }
-                } catch (RuntimeException e) {
-                    return new ArrayList<Enemigo>();    //Si falla, devuelve un ArrayList vacío de enemigos.
+                } catch (JSONException e) {
+                    throw new JsonDeEnemigosInvalido();
                 }
             }
-
             return enemigosTotales;
         } else {
             throw new JsonDeEnemigosInvalido();

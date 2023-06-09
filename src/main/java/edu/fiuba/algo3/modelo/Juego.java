@@ -5,7 +5,6 @@ import java.util.Scanner;
 public class Juego {
     Jugador jugador;
     Mapa mapa;
-    Constructor constructor;
 
     public Juego() {
         mapa = new Mapa();
@@ -17,28 +16,22 @@ public class Juego {
         mapa = parser.parseMapa(path);
         jugador = new Jugador("test", 20, 100, new Constructor(mapa));
     }
-
-    public Juego(String pathMapa, String pathEnemigos) {
+    public Juego(String pathMapa, String pathEnemigos) throws InvalidMap {
         MapaParser parserMapa = new MapaParser();
         EnemigosParser parserEnemigos = new EnemigosParser();
-        try {
-            mapa = parserMapa.parseMapa(pathMapa);
-        } catch (InvalidMap e) {
-            return;
-        }
-        try {
-            mapa.cargarEnemigos(parserEnemigos.parseEnemigos(pathEnemigos));
-        } catch (JsonDeEnemigosInvalido e) {
-            return;
-        }
-
+        mapa = parserMapa.parseMapa(pathMapa);
+        mapa.cargarEnemigos(parserEnemigos.parseEnemigos(pathEnemigos));
         jugador = new Jugador("test", 20, 100, new Constructor(mapa));
+        mapa.setJugador(jugador);       // Esto hay que sacarlo
     }
 
     public void construir(String construible, int numeroParcela) {
         jugador.construir(construible, numeroParcela);
     }
 
+    public void construir(String construible, int fila, int columna) {
+        jugador.construir(construible, fila, columna);
+    }
     public Juego(Jugador jugador, Mapa mapa) {
         this.mapa = mapa;
         this.jugador = jugador;
@@ -59,8 +52,9 @@ public class Juego {
     }
 
     public void avanzarTurno() {
-//        jugador.avanzarTurno();
+        mapa.reset();
         mapa.avanzarTurno();
+        mapa.calcularCreditos();
     }
 
     public String leerNombre() {

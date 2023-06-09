@@ -28,7 +28,7 @@ public class Mapa {
                         parcelas.add(pasarela);
                 }
 
-                parcelas.add(new PasarelaLlegada(9, 2, this, null));
+                parcelas.add(new PasarelaLlegada(9, 2, this));
 
                 for (int i = 20; i < 29; i++) {
                         Pasarela pasarela = (Pasarela) parcelas.get(i);
@@ -38,6 +38,11 @@ public class Mapa {
 
         public void construir(Torre torre, int numeroParcela) {
                 parcelas.get(numeroParcela).construir(torre);
+        }
+
+        public void construir(Torre torre, int fila, int columna) {
+                obtenerParcela(fila, columna).construir(torre);
+
         }
 
         public boolean tieneEnemigos() {
@@ -73,7 +78,7 @@ public class Mapa {
 
         public Parcela obtenerParcela(int fila, int columna) {
                 List<Parcela> listaDeParcelasEncontradas = this.parcelas.stream()
-                        .filter(parcela -> parcela.enRadioDe(fila, columna, 0))
+                        .filter(parcela -> parcela.enRadioDe(fila, columna, 0))         //Cambiar esto.
                         .collect(Collectors.toList());
 
                 return listaDeParcelasEncontradas.get(0);
@@ -82,10 +87,29 @@ public class Mapa {
         public String toString() { return this.parcelas.toString(); }
 
         public void cargarEnemigos(ArrayList<List<Enemigo>> enemigosParseados) {
-                pasarelaSalida.cargarEnemigos(enemigosParseados);
+                PasarelaSalida salida = obtenerPasarelaSalida();
+                salida.cargarEnemigos(enemigosParseados);
         }
 
-        public void setPasarelaSalida(PasarelaSalida pasarelaSalida) {
-                this.pasarelaSalida = pasarelaSalida;
+        private PasarelaSalida obtenerPasarelaSalida() {
+                return (PasarelaSalida) parcelas.stream()
+                        .filter(parcela -> parcela instanceof PasarelaSalida)
+                        .findFirst()
+                        .orElseThrow();
+        }
+
+        public void reset() {
+                parcelas.forEach(Parcela::reset);
+        }
+
+        public int calcularCreditos() {
+                return parcelas.stream()
+                        .mapToInt(Parcela::devolverCantidadDeCreditosGeneradosEnTurno)
+                        .sum();
+        }
+
+        public void setJugador(Jugador jugador) {
+                PasarelaLlegada pasarelaLlegada = (PasarelaLlegada) parcelas.stream().filter(parcela -> parcela instanceof PasarelaLlegada).findFirst().orElseThrow();
+                pasarelaLlegada.setJugador(jugador);
         }
 }

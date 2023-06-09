@@ -20,4 +20,11 @@ public class Constructor {
         } else throw new CreditoInsuficiente();
     }
 
+    public void construir(String tipoDeTorre, int creditosDisponibles, int fila, int columna) {
+        Torre torre = new Torre(tiposDeTorre.get(tipoDeTorre));
+        if (torre.puedoConstruirConCreditos(creditosDisponibles)) {
+            mapa.construir(torre, fila, columna);
+        } else throw new CreditoInsuficiente();
+    }
+
 }
