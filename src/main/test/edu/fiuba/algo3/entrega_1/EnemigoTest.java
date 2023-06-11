@@ -17,7 +17,7 @@ public class EnemigoTest {
         Pasarela pasarela = new Pasarela(1, 2, mapa, null);
         Enemigo hormiga = new Hormiga(2, 1, 1, "Vivo", pasarela);
         pasarela.recibirEnemigo(hormiga);
-        ArrayList<Parcela> pasarelasEnRango = new ArrayList<Parcela>();
+        ArrayList<Parcela> pasarelasEnRango = new ArrayList<>();
         pasarelasEnRango.add(pasarela);
         when(mapa.obtenerParcelasEnArea(1, 1, 2)).thenReturn(pasarelasEnRango);
         Torre torre = new Torre(0, 0, 2, 1);

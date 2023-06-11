@@ -1,18 +1,9 @@
 package edu.fiuba.algo3.entrega_1;
 
-import edu.fiuba.algo3.modelo.CreditoInsuficiente;
-import edu.fiuba.algo3.modelo.ParcelaNoConstruible;
 import edu.fiuba.algo3.modelo.*;
-import org.apache.commons.io.FileUtils;
-import org.json.JSONException;
-import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
-
 import java.io.File;
-import java.io.IOException;
-
 import java.util.*;
-
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
