@@ -16,9 +16,12 @@ public class Rocoso extends Parcela {
     }
 
     @Override
-    public void construir(Torre torre) {
+    public void construirTorre(Torre torre) {
         throw new ParcelaNoConstruible();
     }
+
+    @Override
+    public void construirTrampa(Trampa trampa) { throw new ParcelaNoConstruible(); }
 
     @Override
     public void recibirDanio(int danio) {

@@ -11,6 +11,7 @@ public class Pasarela extends Parcela {
     protected List<Enemigo> enemigos = new ArrayList<>();
     private List<Enemigo> arribos = new ArrayList<>();
     protected int cantidadDeCreditosGeneradosEnTurno;
+    Trampa trampa = null;
 
     public Pasarela(int fila, int columna, Mapa mapa) {
         super(fila, columna, mapa);
@@ -53,8 +54,19 @@ public class Pasarela extends Parcela {
     }
 
     @Override
-    public void construir(Torre torre) {
+    public void construirTorre(Torre torre) {
         throw new ParcelaNoConstruible();
+    }
+
+    @Override
+    public void construirTrampa(Trampa trampa) {
+        if (!tieneTrampa()) {
+            this.trampa = trampa;
+        } else throw new ParcelaNoConstruible();
+    }
+
+    private boolean tieneTrampa() {
+        return trampa != null;
     }
 
     @Override
@@ -104,4 +116,6 @@ public class Pasarela extends Parcela {
     public boolean esLaDeLLegada() {
         return false;
     }
+
+    public void destruirPrimeraTorre() {}
 }

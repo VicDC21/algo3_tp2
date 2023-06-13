@@ -22,7 +22,7 @@ public class EnemigoTest {
         when(mapa.obtenerParcelasEnArea(1, 1, 2)).thenReturn(pasarelasEnRango);
         Torre torre = new Torre(0, 0, 2, 1);
         Tierra tierra = new Tierra(1, 1, mapa);
-        tierra.construir(torre);
+        tierra.construirTorre(torre);
         tierra.avanzarTurno();
         assertFalse(hormiga.estaMuerto());
         tierra.avanzarTurno();

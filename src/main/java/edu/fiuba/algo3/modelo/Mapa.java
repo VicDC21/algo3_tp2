@@ -7,6 +7,8 @@ import java.util.stream.Collectors;
 public class Mapa {
         List<Parcela> parcelas;
         PasarelaSalida pasarelaSalida;
+        Turno turno = new Turno();
+        List<Parcela> parcelasConTorre = new ArrayList<Parcela>();
 
         public Mapa() {
                 parcelas = new ArrayList<>();
@@ -37,19 +39,21 @@ public class Mapa {
         }
 
         public void construir(Torre torre, int numeroParcela) {
-                parcelas.get(numeroParcela).construir(torre);
+                parcelas.get(numeroParcela).construirTorre(torre);
         }
 
         public void construir(Torre torre, int fila, int columna) {
-                obtenerParcela(fila, columna).construir(torre);
-
+                obtenerParcela(fila, columna).construirTorre(torre);
         }
 
         public boolean tieneEnemigos() {
                 return parcelas.stream().anyMatch(Parcela::tieneEnemigos);
         }
 
+        // Deberiamos decidir como implementar el orden de comportamientos(primero torres despues enemigos)
+        // Una forma es fraccionar avanzarTurno a avanzarTorres, etc.
         public void avanzarTurno() {
+                turno.avanzarTurno();
                 parcelas.forEach(Parcela::avanzarTurno);
         }
 
@@ -111,5 +115,13 @@ public class Mapa {
         public void setJugador(Jugador jugador) {
                 PasarelaLlegada pasarelaLlegada = (PasarelaLlegada) parcelas.stream().filter(parcela -> parcela instanceof PasarelaLlegada).findFirst().orElseThrow();
                 pasarelaLlegada.setJugador(jugador);
+        }
+
+        public void suscribirTurno(SuscriptorTurno suscriptor) { turno.suscribir(suscriptor); }
+
+        public void desuscribirTurno(SuscriptorTurno suscriptor) { turno.desuscribir(suscriptor); }
+
+        public void destruirPrimeraTorre() {
+                parcelasConTorre.remove(0).destruirConstuccion();
         }
 }

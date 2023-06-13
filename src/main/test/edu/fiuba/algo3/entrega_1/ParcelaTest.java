@@ -24,12 +24,12 @@ public class ParcelaTest {
         Torre torre = mock(Torre.class);
 
         Pasarela pasarela = new Pasarela(0, 0, mapa);
-        assertThrows(ParcelaNoConstruible.class, () -> pasarela.construir(torre));
+        assertThrows(ParcelaNoConstruible.class, () -> pasarela.construirTorre(torre));
 
         Rocoso rocoso = new Rocoso(0, 0, mapa);
-        assertThrows(ParcelaNoConstruible.class, () -> rocoso.construir(torre));
+        assertThrows(ParcelaNoConstruible.class, () -> rocoso.construirTorre(torre));
 
         Tierra tierra = new Tierra(0, 0, mapa);
-        assertDoesNotThrow(() -> tierra.construir(torre));
+        assertDoesNotThrow(() -> tierra.construirTorre(torre));
     }
 }

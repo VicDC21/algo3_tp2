@@ -32,4 +32,8 @@ public class PasarelaLlegada extends Pasarela {
     public void setJugador(Jugador jugador) {
         this.jugador = jugador;
     }
+
+    public void destruirPrimeraTorre() {
+        this.mapa.destruirPrimeraTorre();
+    }
 }
