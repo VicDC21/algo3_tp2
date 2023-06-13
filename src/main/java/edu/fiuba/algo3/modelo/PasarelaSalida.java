@@ -24,6 +24,7 @@ public class PasarelaSalida extends Pasarela {
     public void avanzarTurno() {
         if (!enemigosPorTurno.isEmpty()) {
             for (Enemigo e : enemigosPorTurno.get(0)) {
+                e.suscribirTodo();
                 agregarEnemigo(e);
             }
             enemigosPorTurno.remove(0);

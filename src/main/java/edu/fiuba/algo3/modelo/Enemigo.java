@@ -47,4 +47,8 @@ public abstract class Enemigo {
     public boolean estaEnEstaPasarela(Pasarela pasarela) {
         return pasarelaActual == pasarela;
     }
+
+    public abstract void suscribirTodo();
+
+    public abstract void desuscribirTodo();
 }
