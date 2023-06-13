@@ -36,6 +36,9 @@ public class Pasarela extends Parcela {
     }
 
     private void removerMuertos() {
+        for (Enemigo enemigo : enemigos) {
+            if (enemigo.estaMuerto()) {enemigo.desuscribirTodo();}
+        }
         enemigos.removeIf(Enemigo::estaMuerto);
         arribos.removeIf(Enemigo::estaMuerto);
     }

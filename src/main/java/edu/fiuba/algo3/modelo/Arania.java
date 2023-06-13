@@ -18,4 +18,11 @@ public class Arania extends Enemigo {
         int creditosMaximos = 11;
         return random.nextInt(creditosMaximos);
     }
+
+    @Override
+    public void suscribirTodo() {}
+
+    @Override
+    public void desuscribirTodo() {}
+
 }

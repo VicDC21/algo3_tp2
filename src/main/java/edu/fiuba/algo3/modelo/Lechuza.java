@@ -25,4 +25,11 @@ public class Lechuza extends Enemigo {
     public int otorgarCredito() {
         return 0;
     }
+
+    @Override
+    public void suscribirTodo() {}
+
+    @Override
+    public void desuscribirTodo() {}
+
 }

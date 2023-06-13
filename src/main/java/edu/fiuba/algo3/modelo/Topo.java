@@ -13,7 +13,6 @@ public class Topo extends Enemigo implements SuscriptorTurno {
 
     public Topo(int energia, int velocidad, int danio, String estado, Pasarela pasarelaActual) {
         super(energia, velocidad, danio, estado, pasarelaActual);
-        pasarelaActual.suscribirTurno(this);
     }
 
     public Topo() {
@@ -51,4 +50,16 @@ public class Topo extends Enemigo implements SuscriptorTurno {
     public int otorgarCredito() {
         return this.creditos;
     }
+
+    @Override
+    public void suscribirTodo() {
+        pasarelaActual.suscribirTurno(this);
+    }
+
+    @Override
+    public void desuscribirTodo() {
+        pasarelaActual.desuscribirTurno(this);
+    }
+
+
 }

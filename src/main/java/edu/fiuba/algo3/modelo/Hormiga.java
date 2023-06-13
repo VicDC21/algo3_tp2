@@ -32,4 +32,10 @@ public class Hormiga extends Enemigo {
     public int otorgarCredito() {
         return this.creditos;
     }
+
+    @Override
+    public void suscribirTodo() {}
+
+    @Override
+    public void desuscribirTodo() {}
 }
