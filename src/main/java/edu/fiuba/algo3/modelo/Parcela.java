@@ -14,7 +14,9 @@ public abstract class Parcela {
     public abstract boolean tieneEnemigos();
     public abstract void avanzarTurno();
 
-    public abstract void construir(Torre torre);
+    public abstract void construirTorre(Torre torre);
+
+    public abstract void construirTrampa(Trampa trampa);
 
     public int devolverCantidadDeCreditosGeneradosEnTurno() {
         return 0;
@@ -27,4 +29,15 @@ public abstract class Parcela {
     public abstract void recibirDanio(int danio);
 
     public abstract int cantidadDeEnemigos();
+
+    @Override
+    public String toString() { return this.getClass().getSimpleName(); }
+
+    public abstract void reset();
+
+    public void suscribirTurno(SuscriptorTurno suscriptor) { mapa.suscribirTurno(suscriptor); }
+
+    public void desuscribirTurno(SuscriptorTurno suscriptor) { mapa.desuscribirTurno(suscriptor); }
+    public void destruirConstuccion() {}
+
 }

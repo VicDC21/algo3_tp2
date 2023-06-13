@@ -5,7 +5,7 @@ import java.util.List;
 
 public class PasarelaSalida extends Pasarela {
 
-    private List<List<Enemigo>> enemigosPorTurno = new ArrayList<>();
+    private ArrayList<List<Enemigo>> enemigosPorTurno = new ArrayList<>();
 
     public PasarelaSalida(int fila, int columna, Mapa mapa) {
         super(fila, columna, mapa);
@@ -22,12 +22,13 @@ public class PasarelaSalida extends Pasarela {
 
     @Override
     public void avanzarTurno() {
-        super.avanzarTurno();
         if (!enemigosPorTurno.isEmpty()) {
-            for (Enemigo e : (enemigosPorTurno.remove(0))) {
+            for (Enemigo e : enemigosPorTurno.get(0)) {
                 agregarEnemigo(e);
             }
+            enemigosPorTurno.remove(0);
         }
+        super.avanzarTurno();
     }
 
     @Override
@@ -37,5 +38,8 @@ public class PasarelaSalida extends Pasarela {
         }
         return true;
     }
-
+    public void cargarEnemigos(ArrayList<List<Enemigo>> enemigosParseados) {
+        enemigosPorTurno = enemigosParseados;
+        enemigosPorTurno.forEach(list -> list.forEach(enemigo -> enemigo.setPasarelaSalida(this)));
+    }
 }

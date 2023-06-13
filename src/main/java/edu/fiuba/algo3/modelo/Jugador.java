@@ -23,6 +23,10 @@ public class Jugador {
     public void construir(String construible, int numeroParcela) {
         constructor.construir(construible, this.creditos, numeroParcela);
     }
+    public void construir(String construible, int fila, int columna) {
+        constructor.construir(construible, this.creditos, fila, columna);
+    }
+
 
     public boolean estaVivo() {
         return this.vida > 0;
@@ -31,4 +35,6 @@ public class Jugador {
     public void recibirCreditos(int creditos) {
         this.creditos += creditos;
     }
+
+    public void recibirDanio(int danio) { this.vida -= danio; }
 }

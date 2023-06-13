@@ -2,12 +2,11 @@ package edu.fiuba.algo3.modelo;
 
 public class PasarelaLlegada extends Pasarela {
 
+    private Jugador jugador;
+
     public PasarelaLlegada(int fila, int columna, Mapa mapa) {
         super(fila, columna, mapa);
 
-    }
-    public PasarelaLlegada(int fila, int columna, Mapa mapa, Pasarela pasarelaSiguiente) {
-        super(fila, columna, mapa, pasarelaSiguiente);
     }
 
     @Override
@@ -16,12 +15,25 @@ public class PasarelaLlegada extends Pasarela {
     }
 
     @Override
-    public void recibirEnemigo(Enemigo enemigo) {
-        enemigos.add(enemigo);
-//        enemigo.causardanio();
+    public boolean esLaDeLLegada() {
+        return true;
     }
+    @Override
+    public void moverEnemigoALaPasarelaSiguiente(Enemigo enemigo) {}
 
     public void realizarDanioJugador(int danio) {
-//        jugador.recibirDanio(danio);
+        jugador.recibirDanio(danio);
+    }
+    @Override
+    public Pasarela obtenerPasarelaSiguiente() {
+        return this;
+    }
+
+    public void setJugador(Jugador jugador) {
+        this.jugador = jugador;
+    }
+
+    public void destruirPrimeraTorre() {
+        this.mapa.destruirPrimeraTorre();
     }
 }

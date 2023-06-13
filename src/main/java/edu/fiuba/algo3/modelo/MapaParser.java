@@ -2,12 +2,14 @@ package edu.fiuba.algo3.modelo;
 
 import org.apache.commons.io.FileUtils;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class MapaParser {
 
@@ -29,15 +31,18 @@ public class MapaParser {
         JSONObject jsonObject;
         try {
             jsonObject = new JSONObject(FileUtils.readFileToString(new File(path)));
-        } catch (IOException e) {
+        } catch (IOException | JSONException e) {
             throw new InvalidMap();
         }
         JSONObject mapaJson = jsonObject.getJSONObject("Mapa");
+
+        List<Integer> intList = mapaJson.keySet().stream().map(Integer::parseInt).collect(Collectors.toList());
+        Collections.sort(intList);
+
         List<Parcela> lista = new ArrayList<>();
-        Set<String> keys = mapaJson.keySet();
-        for (String key : keys) {
+        for (Integer num : intList) {
             try {
-                lista.addAll(parseParcelas(Integer.parseInt(key), mapaJson.getJSONArray(key), mapa));
+                lista.addAll(parseParcelas(num, mapaJson.getJSONArray(num.toString()), mapa));
             } catch (RuntimeException | InstantiationException | IllegalAccessException | NoSuchMethodException |
                      InvocationTargetException e) {
                 return null;
@@ -78,7 +83,8 @@ public class MapaParser {
             if (parcelas.get(i) instanceof Pasarela) {
                 if (isFirst) {
                     isFirst = false;
-                    parcelas.set(i, new PasarelaSalida(key, i, mapa));
+                    PasarelaSalida pasarelaSalida = new PasarelaSalida(key, i, mapa);
+                    parcelas.set(i, pasarelaSalida);
                 } else {
                     lastColumna = i;
                     lastFila = key;

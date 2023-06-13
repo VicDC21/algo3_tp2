@@ -3,7 +3,7 @@ package edu.fiuba.algo3.modelo;
 import java.util.List;
 import java.util.Optional;
 
-public class Torre {
+public class Torre{
     int costo;
     int turnosParaConstruirse;
     int danio;
@@ -51,6 +51,7 @@ public class Torre {
         }
     }
 
+    // No debe considerar Topos.
     public void atacar(Mapa mapa, int fila, int columna) {
         mapa.obtenerParcelasEnArea(fila, columna, rango)
                 .stream()

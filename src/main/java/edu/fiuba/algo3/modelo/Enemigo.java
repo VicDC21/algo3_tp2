@@ -5,7 +5,6 @@ public abstract class Enemigo {
     protected int velocidad;
     protected int danio;
     protected String estado;
-
     protected Pasarela pasarelaActual;
 
     public Enemigo(int energia, int velocidad, int danio, String estado, Pasarela pasarelaActual) {
@@ -16,7 +15,13 @@ public abstract class Enemigo {
         this.pasarelaActual = pasarelaActual;
     }
     public void avanzar() {
-
+        for (int i = 0; i < velocidad; i++) {
+            pasarelaActual.moverEnemigoALaPasarelaSiguiente(this);
+            pasarelaActual = pasarelaActual.obtenerPasarelaSiguiente();
+        }
+        if (pasarelaActual.esLaDeLLegada()) {
+            causarDanio();
+        }
     }
 
     public void causarDanio() {
@@ -35,4 +40,11 @@ public abstract class Enemigo {
 
     public abstract int otorgarCredito();
 
+    public void setPasarelaSalida(PasarelaSalida pasarelaSalida) {
+        pasarelaActual = pasarelaSalida;
+    }
+
+    public boolean estaEnEstaPasarela(Pasarela pasarela) {
+        return pasarelaActual == pasarela;
+    }
 }

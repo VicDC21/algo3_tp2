@@ -2,7 +2,7 @@ package edu.fiuba.algo3.modelo;
 
 public class Tierra extends Parcela {
 
-    Torre torre;
+    Torre torre = null;
 
     public Tierra(int fila, int columna, Mapa mapa) {
         super(fila, columna, mapa);
@@ -25,10 +25,18 @@ public class Tierra extends Parcela {
     }
 
     @Override
-    public void construir(Torre torre) {
+    public void construirTorre(Torre torre) {
         if (!tieneTorre()) {
             this.torre = torre;
         } else throw new ParcelaNoConstruible();
+    }
+
+    @Override
+    public void construirTrampa(Trampa trampa) { throw new ParcelaNoConstruible(); }
+
+    @Override
+    public void destruirConstuccion() {
+        this.torre = null;
     }
 
     @Override
@@ -38,4 +46,7 @@ public class Tierra extends Parcela {
     public int cantidadDeEnemigos() {
         return 0;
     }
+
+    @Override
+    public void reset() {}
 }
