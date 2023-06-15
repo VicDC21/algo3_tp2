@@ -120,14 +120,14 @@ public class HormigaTest {
         jugador.construir("torreBlanca", 30);
         jugador.construir("torreBlanca", 108);
         jugador.construir("torreBlanca", 60);
-        jugador.construir("torreBlanca", 90);
+        jugador.construir("torreBlanca", 90); //Puse torres de sobra se pueden sacar
         jugador.construir("torreBlanca", 107);
         jugador.construir("torreBlanca", 112);
         mapaParseado.avanzarTurno();
         
         mapaParseado.cargarEnemigos(PackEnemigos);
         
-        for (int i = 0; i < 20; i++){
+        for (int i = 0; i <11; i++){  // Puse ciclos de mas 
             mapaParseado.avanzarTurno();
             mapaParseado.actualizarEnemigos();
             jugador.recibirCreditos(mapaParseado.creditosGeneradosEnTurno());

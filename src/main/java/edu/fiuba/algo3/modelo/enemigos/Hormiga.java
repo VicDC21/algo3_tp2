@@ -20,12 +20,12 @@ public class Hormiga extends Enemigo {
             this.energia -= danio;
 
             if (this.estaMuerto()) {
+                hormigasMuertas++;
                 if (hormigasMuertas <= 10) {
                     this.creditos = 1;
                 } else {
                     this.creditos = 2;
                 }
-                hormigasMuertas++;
             }
         }
     }

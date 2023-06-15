@@ -1,9 +1,7 @@
 package edu.fiuba.algo3.modelo.parsers;
 
+import edu.fiuba.algo3.modelo.enemigos.*;
 import edu.fiuba.algo3.modelo.excepciones.JsonDeEnemigosInvalido;
-import edu.fiuba.algo3.modelo.enemigos.Arania;
-import edu.fiuba.algo3.modelo.enemigos.Enemigo;
-import edu.fiuba.algo3.modelo.enemigos.Hormiga;
 import org.apache.commons.io.FileUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -84,6 +82,16 @@ public class EnemigosParser {
                         int cantidadAranas = (int) enemigos.getJSONObject("enemigos").get("arana");
                         for (int j = 0; j < cantidadAranas; j++) {
                             enemigosTotales.add(new Arania());
+                        }
+
+                        int cantidadTopos = (int) enemigos.getJSONObject("enemigos").get("topo");
+                        for (int j = 0; j < cantidadTopos; j++) {
+                            enemigosTotales.add(new Topo());
+                        }
+
+                        int cantidadLechuzas = (int) enemigos.getJSONObject("enemigos").get("lechuza");
+                        for (int j = 0; j < cantidadLechuzas; j++) {
+                            enemigosTotales.add(new Lechuza());
                         }
                     }
                 } catch (JSONException e) {
