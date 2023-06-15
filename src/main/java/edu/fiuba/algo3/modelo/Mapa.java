@@ -3,6 +3,7 @@ package edu.fiuba.algo3.modelo;
 import edu.fiuba.algo3.modelo.defensas.Torre;
 import edu.fiuba.algo3.modelo.enemigos.Enemigo;
 import edu.fiuba.algo3.modelo.parcelas.*;
+import javafx.scene.shape.Shape;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -134,5 +135,13 @@ public class Mapa {
         if (!parcelasConTorre.isEmpty()) {
             parcelasConTorre.remove(0).destruirConstuccion();
         }
+    }
+
+    public List<Shape> getTiles() {
+        List<Shape> shapes = new ArrayList<>();
+        for (Parcela p : parcelas) {
+            shapes.add(p.dibujarse());
+        }
+        return shapes;
     }
 }

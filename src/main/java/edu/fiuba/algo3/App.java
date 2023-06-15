@@ -73,9 +73,6 @@ public class App extends Application {
                 mapGrid.getChildren().add(tile);
             }
 
-//            for (Rectangle tile: tiles) {
-//                mapGrid.getChildren().add(tile);
-//            }
             Scene mapScene = new Scene(mapGrid, tilesPerRow * tileWidth, tilesPerColumn * tileHeight);
             stage.setScene(mapScene);
             System.out.println(mapGrid.getChildren());

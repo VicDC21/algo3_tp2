@@ -6,6 +6,9 @@ import edu.fiuba.algo3.modelo.defensas.Trampa;
 import edu.fiuba.algo3.modelo.defensas.TrampaNull;
 import edu.fiuba.algo3.modelo.enemigos.Enemigo;
 import edu.fiuba.algo3.modelo.excepciones.ParcelaNoConstruible;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.Shape;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +30,11 @@ public class Pasarela extends Parcela {
         this.pasarelaSiguiente = pasarelaSiguiente;
     }
 
+    public Shape dibujarse() {
+        Rectangle rect = new Rectangle();
+        rect.setFill(Color.GRAY);
+        return rect;
+    }
     @Override
     public boolean tieneEnemigos() {
         for (Enemigo e: enemigos) {

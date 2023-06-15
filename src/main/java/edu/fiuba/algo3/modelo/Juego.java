@@ -4,10 +4,12 @@ import edu.fiuba.algo3.modelo.excepciones.InvalidMap;
 import edu.fiuba.algo3.modelo.parsers.EnemigosParser;
 import edu.fiuba.algo3.modelo.parsers.MapaParser;
 
+import java.util.List;
 import java.util.Scanner;
 
 import javax.security.auth.login.LoginException;
 
+import javafx.scene.shape.Shape;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -103,5 +105,8 @@ public class Juego {
             return "Victoria";
         }
         return "En juego";
+    }
+    public List<Shape> getTiles() {
+        return mapa.getTiles();
     }
 }
