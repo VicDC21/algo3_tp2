@@ -32,6 +32,15 @@ public class Juego {
         mapa.setJugador(jugador);       // Esto hay que sacarlo
     }
 
+    public Juego(String pathMapa, String pathEnemigos, String nombre) throws InvalidMap {
+        MapaParser parserMapa = new MapaParser();
+        EnemigosParser parserEnemigos = new EnemigosParser();
+        mapa = parserMapa.parseMapa(pathMapa);
+        mapa.cargarEnemigos(parserEnemigos.parseEnemigos(pathEnemigos));
+        jugador = new Jugador(nombre, 20, 100, new Constructor(mapa));
+        mapa.setJugador(jugador);       // Esto hay que sacarlo
+    }
+
     public void construir(String construible, int numeroParcela) {
         jugador.construir(construible, numeroParcela);
     }
