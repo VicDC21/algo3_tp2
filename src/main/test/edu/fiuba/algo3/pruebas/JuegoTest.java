@@ -6,6 +6,7 @@ import edu.fiuba.algo3.modelo.enemigos.Enemigo;
 import edu.fiuba.algo3.modelo.enemigos.Hormiga;
 import edu.fiuba.algo3.modelo.excepciones.InvalidMap;
 import edu.fiuba.algo3.modelo.parsers.EnemigosParser;
+import edu.fiuba.algo3.modelo.parsers.MapaParser;
 import org.junit.jupiter.api.Test;
 import java.io.File;
 import java.util.*;
@@ -29,17 +30,33 @@ public class JuegoTest {
 
     @Test
     public void elJugadorGanaSiEstaVivoYEliminoATodosLosEnemigos() {
-        Mapa mapa = new Mapa();
-        Constructor constructor = new Constructor(mapa);
+        MapaParser mapaParser = new MapaParser();
+        Mapa mapaParseado;
+        String pathAlJsonDelMapa = "src/main/resources/mapa.json";
+        try {
+            mapaParseado = mapaParser.parseMapa(pathAlJsonDelMapa);
+        } catch (InvalidMap e) {
+            fail();
+            return;
+        }
+
+        List<Enemigo> enemigos = new ArrayList<Enemigo>();
+        Hormiga hormiga = new Hormiga();
+        enemigos.add(hormiga);
+        ArrayList<List<Enemigo>> PackEnemigos = new ArrayList<>();
+        PackEnemigos.add(enemigos);
+        mapaParseado.cargarEnemigos(PackEnemigos);
+
+        Constructor constructor = new Constructor(mapaParseado);
         Jugador jugador = new Jugador("Prueba", 10, 100, constructor);
-        Juego juego = new Juego(jugador, mapa);
+        Juego juego = new Juego(jugador, mapaParseado);
 
-        jugador.construir("torreBlanca", 1);
+        jugador.construir("torreBlanca", 1, 2);
 
-        assertEquals(1, mapa.cantidadDeEnemigos());
+        assertEquals(1, mapaParseado.cantidadDeEnemigos());
         juego.avanzarTurno();
         juego.avanzarTurno();
-        assertEquals(0, mapa.cantidadDeEnemigos());
+        assertEquals(0, mapaParseado.cantidadDeEnemigos());
         assertEquals("Victoria", juego.estadoJuego());
     }
 
