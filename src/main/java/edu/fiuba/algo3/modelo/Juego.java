@@ -5,12 +5,21 @@ import edu.fiuba.algo3.modelo.parsers.EnemigosParser;
 import edu.fiuba.algo3.modelo.parsers.MapaParser;
 
 import java.util.Scanner;
+
+import javax.security.auth.login.LoginException;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import edu.fiuba.algo3.App;
 import edu.fiuba.algo3.modelo.JavaFX.Vista;
 
 public class Juego {
     Jugador jugador;
     Mapa mapa;
     Vista vista;
+
+    private static final Logger logger = LoggerFactory.getLogger(App.class);
 
     public Juego() {
         mapa = new Mapa();
@@ -23,6 +32,7 @@ public class Juego {
         mapa = parser.parseMapa(path);
         jugador = new Jugador("test", 20, 100, new Constructor(mapa));
     }
+
     public Juego(String pathMapa, String pathEnemigos) throws InvalidMap {
         MapaParser parserMapa = new MapaParser();
         EnemigosParser parserEnemigos = new EnemigosParser();
@@ -30,6 +40,7 @@ public class Juego {
         mapa.cargarEnemigos(parserEnemigos.parseEnemigos(pathEnemigos));
         jugador = new Jugador("test", 20, 100, new Constructor(mapa));
         mapa.setJugador(jugador);       // Esto hay que sacarlo
+        logger.info("Juego Iniciado"); 
     }
 
     public Juego(String pathMapa, String pathEnemigos, String nombre) throws InvalidMap {
@@ -38,7 +49,8 @@ public class Juego {
         mapa = parserMapa.parseMapa(pathMapa);
         mapa.cargarEnemigos(parserEnemigos.parseEnemigos(pathEnemigos));
         jugador = new Jugador(nombre, 20, 100, new Constructor(mapa));
-        mapa.setJugador(jugador);       // Esto hay que sacarlo
+        mapa.setJugador(jugador);    // Esto hay que sacarlo
+        logger.info("Juego Iniciado");   
     }
 
     public void construir(String construible, int numeroParcela) {
@@ -48,6 +60,7 @@ public class Juego {
     public void construir(String construible, int fila, int columna) {
         jugador.construir(construible, fila, columna);
     }
+
     public Juego(Jugador jugador, Mapa mapa) {
         this.mapa = mapa;
         this.jugador = jugador;
@@ -83,8 +96,10 @@ public class Juego {
 
     public String estadoJuego() {
         if (!(this.jugador.estaVivo())) {
+            logger.info("Jugador pierde la partida");
             return "Derrota";
         } else if (this.mapa.cantidadDeEnemigos() == 0) {
+            logger.info("Jugador gana la partida");
             return "Victoria";
         }
         return "En juego";

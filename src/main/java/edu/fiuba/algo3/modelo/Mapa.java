@@ -9,12 +9,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Mapa {
-    List<Parcela> parcelas;
+    List<Parcela> parcelas = new ArrayList<Parcela>(); 
     PasarelaSalida pasarelaSalida;
     Turno turno = new Turno();
     List<Parcela> parcelasConTorre = new ArrayList<Parcela>();
 
-    public Mapa() {
+    /* public Mapa() {
         parcelas = new ArrayList<>();
 
         //placeholder del mapa propiamente dicho.
@@ -40,7 +40,7 @@ public class Mapa {
             Pasarela pasarela = (Pasarela) parcelas.get(i);
             pasarela.setPasarelaSiguiente((Pasarela) parcelas.get(i + 1));
         }
-    }
+    } */
 
     public void construir(Torre torre, int numeroParcela) {
         parcelas.get(numeroParcela).construirTorre(torre);
