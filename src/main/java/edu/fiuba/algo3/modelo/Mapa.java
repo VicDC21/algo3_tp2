@@ -10,10 +10,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Mapa {
-    List<Parcela> parcelas = new ArrayList<Parcela>(); 
+    List<Parcela> parcelas = new ArrayList<>();
     PasarelaSalida pasarelaSalida;
     Turno turno = new Turno();
-    List<Parcela> parcelasConTorre = new ArrayList<Parcela>();
+    List<Parcela> parcelasConTorre = new ArrayList<>();
 
     /* public Mapa() {
         parcelas = new ArrayList<>();

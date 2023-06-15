@@ -119,7 +119,6 @@ public class Pasarela extends Parcela {
         for (Enemigo e : enemigos) {
             e.reestablecerVelocidad();
         }
-        System.out.println(enemigos);
     }
 
     public void recibirEnemigo(Enemigo enemigo) {
