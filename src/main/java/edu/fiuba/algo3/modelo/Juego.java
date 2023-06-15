@@ -45,10 +45,6 @@ public class Juego {
         return jugador.mostrarVida();
     }
 
-    public int mostrarCreditosActuales() {
-        return jugador.mostrarCreditos();
-    }
-
     public void jugar() {
         while (jugador.estaVivo() && mapa.tieneEnemigos()) {
             avanzarTurno();
@@ -56,9 +52,10 @@ public class Juego {
     }
 
     public void avanzarTurno() {
-        mapa.reset();
         mapa.avanzarTurno();
-        mapa.calcularCreditos();
+        mapa.actualizarEnemigos();
+        jugador.recibirCreditos(mapa.devolverCantidadDeCreditosGeneradosEnTurno());
+        mapa.removerMuertos();
     }
 
     public String leerNombre() {

@@ -66,7 +66,7 @@ public class JuegoTest {
 
     @Test
     public void simulaYVerificaQueElJugadorGanaLaPartida() throws InvalidMap {
-        Juego juego = new Juego("src/main/resources/mapa.json", "src/main/resources/enemigos.json");
+        Juego juego = new Juego("src/main/resources/mapa.json", "src/main/resources/enemigosUno.json");
 
         juego.construir("torrePlateada", 60);
         juego.construir("torrePlateada", 75);
@@ -75,5 +75,18 @@ public class JuegoTest {
         juego.jugar();
 
         assertEquals("Victoria", juego.estadoJuego());
+    }
+
+    @Test
+    public void simulaYVerificaQueElJugadorPierdeLaPartida() throws InvalidMap {
+        Juego juego = new Juego("src/main/resources/mapa.json", "src/main/resources/enemigos.json");
+
+        juego.construir("torrePlateada", 60);
+        juego.construir("torrePlateada", 75);
+        juego.construir("torrePlateada", 90);
+
+        juego.jugar();
+
+        assertEquals("Derrota", juego.estadoJuego());
     }
 }

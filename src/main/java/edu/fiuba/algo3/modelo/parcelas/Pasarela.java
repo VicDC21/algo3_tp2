@@ -29,7 +29,7 @@ public class Pasarela extends Parcela {
 
     @Override
     public boolean tieneEnemigos() {
-        return !(enemigos.isEmpty() || arribos.isEmpty());
+        return !(enemigos.isEmpty() && arribos.isEmpty());
     }
 
     @Override
@@ -41,7 +41,7 @@ public class Pasarela extends Parcela {
 //        enemigos.removeIf(enemigo -> enemigo.estaEnEstaPasarela(this)); //ESTA REMOVIENDO TODOS LOS ENEMIGOS, NECESITO QUE SOLO REMUEVA LOS QUE SE MOVIERON A LA SIGUIENTE.
     }
 
-    private void removerMuertos() {
+    public void removerMuertos() {
         for (Enemigo enemigo : enemigos) {
             if (enemigo.estaMuerto()) {enemigo.desuscribirTodo();}
         }
@@ -50,6 +50,9 @@ public class Pasarela extends Parcela {
     }
 
     public int devolverCantidadDeCreditosGeneradosEnTurno() {
+        //for (Enemigo e: enemigos) {
+        //    System.out.println(e.estaMuerto());
+        //}
         return
                 enemigos.stream()
                         .filter(Enemigo::estaMuerto)
@@ -63,9 +66,7 @@ public class Pasarela extends Parcela {
     }
 
     @Override
-    public void construirTorre(Torre torre) {
-        throw new ParcelaNoConstruible();
-    }
+    public void construirTorre(Torre torre) { throw new ParcelaNoConstruible(); }
 
     @Override
     public void construirTrampa(Trampa trampa) {
@@ -74,12 +75,11 @@ public class Pasarela extends Parcela {
         } else throw new ParcelaNoConstruible();
     }
 
-    private boolean tieneTrampa() {
-        return trampa != null;
-    }
+    private boolean tieneTrampa() { return trampa != null; }
 
     @Override
     public void recibirDanio(int danio) {
+
         Stream<Enemigo> enemigosTotales =
                 Stream.concat(
                         enemigos.stream()
@@ -92,19 +92,14 @@ public class Pasarela extends Parcela {
                 .recibirDanio(danio);
     }
 
-    public void setPasarelaSiguiente(Pasarela pasarela) {
-        this.pasarelaSiguiente = pasarela;
-    }
+    public void setPasarelaSiguiente(Pasarela pasarela) { this.pasarelaSiguiente = pasarela; }
 
-    public int cantidadDeEnemigos() {
-        return enemigos.size();
-    }
+    public int cantidadDeEnemigos() { return enemigos.size(); }
 
-    @Override
-    public void reset() {
-        removerMuertos();
+    public void actualizarEnemigos() {
         enemigos = arribos;
         arribos = new ArrayList<>();
+        System.out.println(enemigos);
     }
 
     public void recibirEnemigo(Enemigo enemigo) {

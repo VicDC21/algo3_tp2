@@ -47,11 +47,12 @@ public abstract class Enemigo {
         pasarelaActual = pasarelaSalida;
     }
 
-    public boolean estaEnEstaPasarela(Pasarela pasarela) {
-        return pasarelaActual == pasarela;
-    }
-
     public abstract void suscribirTodo();
 
     public abstract void desuscribirTodo();
+
+    @Override
+    public String toString() {
+        return this.getClass().getSimpleName();
+    }
 }

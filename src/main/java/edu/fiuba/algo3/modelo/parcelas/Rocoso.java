@@ -38,6 +38,4 @@ public class Rocoso extends Parcela {
         return 0;
     }
 
-    @Override
-    public void reset() {}
 }

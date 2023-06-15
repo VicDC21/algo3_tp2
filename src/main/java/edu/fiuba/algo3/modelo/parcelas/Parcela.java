@@ -17,6 +17,7 @@ public abstract class Parcela {
         this.mapa = mapa;
     }
     public abstract boolean tieneEnemigos();
+
     public abstract void avanzarTurno();
 
     public abstract void construirTorre(Torre torre);
@@ -38,11 +39,13 @@ public abstract class Parcela {
     @Override
     public String toString() { return this.getClass().getSimpleName(); }
 
-    public abstract void reset();
+    public void actualizarEnemigos() {}
 
     public void suscribirTurno(SuscriptorTurno suscriptor) { mapa.suscribirTurno(suscriptor); }
 
     public void desuscribirTurno(SuscriptorTurno suscriptor) { mapa.desuscribirTurno(suscriptor); }
+
     public void destruirConstuccion() {}
 
+    public void removerMuertos() {}
 }
