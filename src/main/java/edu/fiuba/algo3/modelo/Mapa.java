@@ -9,123 +9,130 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Mapa {
-        List<Parcela> parcelas;
-        PasarelaSalida pasarelaSalida;
-        Turno turno = new Turno();
-        List<Parcela> parcelasConTorre = new ArrayList<Parcela>();
+    List<Parcela> parcelas;
+    PasarelaSalida pasarelaSalida;
+    Turno turno = new Turno();
+    List<Parcela> parcelasConTorre = new ArrayList<Parcela>();
 
-        public Mapa() {
-                parcelas = new ArrayList<>();
+    public Mapa() {
+        parcelas = new ArrayList<>();
 
-                //placeholder del mapa propiamente dicho.
-                for (int i = 0; i < 10; i++) {
-                        Tierra tierra = new Tierra(i, 0, this);
-                        parcelas.add(tierra);
-                }
-                for (int i = 0; i < 10; i++) {
-                        Rocoso rocoso = new Rocoso(i, 1, this);
-                        parcelas.add(rocoso);
-                }
-
-                parcelas.add(new PasarelaSalida(0, 2, this, null));
-
-                for (int i = 1; i < 9; i++) {
-                        Pasarela pasarela = new Pasarela(i, 2, this, null);
-                        parcelas.add(pasarela);
-                }
-
-                parcelas.add(new PasarelaLlegada(9, 2, this));
-
-                for (int i = 20; i < 29; i++) {
-                        Pasarela pasarela = (Pasarela) parcelas.get(i);
-                        pasarela.setPasarelaSiguiente((Pasarela) parcelas.get(i+1));
-                }
+        //placeholder del mapa propiamente dicho.
+        for (int i = 0; i < 10; i++) {
+            Tierra tierra = new Tierra(i, 0, this);
+            parcelas.add(tierra);
+        }
+        for (int i = 0; i < 10; i++) {
+            Rocoso rocoso = new Rocoso(i, 1, this);
+            parcelas.add(rocoso);
         }
 
-        public void construir(Torre torre, int numeroParcela) {
-                parcelas.get(numeroParcela).construirTorre(torre);
+        parcelas.add(new PasarelaSalida(0, 2, this, null));
+
+        for (int i = 1; i < 9; i++) {
+            Pasarela pasarela = new Pasarela(i, 2, this, null);
+            parcelas.add(pasarela);
         }
 
-        public void construir(Torre torre, int fila, int columna) {
-                obtenerParcela(fila, columna).construirTorre(torre);
-        }
+        parcelas.add(new PasarelaLlegada(9, 2, this));
 
-        public boolean tieneEnemigos() {
-                return parcelas.stream().anyMatch(Parcela::tieneEnemigos);
+        for (int i = 20; i < 29; i++) {
+            Pasarela pasarela = (Pasarela) parcelas.get(i);
+            pasarela.setPasarelaSiguiente((Pasarela) parcelas.get(i + 1));
         }
+    }
 
-        // Deberiamos decidir como implementar el orden de comportamientos(primero torres despues enemigos)
-        // Una forma es fraccionar avanzarTurno a avanzarTorres, etc.
-        public void avanzarTurno() {
-                turno.avanzarTurno();
-                parcelas.forEach(Parcela::avanzarTurno);
-        }
+    public void construir(Torre torre, int numeroParcela) {
+        parcelas.get(numeroParcela).construirTorre(torre);
+    }
 
-        public int devolverCantidadDeCreditosGeneradosEnTurno() {
-                return parcelas.stream()
-                        .mapToInt(Parcela::devolverCantidadDeCreditosGeneradosEnTurno)
-                        .sum();
-        }
+    public void construir(Torre torre, int fila, int columna) {
+        obtenerParcela(fila, columna).construirTorre(torre);
+    }
 
-        public List<Parcela> obtenerParcelasEnArea(int fila, int columna, int radio) {
-                return parcelas.stream()
-                        .filter(parcela -> parcela.enRadioDe(fila, columna, radio))
-                        .collect(Collectors.toList());
-        }
+    public boolean tieneEnemigos() {
+        return parcelas.stream().anyMatch(Parcela::tieneEnemigos);
+    }
 
-        public int cantidadDeEnemigos() {       //revisar si puedo devolver long.
-                return (int) parcelas.stream()
-                        .filter(Parcela::tieneEnemigos)
-                        .count();
-        }
+    // Deberiamos decidir como implementar el orden de comportamientos(primero torres despues enemigos)
+    // Una forma es fraccionar avanzarTurno a avanzarTorres, etc.
+    public void avanzarTurno() {
+        turno.avanzarTurno();
+        parcelas.forEach(Parcela::avanzarTurno);
+    }
 
-        public void agregarParcelas(List<Parcela> lista) {
-                parcelas = lista;
+    public int devolverCantidadDeCreditosGeneradosEnTurno() {
+        return parcelas.stream()
+                .mapToInt(Parcela::devolverCantidadDeCreditosGeneradosEnTurno)
+                .sum();
+    }
+
+    public List<Parcela> obtenerParcelasEnArea(int fila, int columna, int radio) {
+        return parcelas.stream()
+                .filter(parcela -> parcela.enRadioDe(fila, columna, radio))
+                .collect(Collectors.toList());
+    }
+
+    public int cantidadDeEnemigos() {       //revisar si puedo devolver long.
+        return (int) parcelas.stream()
+                .filter(Parcela::tieneEnemigos)
+                .count();
+    }
+
+    public void agregarParcelas(List<Parcela> lista) {
+        parcelas = lista;
 //                parcelas.addAll(lista);
-        }
+    }
 
-        public Parcela obtenerParcela(int fila, int columna) {
-                List<Parcela> listaDeParcelasEncontradas = this.parcelas.stream()
-                        .filter(parcela -> parcela.enRadioDe(fila, columna, 0))         //Cambiar esto.
-                        .collect(Collectors.toList());
+    public Parcela obtenerParcela(int fila, int columna) {
+        List<Parcela> listaDeParcelasEncontradas = this.parcelas.stream()
+                .filter(parcela -> parcela.enRadioDe(fila, columna, 0))         //Cambiar esto.
+                .collect(Collectors.toList());
 
-                return listaDeParcelasEncontradas.get(0);
-        }
-        @Override
-        public String toString() { return this.parcelas.toString(); }
+        return listaDeParcelasEncontradas.get(0);
+    }
 
-        public void cargarEnemigos(ArrayList<List<Enemigo>> enemigosParseados) {
-                PasarelaSalida salida = obtenerPasarelaSalida();
-                salida.cargarEnemigos(enemigosParseados);
-        }
+    @Override
+    public String toString() {
+        return this.parcelas.toString();
+    }
 
-        private PasarelaSalida obtenerPasarelaSalida() {
-                return (PasarelaSalida) parcelas.stream()
-                        .filter(parcela -> parcela instanceof PasarelaSalida)
-                        .findFirst()
-                        .orElseThrow();
-        }
+    public void cargarEnemigos(ArrayList<List<Enemigo>> enemigosParseados) {
+        PasarelaSalida salida = obtenerPasarelaSalida();
+        salida.cargarEnemigos(enemigosParseados);
+    }
 
-        public void reset() {
-                parcelas.forEach(Parcela::reset);
-        }
+    private PasarelaSalida obtenerPasarelaSalida() {
+        return (PasarelaSalida) parcelas.stream()
+                .filter(parcela -> parcela instanceof PasarelaSalida)
+                .findFirst()
+                .orElseThrow();
+    }
 
-        public int calcularCreditos() {
-                return parcelas.stream()
-                        .mapToInt(Parcela::devolverCantidadDeCreditosGeneradosEnTurno)
-                        .sum();
-        }
+    public void reset() {
+        parcelas.forEach(Parcela::reset);
+    }
 
-        public void setJugador(Jugador jugador) {
-                PasarelaLlegada pasarelaLlegada = (PasarelaLlegada) parcelas.stream().filter(parcela -> parcela instanceof PasarelaLlegada).findFirst().orElseThrow();
-                pasarelaLlegada.setJugador(jugador);
-        }
+    public int calcularCreditos() {
+        return parcelas.stream()
+                .mapToInt(Parcela::devolverCantidadDeCreditosGeneradosEnTurno)
+                .sum();
+    }
 
-        public void suscribirTurno(SuscriptorTurno suscriptor) { turno.suscribir(suscriptor); }
+    public void setJugador(Jugador jugador) {
+        PasarelaLlegada pasarelaLlegada = (PasarelaLlegada) parcelas.stream().filter(parcela -> parcela instanceof PasarelaLlegada).findFirst().orElseThrow();
+        pasarelaLlegada.setJugador(jugador);
+    }
 
-        public void desuscribirTurno(SuscriptorTurno suscriptor) { turno.desuscribir(suscriptor); }
+    public void suscribirTurno(SuscriptorTurno suscriptor) {
+        turno.suscribir(suscriptor);
+    }
 
-        public void destruirPrimeraTorre() {
-                parcelasConTorre.remove(0).destruirConstuccion();
-        }
+    public void desuscribirTurno(SuscriptorTurno suscriptor) {
+        turno.desuscribir(suscriptor);
+    }
+
+    public void destruirPrimeraTorre() {
+        parcelasConTorre.remove(0).destruirConstuccion();
+    }
 }
