@@ -24,5 +24,4 @@ public class Turno {
             suscriptor.notificar(turno);
         }
     }
-
 }

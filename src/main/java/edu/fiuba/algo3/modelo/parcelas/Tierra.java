@@ -5,6 +5,9 @@ import edu.fiuba.algo3.modelo.defensas.Torre;
 import edu.fiuba.algo3.modelo.defensas.TorreNull;
 import edu.fiuba.algo3.modelo.defensas.Trampa;
 import edu.fiuba.algo3.modelo.excepciones.ParcelaNoConstruible;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.Shape;
 
 public class Tierra extends Parcela {
 
@@ -14,6 +17,12 @@ public class Tierra extends Parcela {
         super(fila, columna, mapa);
     }
 
+    @Override
+    public Shape dibujarse() {
+        Rectangle rect = new Rectangle();
+        rect.setFill(Color.BROWN);
+        return rect;
+    }
     private boolean tieneTorre() {
         return !(torre.esNull());
     }

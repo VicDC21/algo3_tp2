@@ -4,6 +4,9 @@ import edu.fiuba.algo3.modelo.Mapa;
 import edu.fiuba.algo3.modelo.defensas.Trampa;
 import edu.fiuba.algo3.modelo.enemigos.Enemigo;
 import edu.fiuba.algo3.modelo.enemigos.Hormiga;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.Shape;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +24,14 @@ public class PasarelaSalida extends Pasarela {
         Hormiga hormiga = new Hormiga(1, 1, 1, "asd", this);
         agregarEnemigo(hormiga);
     }
+
+    @Override
+    public Shape dibujarse() {
+        Shape shape = super.dibujarse();
+        shape.setFill(Color.BLACK);
+        return shape;
+    }
+
     public void agregarEnemigo(Enemigo enemigo) {
         enemigos.add(enemigo);
     }

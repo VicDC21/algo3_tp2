@@ -4,6 +4,7 @@ import edu.fiuba.algo3.modelo.Mapa;
 import edu.fiuba.algo3.modelo.SuscriptorTurno;
 import edu.fiuba.algo3.modelo.defensas.Torre;
 import edu.fiuba.algo3.modelo.defensas.Trampa;
+import javafx.scene.shape.Shape;
 
 public abstract class Parcela {
     protected int fila;
@@ -16,6 +17,9 @@ public abstract class Parcela {
         this.columna = columna;
         this.mapa = mapa;
     }
+
+    public abstract Shape dibujarse();
+
     public abstract boolean tieneEnemigos();
 
     public abstract void avanzarTurno();

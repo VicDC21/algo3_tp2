@@ -4,6 +4,8 @@ import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.Mapa;
 import edu.fiuba.algo3.modelo.defensas.Trampa;
 import edu.fiuba.algo3.modelo.enemigos.Enemigo;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Shape;
 
 public class PasarelaLlegada extends Pasarela {
 
@@ -11,6 +13,13 @@ public class PasarelaLlegada extends Pasarela {
 
     public PasarelaLlegada(int fila, int columna, Mapa mapa) {
         super(fila, columna, mapa);
+    }
+
+    @Override
+    public Shape dibujarse() {
+        Shape shape = super.dibujarse();
+        shape.setFill(Color.GOLD);
+        return shape;
     }
 
     @Override
