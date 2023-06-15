@@ -109,8 +109,12 @@ public class Mapa {
                 .orElseThrow();
     }
 
-    public void reset() {
-        parcelas.forEach(Parcela::reset);
+    public void removerMuertos() {
+        parcelas.forEach(Parcela::removerMuertos);
+    }
+
+    public void actualizarEnemigos() {
+        parcelas.forEach(Parcela::actualizarEnemigos);
     }
 
     public int calcularCreditos() {

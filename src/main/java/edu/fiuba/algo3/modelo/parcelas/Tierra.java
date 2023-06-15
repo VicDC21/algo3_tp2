@@ -53,6 +53,4 @@ public class Tierra extends Parcela {
         return 0;
     }
 
-    @Override
-    public void reset() {}
 }

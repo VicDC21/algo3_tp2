@@ -64,9 +64,12 @@ public class TorreTest {
 
         jugador.construir("torrePlateada", 3, 0);
         mapa.avanzarTurno();
-        mapa.reset();
+        mapa.actualizarEnemigos();
+        mapa.removerMuertos();
+        System.out.println("-------------");
         mapa.avanzarTurno();
-        mapa.reset();
+        mapa.actualizarEnemigos();
+        mapa.removerMuertos();
         assertEquals(0, mapa.cantidadDeEnemigos());
     }
 
@@ -81,7 +84,11 @@ public class TorreTest {
 
         jugador.construir("torreBlanca", tierra);
         mapa.avanzarTurno();
+        mapa.actualizarEnemigos();
+        mapa.removerMuertos();
         mapa.avanzarTurno();
+        mapa.actualizarEnemigos();
+        mapa.removerMuertos();
         assertEquals(1, mapa.cantidadDeEnemigos());
     }
 }
