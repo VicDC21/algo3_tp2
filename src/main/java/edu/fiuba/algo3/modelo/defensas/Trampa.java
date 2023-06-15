@@ -4,7 +4,8 @@ import edu.fiuba.algo3.modelo.parcelas.Pasarela;
 
 // Debe conocer a la parcela parada para poder reducirle la velocidad a los enemigos.
 public abstract class Trampa {
-    private Pasarela pasarelaConstruida;
+    int costo;
+    protected Pasarela pasarelaConstruida;
     protected int vidaUtil;
     protected int turnosVigente = 0;
 
@@ -18,4 +19,10 @@ public abstract class Trampa {
     }
 
     public abstract void aplicarEfecto();
+
+    protected int getCosto() {
+        return this.costo;
+    }
+
+
 }

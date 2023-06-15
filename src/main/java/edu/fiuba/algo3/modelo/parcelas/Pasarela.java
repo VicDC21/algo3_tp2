@@ -99,6 +99,9 @@ public class Pasarela extends Parcela {
     public void actualizarEnemigos() {
         enemigos = arribos;
         arribos = new ArrayList<>();
+        for (Enemigo e : enemigos) {
+            e.reestablecerVelocidad();
+        }
         System.out.println(enemigos);
     }
 
@@ -122,4 +125,10 @@ public class Pasarela extends Parcela {
     }
 
     public void destruirPrimeraTorre() {}
+
+    public void modificarVelocidad(double modificadorVelocidad) {
+        for (Enemigo e : enemigos) {
+            e.modificarVelocidad(modificadorVelocidad);
+        }
+    }
 }
