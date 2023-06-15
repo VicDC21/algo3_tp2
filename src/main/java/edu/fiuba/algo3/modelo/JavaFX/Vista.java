@@ -32,7 +32,7 @@ public class Vista extends Application {
         stage.setTitle("AlgoTorres - v.0.0.1");
 
         TextField texto = new TextField();
-        texto.setPromptText("Ingrese su nombre:");
+        texto.setPromptText("Ingrese su nombre");
 
         Label etiqueta = new Label();
         etiqueta.setText(juego.leerNombre());
