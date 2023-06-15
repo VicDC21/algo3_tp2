@@ -1,6 +1,8 @@
-package edu.fiuba.algo3.entrega_1;
+package edu.fiuba.algo3.pruebas;
 
 import edu.fiuba.algo3.modelo.*;
+import edu.fiuba.algo3.modelo.enemigos.Enemigo;
+import edu.fiuba.algo3.modelo.enemigos.Hormiga;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

@@ -1,6 +1,12 @@
-package edu.fiuba.algo3.entrega_1;
+package edu.fiuba.algo3.pruebas;
 
 import edu.fiuba.algo3.modelo.*;
+import edu.fiuba.algo3.modelo.defensas.Torre;
+import edu.fiuba.algo3.modelo.excepciones.CreditoInsuficiente;
+import edu.fiuba.algo3.modelo.excepciones.ParcelaNoConstruible;
+import edu.fiuba.algo3.modelo.parcelas.Pasarela;
+import edu.fiuba.algo3.modelo.parcelas.Rocoso;
+import edu.fiuba.algo3.modelo.parcelas.Tierra;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;

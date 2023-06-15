@@ -1,6 +1,10 @@
-package edu.fiuba.algo3.entrega_1;
+package edu.fiuba.algo3.pruebas;
 
 import edu.fiuba.algo3.modelo.*;
+import edu.fiuba.algo3.modelo.excepciones.InvalidMap;
+import edu.fiuba.algo3.modelo.excepciones.JsonDeEnemigosInvalido;
+import edu.fiuba.algo3.modelo.parsers.EnemigosParser;
+import edu.fiuba.algo3.modelo.parsers.MapaParser;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 

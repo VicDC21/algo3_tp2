@@ -1,6 +1,11 @@
-package edu.fiuba.algo3.entrega_1;
+package edu.fiuba.algo3.pruebas;
 
 import edu.fiuba.algo3.modelo.*;
+import edu.fiuba.algo3.modelo.enemigos.Arania;
+import edu.fiuba.algo3.modelo.enemigos.Enemigo;
+import edu.fiuba.algo3.modelo.enemigos.Hormiga;
+import edu.fiuba.algo3.modelo.excepciones.InvalidMap;
+import edu.fiuba.algo3.modelo.parsers.EnemigosParser;
 import org.junit.jupiter.api.Test;
 import java.io.File;
 import java.util.*;

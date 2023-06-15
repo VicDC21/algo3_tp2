@@ -1,6 +1,8 @@
-package edu.fiuba.algo3.entrega_1;
+package edu.fiuba.algo3.pruebas;
 
 import edu.fiuba.algo3.modelo.*;
+import edu.fiuba.algo3.modelo.defensas.Torre;
+import edu.fiuba.algo3.modelo.parcelas.Pasarela;
 import org.junit.jupiter.api.Test;
 
 import java.util.Collections;

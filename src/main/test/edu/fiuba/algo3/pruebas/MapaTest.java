@@ -1,9 +1,9 @@
-package edu.fiuba.algo3.entrega_1;
+package edu.fiuba.algo3.pruebas;
 
-import edu.fiuba.algo3.modelo.InvalidMap;
+import edu.fiuba.algo3.modelo.excepciones.InvalidMap;
 import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.Mapa;
-import edu.fiuba.algo3.modelo.MapaParser;
+import edu.fiuba.algo3.modelo.parsers.MapaParser;
 import org.apache.commons.io.FileUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
