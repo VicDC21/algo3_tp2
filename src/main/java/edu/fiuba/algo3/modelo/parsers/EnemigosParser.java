@@ -1,5 +1,9 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.parsers;
 
+import edu.fiuba.algo3.modelo.excepciones.JsonDeEnemigosInvalido;
+import edu.fiuba.algo3.modelo.enemigos.Arania;
+import edu.fiuba.algo3.modelo.enemigos.Enemigo;
+import edu.fiuba.algo3.modelo.enemigos.Hormiga;
 import org.apache.commons.io.FileUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -7,7 +11,6 @@ import org.json.JSONObject;
 
 import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import java.util.*;
 
 public class EnemigosParser {

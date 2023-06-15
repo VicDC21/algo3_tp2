@@ -1,5 +1,9 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.defensas.Torre;
+import edu.fiuba.algo3.modelo.enemigos.Enemigo;
+import edu.fiuba.algo3.modelo.parcelas.*;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;

@@ -1,5 +1,9 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.excepciones.InvalidMap;
+import edu.fiuba.algo3.modelo.parsers.EnemigosParser;
+import edu.fiuba.algo3.modelo.parsers.MapaParser;
+
 import java.util.Scanner;
 
 public class Juego {

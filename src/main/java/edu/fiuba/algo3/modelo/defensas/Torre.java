@@ -1,7 +1,7 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.defensas;
 
-import java.util.List;
-import java.util.Optional;
+import edu.fiuba.algo3.modelo.Mapa;
+import edu.fiuba.algo3.modelo.parcelas.Parcela;
 
 public class Torre{
     int costo;
@@ -16,7 +16,7 @@ public class Torre{
         this.danio = danio;
     }
 
-    Torre(Torre torre) {        //shallow copy pero los atributos son inmutables.
+    public Torre(Torre torre) {        //shallow copy pero los atributos son inmutables.
         this.costo = torre.getCosto();
         this.turnosParaConstruirse = torre.getTurnosParaConstruirse();
         this.rango = torre.getRango();

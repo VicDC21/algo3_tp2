@@ -1,5 +1,8 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.parsers;
 
+import edu.fiuba.algo3.modelo.*;
+import edu.fiuba.algo3.modelo.excepciones.InvalidMap;
+import edu.fiuba.algo3.modelo.parcelas.*;
 import org.apache.commons.io.FileUtils;
 import org.json.JSONArray;
 import org.json.JSONException;

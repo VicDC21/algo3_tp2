@@ -1,4 +1,10 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.parcelas;
+
+import edu.fiuba.algo3.modelo.Mapa;
+import edu.fiuba.algo3.modelo.defensas.Torre;
+import edu.fiuba.algo3.modelo.defensas.Trampa;
+import edu.fiuba.algo3.modelo.enemigos.Enemigo;
+import edu.fiuba.algo3.modelo.excepciones.ParcelaNoConstruible;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,6 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.defensas;
+
+import edu.fiuba.algo3.modelo.parcelas.Pasarela;
 
 // Debe conocer a la parcela parada para poder reducirle la velocidad a los enemigos.
 public abstract class Trampa {

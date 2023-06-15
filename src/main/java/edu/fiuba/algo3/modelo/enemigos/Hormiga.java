@@ -1,4 +1,6 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.enemigos;
+
+import edu.fiuba.algo3.modelo.parcelas.Pasarela;
 
 public class Hormiga extends Enemigo {
     public static int hormigasMuertas = 0;

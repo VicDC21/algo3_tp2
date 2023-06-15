@@ -1,4 +1,9 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.parcelas;
+
+import edu.fiuba.algo3.modelo.Mapa;
+import edu.fiuba.algo3.modelo.SuscriptorTurno;
+import edu.fiuba.algo3.modelo.defensas.Torre;
+import edu.fiuba.algo3.modelo.defensas.Trampa;
 
 public abstract class Parcela {
     protected int fila;

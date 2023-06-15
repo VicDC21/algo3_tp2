@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.enemigos;
 
 // En sus primeros 5 moviemientos tiene 1 de velocidad, luego en los proximos 5 su velocidad es 2,
 // a partir del movimiento 11 su velocidad queda definitivamente en 3.
@@ -6,6 +6,9 @@ package edu.fiuba.algo3.modelo;
 // Si el numero de turno en que llega a la meta es impar, entonces causa 5 puntos de adnio, sino solo 2.
 
 // El topo no camina por la superficie, va enterrado y ninguna torre lo puede atacar.
+
+import edu.fiuba.algo3.modelo.parcelas.Pasarela;
+import edu.fiuba.algo3.modelo.SuscriptorTurno;
 
 public class Topo extends Enemigo implements SuscriptorTurno {
     private int creditos = 1;
