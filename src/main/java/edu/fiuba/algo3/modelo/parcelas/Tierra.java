@@ -2,19 +2,20 @@ package edu.fiuba.algo3.modelo.parcelas;
 
 import edu.fiuba.algo3.modelo.Mapa;
 import edu.fiuba.algo3.modelo.defensas.Torre;
+import edu.fiuba.algo3.modelo.defensas.TorreNull;
 import edu.fiuba.algo3.modelo.defensas.Trampa;
 import edu.fiuba.algo3.modelo.excepciones.ParcelaNoConstruible;
 
 public class Tierra extends Parcela {
 
-    Torre torre = null;
+    Torre torre = new TorreNull();
 
     public Tierra(int fila, int columna, Mapa mapa) {
         super(fila, columna, mapa);
     }
 
     private boolean tieneTorre() {
-        return torre != null;
+        return !(torre.esNull());
     }
 
     @Override

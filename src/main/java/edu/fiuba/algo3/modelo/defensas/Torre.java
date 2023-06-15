@@ -23,19 +23,19 @@ public class Torre{
         this.danio = torre.getDanio();
     }
 
-    private int getRango() {
+    protected int getRango() {
         return this.rango;
     }
 
-    private int getCosto() {
+    protected int getCosto() {
         return this.costo;
     }
 
-    private int getDanio() {
+    protected int getDanio() {
         return this.danio;
     }
 
-    private int getTurnosParaConstruirse() {
+    protected int getTurnosParaConstruirse() {
         return this.turnosParaConstruirse;
     }
 
@@ -49,6 +49,10 @@ public class Torre{
         } else {
             turnosParaConstruirse--;
         }
+    }
+
+    public boolean esNull() {
+        return false;
     }
 
     // No debe considerar Topos.
