@@ -20,9 +20,5 @@ public abstract class Trampa {
 
     public abstract void aplicarEfecto();
 
-    protected int getCosto() {
-        return this.costo;
-    }
-
-
+    public boolean esNull() { return false; }
 }

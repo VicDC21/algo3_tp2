@@ -42,7 +42,7 @@ public class Tierra extends Parcela {
 
     @Override
     public void destruirConstuccion() {
-        this.torre = null;
+        this.torre = new TorreNull();
     }
 
     @Override

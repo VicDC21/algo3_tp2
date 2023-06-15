@@ -19,11 +19,11 @@ public class HormigaTest {
         mapa.removerMuertos();
         mapa.avanzarTurno();
         mapa.actualizarEnemigos();
-        jugador.recibirCreditos(mapa.devolverCantidadDeCreditosGeneradosEnTurno());
+        jugador.recibirCreditos(mapa.creditosGeneradosEnTurno());
         mapa.removerMuertos();
         mapa.avanzarTurno();
         mapa.actualizarEnemigos();
-        jugador.recibirCreditos(mapa.devolverCantidadDeCreditosGeneradosEnTurno());
+        jugador.recibirCreditos(mapa.creditosGeneradosEnTurno());
         assertEquals(101, jugador.mostrarCreditos());
     }
 
@@ -42,12 +42,12 @@ public class HormigaTest {
         mapa.removerMuertos();
         mapa.avanzarTurno();
         mapa.actualizarEnemigos();
-        jugador.recibirCreditos(mapa.devolverCantidadDeCreditosGeneradosEnTurno());
+        jugador.recibirCreditos(mapa.creditosGeneradosEnTurno());
 
         mapa.removerMuertos();
         mapa.avanzarTurno();
         mapa.actualizarEnemigos();
-        jugador.recibirCreditos(mapa.devolverCantidadDeCreditosGeneradosEnTurno());
+        jugador.recibirCreditos(mapa.creditosGeneradosEnTurno());
         assertEquals(101, jugador.mostrarCreditos());
     }
 
@@ -66,12 +66,12 @@ public class HormigaTest {
         mapa.removerMuertos();
         mapa.avanzarTurno();
         mapa.actualizarEnemigos();
-        jugador.recibirCreditos(mapa.devolverCantidadDeCreditosGeneradosEnTurno());
+        jugador.recibirCreditos(mapa.creditosGeneradosEnTurno());
 
         mapa.removerMuertos();
         mapa.avanzarTurno();
         mapa.actualizarEnemigos();
-        jugador.recibirCreditos(mapa.devolverCantidadDeCreditosGeneradosEnTurno());
+        jugador.recibirCreditos(mapa.creditosGeneradosEnTurno());
         assertEquals(102, jugador.mostrarCreditos());
     }
 }

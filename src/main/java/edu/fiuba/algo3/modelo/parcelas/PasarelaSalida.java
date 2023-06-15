@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo.parcelas;
 
 import edu.fiuba.algo3.modelo.Mapa;
+import edu.fiuba.algo3.modelo.defensas.Trampa;
 import edu.fiuba.algo3.modelo.enemigos.Enemigo;
 import edu.fiuba.algo3.modelo.enemigos.Hormiga;
 
@@ -47,4 +48,7 @@ public class PasarelaSalida extends Pasarela {
         enemigosPorTurno = enemigosParseados;
         enemigosPorTurno.forEach(list -> list.forEach(enemigo -> enemigo.setPasarelaSalida(this)));
     }
+
+    @Override
+    public void construirTrampa(Trampa trampa) {}
 }

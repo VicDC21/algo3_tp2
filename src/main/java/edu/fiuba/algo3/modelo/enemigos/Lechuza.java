@@ -34,4 +34,6 @@ public class Lechuza extends Enemigo {
     @Override
     public void desuscribirTodo() {}
 
+    @Override
+    public void modificarVelocidadTierra(double modificadorVelocidad) {}
 }
