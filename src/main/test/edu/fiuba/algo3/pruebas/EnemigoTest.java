@@ -37,7 +37,7 @@ public class EnemigoTest {
 
     @Test
     public void unidadesEnemigasSoloSeMuevanPorLaParcelaAutorizada() {
-        Mapa mapa = new Mapa();
+        Mapa mapa = mock(Mapa.class);
         Pasarela pasarela = new Pasarela(1, 2, mapa, null);
         Tierra tierra = new Tierra(2, 2, mapa);
         Enemigo hormiga = new Hormiga(2, 1, 1, "Vivo", pasarela);
