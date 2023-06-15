@@ -16,21 +16,12 @@ import java.util.stream.Collectors;
 
 public class MapaParser {
 
-    static Map<String, Class<?>> classMap = new HashMap<String, Class<?>>();
-    static Map<String, Parcela> classMap2 = new HashMap<String, Parcela>();
-    static {
-        classMap.put("Pasarela", Pasarela.class);
-        classMap.put("Rocoso", Rocoso.class);
-        classMap.put("Tierra", Tierra.class);
-    }
-
     boolean isFirst = true;
     int lastFila;
     int lastColumna;
 
     public Mapa parseMapa(String path) throws InvalidMap {
         Mapa mapa = new Mapa();
-
         JSONObject jsonObject;
         try {
             jsonObject = new JSONObject(FileUtils.readFileToString(new File(path)));
@@ -39,8 +30,12 @@ public class MapaParser {
         }
         JSONObject mapaJson = jsonObject.getJSONObject("Mapa");
 
-        List<Integer> intList = mapaJson.keySet().stream().map(Integer::parseInt).collect(Collectors.toList());
-        Collections.sort(intList);
+        List<Integer> intList =
+                mapaJson.keySet()
+                        .stream()
+                        .map(Integer::parseInt)
+                        .sorted()
+                        .collect(Collectors.toList());
 
         List<Parcela> lista = new ArrayList<>();
         for (Integer num : intList) {
@@ -72,7 +67,7 @@ public class MapaParser {
     private void setPasarelaDeLlegada(List<Parcela> lista, Mapa mapa) {
         for (int i = (lista.size() - 1); i >= 0; i--) {
             if (lista.get(i) instanceof Pasarela) {
-                lista.set(i, new PasarelaLlegada(lastFila, lastColumna, mapa)); // PONER DE LLEGADA
+                lista.set(i, new PasarelaLlegada(lastFila, lastColumna, mapa));
                 break;
             }
         }
@@ -81,16 +76,23 @@ public class MapaParser {
     private List<Parcela> parseParcelas(int key, JSONArray lista, Mapa mapa) throws InstantiationException, IllegalAccessException, NoSuchMethodException, InvocationTargetException {
         List<Parcela> parcelas = new ArrayList<>();
         for (int i = 0; i < lista.length(); i++) {
-            Class<?> parcela = classMap.get(lista.getString(i));
-            parcelas.add((Parcela) parcela.getDeclaredConstructor(int.class, int.class, Mapa.class).newInstance(key, i, mapa));
-            if (parcelas.get(i) instanceof Pasarela) {
-                if (isFirst) {
-                    isFirst = false;
-                    PasarelaSalida pasarelaSalida = new PasarelaSalida(key, i, mapa);
-                    parcelas.set(i, pasarelaSalida);
-                } else {
+            switch (lista.getString(i)) {
+                case "Rocoso":
+                    parcelas.add(new Rocoso(key, i, mapa));
+                    break;
+                case "Tierra":
+                    parcelas.add(new Tierra(key, i, mapa));
+                    break;
+                case "Pasarela": {
+                    if (!isFirst)
+                        parcelas.add(new Pasarela(key, i, mapa));
+                    else {
+                        isFirst = false;
+                        parcelas.add(new PasarelaSalida(key, i, mapa));
+                    }
                     lastColumna = i;
                     lastFila = key;
+                    break;
                 }
             }
         }
