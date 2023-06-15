@@ -1,20 +1,25 @@
 package edu.fiuba.algo3;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.excepciones.InvalidMap;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.*;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 
+
 public class App extends Application {
+
+    private static final Logger logger = LoggerFactory.getLogger(App.class);
 
     @Override
     public void start(Stage stage) {
@@ -27,7 +32,7 @@ public class App extends Application {
         textField.setMaxHeight(50);
         textField.setMaxWidth(300);
 
-        Button button = new Button("Ingresar");
+        Button button = new Button("Empezar a jugar!");
         button.minWidth(50);
         button.setOnAction(e -> {
             System.out.println(textField.getText());
