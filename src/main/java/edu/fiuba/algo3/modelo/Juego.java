@@ -1,14 +1,17 @@
 package edu.fiuba.algo3.modelo;
 
 import java.util.Scanner;
+import edu.fiuba.algo3.modelo.JavaFX.Vista;
 
 public class Juego {
     Jugador jugador;
     Mapa mapa;
+    Vista vista;
 
     public Juego() {
         mapa = new Mapa();
         jugador = new Jugador(leerNombre(), 20, 100, new Constructor(mapa));
+        vista = new Vista(this);
     }
 
     public Juego(String path) throws InvalidMap {
