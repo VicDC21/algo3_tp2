@@ -1,5 +1,9 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.excepciones.InvalidMap;
+import edu.fiuba.algo3.modelo.parsers.EnemigosParser;
+import edu.fiuba.algo3.modelo.parsers.MapaParser;
+
 import java.util.Scanner;
 import edu.fiuba.algo3.modelo.JavaFX.Vista;
 
@@ -44,10 +48,6 @@ public class Juego {
         return jugador.mostrarVida();
     }
 
-    public int mostrarCreditosActuales() {
-        return jugador.mostrarCreditos();
-    }
-
     public void jugar() {
         while (jugador.estaVivo() && mapa.tieneEnemigos()) {
             avanzarTurno();
@@ -55,9 +55,10 @@ public class Juego {
     }
 
     public void avanzarTurno() {
-        mapa.reset();
         mapa.avanzarTurno();
-        mapa.calcularCreditos();
+        mapa.actualizarEnemigos();
+        jugador.recibirCreditos(mapa.creditosGeneradosEnTurno());
+        mapa.removerMuertos();
     }
 
     public String leerNombre() {
