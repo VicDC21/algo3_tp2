@@ -15,34 +15,6 @@ public class Mapa {
     Turno turno = new Turno();
     List<Parcela> parcelasConTorre = new ArrayList<>();
 
-    /* public Mapa() {
-        parcelas = new ArrayList<>();
-
-        //placeholder del mapa propiamente dicho.
-        for (int i = 0; i < 10; i++) {
-            Tierra tierra = new Tierra(i, 0, this);
-            parcelas.add(tierra);
-        }
-        for (int i = 0; i < 10; i++) {
-            Rocoso rocoso = new Rocoso(i, 1, this);
-            parcelas.add(rocoso);
-        }
-
-        parcelas.add(new PasarelaSalida(0, 2, this, null));
-
-        for (int i = 1; i < 9; i++) {
-            Pasarela pasarela = new Pasarela(i, 2, this, null);
-            parcelas.add(pasarela);
-        }
-
-        parcelas.add(new PasarelaLlegada(9, 2, this));
-
-        for (int i = 20; i < 29; i++) {
-            Pasarela pasarela = (Pasarela) parcelas.get(i);
-            pasarela.setPasarelaSiguiente((Pasarela) parcelas.get(i + 1));
-        }
-    } */
-
     public void construir(Torre torre, int numeroParcela) {
         parcelas.get(numeroParcela).construirTorre(torre);
     }
