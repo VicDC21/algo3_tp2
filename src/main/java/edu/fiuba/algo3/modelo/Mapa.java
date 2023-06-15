@@ -96,7 +96,7 @@ public class Mapa {
     public String toString() {
         return this.parcelas.toString();
     }
-
+    
     public void cargarEnemigos(ArrayList<List<Enemigo>> enemigosParseados) {
         PasarelaSalida salida = obtenerPasarelaSalida();
         salida.cargarEnemigos(enemigosParseados);
