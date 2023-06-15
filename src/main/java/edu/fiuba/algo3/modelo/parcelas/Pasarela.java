@@ -29,7 +29,17 @@ public class Pasarela extends Parcela {
 
     @Override
     public boolean tieneEnemigos() {
-        return !(enemigos.isEmpty() && arribos.isEmpty());
+        for (Enemigo e: enemigos) {
+            if (!e.estaMuerto()) {
+                return true;
+            }
+        }
+        for (Enemigo e: arribos) {
+            if (!e.estaMuerto()) {
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override
@@ -56,12 +66,12 @@ public class Pasarela extends Parcela {
                 enemigos.stream()
                         .filter(Enemigo::estaMuerto)
                         .mapToInt(Enemigo::otorgarCredito)
-                        .sum()
-                +
-                arribos.stream()
-                        .filter(Enemigo::estaMuerto)
-                        .mapToInt(Enemigo::otorgarCredito)
                         .sum();
+                //+
+                //arribos.stream()
+                //        .filter(Enemigo::estaMuerto)
+                //        .mapToInt(Enemigo::otorgarCredito)
+                //        .sum();
     }
 
     @Override

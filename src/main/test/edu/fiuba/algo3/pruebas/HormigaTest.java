@@ -34,7 +34,7 @@ public class HormigaTest {
         Mapa mapa = new Mapa();
         Constructor constructor = new Constructor(mapa);
         Jugador jugador = new Jugador("Prueba", 10, 100, constructor);
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 9; i++) {
             Enemigo hormiga = new Hormiga(1, 1, 1, "Vivo", null);
             hormiga.recibirDanio(1);
         }
@@ -58,7 +58,7 @@ public class HormigaTest {
         Mapa mapa = new Mapa();
         Constructor constructor = new Constructor(mapa);
         Jugador jugador = new Jugador("Prueba", 10, 100, constructor);
-        for (int i = 0; i < 11; i++) {
+        for (int i = 0; i < 10; i++) {
             Enemigo hormiga = new Hormiga(1, 1, 1, "Vivo", null);
             hormiga.recibirDanio(1);
         }
