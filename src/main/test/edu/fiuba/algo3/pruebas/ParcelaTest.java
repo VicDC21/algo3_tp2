@@ -19,8 +19,8 @@ public class ParcelaTest {
         int cantidadDeCreditosInsuficientes = 1, cantidadDeCreditosSuficientes = 100;
         Mapa mapa = mock(Mapa.class);
         Constructor constructor = new Constructor(mapa);
-        assertThrows(CreditoInsuficiente.class, () -> constructor.construir("torreBlanca", cantidadDeCreditosInsuficientes, 0));
-        assertDoesNotThrow(() -> constructor.construir("torreBlanca", cantidadDeCreditosSuficientes, 0));
+        assertThrows(CreditoInsuficiente.class, () -> constructor.construir("torreBlanca", cantidadDeCreditosInsuficientes, 0, 0));
+        assertDoesNotThrow(() -> constructor.construir("torreBlanca", cantidadDeCreditosSuficientes, 0, 0));
     }
 
     @Test
