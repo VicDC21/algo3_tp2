@@ -2,6 +2,7 @@ package edu.fiuba.algo3.pruebas;
 
 import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.defensas.Torre;
+import edu.fiuba.algo3.modelo.excepciones.InvalidMap;
 import edu.fiuba.algo3.modelo.parcelas.Pasarela;
 import org.junit.jupiter.api.Test;
 
@@ -55,40 +56,34 @@ public class TorreTest {
     }
 
     @Test
-    public void defensasAtacanEnRangoEsperado() {     //Hay que modificar este test.
-        Mapa mapa = new Mapa();
-        Constructor constructor = new Constructor(mapa);
-        Jugador jugador = new Jugador("Prueba", 10, 100, constructor);
+    public void defensasAtacanEnRangoEsperado() throws InvalidMap {     //Hay que modificar este test.
+        Juego juego = new Juego("src/main/resources/mapa.json", "src/main/resources/enemigosUno.json");
 
-        assertEquals(1, mapa.cantidadDeEnemigos());
+        juego.construir("torrePlateada", 1, 3);
 
-        jugador.construir("torrePlateada", 3, 0);
-        mapa.avanzarTurno();
-        mapa.actualizarEnemigos();
-        mapa.removerMuertos();
-        System.out.println("-------------");
-        mapa.avanzarTurno();
-        mapa.actualizarEnemigos();
-        mapa.removerMuertos();
-        assertEquals(0, mapa.cantidadDeEnemigos());
+        assertEquals(1, juego.cantidadDeEnemigos());
+
+        juego.avanzarTurno();
+        juego.avanzarTurno();
+        juego.avanzarTurno();
+
+        assertEquals(0, juego.cantidadDeEnemigos());
     }
 
     @Test
-    public void defensasNoAtacanFueraRangoEsperado() {
-        int tierra = 8;
-        Mapa mapa = new Mapa();
-        Constructor constructor = new Constructor(mapa);
-        Jugador jugador = new Jugador("Prueba", 10, 100, constructor);
+    public void defensasNoAtacanFueraRangoEsperado() throws InvalidMap {
+        Juego juego = new Juego("src/main/resources/mapa.json", "src/main/resources/enemigosUno.json");
 
-        assertEquals(1, mapa.cantidadDeEnemigos());
+        juego.construir("torrePlateada", 12, 12);
 
-        jugador.construir("torreBlanca", tierra);
-        mapa.avanzarTurno();
-        mapa.actualizarEnemigos();
-        mapa.removerMuertos();
-        mapa.avanzarTurno();
-        mapa.actualizarEnemigos();
-        mapa.removerMuertos();
-        assertEquals(1, mapa.cantidadDeEnemigos());
+        assertEquals(1, juego.cantidadDeEnemigos());
+
+        juego.avanzarTurno();
+        juego.avanzarTurno();
+        juego.avanzarTurno();
+        juego.avanzarTurno();
+        juego.avanzarTurno();
+
+        assertEquals(1, juego.cantidadDeEnemigos());
     }
 }
