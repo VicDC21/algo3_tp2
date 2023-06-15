@@ -61,7 +61,7 @@ public class Mapa {
         parcelas.forEach(Parcela::avanzarTurno);
     }
 
-    public int devolverCantidadDeCreditosGeneradosEnTurno() {
+    public int creditosGeneradosEnTurno() {
         return parcelas.stream()
                 .mapToInt(Parcela::devolverCantidadDeCreditosGeneradosEnTurno)
                 .sum();
@@ -117,12 +117,6 @@ public class Mapa {
         parcelas.forEach(Parcela::actualizarEnemigos);
     }
 
-    public int calcularCreditos() {
-        return parcelas.stream()
-                .mapToInt(Parcela::devolverCantidadDeCreditosGeneradosEnTurno)
-                .sum();
-    }
-
     public void setJugador(Jugador jugador) {
         PasarelaLlegada pasarelaLlegada = (PasarelaLlegada) parcelas.stream().filter(parcela -> parcela instanceof PasarelaLlegada).findFirst().orElseThrow();
         pasarelaLlegada.setJugador(jugador);
@@ -137,6 +131,8 @@ public class Mapa {
     }
 
     public void destruirPrimeraTorre() {
-        parcelasConTorre.remove(0).destruirConstuccion();
+        if (!parcelasConTorre.isEmpty()) {
+            parcelasConTorre.remove(0).destruirConstuccion();
+        }
     }
 }

@@ -3,6 +3,7 @@ package edu.fiuba.algo3.modelo.parcelas;
 import edu.fiuba.algo3.modelo.Mapa;
 import edu.fiuba.algo3.modelo.defensas.Torre;
 import edu.fiuba.algo3.modelo.defensas.Trampa;
+import edu.fiuba.algo3.modelo.defensas.TrampaNull;
 import edu.fiuba.algo3.modelo.enemigos.Enemigo;
 import edu.fiuba.algo3.modelo.excepciones.ParcelaNoConstruible;
 
@@ -16,8 +17,7 @@ public class Pasarela extends Parcela {
     protected Pasarela pasarelaSiguiente;
     protected List<Enemigo> enemigos = new ArrayList<>();
     private List<Enemigo> arribos = new ArrayList<>();
-    protected int cantidadDeCreditosGeneradosEnTurno;
-    Trampa trampa = null;
+    Trampa trampa = new TrampaNull();
 
     public Pasarela(int fila, int columna, Mapa mapa) {
         super(fila, columna, mapa);
@@ -38,7 +38,6 @@ public class Pasarela extends Parcela {
             return;
         }
         enemigos.forEach(Enemigo::avanzar);
-//        enemigos.removeIf(enemigo -> enemigo.estaEnEstaPasarela(this)); //ESTA REMOVIENDO TODOS LOS ENEMIGOS, NECESITO QUE SOLO REMUEVA LOS QUE SE MOVIERON A LA SIGUIENTE.
     }
 
     public void removerMuertos() {
@@ -75,7 +74,7 @@ public class Pasarela extends Parcela {
         } else throw new ParcelaNoConstruible();
     }
 
-    private boolean tieneTrampa() { return trampa != null; }
+    private boolean tieneTrampa() { return !trampa.esNull(); }
 
     @Override
     public void recibirDanio(int danio) {
@@ -126,9 +125,11 @@ public class Pasarela extends Parcela {
 
     public void destruirPrimeraTorre() {}
 
+    public void destruirConstuccion() { this.trampa = new TrampaNull(); }
+
     public void modificarVelocidad(double modificadorVelocidad) {
         for (Enemigo e : enemigos) {
-            e.modificarVelocidad(modificadorVelocidad);
+            e.modificarVelocidadTierra(modificadorVelocidad);
         }
     }
 }

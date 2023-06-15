@@ -63,7 +63,7 @@ public abstract class Enemigo {
         return this.getClass().getSimpleName();
     }
 
-    public void modificarVelocidad(double modificadorVelocidad) {
+    public void modificarVelocidadTierra(double modificadorVelocidad) {
         this.velocidadActual = (int)(this.velocidad * modificadorVelocidad); // se redondea para abajo
     }
 }

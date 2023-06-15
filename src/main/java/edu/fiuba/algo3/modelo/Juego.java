@@ -54,7 +54,7 @@ public class Juego {
     public void avanzarTurno() {
         mapa.avanzarTurno();
         mapa.actualizarEnemigos();
-        jugador.recibirCreditos(mapa.devolverCantidadDeCreditosGeneradosEnTurno());
+        jugador.recibirCreditos(mapa.creditosGeneradosEnTurno());
         mapa.removerMuertos();
     }
 
