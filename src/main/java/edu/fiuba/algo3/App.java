@@ -24,6 +24,8 @@ public class App extends Application {
     @Override
     public void start(Stage stage) {
 
+        logger.warn("Un mensaje de advertencia");
+
         VBox layout = new VBox();
         layout.setAlignment(Pos.CENTER);
 
@@ -55,7 +57,7 @@ public class App extends Application {
 
         var scene = new Scene(layout, 640, 480);
         stage.setScene(scene);
-        stage.show();
+        stage.show();  
     }
 
     public static void main(String[] args) {

@@ -1,0 +1,35 @@
+{
+    // Use IntelliSense para saber los atributos posibles.
+    // Mantenga el puntero para ver las descripciones de los existentes atributos.
+    // Para más información, visite: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "App",
+            "request": "launch",
+            "mainClass": "edu.fiuba.algo3/edu.fiuba.algo3.App",
+            "projectName": "tp2"
+        },
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "edu.fiuba.algo3/edu.fiuba.algo3.Main",
+            "projectName": "tp2"
+        },
+        {
+            "type": "java",
+            "name": "Vista",
+            "request": "launch",
+            "mainClass": "edu.fiuba.algo3/edu.fiuba.algo3.modelo.JavaFX.Vista",
+            "projectName": "tp2"
+        }
+    ]
+}
