@@ -70,6 +70,8 @@ public class Juego {
         return jugador.mostrarVida();
     }
 
+    public int cantidadDeEnemigos() { return mapa.cantidadDeEnemigos(); }
+
     public void jugar() {
         while (jugador.estaVivo() && mapa.tieneEnemigos()) {
             avanzarTurno();
