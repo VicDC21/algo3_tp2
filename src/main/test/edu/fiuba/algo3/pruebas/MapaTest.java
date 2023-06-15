@@ -52,7 +52,7 @@ public class MapaTest {
                 String tipoDeParcelaEnPosicionEnMapa = mapaParseado.obtenerParcela(i, j)
                         .getClass()
                         .getName()
-                        .split("\\.")[4];
+                        .split("\\.")[5];
                 if (tipoDeParcelaEnPosicionEnMapa.equals("PasarelaLlegada") || tipoDeParcelaEnPosicionEnMapa.equals("PasarelaSalida")) {
                     tipoDeParcelaEnPosicionEnMapa = "Pasarela";
                 }
