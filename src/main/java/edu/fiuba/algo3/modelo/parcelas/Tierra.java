@@ -8,15 +8,15 @@ import edu.fiuba.algo3.modelo.excepciones.ParcelaNoConstruible;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class Tierra extends Parcela {
-
+    private static final Logger LOGGER = LoggerFactory.getLogger(Tierra.class.getSimpleName());
     Torre torre = new TorreNull();
-
     public Tierra(int fila, int columna, Mapa mapa) {
         super(fila, columna, mapa);
     }
-
     @Override
     public Shape dibujarse() {
         Rectangle rect = new Rectangle();
@@ -44,6 +44,7 @@ public class Tierra extends Parcela {
         if (!tieneTorre()) {
             this.torre = torre;
         } else throw new ParcelaNoConstruible();
+        LOGGER.info("Construyendo " + torre.getClass().getSimpleName());
     }
 
     @Override

@@ -1,7 +1,11 @@
 package edu.fiuba.algo3.modelo;
 
-public class Jugador {
+import edu.fiuba.algo3.modelo.enemigos.Enemigo;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+public class Jugador {
+    private static final Logger LOGGER = LoggerFactory.getLogger(Jugador.class.getSimpleName());
     int vida;
     int creditos;
     String nombre;
@@ -32,6 +36,7 @@ public class Jugador {
 
     public void recibirCreditos(int creditos) {
         this.creditos += creditos;
+        LOGGER.info("Jugador recibe " + creditos + " créditos");
     }
 
     public void recibirDanio(int danio) { this.vida -= danio; }

@@ -2,8 +2,12 @@ package edu.fiuba.algo3.modelo.defensas;
 
 import edu.fiuba.algo3.modelo.Mapa;
 import edu.fiuba.algo3.modelo.parcelas.Parcela;
+import edu.fiuba.algo3.modelo.parcelas.Pasarela;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-public class Torre{
+public class Torre {
+    private static final Logger LOGGER = LoggerFactory.getLogger(Torre.class.getSimpleName());
     int costo;
     int turnosParaConstruirse;
     int danio;
@@ -62,6 +66,9 @@ public class Torre{
                 .filter(Parcela::tieneEnemigos)
                 .findAny()
                 .ifPresent(parcela -> parcela.recibirDanio(danio));
+        LOGGER.info("Torre atacando con danio " + danio + " y rango " + rango);
+
+//        mapa.atacarParcelaEnRango(fila, columna, rango, danio);
     }
 
     public boolean estaOperativa() {

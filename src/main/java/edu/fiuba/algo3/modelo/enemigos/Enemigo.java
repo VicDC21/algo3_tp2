@@ -3,7 +3,11 @@ package edu.fiuba.algo3.modelo.enemigos;
 import edu.fiuba.algo3.modelo.parcelas.Pasarela;
 import edu.fiuba.algo3.modelo.parcelas.PasarelaSalida;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public abstract class Enemigo {
+    private static final Logger LOGGER = LoggerFactory.getLogger(Enemigo.class.getSimpleName());
     protected int energia;
     protected int velocidad;
     protected int velocidadActual;
@@ -25,9 +29,7 @@ public abstract class Enemigo {
             pasarelaActual.moverEnemigoALaPasarelaSiguiente(this);
             pasarelaActual = pasarelaActual.obtenerPasarelaSiguiente();
         }
-        if (pasarelaActual.esLaDeLLegada()) {
-            causarDanio();
-        }
+        causarDanio();
     }
 
     public void causarDanio() {
@@ -38,6 +40,7 @@ public abstract class Enemigo {
         if (!this.estaMuerto()) {
             this.energia -= danio;
         }
+        LOGGER.info(this.getClass().getSimpleName() + " recibe daño: " + danio);
     }
 
     public boolean estaMuerto() {

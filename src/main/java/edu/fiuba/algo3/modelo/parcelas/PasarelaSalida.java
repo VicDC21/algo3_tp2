@@ -19,12 +19,6 @@ public class PasarelaSalida extends Pasarela {
         super(fila, columna, mapa);
     }
 
-    public PasarelaSalida(int fila, int columna, Mapa mapa, Pasarela pasarelaSiguiente) {
-        super(fila, columna, mapa, pasarelaSiguiente);
-        Hormiga hormiga = new Hormiga(1, 1, 1, "asd", this);
-        agregarEnemigo(hormiga);
-    }
-
     @Override
     public Shape dibujarse() {
         Shape shape = super.dibujarse();

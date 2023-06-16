@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo.parcelas;
 
+import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.Mapa;
 import edu.fiuba.algo3.modelo.defensas.Torre;
 import edu.fiuba.algo3.modelo.defensas.Trampa;
@@ -9,6 +10,8 @@ import edu.fiuba.algo3.modelo.excepciones.ParcelaNoConstruible;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +20,7 @@ import java.util.stream.Stream;
 
 public class Pasarela extends Parcela {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(Pasarela.class.getSimpleName());
     protected Pasarela pasarelaSiguiente;
     protected List<Enemigo> enemigos = new ArrayList<>();
     private List<Enemigo> arribos = new ArrayList<>();
@@ -67,19 +71,11 @@ public class Pasarela extends Parcela {
     }
 
     public int devolverCantidadDeCreditosGeneradosEnTurno() {
-        //for (Enemigo e: enemigos) {
-        //    System.out.println(e.estaMuerto());
-        //}
         return
                 enemigos.stream()
                         .filter(Enemigo::estaMuerto)
                         .mapToInt(Enemigo::otorgarCredito)
                         .sum();
-                //+
-                //arribos.stream()
-                //        .filter(Enemigo::estaMuerto)
-                //        .mapToInt(Enemigo::otorgarCredito)
-                //        .sum();
     }
 
     @Override
@@ -122,8 +118,9 @@ public class Pasarela extends Parcela {
     }
 
     public void recibirEnemigo(Enemigo enemigo) {
-//        this.enemigos.add(enemigo);
         this.arribos.add(enemigo);
+        LOGGER.info("Pasarela recibiendo enemigo " + enemigo.getClass().getSimpleName());
+
     }
 
     public void realizarDanioJugador(int danio) {}
@@ -148,5 +145,8 @@ public class Pasarela extends Parcela {
         for (Enemigo e : enemigos) {
             e.modificarVelocidadTierra(modificadorVelocidad);
         }
+    }
+
+    public void causarDanioAJugador(int danio) {
     }
 }
