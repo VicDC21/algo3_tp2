@@ -50,9 +50,13 @@ public class Torre {
     public void avanzarTurno(Mapa mapa, int fila, int columna) {
         if (estaOperativa()) {
             atacar(mapa, fila, columna);
+            return;
+        } else if (turnosParaConstruirse == 1) {
+            LOGGER.info("Torre terminó de construirse");
         } else {
-            turnosParaConstruirse--;
+            LOGGER.info("Torre a " + turnosParaConstruirse + " turnos de terminar su construcción");
         }
+        turnosParaConstruirse--;
     }
 
     public boolean esNull() {

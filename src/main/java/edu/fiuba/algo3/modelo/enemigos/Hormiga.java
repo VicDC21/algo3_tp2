@@ -1,8 +1,11 @@
 package edu.fiuba.algo3.modelo.enemigos;
 
 import edu.fiuba.algo3.modelo.parcelas.Pasarela;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class Hormiga extends Enemigo {
+    private static final Logger LOGGER = LoggerFactory.getLogger(Hormiga.class.getSimpleName());
     public static int hormigasMuertas = 0;
     private int creditos = 0;
 
@@ -18,7 +21,7 @@ public class Hormiga extends Enemigo {
     public void recibirDanio(int danio) {
         if (!this.estaMuerto()) {
             this.energia -= danio;
-
+            LOGGER.info("Hormiga recibe " + danio + " de daño");
             if (this.estaMuerto()) {
                 hormigasMuertas++;
                 if (hormigasMuertas <= 10) {
@@ -32,6 +35,7 @@ public class Hormiga extends Enemigo {
 
     @Override
     public int otorgarCredito() {
+        LOGGER.info("Hormiga otorga " + creditos + " créditos");
         return this.creditos;
     }
 

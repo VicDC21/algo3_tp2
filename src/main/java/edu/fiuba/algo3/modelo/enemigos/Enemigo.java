@@ -11,6 +11,7 @@ public abstract class Enemigo {
     protected int energia;
     protected int velocidad;
     protected int velocidadActual;
+
     protected int danio;
     protected String estado;
     protected Pasarela pasarelaActual;
@@ -25,7 +26,7 @@ public abstract class Enemigo {
     }
 
     public void avanzar() {
-        for (int i = 0; i < velocidad; i++) {
+        for (int i = 0; i < velocidadActual; i++) {
             pasarelaActual.moverEnemigoALaPasarelaSiguiente(this);
             pasarelaActual = pasarelaActual.obtenerPasarelaSiguiente();
         }

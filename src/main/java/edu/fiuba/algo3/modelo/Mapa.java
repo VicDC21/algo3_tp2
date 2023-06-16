@@ -105,7 +105,7 @@ public class Mapa {
 
     public void destruirPrimeraTorre() {
         if (!parcelasConTorre.isEmpty()) {
-            parcelasConTorre.remove(0).destruirConstuccion();
+            parcelasConTorre.remove(0).destruirConstuccion();       //Cambiar
         }
     }
 
