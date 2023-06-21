@@ -1,7 +1,9 @@
 package edu.fiuba.algo3.modelo.JavaFX;
 
+import javafx.scene.image.Image;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 
 public class PasarelaPane extends StackPane {
@@ -13,7 +15,7 @@ public class PasarelaPane extends StackPane {
         Rectangle rect = new Rectangle();
         rect.widthProperty().bind(this.widthProperty());
         rect.heightProperty().bind(this.heightProperty());
-        rect.setFill(Color.GRAY);
+        rect.setFill(new ImagePattern(new Image("pasarela.jpg")));
 
         this.getChildren().add(rect);
     }
