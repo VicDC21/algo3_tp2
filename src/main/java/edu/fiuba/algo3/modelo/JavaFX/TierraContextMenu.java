@@ -3,9 +3,9 @@ package edu.fiuba.algo3.modelo.JavaFX;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.MenuItem;
 
-public class TileContextMenu extends ContextMenu {
+public class TierraContextMenu extends ContextMenu {
 
-    public TileContextMenu() {
+    public TierraContextMenu() {
         MenuItem opcion1 = new MenuItem("Construir Torre");
         opcion1.setOnAction(event -> {
             System.out.println("Se coloco Torre "); //falta implementacion real
@@ -17,4 +17,5 @@ public class TileContextMenu extends ContextMenu {
         });
         this.getItems().addAll(opcion1, opcion2);
     }
+
 }
