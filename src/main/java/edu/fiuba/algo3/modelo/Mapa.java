@@ -3,6 +3,7 @@ package edu.fiuba.algo3.modelo;
 import edu.fiuba.algo3.modelo.defensas.Torre;
 import edu.fiuba.algo3.modelo.enemigos.Enemigo;
 import edu.fiuba.algo3.modelo.parcelas.*;
+import javafx.scene.layout.Pane;
 import javafx.scene.shape.Shape;
 
 import java.util.ArrayList;
@@ -109,11 +110,11 @@ public class Mapa {
         }
     }
 
-    public List<Shape> getTiles() {
-        List<Shape> shapes = new ArrayList<>();
+    public List<Pane> getTiles(int width, int height) {
+        List<Pane> panes = new ArrayList<>();
         for (Parcela p : parcelas) {
-            shapes.add(p.dibujarse());
+            panes.add(p.dibujarse(width, height));
         }
-        return shapes;
+        return panes;
     }
 }

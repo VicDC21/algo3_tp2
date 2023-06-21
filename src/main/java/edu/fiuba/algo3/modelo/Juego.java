@@ -9,6 +9,7 @@ import java.util.Scanner;
 
 import javax.security.auth.login.LoginException;
 
+import javafx.scene.layout.Pane;
 import javafx.scene.shape.Shape;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -108,7 +109,7 @@ public class Juego {
         }
         return "En juego";
     }
-    public List<Shape> getTiles() {
-        return mapa.getTiles();
+    public List<Pane> getTiles(int width, int height) {
+        return mapa.getTiles(width, height);
     }
 }

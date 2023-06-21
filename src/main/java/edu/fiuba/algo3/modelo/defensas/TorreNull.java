@@ -1,5 +1,9 @@
 package edu.fiuba.algo3.modelo.defensas;
 
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.StackPane;
+
 public class TorreNull extends Torre{
 
     public TorreNull() {
@@ -9,4 +13,8 @@ public class TorreNull extends Torre{
     public boolean esNull() {
         return true;
     }
+
+//    @Override
+//    public void dibujarse(StackPane pane) {
+//    }
 }

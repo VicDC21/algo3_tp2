@@ -1,9 +1,12 @@
 package edu.fiuba.algo3;
 
+import javafx.geometry.Rectangle2D;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
+import javafx.stage.Screen;
 import javafx.stage.StageStyle;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,6 +32,8 @@ import java.util.List;
 public class App extends Application {
 
     private static final Logger logger = LoggerFactory.getLogger(App.class);
+    private static final float CENTER_ON_SCREEN_X_FRACTION = 1.0f / 2;
+    private static final float CENTER_ON_SCREEN_Y_FRACTION = 1.0f / 3;
 
 
     @Override
@@ -46,8 +51,8 @@ public class App extends Application {
         button.minWidth(50);
         button.setOnAction(e -> {
 
-            double tileHeight = 32;
-            double tileWidth = 42;
+            int tileHeight = 64;
+            int tileWidth = 84;
             double tilesPerRow = 15;
             double tilesPerColumn = 15;
 
@@ -61,41 +66,27 @@ public class App extends Application {
             
             FlowPane mapGrid = new FlowPane();
 
-            List<Shape> tiles = juego.getTiles(); // map.getTiles(), for each parcela -> parcela.draw(); que devuelve un Rectangle del color apropiado.
+            List<Pane> tiles = juego.getTiles(tileWidth, tileHeight); // map.getTiles(), for each parcela -> parcela.draw(); que devuelve un Rectangle del color apropiado.
 
-            for (Shape tile : tiles) {
-                Rectangle rectangle = ((Rectangle) tile);
-                rectangle.setWidth(tileWidth);
-                rectangle.setHeight(tileHeight);
-                rectangle.setOnMouseClicked(event -> handleTileClick(event));
+            for (Pane tile : tiles) {
+//                rectangle.setWidth(tileWidth);
+//                rectangle.setHeight(tileHeight);
+                tile.setOnMouseClicked(event -> handleTileClick(event));
 
         //        if (rectangle = Tierra ) { 
-                    ContextMenu contextMenu = createContextMenu(rectangle);
-                    rectangle.setOnContextMenuRequested(event -> contextMenu.show(rectangle, event.getScreenX(), event.getScreenY()));
+                    ContextMenu contextMenu = createContextMenu();
+                tile.setOnContextMenuRequested(event -> contextMenu.show(tile, event.getScreenX(), event.getScreenY()));
           //      }
 
-                mapGrid.getChildren().add(rectangle);
+                mapGrid.getChildren().add(tile);
             }
 
            // HBox layoutJuego = new HBox(mapGrid);
             
             Scene mapScene = new Scene(mapGrid, tilesPerRow * tileWidth, tilesPerColumn * tileHeight);
             stage.setScene(mapScene);
+            centerStageOnScreen(stage);
             System.out.println(mapGrid.getChildren());
-
-//            mapScene.widthProperty().addListener(new ChangeListener<Number>() {
-//                @Override
-//                public void changed(ObservableValue<? extends Number> observableValue, Number oldSceneWidth, Number newSceneWidth) {
-//                    mapGrid.getChildren().forEach(r -> ((Rectangle) r).setWidth((Double) newSceneWidth / tilesPerRow));
-//                }
-//            });
-//            mapScene.heightProperty().addListener(new ChangeListener<Number>() {
-//                @Override
-//                public void changed(ObservableValue<? extends Number> observableValue, Number oldSceneHeight, Number newSceneHeight) {
-//                    mapGrid.getChildren().forEach(r -> ((Rectangle) r).setHeight((Double) newSceneHeight / tilesPerColumn));
-//                }
-//            });
-
         });
 
         Image image = new Image("algoDefense.png");
@@ -113,7 +104,18 @@ public class App extends Application {
         stage.show();
     }
 
-    private ContextMenu createContextMenu(Rectangle rectangle) {
+    private void centerStageOnScreen(Stage stage) {
+
+        Rectangle2D bounds = Screen.getPrimary().getVisualBounds();
+        double centerX = bounds.getMinX() + (bounds.getWidth() - stage.getWidth())
+                * CENTER_ON_SCREEN_X_FRACTION;
+        double centerY = bounds.getMinY() + (bounds.getHeight() - stage.getHeight())
+                * CENTER_ON_SCREEN_Y_FRACTION;
+        stage.setX(centerX);
+        stage.setY(centerY);
+    }
+
+    private ContextMenu createContextMenu() {
         MenuItem opcion1 = new MenuItem("Construir Torre");
         opcion1.setOnAction(event -> {
             System.out.println("Se coloco Torre "); //falta implementacion real

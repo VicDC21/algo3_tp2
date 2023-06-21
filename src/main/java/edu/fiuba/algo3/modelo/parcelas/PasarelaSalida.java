@@ -4,6 +4,8 @@ import edu.fiuba.algo3.modelo.Mapa;
 import edu.fiuba.algo3.modelo.defensas.Trampa;
 import edu.fiuba.algo3.modelo.enemigos.Enemigo;
 import edu.fiuba.algo3.modelo.enemigos.Hormiga;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
@@ -20,10 +22,12 @@ public class PasarelaSalida extends Pasarela {
     }
 
     @Override
-    public Shape dibujarse() {
-        Shape shape = super.dibujarse();
-        shape.setFill(Color.BLACK);
-        return shape;
+    public Pane dibujarse(int width, int height) {
+        Rectangle rect = new Rectangle(width, height);
+        rect.setFill(Color.BLACK);
+        StackPane pane = new StackPane();
+        pane.getChildren().add(rect);
+        return pane;
     }
 
     public void agregarEnemigo(Enemigo enemigo) {
