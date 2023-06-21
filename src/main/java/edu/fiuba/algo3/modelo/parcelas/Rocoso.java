@@ -1,14 +1,11 @@
 package edu.fiuba.algo3.modelo.parcelas;
 
+import edu.fiuba.algo3.modelo.JavaFX.RocosoPane;
 import edu.fiuba.algo3.modelo.Mapa;
 import edu.fiuba.algo3.modelo.defensas.Torre;
 import edu.fiuba.algo3.modelo.defensas.Trampa;
 import edu.fiuba.algo3.modelo.excepciones.ParcelaNoConstruible;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
-import javafx.scene.shape.Shape;
 
 public class Rocoso extends Parcela {
 
@@ -18,11 +15,7 @@ public class Rocoso extends Parcela {
 
     @Override
     public Pane dibujarse(int width, int height) {
-        Rectangle rect = new Rectangle(width, height);
-        rect.setFill(Color.SANDYBROWN);
-        StackPane pane = new StackPane();
-        pane.getChildren().add(rect);
-        return pane;
+        return new RocosoPane(width, height);
     }
 
     @Override

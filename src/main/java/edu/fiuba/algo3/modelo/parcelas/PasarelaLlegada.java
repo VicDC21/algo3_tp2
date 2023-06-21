@@ -1,14 +1,11 @@
 package edu.fiuba.algo3.modelo.parcelas;
 
+import edu.fiuba.algo3.modelo.JavaFX.PasarelaLlegadaPane;
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.Mapa;
 import edu.fiuba.algo3.modelo.defensas.Trampa;
 import edu.fiuba.algo3.modelo.enemigos.Enemigo;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
-import javafx.scene.shape.Shape;
 
 public class PasarelaLlegada extends Pasarela {
 
@@ -20,11 +17,7 @@ public class PasarelaLlegada extends Pasarela {
 
     @Override
     public Pane dibujarse(int width, int height) {
-        Rectangle rect = new Rectangle(width, height);
-        rect.setFill(Color.GOLD);
-        StackPane pane = new StackPane();
-        pane.getChildren().add(rect);
-        return pane;
+        return new PasarelaLlegadaPane(width, height);
     }
 
     @Override

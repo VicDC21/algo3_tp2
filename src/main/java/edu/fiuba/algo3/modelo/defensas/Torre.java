@@ -3,8 +3,10 @@ package edu.fiuba.algo3.modelo.defensas;
 import edu.fiuba.algo3.modelo.Mapa;
 import edu.fiuba.algo3.modelo.parcelas.Parcela;
 import edu.fiuba.algo3.modelo.parcelas.Pasarela;
+import javafx.beans.property.ReadOnlyDoubleProperty;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -82,14 +84,10 @@ public class Torre {
         return turnosParaConstruirse <= 0;
     }
 
-    public void dibujarse(StackPane pane) {
-        Image image = new Image("tower.png", pane.getWidth(), pane.getHeight(), true, false);
-        ImageView view = new ImageView(image);
-//        view.maxWidth(pane.getMaxWidth());
-//        view.maxHeight(pane.getHeight());
-        double height = pane.getMaxHeight();
-        view.setFitHeight(pane.getMaxHeight());
-        view.setFitWidth(pane.getMaxWidth());
+    public void dibujarse(Pane pane) {
+        ImageView view = new ImageView("tower.png");
+        view.fitWidthProperty().bind(pane.widthProperty());
+        view.fitHeightProperty().bind(pane.heightProperty());
         view.setPreserveRatio(true);
         pane.getChildren().add(view);
     }

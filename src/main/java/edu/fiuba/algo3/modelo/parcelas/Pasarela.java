@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.modelo.parcelas;
 
-import edu.fiuba.algo3.modelo.Jugador;
+import edu.fiuba.algo3.modelo.JavaFX.PasarelaPane;
 import edu.fiuba.algo3.modelo.Mapa;
 import edu.fiuba.algo3.modelo.defensas.Torre;
 import edu.fiuba.algo3.modelo.defensas.Trampa;
@@ -8,10 +8,6 @@ import edu.fiuba.algo3.modelo.defensas.TrampaNull;
 import edu.fiuba.algo3.modelo.enemigos.Enemigo;
 import edu.fiuba.algo3.modelo.excepciones.ParcelaNoConstruible;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
-import javafx.scene.shape.Shape;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -38,11 +34,7 @@ public class Pasarela extends Parcela {
 
     @Override
     public Pane dibujarse(int width, int height) {
-        Rectangle rect = new Rectangle(width, height);
-        rect.setFill(Color.GRAY);
-        StackPane pane = new StackPane();
-        pane.getChildren().add(rect);
-        return pane;
+        return new PasarelaPane(width, height);
     }
     @Override
     public boolean tieneEnemigos() {
