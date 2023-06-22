@@ -28,14 +28,13 @@ public class Vista extends Application {
     }
 
     public void start(Stage stage) throws Exception {
-        this.juego= new Juego();
         stage.setTitle("AlgoTorres - v.0.0.1");
 
         TextField texto = new TextField();
         texto.setPromptText("Ingrese su nombre");
 
         Label etiqueta = new Label();
-        etiqueta.setText(juego.leerNombre());
+        etiqueta.setText(texto.getText());
 
         Button botonEnviar = new Button();
         botonEnviar.setText("Enviar");
