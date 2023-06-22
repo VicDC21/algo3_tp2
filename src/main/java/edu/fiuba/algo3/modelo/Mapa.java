@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.defensas.Torre;
+import edu.fiuba.algo3.modelo.defensas.Trampa;
 import edu.fiuba.algo3.modelo.enemigos.Enemigo;
 import edu.fiuba.algo3.modelo.parcelas.*;
 import javafx.scene.layout.Pane;
@@ -16,12 +17,16 @@ public class Mapa {
     Turno turno = new Turno();
     List<Parcela> parcelasConTorre = new ArrayList<>();
 
-    public void construir(Torre torre, int numeroParcela) {
+    public void construirTorre(Torre torre, int numeroParcela) {
         parcelas.get(numeroParcela).construirTorre(torre);
     }
 
-    public void construir(Torre torre, int fila, int columna) {
+    public void construirTorre(Torre torre, int fila, int columna) {
         obtenerParcela(fila, columna).construirTorre(torre);
+    }
+
+    public void construirTrampa(Trampa trampa, int fila, int columna) {
+        obtenerParcela(fila,columna).construirTrampa(trampa);
     }
 
     public boolean tieneEnemigos() {

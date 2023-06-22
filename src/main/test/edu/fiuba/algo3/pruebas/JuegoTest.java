@@ -51,7 +51,7 @@ public class JuegoTest {
         Jugador jugador = new Jugador("Prueba", 10, 100, constructor);
         Juego juego = new Juego(jugador, mapaParseado);
 
-        jugador.construir("torreBlanca", 1, 2);
+        jugador.construirTorre("torreBlanca", 1, 2);
 
         assertEquals(1, mapaParseado.cantidadDeEnemigos());
         juego.avanzarTurno();
@@ -85,9 +85,9 @@ public class JuegoTest {
     public void simulaYVerificaQueElJugadorGanaLaPartida() throws InvalidMap {
         Juego juego = new Juego("src/main/resources/mapa.json", "src/main/resources/enemigosUno.json");
 
-        juego.construir("torrePlateada", 60);
-        juego.construir("torrePlateada", 75);
-        juego.construir("torrePlateada", 90);
+        juego.construirTorre("torrePlateada", 60);
+        juego.construirTorre("torrePlateada", 75);
+        juego.construirTorre("torrePlateada", 90);
 
         juego.jugar();
 
@@ -98,9 +98,9 @@ public class JuegoTest {
     public void simulaYVerificaQueElJugadorPierdeLaPartida() throws InvalidMap {
         Juego juego = new Juego("src/main/resources/mapa.json", "src/main/resources/enemigos.json");
 
-        juego.construir("torrePlateada", 60);
-        juego.construir("torrePlateada", 75);
-        juego.construir("torrePlateada", 90);
+        juego.construirTorre("torrePlateada", 60);
+        juego.construirTorre("torrePlateada", 75);
+        juego.construirTorre("torrePlateada", 90);
 
         juego.jugar();
 

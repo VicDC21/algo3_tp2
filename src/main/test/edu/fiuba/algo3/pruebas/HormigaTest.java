@@ -38,14 +38,14 @@ public class HormigaTest {
         Constructor constructor = new Constructor(mapaParseado);
         Jugador jugador = new Jugador("Prueba", 10, 100, constructor);
 
-        jugador.construir("torreBlanca", 15);
-        jugador.construir("torreBlanca", 110);
-        jugador.construir("torreBlanca", 30);
-        jugador.construir("torreBlanca", 108);
-        jugador.construir("torreBlanca", 60);
-        jugador.construir("torreBlanca", 90);
-        jugador.construir("torreBlanca", 107);
-        jugador.construir("torreBlanca", 112);
+        jugador.construirTorre("torreBlanca", 15);
+        jugador.construirTorre("torreBlanca", 110);
+        jugador.construirTorre("torreBlanca", 30);
+        jugador.construirTorre("torreBlanca", 108);
+        jugador.construirTorre("torreBlanca", 60);
+        jugador.construirTorre("torreBlanca", 90);
+        jugador.construirTorre("torreBlanca", 107);
+        jugador.construirTorre("torreBlanca", 112);
         mapaParseado.avanzarTurno();
         
         mapaParseado.cargarEnemigos(PackEnemigos);
@@ -57,7 +57,7 @@ public class HormigaTest {
             mapaParseado.removerMuertos();  
         }
         
-        assertEquals(110, jugador.mostrarCreditos());
+        assertEquals(30, jugador.mostrarCreditos());
         assertFalse(mapaParseado.tieneEnemigos()); //muestra que todos murieron
         assertEquals(10, jugador.mostrarVida()); //  y ninguno llego al jugador
     }
@@ -85,14 +85,14 @@ public class HormigaTest {
         Constructor constructor = new Constructor(mapaParseado);
         Jugador jugador = new Jugador("Prueba", 10, 100, constructor);
 
-        jugador.construir("torreBlanca", 15);
-        jugador.construir("torreBlanca", 110);
-        jugador.construir("torreBlanca", 30);
-        jugador.construir("torreBlanca", 108);
-        jugador.construir("torreBlanca", 60);
-        jugador.construir("torreBlanca", 90); //Puse torres de sobra se pueden sacar
-        jugador.construir("torreBlanca", 107);
-        jugador.construir("torreBlanca", 112);
+        jugador.construirTorre("torreBlanca", 15);
+        jugador.construirTorre("torreBlanca", 110);
+        jugador.construirTorre("torreBlanca", 30);
+        jugador.construirTorre("torreBlanca", 108);
+        jugador.construirTorre("torreBlanca", 60);
+        jugador.construirTorre("torreBlanca", 90); //Puse torres de sobra se pueden sacar
+        jugador.construirTorre("torreBlanca", 107);
+        jugador.construirTorre("torreBlanca", 112);
         mapaParseado.avanzarTurno();
         
         mapaParseado.cargarEnemigos(PackEnemigos);
@@ -103,6 +103,6 @@ public class HormigaTest {
             jugador.recibirCreditos(mapaParseado.creditosGeneradosEnTurno());
             mapaParseado.removerMuertos();  
         }
-        assertEquals(112, jugador.mostrarCreditos());
+        assertEquals(32, jugador.mostrarCreditos());
     }
 }

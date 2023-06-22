@@ -116,7 +116,7 @@ public class Pasarela extends Parcela {
 
     public void recibirEnemigo(Enemigo enemigo) {
         this.arribos.add(enemigo);
-        LOGGER.info("Pasarela recibiendo enemigo " + enemigo.getClass().getSimpleName());
+        LOGGER.info("Pasarela "+ this.fila+ " " + this.columna +" recibiendo enemigo " + enemigo.getClass().getSimpleName());
 
     }
 
@@ -133,6 +133,7 @@ public class Pasarela extends Parcela {
     public void modificarVelocidad(double modificadorVelocidad) {
         for (Enemigo e : enemigos) {
             e.modificarVelocidadTierra(modificadorVelocidad);
+            LOGGER.info("Reducida la velocidad del enemigo " + e.getClass().getSimpleName());
         }
     }
 

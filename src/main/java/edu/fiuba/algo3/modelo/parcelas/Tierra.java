@@ -13,15 +13,18 @@ import org.slf4j.LoggerFactory;
 public class Tierra extends Parcela {
     private static final Logger LOGGER = LoggerFactory.getLogger(Tierra.class.getSimpleName());
     Torre torre = new TorreNull();
+
     public Tierra(int fila, int columna, Mapa mapa) {
         super(fila, columna, mapa);
     }
+
     @Override
     public Pane dibujarse(int width, int height) {
         Pane pane = new TierraPane(width, height);
         torre.dibujarse(pane);
         return pane;
     }
+
     private boolean tieneTorre() {
         return !(torre.esNull());
     }
