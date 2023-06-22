@@ -33,9 +33,11 @@ public class LayoutJuego extends BorderPane {
         barDefensas.setAlignment(Pos.CENTER);
     }
     public void show() {
+        Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
         this.setCenter(mapa);
         this.setBottom(barDefensas);
         stage.setScene(new Scene(this));
+        stage.setResizable(true);
         centerOnScreen(stage);
     }
     private void centerOnScreen(Stage stage) {
