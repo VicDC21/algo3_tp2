@@ -17,23 +17,25 @@ public class BarPane extends HBox {
                 CornerRadii.EMPTY,
                 Insets.EMPTY)));
 
-        ImageView imageView1 = new ImageView("tower.png");
-        imageView1.setFitHeight(tileHeight);
-        imageView1.setFitWidth(tileWidth);
-        imageView1.setPreserveRatio(true);
+        ImageView TorreBlanca = new ImageView("tower.png");
+        TorreBlanca.setFitHeight(tileHeight);
+        TorreBlanca.setFitWidth(tileWidth);
+        TorreBlanca.setPreserveRatio(true);
+        TorreBlanca.setOnMouseClicked(new DefensaElegidaEventHandler(TorreBlanca));
 
+        ImageView TorrePlateada = new ImageView("tower.png");
+        TorrePlateada.setFitHeight(tileHeight);
+        TorrePlateada.setFitWidth(tileWidth);
+        TorrePlateada.setPreserveRatio(true);
+        TorrePlateada.setOnMouseClicked(new DefensaElegidaEventHandler(TorrePlateada));
 
-        ImageView imageView2 = new ImageView("tower.png");
-        imageView2.setFitHeight(tileHeight);
-        imageView2.setFitWidth(tileWidth);
-        imageView2.setPreserveRatio(true);
+        ImageView Trampa = new ImageView("tower.png");
+        Trampa.setFitHeight(tileHeight);
+        Trampa.setFitWidth(tileWidth);
+        Trampa.setPreserveRatio(true);
+        Trampa.setOnMouseClicked(new DefensaElegidaEventHandler(Trampa));
 
-        ImageView imageView3 = new ImageView("tower.png");
-        imageView3.setFitHeight(tileHeight);
-        imageView3.setFitWidth(tileWidth);
-        imageView3.setPreserveRatio(true);
-
-        this.getChildren().addAll(imageView1, imageView2, imageView3);
+        this.getChildren().addAll(TorreBlanca, TorrePlateada, Trampa);
         this.setSpacing(60);
     }
 }
