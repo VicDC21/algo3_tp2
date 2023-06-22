@@ -1,21 +1,18 @@
 package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.excepciones.InvalidMap;
-import edu.fiuba.algo3.modelo.parsers.EnemigosParser;
-import edu.fiuba.algo3.modelo.parsers.MapaParser;
 
 import java.util.List;
 import java.util.Scanner;
 
-import javax.security.auth.login.LoginException;
 
+import edu.fiuba.algo3.modelo.parsers.ObtenedorDeEnemigos;
+import edu.fiuba.algo3.modelo.parsers.ObtenedorDeMapa;
 import javafx.scene.layout.Pane;
-import javafx.scene.shape.Shape;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import edu.fiuba.algo3.App;
-import edu.fiuba.algo3.modelo.JavaFX.Vista;
 
 public class Juego {
     Jugador jugador;
@@ -29,26 +26,26 @@ public class Juego {
     }
 
     public Juego(String path) throws InvalidMap {
-        MapaParser parser = new MapaParser();
-        mapa = parser.parseMapa(path);
+        ObtenedorDeMapa obtenedorDeMapa = new ObtenedorDeMapa();
+        mapa = obtenedorDeMapa.obtenerMapa(path);
         jugador = new Jugador("test", 20, 100, new Constructor(mapa));
     }
 
     public Juego(String pathMapa, String pathEnemigos) throws InvalidMap {
-        MapaParser parserMapa = new MapaParser();
-        EnemigosParser parserEnemigos = new EnemigosParser();
-        mapa = parserMapa.parseMapa(pathMapa);
-        mapa.cargarEnemigos(parserEnemigos.parseEnemigos(pathEnemigos));
+        ObtenedorDeMapa obtenedorDeMapa = new ObtenedorDeMapa();
+        ObtenedorDeEnemigos obtenedorDeEnemigos = new ObtenedorDeEnemigos();
+        mapa = obtenedorDeMapa.obtenerMapa(pathMapa);
+        mapa.cargarEnemigos(obtenedorDeEnemigos.obtenerEnemigos(pathEnemigos));
         jugador = new Jugador("test", 20, 100, new Constructor(mapa));
         mapa.setJugador(jugador);       // Esto hay que sacarlo
         logger.info("Juego Iniciado"); 
     }
 
     public Juego(String pathMapa, String pathEnemigos, String nombre) throws InvalidMap {
-        MapaParser parserMapa = new MapaParser();
-        EnemigosParser parserEnemigos = new EnemigosParser();
-        mapa = parserMapa.parseMapa(pathMapa);
-        mapa.cargarEnemigos(parserEnemigos.parseEnemigos(pathEnemigos));
+        ObtenedorDeMapa obtenedorDeMapa = new ObtenedorDeMapa();
+        ObtenedorDeEnemigos obtenedorDeEnemigos = new ObtenedorDeEnemigos();
+        mapa = obtenedorDeMapa.obtenerMapa(pathMapa);
+        mapa.cargarEnemigos(obtenedorDeEnemigos.obtenerEnemigos(pathEnemigos));
         jugador = new Jugador(nombre, 20, 100, new Constructor(mapa));
         mapa.setJugador(jugador);    // Esto hay que sacarlo
         logger.info("Juego Iniciado");   
