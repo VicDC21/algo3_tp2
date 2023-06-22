@@ -24,7 +24,7 @@ public abstract class Enemigo {
         this.estado = estado;
         this.pasarelaActual = pasarelaActual;
     }
-
+/*
     public void avanzar() {
         for (int i = 0; i < velocidadActual; i++) {
             pasarelaActual.moverEnemigoALaPasarelaSiguiente(this);
@@ -32,6 +32,18 @@ public abstract class Enemigo {
         }
         causarDanio();
     }
+*/
+
+    public void avanzar() {
+        Pasarela pasarelaAMover = pasarelaActual;
+        for (int i = 0; i < velocidadActual; i++) {
+            pasarelaAMover = pasarelaAMover.obtenerPasarelaSiguiente();
+        }
+        pasarelaAMover.recibirEnemigo(this);
+        pasarelaActual = pasarelaAMover;
+        causarDanio();
+    }
+
 
     public void causarDanio() {
         pasarelaActual.causarDanioJugador(danio);
