@@ -4,6 +4,7 @@ import edu.fiuba.algo3.modelo.JavaFX.PasarelaSalidaPane;
 import edu.fiuba.algo3.modelo.Mapa;
 import edu.fiuba.algo3.modelo.defensas.Trampa;
 import edu.fiuba.algo3.modelo.enemigos.Enemigo;
+import edu.fiuba.algo3.modelo.excepciones.ParcelaNoConstruible;
 import javafx.scene.layout.Pane;
 
 
@@ -52,5 +53,5 @@ public class PasarelaSalida extends Pasarela {
     }
 
     @Override
-    public void construirTrampa(Trampa trampa) {}
+    public void construirTrampa(Trampa trampa) { throw new ParcelaNoConstruible(); }
 }

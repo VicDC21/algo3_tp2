@@ -51,12 +51,16 @@ public class Juego {
         logger.info("Juego Iniciado");   
     }
 
-    public void construir(String construible, int numeroParcela) {
-        jugador.construir(construible, numeroParcela);
+    public void construirTorre(String nombreTorre, int numeroParcela) {
+        jugador.construirTorre(nombreTorre, numeroParcela);
     }
 
-    public void construir(String construible, int fila, int columna) {
-        jugador.construir(construible, fila, columna);
+    public void construirTorre(String nombreTorre, int fila, int columna) {
+        jugador.construirTorre(nombreTorre, fila, columna);
+    }
+
+    public void construirTrampa(String nombreTrampa, int fila, int columna) {
+        jugador.construirTrampa(nombreTrampa, fila, columna);
     }
 
     public Juego(Jugador jugador, Mapa mapa) {

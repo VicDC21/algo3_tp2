@@ -35,7 +35,7 @@ public class Torre {
         return this.rango;
     }
 
-    protected int getCosto() {
+    public int getCosto() {
         return this.costo;
     }
 

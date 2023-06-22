@@ -15,7 +15,9 @@ public class Jugador {
         this.creditos = cantidadDeCreditos;
         this.vida = cantidadDeVida;
         this.constructor = constructor;
+        constructor.setJugador(this);
     }
+
     public int mostrarVida() {
         return this.vida;
     }
@@ -24,12 +26,18 @@ public class Jugador {
         return this.creditos;
     }
 
-    public void construir(String construible, int numeroParcela) {
-        constructor.construir(construible, this.creditos, numeroParcela);
+    public void construirTorre(String nombreTorre, int numeroParcela) {
+        constructor.construirTorre(nombreTorre, this.creditos, numeroParcela);
     }
-    public void construir(String construible, int fila, int columna) {
-        constructor.construir(construible, this.creditos, fila, columna);
+
+    public void construirTorre(String nombreTorre, int fila, int columna) {
+        constructor.construirTorre(nombreTorre, this.creditos, fila, columna);
     }
+
+    public void construirTrampa(String nombreTrampa, int fila, int columna) {
+        constructor.construirTrampa(nombreTrampa, this.creditos, fila, columna);
+    }
+
     public boolean estaVivo() {
         return this.vida > 0;
     }
@@ -40,4 +48,8 @@ public class Jugador {
     }
 
     public void recibirDanio(int danio) { this.vida -= danio; }
+
+    public void gastarCreditos(int costo) {
+        creditos -= costo;
+    }
 }

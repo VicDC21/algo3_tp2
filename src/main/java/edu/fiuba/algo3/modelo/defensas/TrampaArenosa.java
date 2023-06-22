@@ -10,4 +10,5 @@ public class TrampaArenosa extends Trampa {
     public void aplicarEfecto(){
         this.pasarelaConstruida.modificarVelocidad(modificadorVelocidad);
     }
+
 }

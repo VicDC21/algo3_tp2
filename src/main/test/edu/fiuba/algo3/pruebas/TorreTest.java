@@ -59,7 +59,7 @@ public class TorreTest {
     public void defensasAtacanEnRangoEsperado() throws InvalidMap {     //Hay que modificar este test.
         Juego juego = new Juego("src/main/resources/mapa.json", "src/main/resources/enemigosUno.json");
 
-        juego.construir("torrePlateada", 1, 3);
+        juego.construirTorre("torrePlateada", 1, 3);
 
         assertEquals(1, juego.cantidadDeEnemigos());
 
@@ -74,7 +74,7 @@ public class TorreTest {
     public void defensasNoAtacanFueraRangoEsperado() throws InvalidMap {
         Juego juego = new Juego("src/main/resources/mapa.json", "src/main/resources/enemigosUno.json");
 
-        juego.construir("torrePlateada", 12, 12);
+        juego.construirTorre("torrePlateada", 12, 12);
 
         assertEquals(1, juego.cantidadDeEnemigos());
 
