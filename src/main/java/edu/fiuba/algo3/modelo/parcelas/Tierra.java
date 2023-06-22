@@ -25,11 +25,6 @@ public class Tierra extends Parcela {
         return pane;
     }
 
-    private boolean tieneTorre() {
-        return !(torre.esNull());
-    }
-
-
     @Override
     public boolean tieneEnemigos() {
         return false;
