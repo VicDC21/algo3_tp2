@@ -10,6 +10,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class LayoutBienvenida extends VBox {
@@ -26,9 +27,8 @@ public class LayoutBienvenida extends VBox {
         textField.setAlignment(Pos.CENTER);
         textField.setMaxHeight(50);
         textField.setMaxWidth(300);
-
-        String backgroundText = "Ingrese su nombre";
-        textField.setText(backgroundText);
+        textField.setPromptText("Ingrese su nombre");
+        textField.setFocusTraversable(false);
 
         Button button = new Button("Empezar partida!");
         button.minWidth(50);
@@ -36,18 +36,6 @@ public class LayoutBienvenida extends VBox {
 
         Image image = new Image("algoDefense.png");
         ImageView imageView = new ImageView(image);
-
-        textField.setOnMouseClicked(event -> {
-            if (textField.getText().equals(backgroundText)) {
-                textField.clear();
-            }
-        });
-
-        textField.setOnKeyTyped(event -> {
-            if (textField.getText().isEmpty()) {
-                textField.setText(backgroundText);
-            }
-        });
 
         this.getChildren().addAll(imageView, textField, button);
         this.setSpacing(20);

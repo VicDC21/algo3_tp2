@@ -19,10 +19,6 @@ public class Vista extends Application {
     public Vista(){
     }
 
-    public Vista (Juego juego){
-        this.juego = juego;
-    }
-
     public static void main(String[] args) {
         launch(args);
     }

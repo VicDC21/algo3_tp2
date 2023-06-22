@@ -17,30 +17,27 @@ import java.util.stream.Collectors;
 public class MapaParser {
 
     boolean isFirst = true;
-    int lastFila;
-    int lastColumna;
+    int lastFila, lastColumna;
 
     public Mapa parseMapa(String path) throws InvalidMap {
         Mapa mapa = new Mapa();
         JSONObject jsonObject;
         try {
-            jsonObject = new JSONObject(FileUtils.readFileToString(new File(path)));
+            jsonObject = (new JSONObject(FileUtils.readFileToString(new File(path)))).getJSONObject("Mapa");
         } catch (IOException | JSONException e) {
             throw new InvalidMap();
         }
-        JSONObject mapaJson = jsonObject.getJSONObject("Mapa");
 
-        List<Integer> intList =
-                mapaJson.keySet()
-                        .stream()
-                        .map(Integer::parseInt)
-                        .sorted()
-                        .collect(Collectors.toList());
+        List<Integer> intList = jsonObject.keySet()
+                                .stream()
+                                .map(Integer::parseInt)
+                                .sorted()
+                                .collect(Collectors.toList());
 
         List<Parcela> lista = new ArrayList<>();
         for (Integer num : intList) {
             try {
-                lista.addAll(parseParcelas(num, mapaJson.getJSONArray(num.toString()), mapa));
+                lista.addAll(parseParcelas(num, jsonObject.getJSONArray(num.toString()), mapa));
             } catch (RuntimeException | InstantiationException | IllegalAccessException | NoSuchMethodException |
                      InvocationTargetException e) {
                 return null;
