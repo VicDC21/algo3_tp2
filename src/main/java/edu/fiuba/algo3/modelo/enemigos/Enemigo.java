@@ -34,7 +34,7 @@ public abstract class Enemigo {
     }
 
     public void causarDanio() {
-        pasarelaActual.realizarDanioJugador(danio);
+        pasarelaActual.causarDanioJugador(danio);
     }
 
     public void recibirDanio(int danio) {

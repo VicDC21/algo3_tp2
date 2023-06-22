@@ -116,23 +116,15 @@ public class Pasarela extends Parcela {
 
     public void recibirEnemigo(Enemigo enemigo) {
         this.arribos.add(enemigo);
-        LOGGER.info("Pasarela recibiendo enemigo " + enemigo.getClass().getSimpleName());
+        LOGGER.info("Pasarela "+ this.fila+ " " + this.columna +" recibiendo enemigo " + enemigo.getClass().getSimpleName());
 
     }
 
-    public void realizarDanioJugador(int danio) {}
+    public void causarDanioJugador(int danio) {}
 
-    public void moverEnemigoALaPasarelaSiguiente(Enemigo enemigo) {
-        pasarelaSiguiente.recibirEnemigo(enemigo);
-    }
+    public void moverEnemigoALaPasarelaSiguiente(Enemigo enemigo) { pasarelaSiguiente.recibirEnemigo(enemigo); }
 
-    public Pasarela obtenerPasarelaSiguiente() {
-        return pasarelaSiguiente;
-    }
-
-    public boolean esLaDeLLegada() {
-        return false;
-    }
+    public Pasarela obtenerPasarelaSiguiente() { return pasarelaSiguiente; }
 
     public void destruirPrimeraTorre() {}
 
@@ -141,9 +133,8 @@ public class Pasarela extends Parcela {
     public void modificarVelocidad(double modificadorVelocidad) {
         for (Enemigo e : enemigos) {
             e.modificarVelocidadTierra(modificadorVelocidad);
+            LOGGER.info("Reducida la velocidad del enemigo " + e.getClass().getSimpleName());
         }
     }
 
-    public void causarDanioAJugador(int danio) {
-    }
 }

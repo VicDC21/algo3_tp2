@@ -24,8 +24,7 @@ public class Rocoso extends Parcela {
     }
 
     @Override
-    public void avanzarTurno() {
-    }
+    public void avanzarTurno() {}
 
     @Override
     public void construirTorre(Torre torre) {
@@ -36,9 +35,7 @@ public class Rocoso extends Parcela {
     public void construirTrampa(Trampa trampa) { throw new ParcelaNoConstruible(); }
 
     @Override
-    public void recibirDanio(int danio) {
-
-    }
+    public void recibirDanio(int danio) {}
 
     @Override
     public int cantidadDeEnemigos() {
