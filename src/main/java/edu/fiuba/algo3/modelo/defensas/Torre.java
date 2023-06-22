@@ -2,6 +2,7 @@ package edu.fiuba.algo3.modelo.defensas;
 
 import edu.fiuba.algo3.modelo.Mapa;
 import edu.fiuba.algo3.modelo.parcelas.Parcela;
+import edu.fiuba.algo3.modelo.parcelas.Tierra;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import org.slf4j.Logger;
@@ -49,6 +50,10 @@ public class Torre {
 
     public boolean puedoConstruirConCreditos(int creditosDisponibles) {
         return creditosDisponibles >= this.costo;
+    }
+
+    public boolean puedeConstruirseEnParcela(Parcela parcela){
+        return (parcela instanceof Tierra);
     }
 
     public void avanzarTurno(Mapa mapa, int fila, int columna) {

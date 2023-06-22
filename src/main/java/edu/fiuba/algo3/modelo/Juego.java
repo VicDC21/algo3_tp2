@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.excepciones.InvalidMap;
+import edu.fiuba.algo3.modelo.parcelas.Parcela;
 
 import java.util.List;
 import java.util.Scanner;
@@ -108,7 +109,7 @@ public class Juego {
         }
         return "En juego";
     }
-    public List<Pane> getTiles(int width, int height) {
-        return mapa.getTiles(width, height);
+    public List<Parcela> getParcelas() {
+        return mapa.getParcelas();
     }
 }

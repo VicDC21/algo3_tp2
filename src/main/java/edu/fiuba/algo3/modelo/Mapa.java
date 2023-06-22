@@ -115,11 +115,7 @@ public class Mapa {
         }
     }
 
-    public List<Pane> getTiles(int width, int height) {
-        List<Pane> panes = new ArrayList<>();
-        for (Parcela p : parcelas) {
-            panes.add(p.dibujarse(width, height));
-        }
-        return panes;
+    public List<Parcela> getParcelas() {
+        return parcelas;
     }
 }

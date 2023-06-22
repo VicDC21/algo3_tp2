@@ -7,6 +7,7 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 
 public class PasarelaPane extends StackPane {
+    
 
     public PasarelaPane(int width, int height) {
         this.setWidth(width);

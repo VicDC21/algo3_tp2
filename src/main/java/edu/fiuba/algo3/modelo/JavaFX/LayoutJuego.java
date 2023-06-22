@@ -28,7 +28,7 @@ public class LayoutJuego extends BorderPane {
         int tileWidth = (int) screenBounds.getWidth() / 15;
         int tileHeight = (int) screenBounds.getHeight() / 15;
 
-        mapa = new MapaPane(juego.getTiles(tileWidth, tileHeight));
+        mapa = new MapaPane(juego.getParcelas(), tileHeight, tileWidth);
         barDefensas = new BarPane(tileWidth, tileHeight, mapa);
         barDefensas.setAlignment(Pos.CENTER);
     }
