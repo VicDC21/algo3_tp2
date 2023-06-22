@@ -19,9 +19,9 @@ public class TrampaTest {
     public void trampaArenosaRalentilizaEnemigos() throws InvalidMap {
         Juego juego = new Juego("src/main/resources/mapa.json", "src/main/resources/enemigosUnaArania.json");
 
-        //juego.construirTrampa("trampaArenosa", 3, 1);
-        //juego.construirTrampa("trampaArenosa", 4, 1);
-        //juego.construirTrampa("trampaArenosa", 5, 1);
+        juego.construirTrampa("trampaArenosa", 3, 1);
+        juego.construirTrampa("trampaArenosa", 4, 1);
+        juego.construirTrampa("trampaArenosa", 5, 1);
 
         assertEquals(1, juego.cantidadDeEnemigos());
 

@@ -9,7 +9,7 @@ public class Trampa {
     protected int vidaUtil;
     protected int turnosVigente = 0;
 
-    public void avanzarTurno(int turno){
+    public void avanzarTurno(){
         this.turnosVigente++;
         if (this.vidaUtil < this.turnosVigente) {
             this.pasarelaConstruida.destruirConstuccion();
@@ -20,11 +20,13 @@ public class Trampa {
 
     public void aplicarEfecto() {}
 
-    public boolean esNull() {return false;}
-
     public boolean puedoConstruirConCreditos(int creditosDisponibles) {
         return (costo <= creditosDisponibles);
     }
 
     public int getCosto() { return costo; }
+
+    public void setPasarela(Pasarela pasarela) {
+        pasarelaConstruida = pasarela;
+    }
 }

@@ -56,6 +56,7 @@ public class Pasarela extends Parcela {
         if (!tieneEnemigos()) {
             return;
         }
+        trampa.avanzarTurno();
         enemigos.forEach(Enemigo::avanzar);
     }
 
@@ -80,12 +81,9 @@ public class Pasarela extends Parcela {
 
     @Override
     public void construirTrampa(Trampa trampa) {
-        if (!tieneTrampa()) {
-            this.trampa = trampa;
-        } else throw new ParcelaNoConstruible();
+        this.trampa = trampa;
+        trampa.setPasarela(this);
     }
-
-    private boolean tieneTrampa() { return !trampa.esNull(); }
 
     @Override
     public void recibirDanio(int danio) {
