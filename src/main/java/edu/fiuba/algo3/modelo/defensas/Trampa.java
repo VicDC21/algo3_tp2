@@ -20,5 +20,5 @@ public abstract class Trampa {
 
     public abstract void aplicarEfecto();
 
-    public boolean esNull() { return false; }
+    public boolean esNull() {return false;}
 }

@@ -120,19 +120,11 @@ public class Pasarela extends Parcela {
 
     }
 
-    public void realizarDanioJugador(int danio) {}
+    public void causarDanioJugador(int danio) {}
 
-    public void moverEnemigoALaPasarelaSiguiente(Enemigo enemigo) {
-        pasarelaSiguiente.recibirEnemigo(enemigo);
-    }
+    public void moverEnemigoALaPasarelaSiguiente(Enemigo enemigo) { pasarelaSiguiente.recibirEnemigo(enemigo); }
 
-    public Pasarela obtenerPasarelaSiguiente() {
-        return pasarelaSiguiente;
-    }
-
-    public boolean esLaDeLLegada() {
-        return false;
-    }
+    public Pasarela obtenerPasarelaSiguiente() { return pasarelaSiguiente; }
 
     public void destruirPrimeraTorre() {}
 
@@ -144,6 +136,4 @@ public class Pasarela extends Parcela {
         }
     }
 
-    public void causarDanioAJugador(int danio) {
-    }
 }

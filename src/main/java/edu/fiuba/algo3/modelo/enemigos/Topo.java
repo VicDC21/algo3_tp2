@@ -35,9 +35,7 @@ public class Topo extends Enemigo implements SuscriptorTurno {
             pasarelaActual.moverEnemigoALaPasarelaSiguiente(this);
             pasarelaActual = pasarelaActual.obtenerPasarelaSiguiente();
         }
-        if (pasarelaActual.esLaDeLLegada()) {
-            causarDanio();
-        }
+        causarDanio();
     }
 
     @Override

@@ -33,9 +33,7 @@ public class Tierra extends Parcela {
 
     @Override
     public void avanzarTurno() {
-        if (tieneTorre()) {
-            torre.avanzarTurno(mapa, fila, columna);
-        }
+        torre.avanzarTurno(mapa, fila, columna);
     }
 
     @Override
