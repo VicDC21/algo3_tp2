@@ -29,6 +29,7 @@ public class Tierra extends Parcela {
         return !(torre.esNull());
     }
 
+
     @Override
     public boolean tieneEnemigos() {
         return false;
@@ -41,9 +42,7 @@ public class Tierra extends Parcela {
 
     @Override
     public void construirTorre(Torre torre) {
-        if (!tieneTorre()) {
-            this.torre = torre;
-        } else throw new ParcelaNoConstruible();
+        this.torre = torre;
         LOGGER.info("Construyendo " + torre.getClass().getSimpleName());
     }
 

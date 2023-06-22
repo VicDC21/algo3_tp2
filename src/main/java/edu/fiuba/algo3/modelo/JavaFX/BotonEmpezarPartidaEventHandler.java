@@ -3,6 +3,7 @@ package edu.fiuba.algo3.modelo.JavaFX;
 import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.excepciones.InvalidMap;
 import javafx.event.EventHandler;
+import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -21,8 +22,8 @@ public class BotonEmpezarPartidaEventHandler implements EventHandler<MouseEvent>
         Juego juego = null;
         try {
             juego = new Juego("src/main/resources/mapa.json", "src/main/resources/enemigos.json", textField.getText());
-            LayoutJuego layout = new LayoutJuego(stage, juego);
-            layout.show();
+            LayoutJuego layout = new LayoutJuego(stage, juego);   
+            layout.show();       
         } catch (InvalidMap e) {
             throw new RuntimeException(e);
         }

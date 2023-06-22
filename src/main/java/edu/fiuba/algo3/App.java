@@ -12,7 +12,7 @@ public class App extends Application {
     public void start(Stage stage) {
         LayoutBienvenida layout = new LayoutBienvenida(stage);
         stage.setScene(new Scene(layout,640, 480));
-        stage.setResizable(false);
+        stage.setResizable(true);
         stage.show();
     }
 

@@ -16,12 +16,10 @@ public class TorreNull extends Torre{
     public boolean puedoConstruirConCreditos(int creditosDisponibles) {return false;}
 
     @Override
-    public void avanzarTurno(Mapa mapa, int fila, int columna) {}
-
-    @Override
     public boolean esNull() {
         return true;
     }
+    public void avanzarTurno(Mapa mapa, int fila, int columna) {}
 
     @Override
     public void atacar(Mapa mapa, int fila, int columna) {}

@@ -5,8 +5,8 @@ import edu.fiuba.algo3.modelo.enemigos.Arania;
 import edu.fiuba.algo3.modelo.enemigos.Enemigo;
 import edu.fiuba.algo3.modelo.enemigos.Hormiga;
 import edu.fiuba.algo3.modelo.excepciones.InvalidMap;
-import edu.fiuba.algo3.modelo.parsers.EnemigosParser;
-import edu.fiuba.algo3.modelo.parsers.MapaParser;
+import edu.fiuba.algo3.modelo.parsers.ObtenedorDeEnemigos;
+import edu.fiuba.algo3.modelo.parsers.ObtenedorDeMapa;
 import org.junit.jupiter.api.Test;
 import java.io.File;
 import java.util.*;
@@ -30,11 +30,11 @@ public class JuegoTest {
 
     @Test
     public void elJugadorGanaSiEstaVivoYEliminoATodosLosEnemigos() {
-        MapaParser mapaParser = new MapaParser();
+        ObtenedorDeMapa obtenedorDeMapa = new ObtenedorDeMapa();
         Mapa mapaParseado;
-        String pathAlJsonDelMapa = "src/main/resources/mapa.json";
+        String pathAlJsonDelMapa = mapaPath;
         try {
-            mapaParseado = mapaParser.parseMapa(pathAlJsonDelMapa);
+            mapaParseado = obtenedorDeMapa.obtenerMapa(pathAlJsonDelMapa);
         } catch (InvalidMap e) {
             fail();
             return;
@@ -74,8 +74,8 @@ public class JuegoTest {
 
     @Test
     public void losEnemigosSeParseanCorrectamenteConUnJSONValido() {
-        EnemigosParser parser = new EnemigosParser();
-        ArrayList<List<Enemigo>> enemigosParseados = parser.parseEnemigos("src/main/resources/enemigos.json");
+        ObtenedorDeEnemigos obtenedorDeEnemigos = new ObtenedorDeEnemigos();
+        ArrayList<List<Enemigo>> enemigosParseados = obtenedorDeEnemigos.obtenerEnemigos("src/main/resources/enemigos.json");
         assertEquals(Hormiga.class, (enemigosParseados.get(0)).get(0).getClass());
         assertEquals(Hormiga.class, (enemigosParseados.get(1)).get(0).getClass());
         assertEquals(Arania.class, (enemigosParseados.get(1)).get(1).getClass());

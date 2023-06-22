@@ -49,7 +49,7 @@ public class Vista extends Application {
         botonEnviar.setOnAction(botonEnviarEventHandler);
         TextoEventHandler textoEventHandler = new TextoEventHandler(botonEnviar);
         texto.setOnKeyPressed(textoEventHandler);
-        Scene scene = new Scene(contenedorPrincipal, 300.0, 250.0);
+        Scene scene = new Scene(contenedorPrincipal, 800.0, 250.0);
         stage.setScene(scene);
         stage.show();
     }
