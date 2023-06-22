@@ -1,41 +1,55 @@
 package edu.fiuba.algo3.modelo.JavaFX;
 
+import edu.fiuba.algo3.modelo.defensas.Torre;
+import edu.fiuba.algo3.modelo.defensas.TrampaArenosa;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 
+
 // Cambiar para que muestre la vida y los creditos.
 
 public class BarPane extends HBox {
 
-    public BarPane(int tileWidth, int tileHeight) {
+    public BarPane(int tileWidth, int tileHeight, MapaPane mapaPane) {
         this.setBackground(new Background(new BackgroundFill(Color.BLUE,
                 CornerRadii.EMPTY,
                 Insets.EMPTY)));
 
-        ImageView TorreBlanca = new ImageView("tower.png");
-        TorreBlanca.setFitHeight(tileHeight);
-        TorreBlanca.setFitWidth(tileWidth);
-        TorreBlanca.setPreserveRatio(true);
-        TorreBlanca.setOnMouseClicked(new DefensaElegidaEventHandler(TorreBlanca));
+        ImageView TorreBlancaImagen = new ImageView("tower.png");
+        Torre torreBlanca = new Torre(10,1,3,1);
+        TorreBlancaImagen.setFitHeight(tileHeight);
+        TorreBlancaImagen.setFitWidth(tileWidth);
+        TorreBlancaImagen.setPreserveRatio(true);
+        TorreBlancaImagen.setOnMouseClicked(event -> {
+            mapaPane.setTorreSeleccionada(torreBlanca, TorreBlancaImagen);
+        });
 
-        ImageView TorrePlateada = new ImageView("tower.png");
-        TorrePlateada.setFitHeight(tileHeight);
-        TorrePlateada.setFitWidth(tileWidth);
-        TorrePlateada.setPreserveRatio(true);
-        TorrePlateada.setOnMouseClicked(new DefensaElegidaEventHandler(TorrePlateada));
+        ImageView TorrePlateadaImagen = new ImageView("tower.png");
+        Torre torrePlateada = new Torre(20, 2, 5, 2);
+        TorrePlateadaImagen.setFitHeight(tileHeight);
+        TorrePlateadaImagen.setFitWidth(tileWidth);
+        TorrePlateadaImagen.setPreserveRatio(true);
+        TorrePlateadaImagen.setOnMouseClicked(event -> {
+            mapaPane.setTorreSeleccionada(torrePlateada, TorrePlateadaImagen);
+        });
 
-        ImageView Trampa = new ImageView("tower.png");
-        Trampa.setFitHeight(tileHeight);
-        Trampa.setFitWidth(tileWidth);
-        Trampa.setPreserveRatio(true);
-        Trampa.setOnMouseClicked(new DefensaElegidaEventHandler(Trampa));
+        ImageView TrampaImagen = new ImageView("tower.png");
+        TrampaArenosa trampa = new TrampaArenosa();
+        TrampaImagen.setFitHeight(tileHeight);
+        TrampaImagen.setFitWidth(tileWidth);
+        TrampaImagen.setPreserveRatio(true);
+      //  TrampaImagen.setOnMouseClicked(event -> {
+      //      mapaPane.setTorreSeleccionada(trampa, TrampaImagen);
+     //   });
 
-        this.getChildren().addAll(TorreBlanca, TorrePlateada, Trampa);
+        this.getChildren().addAll(TorreBlancaImagen, TorrePlateadaImagen, TrampaImagen);
         this.setSpacing(60);
     }
 }

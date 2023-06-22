@@ -8,22 +8,28 @@ import javafx.scene.layout.*;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
+import edu.fiuba.algo3.modelo.defensas.Torre;
 
 public class LayoutJuego extends BorderPane {
     Stage stage;
     Juego juego;
     MapaPane mapa;
     BarPane barDefensas;
+    Torre torreSeleccionada;
+
     private static final float CENTER_ON_SCREEN_X_FRACTION = 1.0f / 2;
     private static final float CENTER_ON_SCREEN_Y_FRACTION = 1.0f / 3;
-    private static final int tileHeight = 25;
-    private static final int tileWidth = 25;
     public LayoutJuego(Stage stage, Juego juego) {
         this.juego = juego;
         this.stage = stage;
+        
+        Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
+        
+        int tileWidth = (int) screenBounds.getWidth() / 15;
+        int tileHeight = (int) screenBounds.getHeight() / 15;
 
         mapa = new MapaPane(juego.getTiles(tileWidth, tileHeight));
-        barDefensas = new BarPane(tileWidth, tileHeight);
+        barDefensas = new BarPane(tileWidth, tileHeight, mapa);
         barDefensas.setAlignment(Pos.CENTER);
     }
     public void show() {

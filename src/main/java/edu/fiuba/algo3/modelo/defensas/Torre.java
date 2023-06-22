@@ -32,6 +32,9 @@ public class Torre {
         this.danio = torre.getDanio();
     }
 
+    public Torre() {
+    }
+
     protected int getRango() {
         return this.rango;
     }
