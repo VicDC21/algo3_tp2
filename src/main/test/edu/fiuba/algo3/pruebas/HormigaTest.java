@@ -4,8 +4,8 @@ import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.enemigos.Enemigo;
 import edu.fiuba.algo3.modelo.enemigos.Hormiga;
 import edu.fiuba.algo3.modelo.excepciones.InvalidMap;
-import edu.fiuba.algo3.modelo.parsers.MapaParser;
 
+import edu.fiuba.algo3.modelo.parsers.ObtenedorDeMapa;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -26,11 +26,11 @@ public class HormigaTest {
         ArrayList<List<Enemigo>> PackEnemigos = new ArrayList<>();
         PackEnemigos.add(enemigos);
 
-        MapaParser parser = new MapaParser();
+        ObtenedorDeMapa obtenedorDeMapa = new ObtenedorDeMapa();
         String pathAlJsonDelMapa = "src/main/resources/mapa.json";
         Mapa mapaParseado;
         try {
-            mapaParseado = parser.parseMapa(pathAlJsonDelMapa);
+            mapaParseado = obtenedorDeMapa.obtenerMapa(pathAlJsonDelMapa);
         } catch (InvalidMap e) {
             return ;
         }
@@ -73,11 +73,11 @@ public class HormigaTest {
         ArrayList<List<Enemigo>> PackEnemigos = new ArrayList<>();
         PackEnemigos.add(enemigos);
 
-        MapaParser parser = new MapaParser();
+        ObtenedorDeMapa obtenedorDeMapa = new ObtenedorDeMapa();
         String pathAlJsonDelMapa = "src/main/resources/mapa.json";
         Mapa mapaParseado;
         try {
-            mapaParseado = parser.parseMapa(pathAlJsonDelMapa);
+            mapaParseado = obtenedorDeMapa.obtenerMapa(pathAlJsonDelMapa);
         } catch (InvalidMap e) {
             return;
         }

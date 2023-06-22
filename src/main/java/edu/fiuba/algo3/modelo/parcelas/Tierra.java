@@ -22,9 +22,6 @@ public class Tierra extends Parcela {
         torre.dibujarse(pane);
         return pane;
     }
-    private boolean tieneTorre() {
-        return !(torre.esNull());
-    }
 
     @Override
     public boolean tieneEnemigos() {
@@ -33,16 +30,12 @@ public class Tierra extends Parcela {
 
     @Override
     public void avanzarTurno() {
-        if (tieneTorre()) {
-            torre.avanzarTurno(mapa, fila, columna);
-        }
+        torre.avanzarTurno(mapa, fila, columna);
     }
 
     @Override
     public void construirTorre(Torre torre) {
-        if (!tieneTorre()) {
-            this.torre = torre;
-        } else throw new ParcelaNoConstruible();
+        this.torre = torre;
         LOGGER.info("Construyendo " + torre.getClass().getSimpleName());
     }
 

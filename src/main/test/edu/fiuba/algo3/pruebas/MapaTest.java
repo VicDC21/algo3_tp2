@@ -3,7 +3,7 @@ package edu.fiuba.algo3.pruebas;
 import edu.fiuba.algo3.modelo.excepciones.InvalidMap;
 import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.Mapa;
-import edu.fiuba.algo3.modelo.parsers.MapaParser;
+import edu.fiuba.algo3.modelo.parsers.ObtenedorDeMapa;
 import org.apache.commons.io.FileUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -25,7 +25,7 @@ public class MapaTest {
 
     @Test
     public void elMapaSeParseaCorrectamenteConUnJSONValido() {
-        MapaParser parser = new MapaParser();
+        ObtenedorDeMapa obtenedorDeMapa = new ObtenedorDeMapa();
         Mapa mapaParseado;
         JSONObject jsonDelMapa;
         String pathAlJsonDelMapa = "src/main/resources/mapa.json";
@@ -38,7 +38,7 @@ public class MapaTest {
         }
 
         try {
-            mapaParseado = parser.parseMapa(pathAlJsonDelMapa);
+            mapaParseado = obtenedorDeMapa.obtenerMapa(pathAlJsonDelMapa);
         } catch (InvalidMap e) {
             fail();
             return;

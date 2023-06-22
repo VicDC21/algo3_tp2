@@ -2,12 +2,8 @@ package edu.fiuba.algo3.modelo.defensas;
 
 import edu.fiuba.algo3.modelo.Mapa;
 import edu.fiuba.algo3.modelo.parcelas.Parcela;
-import edu.fiuba.algo3.modelo.parcelas.Pasarela;
-import javafx.beans.property.ReadOnlyDoubleProperty;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -65,10 +61,6 @@ public class Torre {
             LOGGER.info("Torre a " + turnosParaConstruirse + " turnos de terminar su construcción");
         }
         turnosParaConstruirse--;
-    }
-
-    public boolean esNull() {
-        return false;
     }
 
     // No debe considerar Topos.
