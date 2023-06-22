@@ -23,16 +23,19 @@ public class Juego {
 
     private static final Logger logger = LoggerFactory.getLogger(App.class);
 
+    /*Deberiamos borrar
     public Juego() {
         mapa = new Mapa();
         jugador = new Jugador(leerNombre(), 20, 100, new Constructor(mapa));
-    }
+    }*/
 
+    /*
     public Juego(String path) throws InvalidMap {
         MapaParser parser = new MapaParser();
         mapa = parser.parseMapa(path);
         jugador = new Jugador("test", 20, 100, new Constructor(mapa));
-    }
+    }*/
+
 
     public Juego(String pathMapa, String pathEnemigos) throws InvalidMap {
         MapaParser parserMapa = new MapaParser();
@@ -86,7 +89,7 @@ public class Juego {
         mapa.removerMuertos();
     }
 
-    public String leerNombre() {
+    /*public String leerNombre() {
         Scanner in = new Scanner(System.in);
         String name = "";
         while (name.length() < 6) {
@@ -95,7 +98,7 @@ public class Juego {
         }
         in.close();
         return name;
-    }
+    }*/
 
     public String estadoJuego() {
         if (!(this.jugador.estaVivo())) {

@@ -20,32 +20,28 @@ public class EnemigosParser {
             JSONObject cantidadPorEnemigo;
             Object cantidadHormigas;
             Object cantidadAranias;
+            Object cantidadTopos;
+            Object cantidadLechuzas;
+
             try {
                 cantidadPorEnemigo = enemigosEnTurno.getJSONObject("enemigos");
                 numeroDeTurno = enemigosEnTurno.get("turno");
                 cantidadHormigas = cantidadPorEnemigo.get("hormiga");
                 cantidadAranias = cantidadPorEnemigo.get("arana");
+                cantidadTopos = cantidadPorEnemigo.get("topo");
+                cantidadLechuzas = cantidadPorEnemigo.get("lechuza");
+
             } catch (JSONException exception) {
                 return false;
             }
 
-            if (enemigosEnTurno.isEmpty()) {
+            if (enemigosEnTurno.isEmpty() || cantidadPorEnemigo.isEmpty()) {
                 return false;
             }
 
-            if (!(numeroDeTurno instanceof Integer)) {
-                return false;
-            }
-
-            if (cantidadPorEnemigo.isEmpty()) {
-                return false;
-            }
-
-            if (!(cantidadHormigas instanceof Integer)) {
-                return false;
-            }
-
-            if (!(cantidadAranias instanceof Integer)) {
+            if (!(numeroDeTurno instanceof Integer) || !(cantidadHormigas instanceof Integer)
+                    || !(cantidadAranias instanceof Integer) || !(cantidadTopos instanceof Integer)
+                    || !(cantidadLechuzas instanceof Integer)) {
                 return false;
             }
         }

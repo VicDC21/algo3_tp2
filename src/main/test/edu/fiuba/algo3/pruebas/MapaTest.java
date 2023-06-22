@@ -16,12 +16,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
 public class MapaTest {
-    @Test
+    /*@Test
     public void testMapa() throws IOException {
         String path = new File("src/main/resources/mapa.json").getAbsolutePath();
         Juego juego = new Juego(path);
         assertEquals(20, juego.mostrarVidaDelJugador());
-    }
+    }*/
 
     @Test
     public void elMapaSeParseaCorrectamenteConUnJSONValido() {

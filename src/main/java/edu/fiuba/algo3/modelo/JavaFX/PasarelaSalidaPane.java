@@ -15,7 +15,7 @@ public class PasarelaSalidaPane extends StackPane {
         rect.widthProperty().bind(this.widthProperty());
         rect.heightProperty().bind(this.heightProperty());
         rect.setFill(new ImagePattern(new Image("pasarela.jpg")));
-        rect.setStyle("-fx-stroke: black; -fx-stroke-width: 3; -fx-stroke-type: inside;");
+        rect.setStyle("-fx-stroke: gold; -fx-stroke-width: 3; -fx-stroke-type: inside;");
 
         this.getChildren().add(rect);
     }
