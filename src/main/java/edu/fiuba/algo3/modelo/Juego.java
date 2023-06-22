@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.enemigos.Enemigo;
 import edu.fiuba.algo3.modelo.excepciones.InvalidMap;
 
 import java.util.List;
@@ -15,6 +16,7 @@ import org.slf4j.LoggerFactory;
 import edu.fiuba.algo3.App;
 
 public class Juego {
+    private static final Logger LOGGER = LoggerFactory.getLogger(Enemigo.class.getSimpleName());
     Jugador jugador;
     Mapa mapa;
 
@@ -81,6 +83,7 @@ public class Juego {
     }
 
     public void avanzarTurno() {
+        LOGGER.info("Avanzando Turno");
         mapa.avanzarTurno();
         mapa.actualizarEnemigos();
         jugador.recibirCreditos(mapa.creditosGeneradosEnTurno());
