@@ -20,14 +20,12 @@ import edu.fiuba.algo3.modelo.JavaFX.Vista;
 public class Juego {
     Jugador jugador;
     Mapa mapa;
-    Vista vista;
 
     private static final Logger logger = LoggerFactory.getLogger(App.class);
 
     public Juego() {
         mapa = new Mapa();
         jugador = new Jugador(leerNombre(), 20, 100, new Constructor(mapa));
-        vista = new Vista(this);
     }
 
     public Juego(String path) throws InvalidMap {

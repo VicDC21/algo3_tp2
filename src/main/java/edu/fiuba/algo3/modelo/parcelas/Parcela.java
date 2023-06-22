@@ -41,9 +41,6 @@ public abstract class Parcela {
 
     public abstract int cantidadDeEnemigos();
 
-    @Override
-    public String toString() { return this.getClass().getSimpleName(); }
-
     public void actualizarEnemigos() {}
 
     public void suscribirTurno(SuscriptorTurno suscriptor) { mapa.suscribirTurno(suscriptor); }
