@@ -18,9 +18,6 @@ import javafx.scene.paint.Color;
 public class BarPane extends HBox {
 
     public BarPane(int tileWidth, int tileHeight, MapaPane mapaPane) {
-        this.setBackground(new Background(new BackgroundFill(Color.BLUE,
-                CornerRadii.EMPTY,
-                Insets.EMPTY)));
 
         ImageView TorreBlancaImagen = new ImageView("tower.png");
         Torre torreBlanca = new Torre(10,1,3,1);
@@ -50,6 +47,6 @@ public class BarPane extends HBox {
      //   });
 
         this.getChildren().addAll(TorreBlancaImagen, TorrePlateadaImagen, TrampaImagen);
-        this.setSpacing(60);
+        this.setSpacing(80);
     }
 }

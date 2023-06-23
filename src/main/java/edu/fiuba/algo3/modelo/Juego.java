@@ -49,7 +49,8 @@ public class Juego {
         ObtenedorDeEnemigos obtenedorDeEnemigos = new ObtenedorDeEnemigos();
         mapa = obtenedorDeMapa.obtenerMapa(pathMapa);
         mapa.cargarEnemigos(obtenedorDeEnemigos.obtenerEnemigos(pathEnemigos));
-        jugador = new Jugador(nombre, 20, 100, new Constructor(mapa));
+        Constructor constructor = new Constructor(mapa);
+        jugador = new Jugador(nombre, 20, 100, constructor);
         mapa.setJugador(jugador);    // Esto hay que sacarlo
         logger.info("Juego Iniciado");   
     }
@@ -73,6 +74,10 @@ public class Juego {
 
     public int mostrarVidaDelJugador() {
         return jugador.mostrarVida();
+    }
+
+    public int mostrarCreditosDelJugador(){
+        return jugador.mostrarCreditos();
     }
 
     public int cantidadDeEnemigos() { return mapa.cantidadDeEnemigos(); }

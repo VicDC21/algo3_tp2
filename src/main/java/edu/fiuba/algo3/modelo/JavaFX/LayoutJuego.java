@@ -1,7 +1,11 @@
 package edu.fiuba.algo3.modelo.JavaFX;
 
 
+import edu.fiuba.algo3.modelo.Constructor;
 import edu.fiuba.algo3.modelo.Juego;
+import edu.fiuba.algo3.modelo.Jugador;
+import javafx.beans.value.ChangeListener;
+import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
@@ -17,6 +21,8 @@ import edu.fiuba.algo3.modelo.defensas.Torre;
 public class LayoutJuego extends BorderPane {
     Stage stage;
     Juego juego;
+    Jugador jugador;
+    Constructor constructor;
     MapaPane mapa;
     BarPane barDefensas;
     Torre torreSeleccionada;
@@ -29,33 +35,45 @@ public class LayoutJuego extends BorderPane {
         
         Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
         
-        int tileWidth = (int) screenBounds.getWidth() / 15;
-        int tileHeight = (int) screenBounds.getHeight() / 15;
+        int tileWidth = (int) (screenBounds.getWidth() * 0.9) / 15;
+        int tileHeight = (int) (screenBounds.getHeight() * 0.9) / 15;
 
         mapa = new MapaPane(juego.getParcelas(), tileHeight, tileWidth);
         
         barDefensas = new BarPane(tileWidth, tileHeight, mapa); 
-        barDefensas.setAlignment(Pos.CENTER_LEFT);
+        barDefensas.setAlignment(Pos.CENTER);
 
         VBox infoJugador = new VBox();
         infoJugador.setAlignment(Pos.CENTER);
-        infoJugador.setSpacing(10);
 
-        Label vidaLabel = new Label("Vida: ");
-        Label creditosLabel = new Label("Créditos: ");
+        Label vidaLabel = new Label("Vida: " + juego.mostrarVidaDelJugador());  //fijo , hay que aplicarle Change
+        Label creditosLabel = new Label("Créditos: " + juego.mostrarCreditosDelJugador()); // fijo hay que aplicarle Change
 
         infoJugador.getChildren().addAll(vidaLabel, creditosLabel);
 
         Button avanzarTurno = new Button("Avanzar Turno");
-        avanzarTurno.setAlignment(Pos.CENTER_RIGHT);
+        
         avanzarTurno.setOnAction(event -> {
             juego.avanzarTurno();
         });
 
-        HBox root = new HBox();
+        GridPane root = new GridPane();
         root.setAlignment(Pos.CENTER);
-        root.setPadding(new Insets(10)); 
-        root.getChildren().addAll(barDefensas,infoJugador,avanzarTurno);
+
+        ColumnConstraints columna1 = new ColumnConstraints();
+        columna1.setPercentWidth(33.33);
+        ColumnConstraints columna2 = new ColumnConstraints();
+        columna2.setPercentWidth(33.33);
+        ColumnConstraints columna3 = new ColumnConstraints();
+        columna3.setPercentWidth(33.33);
+
+        root.getColumnConstraints().addAll(columna1,columna2,columna3);
+
+        root.add(barDefensas,0,0);
+        root.add(infoJugador,1,0);
+        root.add(avanzarTurno,2,0);
+        GridPane.setHalignment(avanzarTurno, HPos.RIGHT);
+        GridPane.setMargin(avanzarTurno, new Insets(0, 10, 0, 0));
         
         this.setCenter(mapa);
         this.setBottom(root);

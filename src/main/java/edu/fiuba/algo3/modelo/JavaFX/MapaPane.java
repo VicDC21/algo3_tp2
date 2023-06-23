@@ -12,6 +12,7 @@ import javafx.scene.shape.Rectangle;
 import java.util.List;
 
 import edu.fiuba.algo3.modelo.Juego;
+import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.defensas.Torre;
 import edu.fiuba.algo3.modelo.parcelas.Parcela;
 import edu.fiuba.algo3.modelo.parcelas.Pasarela;
@@ -20,6 +21,7 @@ import edu.fiuba.algo3.modelo.parcelas.Tierra;
 
 public class MapaPane extends GridPane {
     private Torre torreSeleccionada;
+    private Jugador jugador;
     private ImageView imagenTorre;
 
     public MapaPane(List<Parcela> parcelas, int tileHeight, int tileWidth) {
