@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.modelo.JavaFX;
+/*package edu.fiuba.algo3.modelo.JavaFX;
 
 import javafx.scene.control.ContextMenu;
 import javafx.scene.image.Image;
@@ -26,3 +26,4 @@ public class TierraPane extends StackPane {
 
     }
 }
+*/

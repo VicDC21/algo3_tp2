@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.modelo.JavaFX;
+/* package edu.fiuba.algo3.modelo.JavaFX;
 
 import javafx.scene.image.Image;
 import javafx.scene.layout.StackPane;
@@ -22,3 +22,4 @@ public class PasarelaPane extends StackPane {
         this.getChildren().add(rect);
     }
 }
+*/
