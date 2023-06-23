@@ -24,15 +24,6 @@ public abstract class Enemigo {
         this.estado = estado;
         this.pasarelaActual = pasarelaActual;
     }
-/*
-    public void avanzar() {
-        for (int i = 0; i < velocidadActual; i++) {
-            pasarelaActual.moverEnemigoALaPasarelaSiguiente(this);
-            pasarelaActual = pasarelaActual.obtenerPasarelaSiguiente();
-        }
-        causarDanio();
-    }
-*/
 
     public void avanzar() {
         Pasarela pasarelaAMover = pasarelaActual;

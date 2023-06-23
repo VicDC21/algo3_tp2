@@ -24,9 +24,6 @@ public class PasarelaLlegada extends Pasarela {
     @Override
     public void avanzarTurno() { enemigos.clear(); }
 
-    @Override
-    public void moverEnemigoALaPasarelaSiguiente(Enemigo enemigo) {}
-
     public void causarDanioJugador(int danio) { jugador.recibirDanio(danio); }
 
     @Override

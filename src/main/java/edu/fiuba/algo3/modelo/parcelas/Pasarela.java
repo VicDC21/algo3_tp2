@@ -36,6 +36,7 @@ public class Pasarela extends Parcela {
     public Pane dibujarse(int width, int height) {
         return new PasarelaPane(width, height);
     }
+
     @Override
     public boolean tieneEnemigos() {
         for (Enemigo e: enemigos) {
@@ -119,8 +120,6 @@ public class Pasarela extends Parcela {
     }
 
     public void causarDanioJugador(int danio) {}
-
-    public void moverEnemigoALaPasarelaSiguiente(Enemigo enemigo) { pasarelaSiguiente.recibirEnemigo(enemigo); }
 
     public Pasarela obtenerPasarelaSiguiente() { return pasarelaSiguiente; }
 

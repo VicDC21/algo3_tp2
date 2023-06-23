@@ -31,10 +31,12 @@ public class Topo extends Enemigo implements SuscriptorTurno {
         if (nroMovimiento == 11) {
             this.velocidad = 3;
         }
-        for (int i = 0; i < velocidad; i++) {
-            pasarelaActual.moverEnemigoALaPasarelaSiguiente(this);
-            pasarelaActual = pasarelaActual.obtenerPasarelaSiguiente();
+        Pasarela pasarelaAMover = pasarelaActual;
+        for (int i = 0; i < velocidadActual; i++) {
+            pasarelaAMover = pasarelaAMover.obtenerPasarelaSiguiente();
         }
+        pasarelaAMover.recibirEnemigo(this);
+        pasarelaActual = pasarelaAMover;
         causarDanio();
     }
 

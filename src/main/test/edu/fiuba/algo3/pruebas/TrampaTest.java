@@ -25,15 +25,11 @@ public class TrampaTest {
 
         assertEquals(1, juego.cantidadDeEnemigos());
 
-        for (int i = 0; i < 11 ; i++) {
+        for (int i = 0; i < 13 ; i++) {
             juego.avanzarTurno();
         }
         assertEquals(1, juego.cantidadDeEnemigos());
 
-        juego.avanzarTurno();
-        juego.avanzarTurno();
-        juego.avanzarTurno();
-        juego.avanzarTurno();
         juego.avanzarTurno();
 
         assertEquals(0, juego.cantidadDeEnemigos());
