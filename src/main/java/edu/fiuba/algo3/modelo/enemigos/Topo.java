@@ -28,7 +28,7 @@ public class Topo extends Enemigo implements SuscriptorTurno {
         if (nroMovimiento == 5) {
             this.velocidad = 2;
         }
-        if (nroMovimiento == 11) {
+        if (nroMovimiento == 10) {
             this.velocidad = 3;
         }
         for (int i = 0; i < velocidad; i++) {
