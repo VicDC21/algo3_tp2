@@ -13,6 +13,8 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+import java.util.Scanner;
+
 public class LayoutBienvenida extends VBox {
 
     Stage stage;
@@ -40,4 +42,16 @@ public class LayoutBienvenida extends VBox {
         this.getChildren().addAll(imageView, textField, button);
         this.setSpacing(20);
     }
+
+    public String leerNombre() {
+        Scanner in = new Scanner(System.in);
+        String name = "";
+        while (name.length() < 6) {
+            System.out.println("Ingrese un nombre de al menos 6 caracteres: ");
+            name = in.nextLine();
+        }
+        in.close();
+        return name;
+    }
+
 }

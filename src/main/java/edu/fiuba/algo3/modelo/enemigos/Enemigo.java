@@ -74,11 +74,6 @@ public abstract class Enemigo {
         this.velocidadActual = this.velocidad;
     }
 
-    @Override
-    public String toString() {
-        return this.getClass().getSimpleName();
-    }
-
     public void modificarVelocidadTierra(double modificadorVelocidad) {
         this.velocidadActual = (int)(this.velocidad * modificadorVelocidad); // se redondea para abajo
     }
