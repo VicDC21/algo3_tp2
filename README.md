@@ -8,7 +8,7 @@ Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUB
 
 * **Burgos, Juan Sebastian** - [juansburgos](https://github.com/juansburgos)
 * **Cipriano, Victor** - [VicDC21](https://github.com/VicDC21)
-* **DeStefanis, Ignacio Joel** - [ignaciodestefanis](https://github.com/ignaciodestefanis)
+* **Destefanis, Ignacio Joel** - [ignaciodestefanis](https://github.com/ignaciodestefanis)
 * **Koo, Hangyeol** - [claudekoo](https://github.com/claudekoo)
 * **Penedo, Nicolas** - [Nicomp04](https://github.com/nicomp04)
 

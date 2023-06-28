@@ -1,12 +1,10 @@
 package edu.fiuba.algo3.modelo.parcelas;
 
-import edu.fiuba.algo3.modelo.JavaFX.TierraPane;
 import edu.fiuba.algo3.modelo.Mapa;
 import edu.fiuba.algo3.modelo.defensas.Torre;
 import edu.fiuba.algo3.modelo.defensas.TorreNull;
 import edu.fiuba.algo3.modelo.defensas.Trampa;
 import edu.fiuba.algo3.modelo.excepciones.ParcelaNoConstruible;
-import javafx.scene.layout.Pane;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,12 +16,7 @@ public class Tierra extends Parcela {
         super(fila, columna, mapa);
     }
 
-    @Override
-    public Pane dibujarse(int width, int height) {
-        Pane pane = new TierraPane(width, height);
-        torre.dibujarse(pane);
-        return pane;
-    }
+
 
     @Override
     public boolean tieneEnemigos() {

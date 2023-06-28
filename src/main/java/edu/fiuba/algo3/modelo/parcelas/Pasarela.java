@@ -1,13 +1,11 @@
 package edu.fiuba.algo3.modelo.parcelas;
 
-import edu.fiuba.algo3.modelo.JavaFX.PasarelaPane;
 import edu.fiuba.algo3.modelo.Mapa;
 import edu.fiuba.algo3.modelo.defensas.Torre;
 import edu.fiuba.algo3.modelo.defensas.Trampa;
 import edu.fiuba.algo3.modelo.defensas.TrampaNull;
 import edu.fiuba.algo3.modelo.enemigos.Enemigo;
 import edu.fiuba.algo3.modelo.excepciones.ParcelaNoConstruible;
-import javafx.scene.layout.Pane;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -32,10 +30,7 @@ public class Pasarela extends Parcela {
         this.pasarelaSiguiente = pasarelaSiguiente;
     }
 
-    @Override
-    public Pane dibujarse(int width, int height) {
-        return new PasarelaPane(width, height);
-    }
+
     @Override
     public boolean tieneEnemigos() {
         for (Enemigo e: enemigos) {

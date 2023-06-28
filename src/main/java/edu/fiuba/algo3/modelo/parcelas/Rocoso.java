@@ -1,11 +1,9 @@
 package edu.fiuba.algo3.modelo.parcelas;
 
-import edu.fiuba.algo3.modelo.JavaFX.RocosoPane;
 import edu.fiuba.algo3.modelo.Mapa;
 import edu.fiuba.algo3.modelo.defensas.Torre;
 import edu.fiuba.algo3.modelo.defensas.Trampa;
 import edu.fiuba.algo3.modelo.excepciones.ParcelaNoConstruible;
-import javafx.scene.layout.Pane;
 
 public class Rocoso extends Parcela {
 
@@ -13,10 +11,7 @@ public class Rocoso extends Parcela {
         super(fila, columna, mapa);
     }
 
-    @Override
-    public Pane dibujarse(int width, int height) {
-        return new RocosoPane(width, height);
-    }
+
 
     @Override
     public boolean tieneEnemigos() {
