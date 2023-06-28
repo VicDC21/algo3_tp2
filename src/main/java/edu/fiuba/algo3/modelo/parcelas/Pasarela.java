@@ -10,16 +10,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 import java.util.stream.Stream;
 
 public class Pasarela extends Parcela {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(Pasarela.class.getSimpleName());
     protected Pasarela pasarelaSiguiente;
-    protected List<Enemigo> enemigos = new ArrayList<>();
-    private List<Enemigo> arribos = new ArrayList<>();
     Trampa trampa = new TrampaNull();
 
     public Pasarela(int fila, int columna, Mapa mapa) {
@@ -28,22 +24,6 @@ public class Pasarela extends Parcela {
     public Pasarela(int fila, int columna, Mapa mapa, Pasarela pasarelaSiguiente) {
         super(fila, columna, mapa);
         this.pasarelaSiguiente = pasarelaSiguiente;
-    }
-
-
-    @Override
-    public boolean tieneEnemigos() {
-        for (Enemigo e: enemigos) {
-            if (!e.estaMuerto()) {
-                return true;
-            }
-        }
-        for (Enemigo e: arribos) {
-            if (!e.estaMuerto()) {
-                return true;
-            }
-        }
-        return false;
     }
 
     @Override
@@ -55,22 +35,6 @@ public class Pasarela extends Parcela {
         enemigos.forEach(Enemigo::avanzar);
     }
 
-    public void removerMuertos() {
-        for (Enemigo enemigo : enemigos) {
-            if (enemigo.estaMuerto()) {enemigo.desuscribirTodo();}
-        }
-        enemigos.removeIf(Enemigo::estaMuerto);
-        arribos.removeIf(Enemigo::estaMuerto);
-    }
-
-    public int devolverCantidadDeCreditosGeneradosEnTurno() {
-        return
-                enemigos.stream()
-                        .filter(Enemigo::estaMuerto)
-                        .mapToInt(Enemigo::otorgarCredito)
-                        .sum();
-    }
-
     @Override
     public void construirTorre(Torre torre) { throw new ParcelaNoConstruible(); }
 
@@ -80,38 +44,7 @@ public class Pasarela extends Parcela {
         trampa.setPasarela(this);
     }
 
-    @Override
-    public void recibirDanio(int danio) {
-
-        Stream<Enemigo> enemigosTotales =
-                Stream.concat(
-                        enemigos.stream()
-                                .filter(Objects::nonNull),
-                        arribos.stream()
-                                .filter(Objects::nonNull)
-                );
-        enemigosTotales.findAny()
-                .orElseThrow()
-                .recibirDanio(danio);
-    }
-
     public void setPasarelaSiguiente(Pasarela pasarela) { this.pasarelaSiguiente = pasarela; }
-
-    public int cantidadDeEnemigos() { return enemigos.size(); }
-
-    public void actualizarEnemigos() {
-        enemigos = arribos;
-        arribos = new ArrayList<>();
-        for (Enemigo e : enemigos) {
-            e.reestablecerVelocidad();
-        }
-    }
-
-    public void recibirEnemigo(Enemigo enemigo) {
-        this.arribos.add(enemigo);
-        LOGGER.info("Pasarela "+ this.fila+ " " + this.columna +" recibiendo enemigo " + enemigo.getClass().getSimpleName());
-
-    }
 
     public void causarDanioJugador(int danio) {}
 
@@ -121,7 +54,7 @@ public class Pasarela extends Parcela {
 
     public void destruirPrimeraTorre() {}
 
-    public void destruirConstuccion() { this.trampa = new TrampaNull(); }
+    public void destruirConstruccion() { this.trampa = new TrampaNull(); }
 
     public void modificarVelocidad(double modificadorVelocidad) {
         for (Enemigo e : enemigos) {

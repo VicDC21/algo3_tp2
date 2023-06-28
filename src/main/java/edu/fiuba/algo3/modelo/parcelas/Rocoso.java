@@ -11,16 +11,6 @@ public class Rocoso extends Parcela {
         super(fila, columna, mapa);
     }
 
-
-
-    @Override
-    public boolean tieneEnemigos() {
-        return false;
-    }
-
-    @Override
-    public void avanzarTurno() {}
-
     @Override
     public void construirTorre(Torre torre) {
         throw new ParcelaNoConstruible();
@@ -28,13 +18,5 @@ public class Rocoso extends Parcela {
 
     @Override
     public void construirTrampa(Trampa trampa) { throw new ParcelaNoConstruible(); }
-
-    @Override
-    public void recibirDanio(int danio) {}
-
-    @Override
-    public int cantidadDeEnemigos() {
-        return 0;
-    }
 
 }
