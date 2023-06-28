@@ -1,7 +1,5 @@
 package edu.fiuba.algo3.modelo.defensas;
 
-import edu.fiuba.algo3.modelo.SuscriptorTurno;
-
 public class TrampaArenosa extends Trampa {
 
     int costo = 25;
@@ -12,7 +10,7 @@ public class TrampaArenosa extends Trampa {
     public void avanzarTurno(){
         this.turnosVigente++;
         if (this.vidaUtil < this.turnosVigente) {
-            this.pasarelaConstruida.destruirConstuccion();
+            this.pasarelaConstruida.destruirConstruccion();
         } else {
             this.aplicarEfecto();
         }

@@ -12,7 +12,7 @@ public class Trampa {
     public void avanzarTurno(){
         this.turnosVigente++;
         if (this.vidaUtil < this.turnosVigente) {
-            this.pasarelaConstruida.destruirConstuccion();
+            this.pasarelaConstruida.destruirConstruccion();
         } else {
             this.aplicarEfecto();
         }
