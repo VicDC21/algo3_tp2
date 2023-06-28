@@ -4,7 +4,6 @@ import edu.fiuba.algo3.modelo.Mapa;
 import edu.fiuba.algo3.modelo.defensas.Torre;
 import edu.fiuba.algo3.modelo.defensas.TorreNull;
 import edu.fiuba.algo3.modelo.defensas.Trampa;
-import edu.fiuba.algo3.modelo.enemigos.Enemigo;
 import edu.fiuba.algo3.modelo.excepciones.ParcelaNoConstruible;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,10 +18,7 @@ public class Tierra extends Parcela {
 
     @Override
     public void avanzarTurno() {
-        if (!tieneEnemigos()) {
-            return;
-        }
-        enemigos.forEach(Enemigo::avanzar);
+        super.avanzarTurno();
         torre.avanzarTurno(mapa, fila, columna);
     }
 
