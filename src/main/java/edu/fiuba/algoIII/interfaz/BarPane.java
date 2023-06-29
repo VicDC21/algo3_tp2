@@ -1,11 +1,10 @@
 package edu.fiuba.algoIII.interfaz;
 
 import edu.fiuba.algoIII.modelo.defensas.Torre;
-import edu.fiuba.algoIII.modelo.defensas.TrampaArenosa;
+//import edu.fiuba.algoIII.modelo.defensas.TrampaArenosa;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
-
 import java.util.ArrayList;
 import java.util.List;
 
