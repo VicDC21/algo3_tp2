@@ -44,7 +44,10 @@ public class Jugador {
         LOGGER.info("Jugador recibe " + creditos + " créditos");
     }
 
-    public void recibirDanio(int danio) { this.vida -= danio; }
+    public void recibirDanio(int danio) {
+        this.vida -= danio;
+        LOGGER.info("Jugador recibe " + danio + " de danio");
+    }
 
     public void gastarCreditos(int costo) {
         creditos -= costo;

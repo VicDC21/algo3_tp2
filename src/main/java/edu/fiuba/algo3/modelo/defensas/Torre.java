@@ -72,7 +72,7 @@ public class Torre {
     public void atacar(Mapa mapa, int fila, int columna) {
         mapa.obtenerParcelasEnArea(fila, columna, rango)
                 .stream()
-                .filter(Parcela::tieneEnemigos)
+                .filter(Parcela::tieneEnemigosFueraDeTierra)
                 .findAny()
                 .ifPresent(parcela -> parcela.recibirDanio(danio));
         LOGGER.info("Torre atacando con danio " + danio + " y rango " + rango);

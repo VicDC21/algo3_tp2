@@ -35,10 +35,12 @@ public class Topo extends Enemigo implements SuscriptorTurno {
         if (nroMovimiento == 10) {
             this.velocidad = 3;
         }
-        for (int i = 0; i < velocidad; i++) {
-            ((Pasarela) parcelaActual).moverEnemigoALaPasarelaSiguiente(this);
-            parcelaActual = ((Pasarela) parcelaActual).obtenerPasarelaSiguiente();
+        Pasarela pasarelaAMover = (Pasarela) parcelaActual;
+        for (int i = 0; i < velocidadActual; i++) {
+            pasarelaAMover = pasarelaAMover.obtenerPasarelaSiguiente();
         }
+        pasarelaAMover.recibirEnemigo(this);
+        parcelaActual = pasarelaAMover;
         causarDanio();
     }
 
@@ -66,5 +68,6 @@ public class Topo extends Enemigo implements SuscriptorTurno {
         ((Pasarela) parcelaActual).desuscribirTurno(this);
     }
 
-
+    @Override
+    public boolean estaFueraDeTierra() {return false;}
 }

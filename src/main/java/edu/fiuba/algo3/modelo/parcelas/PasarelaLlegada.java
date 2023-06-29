@@ -13,8 +13,6 @@ public class PasarelaLlegada extends Pasarela {
         super(fila, columna, mapa);
     }
 
-
-
     @Override
     public void avanzarTurno() { enemigos.clear(); }
 
