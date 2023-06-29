@@ -31,13 +31,14 @@ public class LayoutJuego extends BorderPane {
     public LayoutJuego(Stage stage, Juego juego) {
         this.juego = juego;
         this.stage = stage;
+        this.jugador = juego.getJugador();
         
         Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
         
         int tileWidth = (int) (screenBounds.getWidth() * 0.9) / 15;
         int tileHeight = (int) (screenBounds.getHeight() * 0.9) / 15;
 
-        mapa = new MapaPane(juego.getParcelas(), tileHeight, tileWidth);
+        mapa = new MapaPane(juego.getParcelas(), jugador, tileHeight, tileWidth);
         
         barDefensas = new BarPane(tileWidth, tileHeight, mapa); 
         barDefensas.setAlignment(Pos.CENTER);

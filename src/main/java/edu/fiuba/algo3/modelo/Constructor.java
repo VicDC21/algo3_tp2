@@ -7,9 +7,12 @@ import edu.fiuba.algo3.modelo.excepciones.CreditoInsuficiente;
 
 import java.util.HashMap;
 import java.util.Map;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class Constructor {
 //    Map<String, Runnable> tiposDeTorre;
+    private static final Logger LOGGER = LoggerFactory.getLogger(Jugador.class.getSimpleName());
     Map<String, Torre> tiposDeTorre;
     Map<String, Class> tiposDeTrampa;
     Mapa mapa;
@@ -33,7 +36,10 @@ public class Constructor {
         if (torre.puedoConstruirConCreditos(creditosDisponibles)) {
             mapa.construirTorre(torre, fila, columna);
             jugador.gastarCreditos(torre.getCosto());
-        } else throw new CreditoInsuficiente();
+        } else {
+            LOGGER.info("Créditos insuficientes para construir torre");
+            throw new CreditoInsuficiente();
+        }
     }
 
     public void construirTrampa(String nombreTrampa, int creditosDisponibles, int fila, int columna) {
@@ -41,7 +47,10 @@ public class Constructor {
         if (trampa.puedoConstruirConCreditos(creditosDisponibles)) {
             mapa.construirTrampa(trampa, fila, columna);
             jugador.gastarCreditos(trampa.getCosto());
-        } else throw new CreditoInsuficiente();
+        } else {
+            LOGGER.info("Créditos insuficientes para construir trampa");
+            throw new CreditoInsuficiente();
+        }
     }
 
 }

@@ -103,4 +103,6 @@ public class Juego {
     public List<Parcela> getParcelas() {
         return mapa.getParcelas();
     }
+
+    public Jugador getJugador() { return this.jugador; }
 }

@@ -10,6 +10,7 @@ public class Jugador {
     int creditos;
     String nombre;
     Constructor constructor;
+
     public Jugador(String nombre, int cantidadDeVida, int cantidadDeCreditos, Constructor constructor){
         this.nombre = nombre;
         this.creditos = cantidadDeCreditos;
@@ -47,5 +48,6 @@ public class Jugador {
 
     public void gastarCreditos(int costo) {
         creditos -= costo;
+        LOGGER.info("Jugador ahora tiene " + creditos + " créditos");
     }
 }

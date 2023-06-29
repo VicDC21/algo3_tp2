@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.JavaFX;
 
+import edu.fiuba.algo3.modelo.excepciones.CreditoInsuficiente;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -22,8 +23,8 @@ public class MapaPane extends GridPane {
     private Jugador jugador;
     private ImageView imagenTorre;
 
-    public MapaPane(List<Parcela> parcelas, int tileHeight, int tileWidth) {
-
+    public MapaPane(List<Parcela> parcelas, Jugador jugador, int tileHeight, int tileWidth) {
+        this.jugador = jugador;
         for (int fila = 0; fila < 15; fila++) {
             for (int columna = 0; columna < 15; columna++) {
                 Parcela parcela = parcelas.get(fila + columna * 15);
@@ -69,16 +70,21 @@ public class MapaPane extends GridPane {
         });
 
         rect.setOnMouseClicked(event -> {
-                    if (torreSeleccionada != null && torreSeleccionada.puedeConstruirseEnParcela(parcela) ){
-                        Torre nuevaTorre = new Torre(torreSeleccionada);
-                        ImageView torreImageView = new ImageView(imagenTorre.getImage());
-                        torreImageView.setFitHeight(tileHeight * 0.8);
-                        torreImageView.setFitWidth(tileWidth * 0.7);
-                        pane.getChildren().add(torreImageView);
-                        parcela.construirTorre(nuevaTorre);
-                        torreSeleccionada = null;
+                    if (torreSeleccionada != null && torreSeleccionada.puedeConstruirseEnParcela(parcela) )
+                        try {
+                            if (torreSeleccionada.puedoConstruirConCreditos(jugador.mostrarCreditos())) {
+                                Torre nuevaTorre = new Torre(torreSeleccionada);
+                                ImageView torreImageView = new ImageView(imagenTorre.getImage());
+                                torreImageView.setFitHeight(tileHeight * 0.8);
+                                torreImageView.setFitWidth(tileWidth * 0.7);
+                                pane.getChildren().add(torreImageView);
+                                parcela.construirTorre(nuevaTorre);
+                                jugador.gastarCreditos(torreSeleccionada.getCosto());
+                            }
+                        } catch (CreditoInsuficiente ignored) {}
+                    torreSeleccionada = null;
                     }
-                });
+                );
         return pane;
     }
 }

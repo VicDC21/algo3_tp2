@@ -2,6 +2,7 @@ package edu.fiuba.algo3.pruebas;
 
 import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.defensas.Torre;
+import edu.fiuba.algo3.modelo.excepciones.CreditoInsuficiente;
 import edu.fiuba.algo3.modelo.excepciones.InvalidMap;
 import edu.fiuba.algo3.modelo.parcelas.Pasarela;
 import org.junit.jupiter.api.Test;
@@ -9,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import java.util.Collections;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 import static org.mockito.Mockito.times;
@@ -85,5 +87,17 @@ public class TorreTest {
         juego.avanzarTurno();
 
         assertEquals(1, juego.cantidadDeEnemigos());
+    }
+
+    @Test
+    public void noSePuedenConstruirConCreditosInsuficientes() throws InvalidMap {
+        Juego juego = new Juego("src/main/resources/mapa.json", "src/main/resources/enemigosUno.json");
+
+        juego.construirTorre("torrePlateada", 12, 12);
+        juego.construirTorre("torrePlateada", 12, 12);
+        juego.construirTorre("torrePlateada", 12, 12);
+        juego.construirTorre("torrePlateada", 12, 12);
+        juego.construirTorre("torrePlateada", 12, 12);
+        assertThrows(CreditoInsuficiente.class, () -> juego.construirTorre("torrePlateada", 12, 12));
     }
 }
