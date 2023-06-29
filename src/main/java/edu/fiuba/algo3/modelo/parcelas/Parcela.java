@@ -1,13 +1,28 @@
 package edu.fiuba.algo3.modelo.parcelas;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import edu.fiuba.algo3.modelo.Mapa;
 import edu.fiuba.algo3.modelo.SuscriptorTurno;
+import edu.fiuba.algo3.modelo.JavaFX.MapaPane;
 import edu.fiuba.algo3.modelo.defensas.Torre;
 import edu.fiuba.algo3.modelo.defensas.Trampa;
+import edu.fiuba.algo3.modelo.enemigos.Enemigo;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 
 public abstract class Parcela {
     protected int fila;
     protected int columna;
+    protected List<Enemigo> enemigos = new ArrayList<>();
+    protected List<Parcela> listaParcelas;
+    private ObjectProperty<Enemigo> enemyProperty = new SimpleObjectProperty<>();
+
+
     Mapa mapa;
 
     public Parcela(int fila, int columna, Mapa mapa)
@@ -24,6 +39,18 @@ public abstract class Parcela {
     public abstract void construirTorre(Torre torre);
 
     public abstract void construirTrampa(Trampa trampa);
+
+    public ObjectProperty<Enemigo> enemyProperty() {
+        return enemyProperty;
+    }
+    
+    public void setEnemy(Enemigo enemy) {
+        enemyProperty.set(enemy);
+    }
+    
+    public Enemigo getEnemy() {
+        return enemyProperty.get();
+    }
 
     public int devolverCantidadDeCreditosGeneradosEnTurno() {
         return 0;
@@ -46,4 +73,8 @@ public abstract class Parcela {
     public void destruirConstuccion() {}
 
     public void removerMuertos() {}
+
+    public List<Enemigo> devolverEnemigos() {
+        return enemigos;
+    }
 }

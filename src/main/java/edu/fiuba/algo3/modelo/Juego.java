@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.JavaFX.LayoutJuego;
+import edu.fiuba.algo3.modelo.JavaFX.MapaPane;
 import edu.fiuba.algo3.modelo.enemigos.Enemigo;
 import edu.fiuba.algo3.modelo.excepciones.InvalidMap;
 import edu.fiuba.algo3.modelo.parcelas.Parcela;
@@ -20,6 +22,8 @@ public class Juego {
     private static final Logger LOGGER = LoggerFactory.getLogger(Enemigo.class.getSimpleName());
     Jugador jugador;
     Mapa mapa;
+    MapaPane mapaPane;
+    LayoutJuego layoutJuego;
 
     private static final Logger logger = LoggerFactory.getLogger(App.class);
 
@@ -88,8 +92,11 @@ public class Juego {
         }
     }
 
+    
+
     public void avanzarTurno() {
         LOGGER.info("Avanzando Turno");
+
         mapa.avanzarTurno();
         mapa.actualizarEnemigos();
         jugador.recibirCreditos(mapa.creditosGeneradosEnTurno());

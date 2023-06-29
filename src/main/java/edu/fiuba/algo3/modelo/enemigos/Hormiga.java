@@ -44,4 +44,9 @@ public class Hormiga extends Enemigo {
 
     @Override
     public void desuscribirTodo() {}
+
+    @Override
+    public String obtenerImagen(){
+        return "Hormiga.png";
+    }
 }

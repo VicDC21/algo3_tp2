@@ -77,4 +77,6 @@ public abstract class Enemigo {
     public void modificarVelocidadTierra(double modificadorVelocidad) {
         this.velocidadActual = (int)(this.velocidad * modificadorVelocidad); // se redondea para abajo
     }
+
+    public abstract String obtenerImagen();
 }

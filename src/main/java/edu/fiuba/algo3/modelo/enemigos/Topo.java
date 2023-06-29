@@ -62,5 +62,11 @@ public class Topo extends Enemigo implements SuscriptorTurno {
         pasarelaActual.desuscribirTurno(this);
     }
 
+    @Override
+    public String obtenerImagen() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'obtenerImagen'");
+    }
+
 
 }
