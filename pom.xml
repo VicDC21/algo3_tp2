@@ -13,7 +13,7 @@
         <maven-surefire-version>3.0.0-M3</maven-surefire-version>
         <archunit-version>0.21.0</archunit-version>
         <javafx-version>15.0.1</javafx-version>
-        <main-class>edu.fiuba.algo3.Main</main-class>
+        <main-class>edu.fiuba.algoIII.Main</main-class>
     </properties>
     <dependencies>
         <dependency>
