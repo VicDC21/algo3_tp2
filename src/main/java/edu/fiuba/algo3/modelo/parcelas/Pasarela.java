@@ -46,8 +46,6 @@ public class Pasarela extends Parcela {
 
     public Pasarela obtenerPasarelaSiguiente() { return pasarelaSiguiente; }
 
-    public void destruirPrimeraTorre() {}
-
     public void destruirConstruccion() { this.trampa = new TrampaNull(); }
 
     public void modificarVelocidad(double modificadorVelocidad) {

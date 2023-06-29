@@ -5,23 +5,24 @@ package edu.fiuba.algo3.modelo.enemigos;
 // Vuela. Puede moverse por cualquier tipo de parcela, va en L y
 // dps con menos de 50% de vida va en recta.
 
-import edu.fiuba.algo3.modelo.parcelas.Pasarela;
+import edu.fiuba.algo3.modelo.parcelas.Parcela;
 
 public class Lechuza extends Enemigo {
     private int creditos = 0;
 
-    public Lechuza(int energia, int velocidad, int danio, String estado, Pasarela pasarelaActual) {
-        super(energia, velocidad, danio, estado, pasarelaActual);
+    private int energiaMaxima = 5;
+
+    public Lechuza(int energia, int velocidad, int danio, String estado, Parcela parcelaActual) {
+        super(energia, velocidad, danio, estado, parcelaActual);
     }
 
     public Lechuza() {
         super(5, 5, 0, "Vivo", null);
     }
 
-    @Override
-    public void causarDanio() {
-        pasarelaActual.destruirPrimeraTorre();
-    }
+    /*public void destruirTorre() {
+        parcelaActual.destruirPrimeraTorre();
+    }*/
 
     @Override
     public int otorgarCredito() {
@@ -36,4 +37,27 @@ public class Lechuza extends Enemigo {
 
     @Override
     public void modificarVelocidadTierra(double modificadorVelocidad) {}
+
+    @Override
+    public void avanzar() {
+        Parcela proximaParcela = this.parcelaActual;
+        int i = 0;
+        if (energia > (energiaMaxima / 2.0f)) {
+            while (i < this.velocidad && proximaParcela != proximaParcela.proximaParcelaComoCatetoHastaLlegadaDesdeAca()) {
+                proximaParcela = proximaParcela.proximaParcelaComoCatetoHastaLlegadaDesdeAca();
+                i++;
+            }
+
+            proximaParcela.recibirEnemigo(this);
+            this.parcelaActual = proximaParcela;
+        } else {
+            while (i < this.velocidad && proximaParcela != proximaParcela.proximaParcelaEnLineaRectaHastaLlegadaDesdeAca()) {
+                proximaParcela = proximaParcela.proximaParcelaEnLineaRectaHastaLlegadaDesdeAca();
+                i++;
+            }
+
+            proximaParcela.recibirEnemigo(this);
+            this.parcelaActual = proximaParcela;
+        }
+    }
 }

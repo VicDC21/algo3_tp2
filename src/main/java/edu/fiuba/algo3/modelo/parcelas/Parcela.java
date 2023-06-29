@@ -116,4 +116,12 @@ public abstract class Parcela {
     public void desuscribirTurno(SuscriptorTurno suscriptor) { mapa.desuscribirTurno(suscriptor); }
 
     public void destruirConstruccion() {}
+
+    public Parcela proximaParcelaComoCatetoHastaLlegadaDesdeAca() {
+        return mapa.proximaParcelaComoCatetoHastaLlegada(this.fila, this.columna);
+    }
+
+    public Parcela proximaParcelaEnLineaRectaHastaLlegadaDesdeAca() {
+        return mapa.proximaParcelaEnLineaRectaHastaLlegada(this.fila, this.columna);
+    }
 }

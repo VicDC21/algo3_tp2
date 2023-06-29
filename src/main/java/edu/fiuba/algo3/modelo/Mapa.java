@@ -4,16 +4,16 @@ import edu.fiuba.algo3.modelo.defensas.Torre;
 import edu.fiuba.algo3.modelo.defensas.Trampa;
 import edu.fiuba.algo3.modelo.enemigos.Enemigo;
 import edu.fiuba.algo3.modelo.parcelas.*;
-import javafx.scene.layout.Pane;
-import javafx.scene.shape.Shape;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static java.lang.Math.abs;
+
 public class Mapa {
     List<Parcela> parcelas = new ArrayList<>();
-    PasarelaSalida pasarelaSalida;
+    PasarelaLlegada pasarelaLlegada;
     Turno turno = new Turno();
     List<Parcela> parcelasConTorre = new ArrayList<>();
 
@@ -59,6 +59,45 @@ public class Mapa {
 //                parcelas.addAll(lista);
     }
 
+    public void agregarPasarelaLlegada(PasarelaLlegada pasarelaLlegada) {
+        this.pasarelaLlegada = pasarelaLlegada;
+    }
+
+    public Parcela proximaParcelaEnLineaRectaHastaLlegada(int filaDesde, int columnaDesde) {
+        Parcela parcelaProxima;
+        int distanciaFilas = this.pasarelaLlegada.distanciaFilasHastaParcela(filaDesde);
+        int distanciaColumnas = this.pasarelaLlegada.distanciaColumnasHastaParcela(columnaDesde);
+        int proximaParcelaFila = filaDesde;
+        int proximaParcelaColumna = columnaDesde;
+
+        if (distanciaFilas != 0) {
+            proximaParcelaFila += distanciaFilas / abs(distanciaFilas);
+        }
+        if (distanciaColumnas != 0) {
+            proximaParcelaColumna += distanciaColumnas / abs(distanciaColumnas);
+        }
+
+        parcelaProxima = this.obtenerParcela(proximaParcelaFila, proximaParcelaColumna);
+        return parcelaProxima;
+    }
+
+    public Parcela proximaParcelaComoCatetoHastaLlegada(int filaDesde, int columnaDesde) {
+        Parcela parcelaProxima;
+        int distanciaFilas = this.pasarelaLlegada.distanciaFilasHastaParcela(filaDesde);
+        int distanciaColumnas = this.pasarelaLlegada.distanciaColumnasHastaParcela(columnaDesde);
+        int proximaParcelaFila = filaDesde;
+        int proximaParcelaColumna = columnaDesde;
+
+        if (distanciaFilas != 0) {
+            proximaParcelaFila += distanciaFilas / abs(distanciaFilas);
+        } else if (distanciaColumnas != 0) {
+            proximaParcelaColumna += distanciaColumnas / abs(distanciaColumnas);
+        }
+
+        parcelaProxima = this.obtenerParcela(proximaParcelaFila, proximaParcelaColumna);
+        return parcelaProxima;
+    }
+
     public Parcela obtenerParcela(int fila, int columna) {
         List<Parcela> listaDeParcelasEncontradas = this.parcelas.stream()
                 .filter(parcela -> parcela.enRadioDe(fila, columna, 0))         //Cambiar esto.
@@ -102,7 +141,7 @@ public class Mapa {
 
     public void destruirPrimeraTorre() {
         if (!parcelasConTorre.isEmpty()) {
-            parcelasConTorre.remove(0).destruirConstuccion();       //Cambiar
+            parcelasConTorre.remove(0).destruirConstruccion();       //Cambiar
         }
     }
 

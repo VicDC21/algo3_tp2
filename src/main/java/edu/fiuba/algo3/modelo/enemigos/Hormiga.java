@@ -18,6 +18,17 @@ public class Hormiga extends Enemigo {
     }
 
     @Override
+    public void avanzar() {
+        Pasarela pasarelaAMover = (Pasarela) parcelaActual;
+        for (int i = 0; i < velocidadActual; i++) {
+            pasarelaAMover = pasarelaAMover.obtenerPasarelaSiguiente();
+        }
+        pasarelaAMover.recibirEnemigo(this);
+        parcelaActual = pasarelaAMover;
+        causarDanio();
+    }
+
+    @Override
     public void recibirDanio(int danio) {
         if (!this.estaMuerto()) {
             this.energia -= danio;
@@ -37,6 +48,10 @@ public class Hormiga extends Enemigo {
     public int otorgarCredito() {
         LOGGER.info("Hormiga otorga " + creditos + " créditos");
         return this.creditos;
+    }
+
+    public void causarDanio() {
+        ((Pasarela) parcelaActual).causarDanioJugador(danio);
     }
 
     @Override

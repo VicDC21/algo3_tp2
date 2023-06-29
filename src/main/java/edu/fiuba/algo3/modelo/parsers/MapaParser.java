@@ -64,7 +64,9 @@ public class MapaParser {
     private void setPasarelaDeLlegada(List<Parcela> lista, Mapa mapa) {
         for (int i = (lista.size() - 1); i >= 0; i--) {
             if (lista.get(i) instanceof Pasarela) {
-                lista.set(i, new PasarelaLlegada(lastFila, lastColumna, mapa));
+                PasarelaLlegada pasarelaLlegada = new PasarelaLlegada(lastFila, lastColumna, mapa);
+                lista.set(i, pasarelaLlegada);
+                mapa.agregarPasarelaLlegada(pasarelaLlegada);
                 break;
             }
         }

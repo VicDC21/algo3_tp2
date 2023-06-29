@@ -27,6 +27,21 @@ public class Arania extends Enemigo {
     }
 
     @Override
+    public void avanzar() {
+        Pasarela pasarelaAMover = (Pasarela) parcelaActual;
+        for (int i = 0; i < velocidadActual; i++) {
+            pasarelaAMover = pasarelaAMover.obtenerPasarelaSiguiente();
+        }
+        pasarelaAMover.recibirEnemigo(this);
+        parcelaActual = pasarelaAMover;
+        causarDanio();
+    }
+
+    public void causarDanio() {
+        ((Pasarela) parcelaActual).causarDanioJugador(danio);
+    }
+
+    @Override
     public void suscribirTodo() {}
 
     @Override

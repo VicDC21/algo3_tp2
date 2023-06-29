@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.modelo.enemigos;
 
-import edu.fiuba.algo3.modelo.parcelas.Pasarela;
+import edu.fiuba.algo3.modelo.parcelas.Parcela;
 import edu.fiuba.algo3.modelo.parcelas.PasarelaSalida;
 
 import org.slf4j.Logger;
@@ -14,40 +14,19 @@ public abstract class Enemigo {
 
     protected int danio;
     protected String estado;
-    protected Pasarela pasarelaActual;
+    protected Parcela parcelaActual;
 
-    public Enemigo(int energia, int velocidad, int danio, String estado, Pasarela pasarelaActual) {
+    public Enemigo(int energia, int velocidad, int danio, String estado, Parcela parcelaActual) {
         this.energia = energia;
         this.velocidad = velocidad;
         this.velocidadActual = velocidad;
         this.danio = danio;
         this.estado = estado;
-        this.pasarelaActual = pasarelaActual;
-    }
-/*
-    public void avanzar() {
-        for (int i = 0; i < velocidadActual; i++) {
-            pasarelaActual.moverEnemigoALaPasarelaSiguiente(this);
-            pasarelaActual = pasarelaActual.obtenerPasarelaSiguiente();
-        }
-        causarDanio();
-    }
-*/
-
-    public void avanzar() {
-        Pasarela pasarelaAMover = pasarelaActual;
-        for (int i = 0; i < velocidadActual; i++) {
-            pasarelaAMover = pasarelaAMover.obtenerPasarelaSiguiente();
-        }
-        pasarelaAMover.recibirEnemigo(this);
-        pasarelaActual = pasarelaAMover;
-        causarDanio();
+        this.parcelaActual = parcelaActual;
     }
 
+    public abstract void avanzar();
 
-    public void causarDanio() {
-        pasarelaActual.causarDanioJugador(danio);
-    }
 
     public void recibirDanio(int danio) {
         if (!this.estaMuerto()) {
@@ -63,7 +42,7 @@ public abstract class Enemigo {
     public abstract int otorgarCredito();
 
     public void setPasarelaSalida(PasarelaSalida pasarelaSalida) {
-        pasarelaActual = pasarelaSalida;
+        parcelaActual = pasarelaSalida;
     }
 
     public abstract void suscribirTodo();

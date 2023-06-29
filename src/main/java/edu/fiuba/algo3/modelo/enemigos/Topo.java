@@ -18,6 +18,10 @@ public class Topo extends Enemigo implements SuscriptorTurno {
         super(energia, velocidad, danio, estado, pasarelaActual);
     }
 
+    public void causarDanio() {
+        ((Pasarela) parcelaActual).causarDanioJugador(danio);
+    }
+
     public Topo() {
         super(1, 1, 1, "Vivo", null);
     }
@@ -32,8 +36,8 @@ public class Topo extends Enemigo implements SuscriptorTurno {
             this.velocidad = 3;
         }
         for (int i = 0; i < velocidad; i++) {
-            pasarelaActual.moverEnemigoALaPasarelaSiguiente(this);
-            pasarelaActual = pasarelaActual.obtenerPasarelaSiguiente();
+            ((Pasarela) parcelaActual).moverEnemigoALaPasarelaSiguiente(this);
+            parcelaActual = ((Pasarela) parcelaActual).obtenerPasarelaSiguiente();
         }
         causarDanio();
     }
@@ -54,12 +58,12 @@ public class Topo extends Enemigo implements SuscriptorTurno {
 
     @Override
     public void suscribirTodo() {
-        pasarelaActual.suscribirTurno(this);
+        ((Pasarela) parcelaActual).suscribirTurno(this);
     }
 
     @Override
     public void desuscribirTodo() {
-        pasarelaActual.desuscribirTurno(this);
+        ((Pasarela) parcelaActual).desuscribirTurno(this);
     }
 
 
