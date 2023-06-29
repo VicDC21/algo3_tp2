@@ -28,7 +28,7 @@ public class BarPane extends HBox {
             mapaPane.setTorreSeleccionada(torreBlanca, TorreBlancaImagen);
         });
 
-        ImageView TorrePlateadaImagen = new ImageView("tower.png");
+        ImageView TorrePlateadaImagen = new ImageView("towersilver.png");
         Torre torrePlateada = new Torre(20, 2, 5, 2);
         TorrePlateadaImagen.setFitHeight(tileHeight);
         TorrePlateadaImagen.setFitWidth(tileWidth);
@@ -37,7 +37,7 @@ public class BarPane extends HBox {
             mapaPane.setTorreSeleccionada(torrePlateada, TorrePlateadaImagen);
         });
 
-        ImageView TrampaImagen = new ImageView("tower.png");
+        ImageView TrampaImagen = new ImageView("sandtrap.jpg");
         TrampaArenosa trampa = new TrampaArenosa();
         TrampaImagen.setFitHeight(tileHeight);
         TrampaImagen.setFitWidth(tileWidth);
@@ -47,6 +47,6 @@ public class BarPane extends HBox {
      //   });
 
         this.getChildren().addAll(TorreBlancaImagen, TorrePlateadaImagen, TrampaImagen);
-        this.setSpacing(80);
+        this.setSpacing(60);
     }
 }
