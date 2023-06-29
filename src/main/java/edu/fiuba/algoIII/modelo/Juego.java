@@ -53,8 +53,8 @@ public class Juego {
         jugador.construirTorre(nombreTorre, fila, columna);
     }
 
-    public void construirTrampa(String nombreTrampa, int fila, int columna) {
-        jugador.construirTrampa(nombreTrampa, fila, columna);
+    public void construirTrampa(/*String nombreTrampa,*/ int fila, int columna) {
+        jugador.construirTrampa(/*nombreTrampa,*/ fila, columna);
     }
 
     public Juego(Jugador jugador, Mapa mapa) {

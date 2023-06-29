@@ -18,7 +18,7 @@ public class BotonEmpezarPartidaEventHandler implements EventHandler<MouseEvent>
 
     @Override
     public void handle(MouseEvent mouseEvent) {
-        Juego juego = null;
+        Juego juego;
         try {
             juego = new Juego("src/main/resources/mapa.json", "src/main/resources/enemigos.json", textField.getText());
             LayoutJuego layout = new LayoutJuego(stage, juego);   

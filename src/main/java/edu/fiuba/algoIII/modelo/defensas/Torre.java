@@ -3,8 +3,6 @@ package edu.fiuba.algoIII.modelo.defensas;
 import edu.fiuba.algoIII.modelo.Mapa;
 import edu.fiuba.algoIII.modelo.parcelas.Parcela;
 import edu.fiuba.algoIII.modelo.parcelas.Tierra;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.Pane;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -82,13 +80,5 @@ public class Torre {
 
     public boolean estaOperativa() {
         return turnosParaConstruirse <= 0;
-    }
-
-    public void dibujarse(Pane pane) {
-        ImageView view = new ImageView("tower.png");
-        view.fitWidthProperty().bind(pane.widthProperty());
-        view.fitHeightProperty().bind(pane.heightProperty());
-        view.setPreserveRatio(true);
-        pane.getChildren().add(view);
     }
 }

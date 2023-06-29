@@ -4,8 +4,6 @@ import edu.fiuba.algoIII.modelo.enemigos.Arania;
 import edu.fiuba.algoIII.modelo.Constructor;
 import edu.fiuba.algoIII.modelo.Jugador;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
 

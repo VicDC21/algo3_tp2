@@ -7,14 +7,10 @@ public class TierraContextMenu extends ContextMenu {
 
     public TierraContextMenu() {
         MenuItem opcion1 = new MenuItem("Construir Torre");
-        opcion1.setOnAction(event -> {
-            System.out.println("Se coloco Torre "); //falta implementacion real
-        });
+        opcion1.setOnAction(event -> System.out.println("Se coloco Torre ")); //falta implementacion real);
 
         MenuItem opcion2 = new MenuItem("Cancelar");
-        opcion2.setOnAction(event -> {
-            System.out.println("Cancela Procedimiento");
-        });
+        opcion2.setOnAction(event -> System.out.println("Cancela Procedimiento"));
         this.getItems().addAll(opcion1, opcion2);
     }
 

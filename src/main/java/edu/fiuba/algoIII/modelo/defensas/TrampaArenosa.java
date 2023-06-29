@@ -4,7 +4,7 @@ public class TrampaArenosa extends Trampa {
 
     int costo = 25;
     int vidaUtil = 3;
-    private static double modificadorVelocidad = 0.5;
+    final double modificadorVelocidad = 0.5;
 
     @Override
     public void avanzarTurno(){

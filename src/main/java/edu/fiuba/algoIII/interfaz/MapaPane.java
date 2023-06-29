@@ -42,8 +42,8 @@ public class MapaPane extends GridPane {
 
     private StackPane crearVisual(Parcela parcela, int tileHeight, int tileWidth){
         Rectangle rect = new Rectangle();
-        rect.setWidth(tileWidth);;
-        rect.setHeight(tileHeight);;
+        rect.setWidth(tileWidth);
+        rect.setHeight(tileHeight);
 
         if(parcela instanceof Tierra){ 
         rect.setFill(new ImagePattern(new Image("tierra.jpg")));
@@ -61,13 +61,8 @@ public class MapaPane extends GridPane {
 
         StackPane pane = new StackPane(rect);
 
-        rect.setOnMouseEntered(e -> {
-            rect.setEffect(new DropShadow());
-        });
-
-        rect.setOnMouseExited(e -> {
-            rect.setEffect(null);
-        });
+        rect.setOnMouseEntered(e -> rect.setEffect(new DropShadow()));
+        rect.setOnMouseExited(e -> rect.setEffect(null));
 
         rect.setOnMouseClicked(event -> {
                     if (torreSeleccionada != null && torreSeleccionada.puedeConstruirseEnParcela(parcela) )

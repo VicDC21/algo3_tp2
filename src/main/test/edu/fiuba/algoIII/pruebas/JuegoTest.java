@@ -40,7 +40,7 @@ public class JuegoTest {
             return;
         }
 
-        List<Enemigo> enemigos = new ArrayList<Enemigo>();
+        List<Enemigo> enemigos = new ArrayList<>();
         Hormiga hormiga = new Hormiga();
         enemigos.add(hormiga);
         ArrayList<List<Enemigo>> PackEnemigos = new ArrayList<>();

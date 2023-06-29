@@ -30,8 +30,8 @@ public class Jugador {
         constructor.construirTorre(nombreTorre, this.creditos, fila, columna);
     }
 
-    public void construirTrampa(String nombreTrampa, int fila, int columna) {
-        constructor.construirTrampa(nombreTrampa, this.creditos, fila, columna);
+    public void construirTrampa(/*String nombreTrampa,*/ int fila, int columna) {
+        constructor.construirTrampa(/*nombreTrampa,*/ this.creditos, fila, columna);
     }
 
     public boolean estaVivo() {

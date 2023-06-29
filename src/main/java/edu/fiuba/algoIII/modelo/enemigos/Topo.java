@@ -11,7 +11,7 @@ import edu.fiuba.algoIII.modelo.parcelas.Pasarela;
 import edu.fiuba.algoIII.modelo.SuscriptorTurno;
 
 public class Topo extends Enemigo implements SuscriptorTurno {
-    private int creditos = 1;
+    final int creditos = 1;
     private int nroMovimiento = 0;
 
     public Topo(int energia, int velocidad, int danio, String estado, Pasarela pasarelaActual) {
@@ -60,12 +60,12 @@ public class Topo extends Enemigo implements SuscriptorTurno {
 
     @Override
     public void suscribirTodo() {
-        ((Pasarela) parcelaActual).suscribirTurno(this);
+        parcelaActual.suscribirTurno(this);
     }
 
     @Override
     public void desuscribirTodo() {
-        ((Pasarela) parcelaActual).desuscribirTurno(this);
+        parcelaActual.desuscribirTurno(this);
     }
 
     @Override

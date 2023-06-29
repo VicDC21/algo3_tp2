@@ -8,9 +8,9 @@ package edu.fiuba.algoIII.modelo.enemigos;
 import edu.fiuba.algoIII.modelo.parcelas.Parcela;
 
 public class Lechuza extends Enemigo {
-    private int creditos = 0;
+    final int creditos = 0;
 
-    private int energiaMaxima = 5;
+    final int energiaMaxima = 5;
 
     public Lechuza(int energia, int velocidad, int danio, String estado, Parcela parcelaActual) {
         super(energia, velocidad, danio, estado, parcelaActual);
@@ -49,9 +49,7 @@ public class Lechuza extends Enemigo {
     }
 
     @Override
-    public int otorgarCredito() {
-        return 0;
-    }
+    public int otorgarCredito() { return this.creditos; }
 
     @Override
     public void suscribirTodo() {}

@@ -21,21 +21,17 @@ public class BarPane extends HBox {
         TorreBlancaImagen.setFitHeight(tileHeight);
         TorreBlancaImagen.setFitWidth(tileWidth);
         TorreBlancaImagen.setPreserveRatio(true);
-        TorreBlancaImagen.setOnMouseClicked(event -> {
-            mapaPane.setTorreSeleccionada(torreBlanca, TorreBlancaImagen);
-        });
+        TorreBlancaImagen.setOnMouseClicked(event -> mapaPane.setTorreSeleccionada(torreBlanca, TorreBlancaImagen));
 
         ImageView TorrePlateadaImagen = new ImageView("torrePlateada.png");
         Torre torrePlateada = new Torre(20, 2, 5, 2);
         TorrePlateadaImagen.setFitHeight(tileHeight);
         TorrePlateadaImagen.setFitWidth(tileWidth);
         TorrePlateadaImagen.setPreserveRatio(true);
-        TorrePlateadaImagen.setOnMouseClicked(event -> {
-            mapaPane.setTorreSeleccionada(torrePlateada, TorrePlateadaImagen);
-        });
+        TorrePlateadaImagen.setOnMouseClicked(event -> mapaPane.setTorreSeleccionada(torrePlateada, TorrePlateadaImagen));
 
         ImageView TrampaImagen = new ImageView("trampa.png");
-        TrampaArenosa trampa = new TrampaArenosa();
+        //TrampaArenosa trampa = new TrampaArenosa();
         TrampaImagen.setFitHeight(tileHeight);
         TrampaImagen.setFitWidth(tileWidth);
         TrampaImagen.setPreserveRatio(true);
@@ -49,13 +45,8 @@ public class BarPane extends HBox {
         lista.add(TrampaImagen);
 
         for (ImageView imageView: lista) {
-            imageView.setOnMouseEntered(e -> {
-                imageView.setEffect(new DropShadow());
-            });
-
-            imageView.setOnMouseExited(e -> {
-                imageView.setEffect(null);
-            });
+            imageView.setOnMouseEntered(e -> imageView.setEffect(new DropShadow()));
+            imageView.setOnMouseExited(e -> imageView.setEffect(null));
         }
 
         this.getChildren().addAll(TorreBlancaImagen, TorrePlateadaImagen, TrampaImagen);

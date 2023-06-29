@@ -18,7 +18,7 @@ public class HormigaTest {
     @Test
     public void matarUnaHormigaOtorga1CreditoSiMurieron10Hormigas() {
         Hormiga.hormigasMuertas = 0;
-        List<Enemigo> enemigos = new ArrayList<Enemigo>();        
+        List<Enemigo> enemigos = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
             Hormiga hormiga = new Hormiga();
             enemigos.add(hormiga);

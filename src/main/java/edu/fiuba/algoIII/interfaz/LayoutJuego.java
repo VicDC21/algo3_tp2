@@ -1,7 +1,7 @@
 package edu.fiuba.algoIII.interfaz;
 
 
-import edu.fiuba.algoIII.modelo.Constructor;
+//import edu.fiuba.algoIII.modelo.Constructor;
 import edu.fiuba.algoIII.modelo.Juego;
 import edu.fiuba.algoIII.modelo.Jugador;
 import javafx.geometry.HPos;
@@ -14,17 +14,16 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
-
-import edu.fiuba.algoIII.modelo.defensas.Torre;
+//import edu.fiuba.algoIII.modelo.defensas.Torre;
 
 public class LayoutJuego extends BorderPane {
     Stage stage;
     Juego juego;
     Jugador jugador;
-    Constructor constructor;
+    //Constructor constructor;
     MapaPane mapa;
     BarPane barDefensas;
-    Torre torreSeleccionada;
+    //Torre torreSeleccionada;
 
     private static final float CENTER_ON_SCREEN_X_FRACTION = 1.0f / 2;
     private static final float CENTER_ON_SCREEN_Y_FRACTION = 1.0f / 3;
@@ -53,9 +52,7 @@ public class LayoutJuego extends BorderPane {
 
         Button avanzarTurno = new Button("Avanzar Turno");
         
-        avanzarTurno.setOnAction(event -> {
-            juego.avanzarTurno();
-        });
+        avanzarTurno.setOnAction(event -> juego.avanzarTurno());
 
         GridPane root = new GridPane();
         root.setAlignment(Pos.CENTER);

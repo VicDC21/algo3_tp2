@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Turno {
     private int turno = 0;
-    ArrayList<SuscriptorTurno> suscriptores = new ArrayList();
+    ArrayList<SuscriptorTurno> suscriptores = new ArrayList<>();
 
     public void avanzarTurno() {
         turno++;

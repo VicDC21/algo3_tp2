@@ -1,4 +1,4 @@
-module edu.fiuba.algo3 {
+module edu.fiuba.algoIII {
     requires javafx.controls;
     requires org.apache.commons.io;
     requires org.json;

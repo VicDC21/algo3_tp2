@@ -42,7 +42,7 @@ public class Pasarela extends Parcela {
 
     public void causarDanioJugador(int danio) {}
 
-    public void moverEnemigoALaPasarelaSiguiente(Enemigo enemigo) { pasarelaSiguiente.recibirEnemigo(enemigo); }
+    //public void moverEnemigoALaPasarelaSiguiente(Enemigo enemigo) { pasarelaSiguiente.recibirEnemigo(enemigo); }
 
     public Pasarela obtenerPasarelaSiguiente() { return pasarelaSiguiente; }
 
