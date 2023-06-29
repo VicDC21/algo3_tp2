@@ -4,7 +4,6 @@ package edu.fiuba.algo3.modelo.JavaFX;
 import edu.fiuba.algo3.modelo.Constructor;
 import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.Jugador;
-import javafx.beans.value.ChangeListener;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -55,7 +54,7 @@ public class LayoutJuego extends BorderPane {
         
         avanzarTurno.setOnAction(event -> {
             juego.avanzarTurno();
-            mapaPane.actuaizarVisualEnemigos();
+            mapaPane.actualizarVisualEnemigos();
         });
 
         GridPane root = new GridPane();
