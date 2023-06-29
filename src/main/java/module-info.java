@@ -4,6 +4,7 @@ module edu.fiuba.algoIII {
     requires org.json;
     requires slf4j.api;
     requires java.logging;
+    exports edu.fiuba.algoIII;
     exports edu.fiuba.algoIII.modelo;
     exports edu.fiuba.algoIII.interfaz;
 }
