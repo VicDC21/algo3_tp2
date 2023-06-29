@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.modelo.JavaFX;
 
+import javafx.geometry.Pos;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -12,8 +14,10 @@ import javafx.scene.shape.Rectangle;
 import java.util.ArrayList;
 import java.util.List;
 
+import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.defensas.Torre;
+import edu.fiuba.algo3.modelo.enemigos.Enemigo;
 import edu.fiuba.algo3.modelo.parcelas.Parcela;
 import edu.fiuba.algo3.modelo.parcelas.Pasarela;
 import edu.fiuba.algo3.modelo.parcelas.Rocoso;
@@ -84,22 +88,22 @@ public class MapaPane extends GridPane {
         return pane;
     }
 
-    public void actualizarVisualEnemigos() {
+    public void actuaizarVisualEnemigos() {
         for (int fila = 0; fila < 15; fila++) {
             for (int columna = 0; columna < 15; columna++) {
                 Parcela parcela = listaParcelas.get(fila + columna * 15);
-                StackPane pane = crearVisual(parcela, recHeight, recWidth);
-                if (parcela.tieneEnemigos()) {
+                
+                if(parcela.tieneEnemigos()) {
                     ImageView enemyImageView = new ImageView(new Image("Tower.png"));
-                    enemyImageView.setFitHeight(recHeight / 2);
-                    enemyImageView.setFitWidth(recWidth / 2);
-                    pane.getChildren().addAll(enemyImageView);
+                    StackPane pane = gridPanes[fila][columna];
+                    enemyImageView.setFitHeight(recHeight/2);
+                    enemyImageView.setFitWidth(recWidth/2);
+                    pane.getChildren().addAll(enemyImageView); 
                 }
-                StackPane old = gridPanes[fila][columna];
-                gridPanes[fila][columna] = pane;
-                this.getChildren().remove(old);
-                this.add(pane, fila, columna);
-            }
+                else if(!parcela.tieneEnemigos()){
+                    StackPane pane = gridPanes[fila][columna];
+                }
+           }
         }
     }
 }
