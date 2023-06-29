@@ -11,6 +11,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +23,7 @@ import edu.fiuba.algo3.modelo.parcelas.Parcela;
 import edu.fiuba.algo3.modelo.parcelas.Pasarela;
 import edu.fiuba.algo3.modelo.parcelas.Rocoso;
 import edu.fiuba.algo3.modelo.parcelas.Tierra;
+import edu.fiuba.algo3.modelo.parsers.EnemigosParser;
 
 public class MapaPane extends GridPane {
     private Torre torreSeleccionada;
@@ -32,7 +34,7 @@ public class MapaPane extends GridPane {
     private int recHeight;
     private int recWidth;
     private StackPane[][] gridPanes;
-
+    private StackPane[][] gridPanesBasico;
 
     public MapaPane(List<Parcela> parcelas, int tileHeight, int tileWidth) {
         listaParcelas = parcelas;
@@ -40,12 +42,14 @@ public class MapaPane extends GridPane {
         recWidth = tileWidth;
 
         gridPanes = new StackPane[15][15];
+        gridPanesBasico = new StackPane[15][15];
 
         for (int fila = 0; fila < 15; fila++) {
             for (int columna = 0; columna < 15; columna++) {
                 Parcela parcela = parcelas.get(fila + columna * 15);
                 StackPane pane = this.crearVisual(parcela, recHeight,recWidth);
                 gridPanes[fila][columna] = pane;  
+                gridPanesBasico[fila][columna] = pane;
                 this.add(pane, fila, columna);
             }
         }
@@ -89,22 +93,39 @@ public class MapaPane extends GridPane {
     }
 
     public void actuaizarVisualEnemigos() {
+        
         for (int fila = 0; fila < 15; fila++) {
             for (int columna = 0; columna < 15; columna++) {
                 Parcela parcela = listaParcelas.get(fila + columna * 15);
+                StackPane pane = gridPanes[fila][columna];
+                pane.getChildren().removeIf(node -> node instanceof GridPane);                
                 
-                if(parcela.tieneEnemigos()) {
-                    ImageView enemyImageView = new ImageView(new Image("Tower.png"));
-                    StackPane pane = gridPanes[fila][columna];
-                    enemyImageView.setFitHeight(recHeight/2);
-                    enemyImageView.setFitWidth(recWidth/2);
-                    pane.getChildren().addAll(enemyImageView); 
+                if (parcela.tieneEnemigos()) {
+                    List<Enemigo> enemigosParcela = parcela.devolverEnemigos();
+                    
+                    GridPane enemyGrid = new GridPane();
+                    enemyGrid.setAlignment(Pos.CENTER);
+
+                    for (Enemigo enemigo : enemigosParcela) {
+                        ImageView enemyImageView = new ImageView("Tower.png");
+                        enemyImageView.getStyleClass().add("enemigo"); 
+                        enemyImageView.setFitHeight(recHeight / 2);
+                        enemyImageView.setFitWidth(recWidth / 2);
+                        
+                        int gridRow = enemigosParcela.indexOf(enemigo) / 2;
+                        int gridCol = enemigosParcela.indexOf(enemigo) % 2;
+                        enemyGrid.add(enemyImageView, gridCol, gridRow);
+                    }
+
+                    pane.getChildren().add(enemyGrid);
                 }
-                else if(!parcela.tieneEnemigos()){
-                    StackPane pane = gridPanes[fila][columna];
-                }
-           }
         }
     }
 }
+
+
+
+
+
+        }
 

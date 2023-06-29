@@ -18,6 +18,10 @@ public class PasarelaSalida extends Pasarela {
     }
 
 
+    @Override
+    public List<Enemigo> devolverEnemigos(){
+        return enemigosPorTurno.get(0);
+    }
 
     public void agregarEnemigo(Enemigo enemigo) {
         enemigos.add(enemigo);
