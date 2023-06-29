@@ -85,9 +85,9 @@ public class JuegoTest {
     public void simulaYVerificaQueElJugadorGanaLaPartida() throws InvalidMap {
         Juego juego = new Juego("src/main/resources/mapa.json", "src/main/resources/enemigosUno.json");
 
-        juego.construirTorre("torrePlateada", 60);
-        juego.construirTorre("torrePlateada", 75);
-        juego.construirTorre("torrePlateada", 90);
+        juego.construirTorre("torrePlateada", 6, 0);
+        juego.construirTorre("torrePlateada", 9, 7);
+        juego.construirTorre("torrePlateada", 9, 0);
 
         juego.jugar();
 

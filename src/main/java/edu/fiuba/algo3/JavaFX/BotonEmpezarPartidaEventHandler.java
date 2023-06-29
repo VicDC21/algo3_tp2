@@ -1,9 +1,8 @@
-package edu.fiuba.algo3.modelo.JavaFX;
+package edu.fiuba.algo3.JavaFX;
 
 import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.excepciones.InvalidMap;
 import javafx.event.EventHandler;
-import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;

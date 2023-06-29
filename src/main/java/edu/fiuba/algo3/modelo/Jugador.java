@@ -26,10 +26,6 @@ public class Jugador {
         return this.creditos;
     }
 
-    public void construirTorre(String nombreTorre, int numeroParcela) {
-        constructor.construirTorre(nombreTorre, this.creditos, numeroParcela);
-    }
-
     public void construirTorre(String nombreTorre, int fila, int columna) {
         constructor.construirTorre(nombreTorre, this.creditos, fila, columna);
     }

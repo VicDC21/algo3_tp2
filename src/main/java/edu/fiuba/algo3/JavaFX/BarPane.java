@@ -1,16 +1,13 @@
-package edu.fiuba.algo3.modelo.JavaFX;
+package edu.fiuba.algo3.JavaFX;
 
 import edu.fiuba.algo3.modelo.defensas.Torre;
 import edu.fiuba.algo3.modelo.defensas.TrampaArenosa;
-import javafx.event.EventHandler;
-import javafx.geometry.Insets;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.HBox;
-import javafx.scene.paint.Color;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 // Cambiar para que muestre la vida y los creditos.
@@ -19,7 +16,7 @@ public class BarPane extends HBox {
 
     public BarPane(int tileWidth, int tileHeight, MapaPane mapaPane) {
 
-        ImageView TorreBlancaImagen = new ImageView("tower.png");
+        ImageView TorreBlancaImagen = new ImageView("torreBlanca.png");
         Torre torreBlanca = new Torre(10,1,3,1);
         TorreBlancaImagen.setFitHeight(tileHeight);
         TorreBlancaImagen.setFitWidth(tileWidth);
@@ -28,7 +25,7 @@ public class BarPane extends HBox {
             mapaPane.setTorreSeleccionada(torreBlanca, TorreBlancaImagen);
         });
 
-        ImageView TorrePlateadaImagen = new ImageView("tower.png");
+        ImageView TorrePlateadaImagen = new ImageView("torrePlateada.png");
         Torre torrePlateada = new Torre(20, 2, 5, 2);
         TorrePlateadaImagen.setFitHeight(tileHeight);
         TorrePlateadaImagen.setFitWidth(tileWidth);
@@ -37,7 +34,7 @@ public class BarPane extends HBox {
             mapaPane.setTorreSeleccionada(torrePlateada, TorrePlateadaImagen);
         });
 
-        ImageView TrampaImagen = new ImageView("tower.png");
+        ImageView TrampaImagen = new ImageView("trampa.png");
         TrampaArenosa trampa = new TrampaArenosa();
         TrampaImagen.setFitHeight(tileHeight);
         TrampaImagen.setFitWidth(tileWidth);
@@ -45,6 +42,21 @@ public class BarPane extends HBox {
       //  TrampaImagen.setOnMouseClicked(event -> {
       //      mapaPane.setTorreSeleccionada(trampa, TrampaImagen);
      //   });
+
+        List<ImageView> lista = new ArrayList<>();
+        lista.add(TorreBlancaImagen);
+        lista.add(TorrePlateadaImagen);
+        lista.add(TrampaImagen);
+
+        for (ImageView imageView: lista) {
+            imageView.setOnMouseEntered(e -> {
+                imageView.setEffect(new DropShadow());
+            });
+
+            imageView.setOnMouseExited(e -> {
+                imageView.setEffect(null);
+            });
+        }
 
         this.getChildren().addAll(TorreBlancaImagen, TorrePlateadaImagen, TrampaImagen);
         this.setSpacing(80);

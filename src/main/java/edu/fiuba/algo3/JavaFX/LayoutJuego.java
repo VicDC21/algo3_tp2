@@ -1,10 +1,9 @@
-package edu.fiuba.algo3.modelo.JavaFX;
+package edu.fiuba.algo3.JavaFX;
 
 
 import edu.fiuba.algo3.modelo.Constructor;
 import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.Jugador;
-import javafx.beans.value.ChangeListener;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
