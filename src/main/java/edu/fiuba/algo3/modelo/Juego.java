@@ -23,11 +23,7 @@ public class Juego {
 
     private static final Logger logger = LoggerFactory.getLogger(App.class);
 
-    /*public Juego() {
-        mapa = new Mapa();
-        jugador = new Jugador(leerNombre(), 20, 100, new Constructor(mapa));
-    }*/
-
+    //Solo se usa para probar la ruta JSon del mapa
     public Juego(String path) throws InvalidMap {
         ObtenedorDeMapa obtenedorDeMapa = new ObtenedorDeMapa();
         mapa = obtenedorDeMapa.obtenerMapa(path);
@@ -53,10 +49,6 @@ public class Juego {
         jugador = new Jugador(nombre, 20, 100, constructor);
         mapa.setJugador(jugador);    // Esto hay que sacarlo
         logger.info("Juego Iniciado");   
-    }
-
-    public void construirTorre(String nombreTorre, int numeroParcela) {
-        jugador.construirTorre(nombreTorre, numeroParcela);
     }
 
     public void construirTorre(String nombreTorre, int fila, int columna) {

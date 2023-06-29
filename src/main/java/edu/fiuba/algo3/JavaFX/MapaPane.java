@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.modelo.JavaFX;
+package edu.fiuba.algo3.JavaFX;
 
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;

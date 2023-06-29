@@ -17,10 +17,6 @@ public class Mapa {
     Turno turno = new Turno();
     List<Parcela> parcelasConTorre = new ArrayList<>();
 
-    public void construirTorre(Torre torre, int numeroParcela) {
-        parcelas.get(numeroParcela).construirTorre(torre);
-    }
-
     public void construirTorre(Torre torre, int fila, int columna) {
         obtenerParcela(fila, columna).construirTorre(torre);
     }
@@ -69,11 +65,6 @@ public class Mapa {
                 .collect(Collectors.toList());
 
         return listaDeParcelasEncontradas.get(0);
-    }
-
-    @Override
-    public String toString() {
-        return this.parcelas.toString();
     }
     
     public void cargarEnemigos(ArrayList<List<Enemigo>> enemigosParseados) {

@@ -38,14 +38,14 @@ public class HormigaTest {
         Constructor constructor = new Constructor(mapaParseado);
         Jugador jugador = new Jugador("Prueba", 10, 100, constructor);
 
-        jugador.construirTorre("torreBlanca", 15);
-        jugador.construirTorre("torreBlanca", 110);
-        jugador.construirTorre("torreBlanca", 30);
-        jugador.construirTorre("torreBlanca", 108);
-        jugador.construirTorre("torreBlanca", 60);
-        jugador.construirTorre("torreBlanca", 90);
-        jugador.construirTorre("torreBlanca", 107);
-        jugador.construirTorre("torreBlanca", 112);
+        jugador.construirTorre("torreBlanca", 1,3);
+        jugador.construirTorre("torreBlanca", 11,0);
+        jugador.construirTorre("torreBlanca", 3,2);
+        jugador.construirTorre("torreBlanca", 10,3);
+        jugador.construirTorre("torreBlanca", 6,10);
+        jugador.construirTorre("torreBlanca", 9,10); //Puse torres de sobra se pueden sacar
+        jugador.construirTorre("torreBlanca", 10,7);
+        jugador.construirTorre("torreBlanca", 11,2);
         mapaParseado.avanzarTurno();
         
         mapaParseado.cargarEnemigos(PackEnemigos);
@@ -85,14 +85,14 @@ public class HormigaTest {
         Constructor constructor = new Constructor(mapaParseado);
         Jugador jugador = new Jugador("Prueba", 10, 100, constructor);
 
-        jugador.construirTorre("torreBlanca", 15);
-        jugador.construirTorre("torreBlanca", 110);
-        jugador.construirTorre("torreBlanca", 30);
-        jugador.construirTorre("torreBlanca", 108);
-        jugador.construirTorre("torreBlanca", 60);
-        jugador.construirTorre("torreBlanca", 90); //Puse torres de sobra se pueden sacar
-        jugador.construirTorre("torreBlanca", 107);
-        jugador.construirTorre("torreBlanca", 112);
+        jugador.construirTorre("torreBlanca", 1,3);
+        jugador.construirTorre("torreBlanca", 11,0);
+        jugador.construirTorre("torreBlanca", 3,2);
+        jugador.construirTorre("torreBlanca", 10,3);
+        jugador.construirTorre("torreBlanca", 6,10);
+        jugador.construirTorre("torreBlanca", 9,10); //Puse torres de sobra se pueden sacar
+        jugador.construirTorre("torreBlanca", 10,7);
+        jugador.construirTorre("torreBlanca", 11,2);
         mapaParseado.avanzarTurno();
         
         mapaParseado.cargarEnemigos(PackEnemigos);

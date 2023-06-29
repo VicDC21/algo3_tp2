@@ -5,5 +5,5 @@ module edu.fiuba.algo3 {
     requires slf4j.api;
     requires java.logging;
     exports edu.fiuba.algo3;
-    exports edu.fiuba.algo3.modelo.JavaFX;
+    exports edu.fiuba.algo3.JavaFX;
 }
