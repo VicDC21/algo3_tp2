@@ -81,6 +81,11 @@ public class Pasarela extends Parcela {
     }
 
     @Override
+    public List<Enemigo> devolverEnemigos(){
+        return enemigos;
+    }
+
+    @Override
     public void recibirDanio(int danio) {
 
         Stream<Enemigo> enemigosTotales =
