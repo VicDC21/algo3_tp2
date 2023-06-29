@@ -20,24 +20,6 @@ public class Lechuza extends Enemigo {
         super(5, 5, 0, "Vivo", null);
     }
 
-    /*public void destruirTorre() {
-        parcelaActual.destruirPrimeraTorre();
-    }*/
-
-    @Override
-    public int otorgarCredito() {
-        return 0;
-    }
-
-    @Override
-    public void suscribirTodo() {}
-
-    @Override
-    public void desuscribirTodo() {}
-
-    @Override
-    public void modificarVelocidadTierra(double modificadorVelocidad) {}
-
     @Override
     public void avanzar() {
         Parcela proximaParcela = this.parcelaActual;
@@ -59,5 +41,24 @@ public class Lechuza extends Enemigo {
             proximaParcela.recibirEnemigo(this);
             this.parcelaActual = proximaParcela;
         }
+        destruirTorre();
     }
+
+    public void destruirTorre() {
+        parcelaActual.destruirPrimeraTorre();
+    }
+
+    @Override
+    public int otorgarCredito() {
+        return 0;
+    }
+
+    @Override
+    public void suscribirTodo() {}
+
+    @Override
+    public void desuscribirTodo() {}
+
+    @Override
+    public void modificarVelocidadTierra(double modificadorVelocidad) {}
 }

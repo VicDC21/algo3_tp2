@@ -28,8 +28,6 @@ public abstract class Parcela {
         this.mapa = mapa;
     }
 
-    public int cantidadDeEnemigos() { return enemigos.size(); }
-
     public void actualizarEnemigos() {
         enemigos = arribos;
         arribos = new ArrayList<>();
@@ -124,4 +122,6 @@ public abstract class Parcela {
     public Parcela proximaParcelaEnLineaRectaHastaLlegadaDesdeAca() {
         return mapa.proximaParcelaEnLineaRectaHastaLlegada(this.fila, this.columna);
     }
+
+    public void destruirPrimeraTorre() {}
 }

@@ -1,4 +1,5 @@
 package edu.fiuba.algo3.pruebas;
+import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.Mapa;
 import edu.fiuba.algo3.modelo.enemigos.Lechuza;
 import edu.fiuba.algo3.modelo.excepciones.InvalidMap;
@@ -74,5 +75,25 @@ public class LechuzaTest {
         mapa.avanzarTurno();
         mapa.actualizarEnemigos();
         assertTrue(mapa.obtenerParcela(11, 14).tieneEnemigos());
+    }
+
+    @Test
+    public void lechuzaDestruyePrimeraTorreAlLlegarALaMeta() throws InvalidMap {
+        Juego juego = new Juego("src/main/resources/mapa.json", "src/main/resources/enemigosUnaLechuza.json");
+
+        juego.avanzarTurno();
+        juego.avanzarTurno();
+        juego.avanzarTurno();
+
+        juego.construirTorre("torrePlateada", 1, 3);
+        assertEquals(1, juego.cantidadDeTorres());
+        assertEquals(1, juego.cantidadDeEnemigos());
+
+        juego.avanzarTurno();
+        juego.avanzarTurno();
+        juego.avanzarTurno();
+
+        assertEquals(0, juego.cantidadDeEnemigos());
+        assertEquals(0, juego.cantidadDeTorres());
     }
 }

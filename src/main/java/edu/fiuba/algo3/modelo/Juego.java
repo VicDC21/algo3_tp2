@@ -74,6 +74,8 @@ public class Juego {
 
     public int cantidadDeEnemigos() { return mapa.cantidadDeEnemigos(); }
 
+    public int cantidadDeTorres() { return mapa.cantidadDeTorres(); }
+
     public void jugar() {
         while (jugador.estaVivo() && mapa.tieneEnemigos()) {
             avanzarTurno();

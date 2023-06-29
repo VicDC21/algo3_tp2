@@ -33,6 +33,7 @@ public class Tierra extends Parcela {
 
     @Override
     public void destruirConstruccion() {
+        LOGGER.info("Destruyendo " + torre.getClass().getSimpleName());
         this.torre = new TorreNull();
     }
 
