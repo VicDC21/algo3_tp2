@@ -1,12 +1,11 @@
 package edu.fiuba.algoIII.modelo;
 
+import edu.fiuba.algoIII.interfaz.LayoutJuego;
+import edu.fiuba.algoIII.interfaz.MapaPane;
 import edu.fiuba.algoIII.modelo.enemigos.Enemigo;
 import edu.fiuba.algoIII.modelo.excepciones.InvalidMap;
 import edu.fiuba.algoIII.modelo.parcelas.Parcela;
-
 import java.util.List;
-
-
 import edu.fiuba.algoIII.modelo.parsers.ObtenedorDeEnemigos;
 import edu.fiuba.algoIII.modelo.parsers.ObtenedorDeMapa;
 import org.slf4j.Logger;
@@ -18,6 +17,8 @@ public class Juego {
     private static final Logger LOGGER = LoggerFactory.getLogger(Enemigo.class.getSimpleName());
     Jugador jugador;
     Mapa mapa;
+    MapaPane mapaPane;
+    LayoutJuego layoutJuego;
 
     private static final Logger logger = LoggerFactory.getLogger(App.class);
 

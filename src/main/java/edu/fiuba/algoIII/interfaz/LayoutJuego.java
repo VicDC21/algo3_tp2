@@ -21,7 +21,7 @@ public class LayoutJuego extends BorderPane {
     Juego juego;
     Jugador jugador;
     //Constructor constructor;
-    MapaPane mapa;
+    MapaPane mapaPane;
     BarPane barDefensas;
     //Torre torreSeleccionada;
 
@@ -37,9 +37,9 @@ public class LayoutJuego extends BorderPane {
         int tileWidth = (int) (screenBounds.getWidth() * 0.9) / 15;
         int tileHeight = (int) (screenBounds.getHeight() * 0.9) / 15;
 
-        mapa = new MapaPane(juego.getParcelas(), jugador, tileHeight, tileWidth);
+        mapaPane = new MapaPane(juego.getParcelas(), jugador, tileHeight, tileWidth);
         
-        barDefensas = new BarPane(tileWidth, tileHeight, mapa); 
+        barDefensas = new BarPane(tileWidth, tileHeight, mapaPane);
         barDefensas.setAlignment(Pos.CENTER);
 
         VBox infoJugador = new VBox();
@@ -52,7 +52,10 @@ public class LayoutJuego extends BorderPane {
 
         Button avanzarTurno = new Button("Avanzar Turno");
         
-        avanzarTurno.setOnAction(event -> juego.avanzarTurno());
+        avanzarTurno.setOnAction(event -> {
+            juego.avanzarTurno();
+            mapaPane.actualizarVisualEnemigos();
+        });
 
         GridPane root = new GridPane();
         root.setAlignment(Pos.CENTER);
@@ -72,7 +75,7 @@ public class LayoutJuego extends BorderPane {
         GridPane.setHalignment(avanzarTurno, HPos.RIGHT);
         GridPane.setMargin(avanzarTurno, new Insets(0, 10, 0, 0));
         
-        this.setCenter(mapa);
+        this.setCenter(mapaPane);
         this.setBottom(root);
 
         stage.setScene(new Scene(this));

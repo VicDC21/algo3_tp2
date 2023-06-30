@@ -7,6 +7,8 @@ import edu.fiuba.algoIII.modelo.defensas.TrampaNull;
 import edu.fiuba.algoIII.modelo.enemigos.Enemigo;
 import edu.fiuba.algoIII.modelo.excepciones.ParcelaNoConstruible;
 
+import java.util.List;
+
 public class Pasarela extends Parcela {
 
     protected Pasarela pasarelaSiguiente;
@@ -36,6 +38,11 @@ public class Pasarela extends Parcela {
     public void construirTrampa(Trampa trampa) {
         this.trampa = trampa;
         trampa.setPasarela(this);
+    }
+
+    @Override
+    public List<Enemigo> devolverEnemigos(){
+        return enemigos;
     }
 
     public void setPasarelaSiguiente(Pasarela pasarela) { this.pasarelaSiguiente = pasarela; }

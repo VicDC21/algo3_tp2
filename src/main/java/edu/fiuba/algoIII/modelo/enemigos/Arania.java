@@ -47,4 +47,9 @@ public class Arania extends Enemigo {
     @Override
     public void desuscribirTodo() {}
 
+    @Override
+    public String obtenerImagen() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'obtenerImagen'");
+    }
 }

@@ -58,4 +58,7 @@ public abstract class Enemigo {
     }
 
     public boolean estaFueraDeTierra() { return true; }
+
+    public abstract String obtenerImagen();
+
 }

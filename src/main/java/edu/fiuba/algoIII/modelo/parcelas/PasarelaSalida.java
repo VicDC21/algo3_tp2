@@ -17,7 +17,10 @@ public class PasarelaSalida extends Pasarela {
         super(fila, columna, mapa);
     }
 
-
+    @Override
+    public List<Enemigo> devolverEnemigos(){
+        return enemigosPorTurno.get(0);
+    }
 
     public void agregarEnemigo(Enemigo enemigo) {
         enemigos.add(enemigo);

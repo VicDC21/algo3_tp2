@@ -5,6 +5,8 @@ import edu.fiuba.algoIII.modelo.SuscriptorTurno;
 import edu.fiuba.algoIII.modelo.defensas.Torre;
 import edu.fiuba.algoIII.modelo.defensas.Trampa;
 import edu.fiuba.algoIII.modelo.enemigos.Enemigo;
+import edu.fiuba.algoIII.interfaz.MapaPane;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -13,9 +15,18 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Stream;
 
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
+
 public abstract class Parcela {
     protected int fila;
     protected int columna;
+    protected List<Parcela> listaParcelas;
+    private ObjectProperty<Enemigo> enemyProperty = new SimpleObjectProperty<>();
+
     protected List<Enemigo> enemigos = new ArrayList<>();
     protected List<Enemigo> arribos = new ArrayList<>();
     protected static final Logger LOGGER = LoggerFactory.getLogger(Pasarela.class.getSimpleName());
@@ -60,6 +71,18 @@ public abstract class Parcela {
     public abstract void construirTorre(Torre torre);
 
     public abstract void construirTrampa(Trampa trampa);
+
+    public ObjectProperty<Enemigo> enemyProperty() {
+        return enemyProperty;
+    }
+
+    public void setEnemy(Enemigo enemy) {
+        enemyProperty.set(enemy);
+    }
+
+    public Enemigo getEnemy() {
+        return enemyProperty.get();
+    }
 
     public boolean enRadioDe(int fila, int columna, int radio) {
         return (fila - radio <= this.fila) && (this.fila <= fila + radio) && (columna - radio <= this.columna) && (this.columna <= columna + radio);
@@ -138,4 +161,8 @@ public abstract class Parcela {
     }
 
     public void destruirPrimeraTorre() {}
+
+    public List<Enemigo> devolverEnemigos() {
+        return enemigos;
+    }
 }
