@@ -1,9 +1,10 @@
-module edu.fiuba.algo3 {
+module edu.fiuba.algoIII {
     requires javafx.controls;
     requires org.apache.commons.io;
     requires org.json;
     requires slf4j.api;
     requires java.logging;
-    exports edu.fiuba.algo3;
-    exports edu.fiuba.algo3.JavaFX;
+    exports edu.fiuba.algoIII;
+    exports edu.fiuba.algoIII.modelo;
+    exports edu.fiuba.algoIII.interfaz;
 }
