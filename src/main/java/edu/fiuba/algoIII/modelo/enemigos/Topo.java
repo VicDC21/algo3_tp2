@@ -73,7 +73,6 @@ public class Topo extends Enemigo implements SuscriptorTurno {
 
     @Override
     public String obtenerImagen() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'obtenerImagen'");
+        return "Topo.png";
     }
 }

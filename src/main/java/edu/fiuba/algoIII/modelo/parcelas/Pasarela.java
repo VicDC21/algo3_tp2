@@ -7,8 +7,6 @@ import edu.fiuba.algoIII.modelo.defensas.TrampaNull;
 import edu.fiuba.algoIII.modelo.enemigos.Enemigo;
 import edu.fiuba.algoIII.modelo.excepciones.ParcelaNoConstruible;
 
-import java.util.List;
-
 public class Pasarela extends Parcela {
 
     protected Pasarela pasarelaSiguiente;

@@ -62,7 +62,6 @@ public class Lechuza extends Enemigo {
 
     @Override
     public String obtenerImagen() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'obtenerImagen'");
+        return "Lechuza.png";
     }
 }

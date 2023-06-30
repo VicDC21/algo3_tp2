@@ -3,7 +3,6 @@ package edu.fiuba.algoIII.modelo.parcelas;
 import edu.fiuba.algoIII.modelo.Jugador;
 import edu.fiuba.algoIII.modelo.Mapa;
 import edu.fiuba.algoIII.modelo.defensas.Trampa;
-import edu.fiuba.algoIII.modelo.enemigos.Enemigo;
 import edu.fiuba.algoIII.modelo.excepciones.ParcelaNoConstruible;
 public class PasarelaLlegada extends Pasarela {
 

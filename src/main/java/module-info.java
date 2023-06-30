@@ -6,5 +6,7 @@ module edu.fiuba.algoIII {
     requires java.logging;
     exports edu.fiuba.algoIII;
     exports edu.fiuba.algoIII.modelo;
+    exports edu.fiuba.algoIII.modelo.excepciones;
+    exports edu.fiuba.algoIII.modelo.parcelas;
     exports edu.fiuba.algoIII.interfaz;
 }

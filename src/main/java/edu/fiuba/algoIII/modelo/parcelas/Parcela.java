@@ -17,7 +17,6 @@ import javafx.beans.property.SimpleObjectProperty;
 public abstract class Parcela {
     protected int fila;
     protected int columna;
-    final private ObjectProperty<Enemigo> enemyProperty = new SimpleObjectProperty<>();
     protected List<Enemigo> enemigos = new ArrayList<>();
     protected List<Enemigo> arribos = new ArrayList<>();
     protected static final Logger LOGGER = LoggerFactory.getLogger(Pasarela.class.getSimpleName());

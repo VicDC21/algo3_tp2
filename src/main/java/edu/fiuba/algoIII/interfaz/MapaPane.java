@@ -19,7 +19,6 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 
 import java.util.List;
-import java.util.ArrayList;
 
 public class MapaPane extends GridPane {
     private Torre torreSeleccionada;
