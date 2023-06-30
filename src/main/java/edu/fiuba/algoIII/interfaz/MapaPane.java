@@ -97,6 +97,10 @@ public class MapaPane extends GridPane {
         return pane;
     }
 
+    public List<Parcela> devolverParcelas(){
+        return listaParcelas;
+    }
+
     public void actualizarVisualEnemigos() {
         for (int fila = 0; fila < 15; fila++) {
             for (int columna = 0; columna < 15; columna++) {

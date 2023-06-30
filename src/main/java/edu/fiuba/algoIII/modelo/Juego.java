@@ -6,6 +6,11 @@ import edu.fiuba.algoIII.modelo.parcelas.Parcela;
 import java.util.List;
 import edu.fiuba.algoIII.modelo.parsers.ObtenedorDeEnemigos;
 import edu.fiuba.algoIII.modelo.parsers.ObtenedorDeMapa;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.value.ObservableValue;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -51,6 +56,10 @@ public class Juego {
 
     public void construirTrampa(/*String nombreTrampa,*/ int fila, int columna) {
         jugador.construirTrampa(/*nombreTrampa,*/ fila, columna);
+    }
+
+    public boolean tieneEnemigos(){
+        return mapa.tieneEnemigos();
     }
 
     public Juego(Jugador jugador, Mapa mapa) {
@@ -99,4 +108,16 @@ public class Juego {
     }
 
     public Jugador getJugador() { return this.jugador; }
+
+        public IntegerProperty vidaDelJugadorProperty() {
+        return jugador.vidaProperty();
+    }
+
+    public IntegerProperty creditosDelJugadorProperty() {
+        return jugador.creditosProperty();
+    }
+
+    public ObservableValue<String> enemigosProperty() {
+        return null;
+    }
 }

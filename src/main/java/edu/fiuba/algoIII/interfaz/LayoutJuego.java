@@ -4,6 +4,9 @@ package edu.fiuba.algoIII.interfaz;
 //import edu.fiuba.algoIII.modelo.Constructor;
 import edu.fiuba.algoIII.modelo.Juego;
 import edu.fiuba.algoIII.modelo.Jugador;
+import edu.fiuba.algoIII.modelo.enemigos.Enemigo;
+import javafx.beans.binding.Bindings;
+import javafx.collections.ListChangeListener;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -24,14 +27,19 @@ public class LayoutJuego extends BorderPane {
     MapaPane mapaPane;
     BarPane barDefensas;
     //Torre torreSeleccionada;
+    boolean pantallaDerrotaMostrada;
+    boolean pantallaVictoriaMostrada;
 
     private static final float CENTER_ON_SCREEN_X_FRACTION = 1.0f / 2;
     private static final float CENTER_ON_SCREEN_Y_FRACTION = 1.0f / 3;
     public LayoutJuego(Stage stage, Juego juego) {
         this.juego = juego;
         this.stage = stage;
+
         this.jugador = juego.getJugador();
-        
+        pantallaDerrotaMostrada = false;
+        pantallaVictoriaMostrada = false;
+
         Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
         
         int tileWidth = (int) (screenBounds.getWidth() * 0.9) / 15;
@@ -45,8 +53,13 @@ public class LayoutJuego extends BorderPane {
         VBox infoJugador = new VBox();
         infoJugador.setAlignment(Pos.CENTER);
 
-        Label vidaLabel = new Label("Vida: " + juego.mostrarVidaDelJugador());  //fijo , hay que aplicarle Change
-        Label creditosLabel = new Label("Créditos: " + juego.mostrarCreditosDelJugador()); // fijo hay que aplicarle Change
+        Label vidaLabel = new Label("Vida: " + juego.mostrarVidaDelJugador());  
+        Label creditosLabel = new Label("Créditos: " + juego.mostrarCreditosDelJugador()); 
+
+        vidaLabel.textProperty().bind(Bindings.createStringBinding(() ->
+        "Vida: " + juego.vidaDelJugadorProperty().get(), juego.vidaDelJugadorProperty()));
+        creditosLabel.textProperty().bind(Bindings.createStringBinding(() ->
+        "Créditos: " + juego.creditosDelJugadorProperty().get(), juego.creditosDelJugadorProperty()));
 
         infoJugador.getChildren().addAll(vidaLabel, creditosLabel);
 
@@ -81,6 +94,35 @@ public class LayoutJuego extends BorderPane {
         stage.setScene(new Scene(this));
         stage.setResizable(true);
         centerOnScreen(stage);
+
+        jugador.vidaProperty().addListener((observable, oldValue, newValue) -> {
+
+            if (newValue.intValue() <= 0 && !pantallaDerrotaMostrada) {
+                
+                this.mostrarPantallaDerrota();
+                pantallaDerrotaMostrada = true;
+                
+            }
+         });
+
+        /*     if (!juego.tieneEnemigos() && !pantallaVictoriaMostrada) {
+        /*         this.mostrarPantallaVictoria();
+        /* pantallaVictoriaMostrada = true;
+        */    }
+    private void mostrarPantallaVictoria() {
+        Stage stageDerrota = new Stage();
+        Scene sceneDerrota = new Scene(new Label("Victoria!"));
+
+        stageDerrota.setScene(sceneDerrota);
+        stageDerrota.show();
+    }
+    private void mostrarPantallaDerrota() {
+        
+        Stage stageDerrota = new Stage();
+        Scene sceneDerrota = new Scene(new Label("¡Derrota!"));
+
+        stageDerrota.setScene(sceneDerrota);
+        stageDerrota.show();
     }
     public void show() {
         stage.show();
