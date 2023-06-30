@@ -25,11 +25,11 @@ public class MapaPane extends GridPane {
     private Torre torreSeleccionada;
     private Jugador jugador;
     private ImageView imagenTorre;
-    private List<Parcela> listaParcelas = new ArrayList<>();
-    private int recHeight;
-    private int recWidth;
-    private StackPane[][] gridPanes;
-    private StackPane[][] gridPanesBasico;
+    final private List<Parcela> listaParcelas;
+    final private int recHeight;
+    final private int recWidth;
+    final private StackPane[][] gridPanes;
+    final StackPane[][] gridPanesBasico;
 
     public MapaPane(List<Parcela> parcelas, Jugador jugador, int tileHeight, int tileWidth) {
         listaParcelas = parcelas;
@@ -112,10 +112,10 @@ public class MapaPane extends GridPane {
                     enemyGrid.setAlignment(Pos.CENTER);
 
                     for (Enemigo enemigo : enemigosParcela) {
-                        ImageView enemyImageView = new ImageView("Tower.png");
+                        ImageView enemyImageView = new ImageView("hormiga.png");
                         enemyImageView.getStyleClass().add("enemigo");
-                        enemyImageView.setFitHeight(recHeight / 2);
-                        enemyImageView.setFitWidth(recWidth / 2);
+                        enemyImageView.setFitHeight(recHeight / 2.0);
+                        enemyImageView.setFitWidth(recWidth / 2.0);
 
                         int gridRow = enemigosParcela.indexOf(enemigo) / 2;
                         int gridCol = enemigosParcela.indexOf(enemigo) % 2;

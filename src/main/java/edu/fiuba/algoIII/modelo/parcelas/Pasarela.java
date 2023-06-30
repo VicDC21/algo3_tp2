@@ -40,16 +40,9 @@ public class Pasarela extends Parcela {
         trampa.setPasarela(this);
     }
 
-    @Override
-    public List<Enemigo> devolverEnemigos(){
-        return enemigos;
-    }
-
     public void setPasarelaSiguiente(Pasarela pasarela) { this.pasarelaSiguiente = pasarela; }
 
     public void causarDanioJugador(int danio) {}
-
-    public void moverEnemigoALaPasarelaSiguiente(Enemigo enemigo) { pasarelaSiguiente.recibirEnemigo(enemigo); }
 
     public Pasarela obtenerPasarelaSiguiente() { return pasarelaSiguiente; }
 
@@ -61,5 +54,4 @@ public class Pasarela extends Parcela {
             LOGGER.info("Reducida la velocidad del enemigo " + e.getClass().getSimpleName());
         }
     }
-
 }
