@@ -111,7 +111,7 @@ public class MapaPane extends GridPane {
                     enemyGrid.setAlignment(Pos.CENTER);
 
                     for (Enemigo enemigo : enemigosParcela) {
-                        ImageView enemyImageView = new ImageView("hormiga.png");
+                        ImageView enemyImageView = new ImageView(enemigo.obtenerImagen());
                         enemyImageView.getStyleClass().add("enemigo");
                         enemyImageView.setFitHeight(recHeight / 2.0);
                         enemyImageView.setFitWidth(recWidth / 2.0);
