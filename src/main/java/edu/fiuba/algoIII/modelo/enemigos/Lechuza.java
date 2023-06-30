@@ -62,6 +62,6 @@ public class Lechuza extends Enemigo {
 
     @Override
     public String obtenerImagen() {
-        return "Lechuza.png";
+        return "lechuza.png";
     }
 }

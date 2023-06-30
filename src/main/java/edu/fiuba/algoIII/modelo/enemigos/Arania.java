@@ -49,6 +49,6 @@ public class Arania extends Enemigo {
 
     @Override
     public String obtenerImagen() {
-        return "Arania.png";
+        return "arania.png";
     }
 }

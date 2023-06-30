@@ -61,6 +61,6 @@ public class Hormiga extends Enemigo {
     public void desuscribirTodo() {}
 
     public String obtenerImagen(){
-        return "Hormiga.png";
+        return "hormiga.png";
     }
 }

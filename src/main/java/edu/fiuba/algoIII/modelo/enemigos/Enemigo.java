@@ -27,7 +27,6 @@ public abstract class Enemigo {
 
     public abstract void avanzar();
 
-
     public void recibirDanio(int danio) {
         if (!this.estaMuerto()) {
             this.energia -= danio;

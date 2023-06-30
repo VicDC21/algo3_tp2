@@ -73,6 +73,6 @@ public class Topo extends Enemigo implements SuscriptorTurno {
 
     @Override
     public String obtenerImagen() {
-        return "Topo.png";
+        return "topo.png";
     }
 }
