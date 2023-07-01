@@ -10,6 +10,7 @@ import edu.fiuba.algoIII.modelo.parcelas.Rocoso;
 import edu.fiuba.algoIII.modelo.parcelas.Tierra;
 
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -41,7 +42,7 @@ public class MapaPane extends GridPane {
         for (int fila = 0; fila < 15; fila++) {
             for (int columna = 0; columna < 15; columna++) {
                 Parcela parcela = parcelas.get(fila + columna * 15);
-                StackPane pane = this.crearVisual(parcela, recHeight,recWidth);
+                StackPane pane = this.crearVisual(parcela, recHeight, recWidth);
                 gridPanes[fila][columna] = pane;
                 gridPanesBasico[fila][columna] = pane;
                 this.add(pane, fila, columna);
@@ -49,56 +50,53 @@ public class MapaPane extends GridPane {
         }
     }
 
-    public void setTorreSeleccionada(Torre torre ,ImageView torreImagen) {
+    public void setTorreSeleccionada(Torre torre, ImageView torreImagen) {
         imagenTorre = torreImagen;
         torreSeleccionada = torre;
     }
 
-    private StackPane crearVisual(Parcela parcela, int tileHeight, int tileWidth){
-        Rectangle rect = new Rectangle();
-        rect.setWidth(tileWidth);
-        rect.setHeight(tileHeight);
-
-        if(parcela instanceof Tierra){ 
-        rect.setFill(new ImagePattern(new Image("tierra.jpg")));
+    public void sombrearElementoEnActivo(Node node) {
+        node.setOnMouseEntered(e -> node.setEffect(new DropShadow()));
+        node.setOnMouseExited(e -> node.setEffect(null));
+    }
+    public void llenarTiles(Rectangle rect, Parcela parcela) {
+        if (parcela instanceof Tierra) {
+            rect.setFill(new ImagePattern(new Image("tierra.jpg")));
+        } else if (parcela instanceof Pasarela) {
+            rect.setFill(new ImagePattern(new Image("pasarela.jpg")));
+        } else if (parcela instanceof Rocoso) {
+            rect.setFill(new ImagePattern(new Image("rocoso.jpg")));
+        }
         rect.setStyle("-fx-stroke: black; -fx-stroke-width: 0.5; -fx-stroke-type: inside;");
-
-        }
-        else if(parcela instanceof Pasarela){
-        rect.setFill(new ImagePattern(new Image("pasarela.jpg")));
-        rect.setStyle("-fx-stroke: green; -fx-stroke-width: 1.5; -fx-stroke-type: inside;");
-        }
-        else if(parcela instanceof Rocoso){
-        rect.setFill(new ImagePattern(new Image("rocoso.jpg")));
-        rect.setStyle("-fx-stroke: black; -fx-stroke-width: 0.5; -fx-stroke-type: inside;");
-        }
-
-        StackPane pane = new StackPane(rect);
-
-        rect.setOnMouseEntered(e -> rect.setEffect(new DropShadow()));
-        rect.setOnMouseExited(e -> rect.setEffect(null));
-
-        rect.setOnMouseClicked(event -> {
-                    if (torreSeleccionada != null && torreSeleccionada.puedeConstruirseEnParcela(parcela) )
-                        try {
-                            if (torreSeleccionada.puedoConstruirConCreditos(jugador.mostrarCreditos())) {
-                                Torre nuevaTorre = new Torre(torreSeleccionada);
-                                ImageView torreImageView = new ImageView(imagenTorre.getImage());
-                                torreImageView.setFitHeight(recHeight);
-                                torreImageView.setFitWidth(recWidth);
-                                pane.getChildren().add(torreImageView);
-                                parcela.construirTorre(nuevaTorre);
-                                jugador.gastarCreditos(torreSeleccionada.getCosto());
-                            }
-                        } catch (CreditoInsuficiente ignored) {}
-                    torreSeleccionada = null;
-                    }
-                );
-        return pane;
     }
 
-    public List<Parcela> devolverParcelas(){
-        return listaParcelas;
+    public void posicionarTorre(Parcela parcela, StackPane pane) {
+        if (torreSeleccionada != null && torreSeleccionada.puedeConstruirseEnParcela(parcela))
+            try {
+                if (torreSeleccionada.puedoConstruirConCreditos(jugador.mostrarCreditos())) {
+                    Torre nuevaTorre = new Torre(torreSeleccionada);
+                    ImageView torreImageView = new ImageView(imagenTorre.getImage());
+                    torreImageView.setFitHeight(recHeight);
+                    torreImageView.setFitWidth(recWidth);
+                    pane.getChildren().add(torreImageView);
+                    parcela.construirTorre(nuevaTorre);
+                    jugador.gastarCreditos(torreSeleccionada.getCosto());
+                }
+            } catch (CreditoInsuficiente ignored) {
+            }
+        torreSeleccionada = null;
+    }
+    private StackPane crearVisual(Parcela parcela, int tileHeight, int tileWidth){
+        Rectangle rect = new Rectangle();
+
+        rect.setWidth(tileWidth);
+        rect.setHeight(tileHeight);
+        llenarTiles(rect, parcela);
+        sombrearElementoEnActivo(rect);
+
+        StackPane pane = new StackPane(rect);
+        rect.setOnMouseClicked(event -> posicionarTorre(parcela, pane));
+        return pane;
     }
 
     public void actualizarVisualEnemigos() {
@@ -107,7 +105,7 @@ public class MapaPane extends GridPane {
                 Parcela parcela = listaParcelas.get(fila + columna * 15);
                 StackPane pane = gridPanes[fila][columna];
                 pane.getChildren().removeIf(node -> node instanceof GridPane);
-
+                sombrearElementoEnActivo(pane);
                 if (parcela.tieneEnemigos()) {
                     List<Enemigo> enemigosParcela = parcela.devolverEnemigos();
 
@@ -119,7 +117,7 @@ public class MapaPane extends GridPane {
                         enemyImageView.getStyleClass().add("enemigo");
                         enemyImageView.setFitHeight(recHeight / 2.0);
                         enemyImageView.setFitWidth(recWidth / 2.0);
-
+                        sombrearElementoEnActivo(enemyImageView);
                         int gridRow = enemigosParcela.indexOf(enemigo) / 2;
                         int gridCol = enemigosParcela.indexOf(enemigo) % 2;
                         enemyGrid.add(enemyImageView, gridCol, gridRow);

@@ -20,7 +20,7 @@ public class BotonEmpezarPartidaEventHandler implements EventHandler<MouseEvent>
     public void handle(MouseEvent mouseEvent) {
         Juego juego;
         try {
-            juego = new Juego("src/main/resources/mapa.json", "src/main/resources/enemigos.json", textField.getText());
+            juego = new Juego("src/main/resources/mapa.json", "src/main/resources/enemigosV2.json", textField.getText());
             LayoutJuego layout = new LayoutJuego(stage, juego);   
             layout.show();       
         } catch (InvalidMap e) {
