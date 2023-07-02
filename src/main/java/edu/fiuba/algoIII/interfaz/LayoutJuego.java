@@ -1,12 +1,8 @@
 package edu.fiuba.algoIII.interfaz;
 
-
-//import edu.fiuba.algoIII.modelo.Constructor;
 import edu.fiuba.algoIII.modelo.Juego;
 import edu.fiuba.algoIII.modelo.Jugador;
-import edu.fiuba.algoIII.modelo.enemigos.Enemigo;
 import javafx.beans.binding.Bindings;
-import javafx.collections.ListChangeListener;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -17,7 +13,6 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
-//import edu.fiuba.algoIII.modelo.defensas.Torre;
 
 public class LayoutJuego extends BorderPane {
     Stage stage;
