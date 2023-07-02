@@ -53,15 +53,18 @@ public class LayoutJuego extends BorderPane {
         VBox infoJugador = new VBox();
         infoJugador.setAlignment(Pos.CENTER);
 
-        Label vidaLabel = new Label("Vida: " + juego.mostrarVidaDelJugador());  
-        Label creditosLabel = new Label("Créditos: " + juego.mostrarCreditosDelJugador()); 
+        Label vidaLabel = new Label("Vida: " + juego.mostrarVidaDelJugador());
+        Label creditosLabel = new Label("Créditos: " + juego.mostrarCreditosDelJugador());
+        Label turnoLabel = new Label("Turno: " + juego.mostrarTurno());
 
         vidaLabel.textProperty().bind(Bindings.createStringBinding(() ->
         "Vida: " + juego.vidaDelJugadorProperty().get(), juego.vidaDelJugadorProperty()));
         creditosLabel.textProperty().bind(Bindings.createStringBinding(() ->
         "Créditos: " + juego.creditosDelJugadorProperty().get(), juego.creditosDelJugadorProperty()));
+        turnoLabel.textProperty().bind(Bindings.createStringBinding(() ->
+        "Turno: " + juego.turnoProperty().get(), juego.turnoProperty()));
 
-        infoJugador.getChildren().addAll(vidaLabel, creditosLabel);
+        infoJugador.getChildren().addAll(vidaLabel, creditosLabel, turnoLabel);
 
         Button avanzarTurno = new Button("Avanzar Turno");
         

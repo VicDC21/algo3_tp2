@@ -14,7 +14,7 @@ import static java.lang.Math.abs;
 public class Mapa {
     List<Parcela> parcelas = new ArrayList<>();
     PasarelaLlegada pasarelaLlegada;
-    Turno turno = new Turno();
+    NotificadorTurno turno = new NotificadorTurno();
     List<Parcela> parcelasConTorre = new ArrayList<>();
 
     public void construirTorre(Torre torre, int fila, int columna) {

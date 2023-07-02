@@ -9,6 +9,7 @@ import edu.fiuba.algoIII.modelo.parsers.ObtenedorDeMapa;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.value.ObservableValue;
 
 import org.slf4j.Logger;
@@ -20,6 +21,8 @@ public class Juego {
     private static final Logger LOGGER = LoggerFactory.getLogger(Enemigo.class.getSimpleName());
     Jugador jugador;
     Mapa mapa;
+    int turno = 1;
+    IntegerProperty turnoProperty = new SimpleIntegerProperty(turno);
     private static final Logger logger = LoggerFactory.getLogger(App.class);
 
     //Solo se usa para probar la ruta JSon del mapa
@@ -47,7 +50,7 @@ public class Juego {
         Constructor constructor = new Constructor(mapa);
         jugador = new Jugador(nombre, 20, 100, constructor);
         mapa.setJugador(jugador);    // Esto hay que sacarlo
-        logger.info("Juego Iniciado");   
+        logger.info("Juego Iniciado");
     }
 
     public void construirTorre(String nombreTorre, int fila, int columna) {
@@ -75,6 +78,10 @@ public class Juego {
         return jugador.mostrarCreditos();
     }
 
+    public int mostrarTurno() {
+        return turno;
+    }
+
     public int cantidadDeEnemigos() { return mapa.cantidadDeEnemigos(); }
 
     public int cantidadDeTorres() { return mapa.cantidadDeTorres(); }
@@ -91,6 +98,8 @@ public class Juego {
         mapa.actualizarEnemigos();
         jugador.recibirCreditos(mapa.creditosGeneradosEnTurno());
         mapa.removerMuertos();
+        turno++;
+        turnoProperty.set(turno);
     }
 
     public String estadoJuego() {
@@ -109,12 +118,16 @@ public class Juego {
 
     public Jugador getJugador() { return this.jugador; }
 
-        public IntegerProperty vidaDelJugadorProperty() {
+    public IntegerProperty vidaDelJugadorProperty() {
         return jugador.vidaProperty();
     }
 
     public IntegerProperty creditosDelJugadorProperty() {
         return jugador.creditosProperty();
+    }
+
+    public IntegerProperty turnoProperty() {
+        return turnoProperty;
     }
 
     public ObservableValue<String> enemigosProperty() {
