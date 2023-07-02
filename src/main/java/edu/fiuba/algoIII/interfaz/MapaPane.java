@@ -60,13 +60,7 @@ public class MapaPane extends GridPane {
         node.setOnMouseExited(e -> node.setEffect(null));
     }
     public void llenarTiles(Rectangle rect, Parcela parcela) {
-        if (parcela instanceof Tierra) {
-            rect.setFill(new ImagePattern(new Image("tierra.jpg")));
-        } else if (parcela instanceof Pasarela) {
-            rect.setFill(new ImagePattern(new Image("pasarela.jpg")));
-        } else if (parcela instanceof Rocoso) {
-            rect.setFill(new ImagePattern(new Image("rocoso.jpg")));
-        }
+        rect.setFill(new ImagePattern(new Image(parcela.obtenerImagen())));
         rect.setStyle("-fx-stroke: black; -fx-stroke-width: 0.5; -fx-stroke-type: inside;");
     }
 

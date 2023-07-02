@@ -19,4 +19,9 @@ public class Rocoso extends Parcela {
     @Override
     public void construirTrampa(Trampa trampa) { throw new ParcelaNoConstruible(); }
 
+    @Override
+    public String obtenerImagen() {
+        return "rocoso.jpg";
+    }
+
 }

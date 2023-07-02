@@ -46,6 +46,11 @@ public class Pasarela extends Parcela {
 
     public void destruirConstruccion() { this.trampa = new TrampaNull(); }
 
+    @Override
+    public String obtenerImagen() {
+        return "pasarela.jpg";
+    }
+
     public void modificarVelocidad(double modificadorVelocidad) {
         for (Enemigo e : enemigos) {
             e.modificarVelocidadTierra(modificadorVelocidad);

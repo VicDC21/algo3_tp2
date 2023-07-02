@@ -141,4 +141,6 @@ public abstract class Parcela {
     public List<Enemigo> devolverEnemigos() {
         return enemigos;
     }
+
+    public abstract String obtenerImagen();
 }

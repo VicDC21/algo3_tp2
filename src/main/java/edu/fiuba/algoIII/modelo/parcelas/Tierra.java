@@ -37,4 +37,9 @@ public class Tierra extends Parcela {
         this.torre = new TorreNull();
     }
 
+    @Override
+    public String obtenerImagen() {
+        return "tierra.jpg";
+    }
+
 }
