@@ -65,7 +65,7 @@ public class MapaPane extends GridPane {
             try {
                 if (torreSeleccionada.puedoConstruirConCreditos(jugador.mostrarCreditos())) {
                     Torre nuevaTorre = new Torre(torreSeleccionada);
-                    ImageView torreImageView = new ImageView("tower.png");
+                    ImageView torreImageView = new ImageView("construyendotorre.png");
                     torreImageView.setFitHeight(recHeight);
                     torreImageView.setFitWidth(recWidth);
                     pane.getChildren().add(torreImageView);
@@ -127,7 +127,7 @@ public class MapaPane extends GridPane {
             return;
         ImageView torre;
         if (!tierra.getTorre().estaOperativa()) {
-            torre = new ImageView("tower.png");
+            torre = new ImageView("construyendotorre.png");
         } else {
             if (tierra.getTorre().getTipo() == 1) {
                 torre = new ImageView( "torreBlanca.png");

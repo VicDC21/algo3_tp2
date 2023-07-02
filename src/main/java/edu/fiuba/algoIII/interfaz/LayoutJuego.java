@@ -10,7 +10,9 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
@@ -34,6 +36,8 @@ public class LayoutJuego extends BorderPane {
         pantallaDerrotaMostrada = false;
         pantallaVictoriaMostrada = false;
 
+        stage.getIcons().add(new Image("arania.png"));
+
         Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
         
         int tileWidth = (int) (screenBounds.getWidth() * 0.9) / 15;
@@ -43,9 +47,15 @@ public class LayoutJuego extends BorderPane {
         
         barDefensas = new BarPane(tileWidth, tileHeight, mapaPane);
         barDefensas.setAlignment(Pos.CENTER);
+        barDefensas.setBackground(new Background(new BackgroundFill(Color.GRAY,
+                CornerRadii.EMPTY,
+                Insets.EMPTY)));
 
         VBox infoJugador = new VBox();
         infoJugador.setAlignment(Pos.CENTER);
+        infoJugador.setBackground(new Background(new BackgroundFill(Color.LIGHTGRAY,
+                CornerRadii.EMPTY,
+                Insets.EMPTY)));
 
         Label vidaLabel = new Label("Vida: " + juego.mostrarVidaDelJugador());
         Label creditosLabel = new Label("Créditos: " + juego.mostrarCreditosDelJugador());

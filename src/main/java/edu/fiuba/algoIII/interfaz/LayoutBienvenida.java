@@ -19,7 +19,8 @@ public class LayoutBienvenida extends VBox {
     public LayoutBienvenida(Stage stage) {
         super();
         this.stage = stage;
-        stage.setTitle("AlgoDefense - v.0.0.1");
+        stage.getIcons().add(new Image("arania.png"));
+        stage.setTitle("AlgoDefense - v.0.0.2");
         this.setAlignment(Pos.CENTER);
 
         textField = new TextField();
