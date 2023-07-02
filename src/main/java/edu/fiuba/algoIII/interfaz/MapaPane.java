@@ -105,8 +105,15 @@ public class MapaPane extends GridPane {
                     for (Enemigo enemigo : enemigosParcela) {
                         ImageView enemyImageView = new ImageView(enemigo.obtenerImagen());
                         enemyImageView.getStyleClass().add("enemigo");
-                        enemyImageView.setFitHeight(recHeight / 2.0);
-                        enemyImageView.setFitWidth(recWidth / 2.0);
+                        int nroFilasEnemigos = enemigosParcela.size()/2+enemigosParcela.size()%2;
+                        if (enemigosParcela.size() == 1) {
+                            nroFilasEnemigos = 1;
+                        }
+                        int divisorSegunFilas = nroFilasEnemigos/2+nroFilasEnemigos%2;
+                        int alturaEnemigo = recHeight/2/divisorSegunFilas;
+                        int anchoEnemigo = recWidth/3/divisorSegunFilas;
+                        enemyImageView.setFitHeight(alturaEnemigo);
+                        enemyImageView.setFitWidth(anchoEnemigo);
                         sombrearElementoEnActivo(enemyImageView);
                         int gridRow = enemigosParcela.indexOf(enemigo) / 2;
                         int gridCol = enemigosParcela.indexOf(enemigo) % 2;
