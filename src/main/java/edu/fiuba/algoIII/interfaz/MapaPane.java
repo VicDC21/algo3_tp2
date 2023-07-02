@@ -22,7 +22,6 @@ import java.util.List;
 public class MapaPane extends GridPane {
     private Torre torreSeleccionada;
     final private Jugador jugador;
-    private ImageView imagenTorre;
     final private List<Parcela> listaParcelas;
     final private int recHeight;
     final private int recWidth;
@@ -48,8 +47,7 @@ public class MapaPane extends GridPane {
         }
     }
 
-    public void setTorreSeleccionada(Torre torre, ImageView torreImagen) {
-        imagenTorre = torreImagen;
+    public void setTorreSeleccionada(Torre torre) {
         torreSeleccionada = torre;
     }
 

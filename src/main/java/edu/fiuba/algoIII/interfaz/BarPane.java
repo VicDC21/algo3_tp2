@@ -9,8 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-// Cambiar para que muestre la vida y los creditos.
-
 public class BarPane extends HBox {
 
     public BarPane(int tileWidth, int tileHeight, MapaPane mapaPane) {
@@ -20,14 +18,14 @@ public class BarPane extends HBox {
         TorreBlancaImagen.setFitHeight(tileHeight);
         TorreBlancaImagen.setFitWidth(tileWidth);
         TorreBlancaImagen.setPreserveRatio(true);
-        TorreBlancaImagen.setOnMouseClicked(event -> mapaPane.setTorreSeleccionada(torreBlanca, TorreBlancaImagen));
+        TorreBlancaImagen.setOnMouseClicked(event -> mapaPane.setTorreSeleccionada(torreBlanca));
 
         ImageView TorrePlateadaImagen = new ImageView("torrePlateada.png");
         Torre torrePlateada = new Torre(20, 2, 5, 2, 2);
         TorrePlateadaImagen.setFitHeight(tileHeight);
         TorrePlateadaImagen.setFitWidth(tileWidth);
         TorrePlateadaImagen.setPreserveRatio(true);
-        TorrePlateadaImagen.setOnMouseClicked(event -> mapaPane.setTorreSeleccionada(torrePlateada, TorrePlateadaImagen));
+        TorrePlateadaImagen.setOnMouseClicked(event -> mapaPane.setTorreSeleccionada(torrePlateada));
 
         ImageView TrampaImagen = new ImageView("trampa.png");
         //TrampaArenosa trampa = new TrampaArenosa();
