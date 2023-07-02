@@ -1,0 +1,18 @@
+.my-button {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 8px 16px;
+    -fx-effect: dropshadow(one-pass-box, rgba(0, 0, 0, 0.8), 10, 0.5, 0, 0);
+    -fx-transition: -fx-background-color 0.3s;
+}
+
+.my-button:hover {
+    -fx-background-color: #45A34A;
+    -fx-effect: dropshadow(one-pass-box, rgba(0, 0, 0, 0.8), 10, 0.5, 0, 0);
+}
+
+.my-button:pressed {
+    -fx-background-color: #399339;
+    -fx-effect: dropshadow(one-pass-box, rgba(0, 0, 0, 0.5), 8, 0, 0, 0);
+}

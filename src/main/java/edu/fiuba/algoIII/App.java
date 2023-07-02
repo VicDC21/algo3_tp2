@@ -11,6 +11,7 @@ public class App extends Application {
     @Override
     public void start(Stage stage){
         LayoutBienvenida layout = new LayoutBienvenida(stage);
+        layout.getStylesheets().add("/styles.css");
         stage.setScene(new Scene(layout,640, 600));
         stage.setResizable(true);
         stage.show();

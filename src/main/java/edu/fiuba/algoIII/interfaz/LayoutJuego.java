@@ -67,7 +67,8 @@ public class LayoutJuego extends BorderPane {
         infoJugador.getChildren().addAll(vidaLabel, creditosLabel, turnoLabel);
 
         Button avanzarTurno = new Button("Avanzar Turno");
-        
+        avanzarTurno.getStyleClass().add("my-button");
+
         avanzarTurno.setOnAction(event -> {
             juego.avanzarTurno();
             mapaPane.actualizarVisualEnemigos();

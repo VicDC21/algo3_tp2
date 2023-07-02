@@ -5,10 +5,6 @@ import edu.fiuba.algoIII.modelo.excepciones.CreditoInsuficiente;
 import edu.fiuba.algoIII.modelo.Jugador;
 import edu.fiuba.algoIII.modelo.defensas.Torre;
 import edu.fiuba.algoIII.modelo.parcelas.Parcela;
-import edu.fiuba.algoIII.modelo.parcelas.Pasarela;
-import edu.fiuba.algoIII.modelo.parcelas.Rocoso;
-import edu.fiuba.algoIII.modelo.parcelas.Tierra;
-
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.effect.DropShadow;
