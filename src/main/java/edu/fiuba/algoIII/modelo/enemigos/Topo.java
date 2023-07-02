@@ -29,10 +29,10 @@ public class Topo extends Enemigo implements SuscriptorTurno {
     @Override
     public void avanzar() {
         nroMovimiento++;
-        if (nroMovimiento == 5) {
+        if (nroMovimiento == 4) {
             this.velocidad = 2;
         }
-        if (nroMovimiento == 10) {
+        if (nroMovimiento == 9) {
             this.velocidad = 3;
         }
         Pasarela pasarelaAMover = (Pasarela) parcelaActual;

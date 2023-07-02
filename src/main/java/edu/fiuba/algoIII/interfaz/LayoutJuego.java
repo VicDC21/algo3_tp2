@@ -21,7 +21,6 @@ public class LayoutJuego extends BorderPane {
     //Constructor constructor;
     MapaPane mapaPane;
     BarPane barDefensas;
-    //Torre torreSeleccionada;
     boolean pantallaDerrotaMostrada;
     boolean pantallaVictoriaMostrada;
 
