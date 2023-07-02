@@ -3,6 +3,8 @@ package edu.fiuba.algoIII.modelo.defensas;
 import edu.fiuba.algoIII.modelo.Mapa;
 import edu.fiuba.algoIII.modelo.parcelas.Parcela;
 import edu.fiuba.algoIII.modelo.parcelas.Tierra;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -13,11 +15,16 @@ public class Torre {
     int danio;
     int rango;
 
-    public Torre(int costo, int turnosParaConstruirse, int rango, int danio) {
+    int tipo;
+    IntegerProperty tipoProperty = new SimpleIntegerProperty(tipo);
+
+    public Torre(int costo, int turnosParaConstruirse, int rango, int danio, int tipo) {
         this.costo = costo;
         this.turnosParaConstruirse = turnosParaConstruirse;
         this.rango = rango;
         this.danio = danio;
+        this.tipo = tipo;
+        tipoProperty.set(tipo);
     }
 
     public Torre(Torre torre) {        //shallow copy pero los atributos son inmutables.
@@ -25,6 +32,12 @@ public class Torre {
         this.turnosParaConstruirse = torre.getTurnosParaConstruirse();
         this.rango = torre.getRango();
         this.danio = torre.getDanio();
+        this.tipo = torre.getTipo();
+        tipoProperty.set(tipo);
+    }
+
+    public int getTipo() {
+        return tipo;
     }
 
     public Torre() {
@@ -80,5 +93,9 @@ public class Torre {
 
     public boolean estaOperativa() {
         return turnosParaConstruirse <= 0;
+    }
+
+    public IntegerProperty tipoProperty() {
+        return tipoProperty;
     }
 }

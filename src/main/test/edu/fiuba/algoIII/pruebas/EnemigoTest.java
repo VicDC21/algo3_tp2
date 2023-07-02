@@ -26,7 +26,7 @@ public class EnemigoTest {
         ArrayList<Parcela> pasarelasEnRango = new ArrayList<>();
         pasarelasEnRango.add(pasarela);
         when(mapa.obtenerParcelasEnArea(1, 1, 2)).thenReturn(pasarelasEnRango);
-        Torre torre = new Torre(0, 0, 2, 1);
+        Torre torre = new Torre(0, 0, 2, 1, 1);
         Tierra tierra = new Tierra(1, 1, mapa);
         tierra.construirTorre(torre);
         tierra.avanzarTurno();

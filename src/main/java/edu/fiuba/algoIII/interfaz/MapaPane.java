@@ -1,10 +1,12 @@
 package edu.fiuba.algoIII.interfaz;
 
+import edu.fiuba.algoIII.modelo.defensas.TorreNull;
 import edu.fiuba.algoIII.modelo.enemigos.Enemigo;
 import edu.fiuba.algoIII.modelo.excepciones.CreditoInsuficiente;
 import edu.fiuba.algoIII.modelo.Jugador;
 import edu.fiuba.algoIII.modelo.defensas.Torre;
 import edu.fiuba.algoIII.modelo.parcelas.Parcela;
+import edu.fiuba.algoIII.modelo.parcelas.Tierra;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.effect.DropShadow;
@@ -65,7 +67,7 @@ public class MapaPane extends GridPane {
             try {
                 if (torreSeleccionada.puedoConstruirConCreditos(jugador.mostrarCreditos())) {
                     Torre nuevaTorre = new Torre(torreSeleccionada);
-                    ImageView torreImageView = new ImageView(imagenTorre.getImage());
+                    ImageView torreImageView = new ImageView("tower.png");
                     torreImageView.setFitHeight(recHeight);
                     torreImageView.setFitWidth(recWidth);
                     pane.getChildren().add(torreImageView);
@@ -112,10 +114,31 @@ public class MapaPane extends GridPane {
                         int gridCol = enemigosParcela.indexOf(enemigo) % 2;
                         enemyGrid.add(enemyImageView, gridCol, gridRow);
                     }
-
                     pane.getChildren().add(enemyGrid);
+                }
+                if (parcela instanceof Tierra) {
+                    actualizarVisualTorres((Tierra) parcela, pane);
                 }
             }
         }
+    }
+
+    public void actualizarVisualTorres(Tierra tierra, StackPane pane) {
+        pane.getChildren().removeIf(node -> node instanceof ImageView);
+        if (tierra.getTorre() instanceof TorreNull)
+            return;
+        ImageView torre;
+        if (!tierra.getTorre().estaOperativa()) {
+            torre = new ImageView("tower.png");
+        } else {
+            if (tierra.getTorre().getTipo() == 1) {
+                torre = new ImageView( "torreBlanca.png");
+            } else {
+                torre = new ImageView("torrePlateada.png");
+            }
+        }
+        torre.setFitHeight(recHeight);
+        torre.setFitWidth(recWidth);
+        pane.getChildren().add(torre);
     }
 }

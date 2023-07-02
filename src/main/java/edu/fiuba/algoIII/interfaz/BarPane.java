@@ -16,14 +16,14 @@ public class BarPane extends HBox {
     public BarPane(int tileWidth, int tileHeight, MapaPane mapaPane) {
 
         ImageView TorreBlancaImagen = new ImageView("torreBlanca.png");
-        Torre torreBlanca = new Torre(10,1,3,1);
+        Torre torreBlanca = new Torre(10,1,3,1, 1);
         TorreBlancaImagen.setFitHeight(tileHeight);
         TorreBlancaImagen.setFitWidth(tileWidth);
         TorreBlancaImagen.setPreserveRatio(true);
         TorreBlancaImagen.setOnMouseClicked(event -> mapaPane.setTorreSeleccionada(torreBlanca, TorreBlancaImagen));
 
         ImageView TorrePlateadaImagen = new ImageView("torrePlateada.png");
-        Torre torrePlateada = new Torre(20, 2, 5, 2);
+        Torre torrePlateada = new Torre(20, 2, 5, 2, 2);
         TorrePlateadaImagen.setFitHeight(tileHeight);
         TorrePlateadaImagen.setFitWidth(tileWidth);
         TorrePlateadaImagen.setPreserveRatio(true);

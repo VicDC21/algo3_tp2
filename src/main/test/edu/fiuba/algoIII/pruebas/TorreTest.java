@@ -27,7 +27,7 @@ public class TorreTest {
 
         when(mapa.obtenerParcelasEnArea(any(int.class), any(int.class), any(int.class))).thenReturn(Collections.singletonList(pasarela));
 
-        Torre torre = new Torre(10, cantidadDeTurnosParaConstruirse, rango, cantidadDeDanio);
+        Torre torre = new Torre(10, cantidadDeTurnosParaConstruirse, rango, cantidadDeDanio, 2);
 
         for (int i = 0; i < cantidadDeTurnosParaConstruirse; i++) {
             torre.avanzarTurno(mapa, 0, 0);
@@ -48,7 +48,7 @@ public class TorreTest {
         when(mapa.obtenerParcelasEnArea(0, 0, rango)).thenReturn(Collections.singletonList(pasarela));
         when(pasarela.tieneEnemigosFueraDeTierra()).thenReturn(true);
 
-        Torre torre = new Torre(10, cantidadDeTurnosParaConstruirse, rango, cantidadDeDanio);
+        Torre torre = new Torre(10, cantidadDeTurnosParaConstruirse, rango, cantidadDeDanio, 2);
 
         for (int i = 0; i < cantidadDeTurnosParaConstruirse + 1; i++) {
             torre.avanzarTurno(mapa, 0, 0);

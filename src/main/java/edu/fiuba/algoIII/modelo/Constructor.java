@@ -21,8 +21,8 @@ public class Constructor {
     public Constructor(Mapa mapa) {
         this.mapa = mapa;
         this.tiposDeTorre = new HashMap<>();
-        tiposDeTorre.put("torreBlanca", new Torre(10,1,3,1));
-        tiposDeTorre.put("torrePlateada", new Torre(20,2,5,2));
+        tiposDeTorre.put("torreBlanca", new Torre(10,1,3,1, 1));
+        tiposDeTorre.put("torrePlateada", new Torre(20,2,5,2, 2));
         /*this.tiposDeTrampa = new HashMap<>();
         tiposDeTrampa.put("TrampaArenosa", TrampaArenosa.class);*/
     }

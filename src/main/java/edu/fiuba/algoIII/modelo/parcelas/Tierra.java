@@ -43,4 +43,7 @@ public class Tierra extends Parcela {
         return "tierra.jpg";
     }
 
+    public Torre getTorre() {
+        return torre;
+    }
 }
