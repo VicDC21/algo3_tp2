@@ -25,6 +25,7 @@ public class Tierra extends Parcela {
     @Override
     public void construirTorre(Torre torre) {
         this.torre = torre;
+        mapa.agergarParcelaConTorre(this);
         LOGGER.info("Construyendo " + torre.getClass().getSimpleName());
     }
 

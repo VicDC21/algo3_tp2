@@ -3,7 +3,7 @@ package edu.fiuba.algoIII.modelo;
 import java.util.ArrayList;
 
 public class NotificadorTurno {
-    private int turno = 1;
+    private int turno = 0;
     ArrayList<SuscriptorTurno> suscriptores = new ArrayList<>();
 
     public void avanzarTurno() {

@@ -46,7 +46,7 @@ public class TopoTest {
 
         juego.avanzarTurno();
         assertEquals(3, juego.cantidadDeEnemigos());
-        assertEquals(15, juego.mostrarVidaDelJugador());
+        assertEquals(18, juego.mostrarVidaDelJugador());
 
         juego.avanzarTurno();
         assertEquals(2, juego.cantidadDeEnemigos());
@@ -54,6 +54,6 @@ public class TopoTest {
 
         juego.avanzarTurno();
         assertEquals(1, juego.cantidadDeEnemigos());
-        assertEquals(8, juego.mostrarVidaDelJugador());
+        assertEquals(11, juego.mostrarVidaDelJugador());
     }
 }

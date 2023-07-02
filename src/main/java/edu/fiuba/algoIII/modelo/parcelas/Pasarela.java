@@ -48,7 +48,7 @@ public class Pasarela extends Parcela {
 
     @Override
     public String obtenerImagen() {
-        return "pasarela.jpg";
+        return "pasarela.png";
     }
 
     public void modificarVelocidad(double modificadorVelocidad) {

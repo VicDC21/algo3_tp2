@@ -93,34 +93,28 @@ public class LayoutJuego extends BorderPane {
         stage.setResizable(true);
         centerOnScreen(stage);
 
-        jugador.vidaProperty().addListener((observable, oldValue, newValue) -> {
+        juego.estadoProperty().addListener((observable, oldValue, newValue) -> {
 
-            if (newValue.intValue() <= 0 && !pantallaDerrotaMostrada) {
-                
-                this.mostrarPantallaDerrota();
-                pantallaDerrotaMostrada = true;
-                
+            if (newValue.intValue() < 0) {
+                mostrarPantallaDerrota();
+            }
+            else if (newValue.intValue() > 0) {
+                 mostrarPantallaVictoria();
             }
          });
-
-        /*     if (!juego.tieneEnemigos() && !pantallaVictoriaMostrada) {
-        /*         this.mostrarPantallaVictoria();
-        /* pantallaVictoriaMostrada = true;
-        */    }
+    }
     private void mostrarPantallaVictoria() {
-        Stage stageDerrota = new Stage();
-        Scene sceneDerrota = new Scene(new Label("Victoria!"));
+        Scene sceneVictoria = new Scene(new Label("Victoria!"));
 
-        stageDerrota.setScene(sceneDerrota);
-        stageDerrota.show();
+        stage.setScene(sceneVictoria);
+        stage.show();
     }
     private void mostrarPantallaDerrota() {
-        
-        Stage stageDerrota = new Stage();
+
         Scene sceneDerrota = new Scene(new Label("¡Derrota!"));
 
-        stageDerrota.setScene(sceneDerrota);
-        stageDerrota.show();
+        stage.setScene(sceneDerrota);
+        stage.show();
     }
     public void show() {
         stage.show();

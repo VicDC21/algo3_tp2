@@ -19,7 +19,6 @@ public class Mapa {
 
     public void construirTorre(Torre torre, int fila, int columna) {
         obtenerParcela(fila, columna).construirTorre(torre);
-        parcelasConTorre.add(obtenerParcela(fila, columna));
     }
 
     public void construirTrampa(Trampa trampa, int fila, int columna) {
@@ -152,5 +151,9 @@ public class Mapa {
 
     public int cantidadDeTorres() {
         return parcelasConTorre.toArray().length;
+    }
+
+    public void agergarParcelaConTorre(Parcela parcela) {
+        parcelasConTorre.add(parcela);
     }
 }
