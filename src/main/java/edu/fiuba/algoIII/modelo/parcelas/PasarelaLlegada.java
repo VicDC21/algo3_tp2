@@ -26,4 +26,9 @@ public class PasarelaLlegada extends Pasarela {
 
     @Override
     public void construirTrampa(Trampa trampa) { throw new ParcelaNoConstruible(); }
+
+    @Override
+    public String obtenerImagen() {
+        return "pasarelaLlegada.png";
+    }
 }
