@@ -6,11 +6,8 @@ import edu.fiuba.algoIII.modelo.parcelas.Parcela;
 import java.util.List;
 import edu.fiuba.algoIII.modelo.parsers.ObtenedorDeEnemigos;
 import edu.fiuba.algoIII.modelo.parsers.ObtenedorDeMapa;
-import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.value.ObservableValue;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

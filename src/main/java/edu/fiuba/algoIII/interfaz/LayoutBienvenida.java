@@ -67,11 +67,7 @@ public class LayoutBienvenida extends VBox {
 
     public void validarNombreUsuario(){
         textField.textProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue.length() >= 6) {
-                button.setDisable(false);
-            } else {
-                button.setDisable(true);
-            }
+            button.setDisable(newValue.length() < 6);
         });
     }
 }
