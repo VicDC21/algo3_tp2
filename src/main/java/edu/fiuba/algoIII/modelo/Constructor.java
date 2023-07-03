@@ -11,7 +11,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class Constructor {
-//    Map<String, Runnable> tiposDeTorre;
     private static final Logger LOGGER = LoggerFactory.getLogger(Jugador.class.getSimpleName());
     Map<String, Torre> tiposDeTorre;
     //Map<String, Class> tiposDeTrampa;

@@ -29,8 +29,6 @@ public class Mapa {
         return parcelas.stream().anyMatch(Parcela::tieneEnemigos);
     }
 
-    // Deberiamos decidir como implementar el orden de comportamientos(primero torres despues enemigos)
-    // Una forma es fraccionar avanzarTurno a avanzarTorres, etc.
     public void avanzarTurno() {
         turno.avanzarTurno();
         parcelas.forEach(Parcela::avanzarTurno);
@@ -54,9 +52,12 @@ public class Mapa {
                 .count();
     }
 
+    public boolean noQuedanEnemigos(){
+        return cantidadDeEnemigos() == 0;
+    }
+
     public void agregarParcelas(List<Parcela> lista) {
         parcelas = lista;
-//                parcelas.addAll(lista);
     }
 
     public void agregarPasarelaLlegada(PasarelaLlegada pasarelaLlegada) {

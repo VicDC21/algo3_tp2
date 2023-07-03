@@ -2,6 +2,7 @@ package edu.fiuba.algoIII.interfaz;
 
 import edu.fiuba.algoIII.modelo.Juego;
 import edu.fiuba.algoIII.modelo.excepciones.InvalidMap;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -20,7 +21,7 @@ public class LayoutBienvenida extends VBox {
         super();
         this.stage = stage;
         stage.getIcons().add(new Image("arania.png"));
-        stage.setTitle("AlgoDefense - v.0.0.2");
+        stage.setTitle("AlgoDefense - v.0.1.0");
         this.setAlignment(Pos.CENTER);
 
         textField = new TextField();
@@ -33,18 +34,21 @@ public class LayoutBienvenida extends VBox {
         button = new Button("Empezar partida");
         button.getStyleClass().add("my-button");
         button.minWidth(50);
+        button.setDisable(true);
+        validarNombreUsuario();
 
         Image image = new Image("algoDefense.png");
         ImageView imageView = new ImageView(image);
 
         textField.setOnKeyPressed(event -> {
-            if (event.getCode() == KeyCode.ENTER) {
+            if (event.getCode() == KeyCode.ENTER && !button.isDisabled()) {
                 iniciarPartida();
             }
         });
 
         button.setOnMouseClicked(event -> iniciarPartida());
 
+        VBox.setMargin(button, new Insets(0, 0, 30, 0));
         this.getChildren().addAll(imageView, textField, button);
         this.setSpacing(20);
     }
@@ -59,6 +63,16 @@ public class LayoutBienvenida extends VBox {
         } catch (InvalidMap e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public void validarNombreUsuario(){
+        textField.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue.length() >= 6) {
+                button.setDisable(false);
+            } else {
+                button.setDisable(true);
+            }
+        });
     }
 }
 

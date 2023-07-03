@@ -14,7 +14,6 @@ public class Torre {
     int turnosParaConstruirse;
     int danio;
     int rango;
-
     int tipo;
     IntegerProperty tipoProperty = new SimpleIntegerProperty(tipo);
 
@@ -38,9 +37,6 @@ public class Torre {
 
     public int getTipo() {
         return tipo;
-    }
-
-    public Torre() {
     }
 
     protected int getRango() {
@@ -87,15 +83,9 @@ public class Torre {
                 .findAny()
                 .ifPresent(parcela -> parcela.recibirDanio(danio));
         LOGGER.info("Torre atacando con danio " + danio + " y rango " + rango);
-
-//        mapa.atacarParcelaEnRango(fila, columna, rango, danio);
     }
 
     public boolean estaOperativa() {
         return turnosParaConstruirse <= 0;
-    }
-
-    public IntegerProperty tipoProperty() {
-        return tipoProperty;
     }
 }

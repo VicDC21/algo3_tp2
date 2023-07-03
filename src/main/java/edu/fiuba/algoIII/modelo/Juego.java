@@ -34,6 +34,7 @@ public class Juego {
         jugador = new Jugador("test", 20, 100, new Constructor(mapa));
     }
 
+    //Se usa para pruebas de JSON
     public Juego(String pathMapa, String pathEnemigos) throws InvalidMap {
         ObtenedorDeMapa obtenedorDeMapa = new ObtenedorDeMapa();
         ObtenedorDeEnemigos obtenedorDeEnemigos = new ObtenedorDeEnemigos();
@@ -61,10 +62,6 @@ public class Juego {
 
     public void construirTrampa(/*String nombreTrampa,*/ int fila, int columna) {
         jugador.construirTrampa(/*nombreTrampa,*/ fila, columna);
-    }
-
-    public boolean tieneEnemigos(){
-        return mapa.tieneEnemigos();
     }
 
     public Juego(Jugador jugador, Mapa mapa) {
@@ -109,7 +106,7 @@ public class Juego {
     private void actualizarEstado() {
         if (!(this.jugador.estaVivo())) {
             estado = -1;
-        } else if (this.mapa.cantidadDeEnemigos() == 0) {
+        } else if (this.mapa.noQuedanEnemigos()) {
             estado = 1;
         }
     }
@@ -118,7 +115,7 @@ public class Juego {
         if (!(this.jugador.estaVivo())) {
             logger.info("Jugador pierde la partida");
             return "Derrota";
-        } else if (this.mapa.cantidadDeEnemigos() == 0) {
+        } else if (this.mapa.noQuedanEnemigos()) {
             logger.info("Jugador gana la partida");
             return "Victoria";
         }
@@ -144,9 +141,5 @@ public class Juego {
 
     public IntegerProperty turnoProperty() {
         return turnoProperty;
-    }
-
-    public ObservableValue<String> enemigosProperty() {
-        return null;
     }
 }
