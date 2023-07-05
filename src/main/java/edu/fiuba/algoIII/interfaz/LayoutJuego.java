@@ -24,7 +24,6 @@ public class LayoutJuego extends BorderPane {
     Stage stage;
     Juego juego;
     Jugador jugador;
-    //Constructor constructor;
     MapaPane mapaPane;
     BarPane barDefensas;
     boolean pantallaDerrotaMostrada;
