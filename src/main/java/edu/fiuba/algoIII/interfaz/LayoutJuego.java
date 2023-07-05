@@ -19,6 +19,7 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import java.io.File;
+import java.net.URL;
 
 public class LayoutJuego extends BorderPane {
     Stage stage;
@@ -117,13 +118,22 @@ public class LayoutJuego extends BorderPane {
             }
          });
     }
+
+    private void reproducirSonidoFinDeJuego(){
+        URL resourceUrl = getClass().getResource("/victoria.mp3");
+        if (resourceUrl != null) {
+                String rutaMedia = resourceUrl.toString();
+                Media media = new Media(rutaMedia);
+                MediaPlayer mediaPlayer = new MediaPlayer(media);
+                mediaPlayer.play();
+        }
+    }
+
     private void mostrarPantallaVictoria() {
         Scene sceneVictoria = new Scene(new Label("Victoria!"));
         stage.setScene(sceneVictoria);
         stage.show();
-        Media sound = new Media("victoria.mp3");
-        MediaPlayer mediaPlayer = new MediaPlayer(sound);
-        mediaPlayer.play();
+        reproducirSonidoFinDeJuego();
     }
 
     private void mostrarPantallaDerrota() {
