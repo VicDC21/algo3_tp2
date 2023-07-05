@@ -12,9 +12,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+
+import java.io.File;
 
 public class LayoutJuego extends BorderPane {
     Stage stage;
@@ -115,10 +119,13 @@ public class LayoutJuego extends BorderPane {
     }
     private void mostrarPantallaVictoria() {
         Scene sceneVictoria = new Scene(new Label("Victoria!"));
-
         stage.setScene(sceneVictoria);
         stage.show();
+        Media sound = new Media("victoria.mp3");
+        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
     }
+
     private void mostrarPantallaDerrota() {
 
         Scene sceneDerrota = new Scene(new Label("¡Derrota!"));
