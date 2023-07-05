@@ -86,20 +86,6 @@ public abstract class Parcela {
         return false;
     }
 
-    public boolean tieneEnemigosFueraDeTierra() {
-        for (Enemigo e: enemigos) {
-            if (!e.estaMuerto() && e.estaFueraDeTierra()) {
-                return true;
-            }
-        }
-        for (Enemigo e: arribos) {
-            if (!e.estaMuerto() && e.estaFueraDeTierra()) {
-                return true;
-            }
-        }
-        return false;
-    }
-
     public void removerMuertos() {
         for (Enemigo enemigo : enemigos) {
             if (enemigo.estaMuerto()) {enemigo.desuscribirTodo();}

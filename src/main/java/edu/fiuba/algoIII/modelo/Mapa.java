@@ -52,10 +52,6 @@ public class Mapa {
                 .count();
     }
 
-    public boolean noQuedanEnemigos(){
-        return cantidadDeEnemigos() == 0;
-    }
-
     public void agregarParcelas(List<Parcela> lista) {
         parcelas = lista;
     }

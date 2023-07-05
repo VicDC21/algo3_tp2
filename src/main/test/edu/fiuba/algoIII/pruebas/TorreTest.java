@@ -46,7 +46,7 @@ public class TorreTest {
         Pasarela pasarela = mock(Pasarela.class);
 
         when(mapa.obtenerParcelasEnArea(0, 0, rango)).thenReturn(Collections.singletonList(pasarela));
-        when(pasarela.tieneEnemigosFueraDeTierra()).thenReturn(true);
+        when(pasarela.tieneEnemigos()).thenReturn(true);
 
         Torre torre = new Torre(10, cantidadDeTurnosParaConstruirse, rango, cantidadDeDanio, 2);
 

@@ -28,7 +28,7 @@ public abstract class Enemigo {
     public abstract void avanzar();
 
     public void recibirDanio(int danio) {
-        if (!this.estaMuerto()) {
+        if (!this.estaMuerto() && this.estaFueraDeTierra()) {
             this.energia -= danio;
         }
         LOGGER.info(this.getClass().getSimpleName() + " recibe daño: " + danio);

@@ -9,6 +9,7 @@
 
 .my-button:hover {
     -fx-background-color: #45A34A;
+    -fx-cursor: hand;
     -fx-effect: dropshadow(one-pass-box, rgba(0, 0, 0, 0.8), 10, 0.5, 0, 0);
 }
 

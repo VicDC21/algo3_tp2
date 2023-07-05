@@ -35,11 +35,11 @@ public class LayoutBienvenida extends VBox {
         button.getStyleClass().add("my-button");
         button.minWidth(50);
         button.setDisable(true);
-        validarNombreUsuario();
 
         Image image = new Image("algoDefense.png");
         ImageView imageView = new ImageView(image);
 
+        textField.textProperty().addListener((observable, oldValue, newValue) -> button.setDisable(newValue.length() < 6));
         textField.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ENTER && !button.isDisabled()) {
                 iniciarPartida();
@@ -63,10 +63,6 @@ public class LayoutBienvenida extends VBox {
         } catch (InvalidMap e) {
             throw new RuntimeException(e);
         }
-    }
-
-    public void validarNombreUsuario(){
-        textField.textProperty().addListener((observable, oldValue, newValue) -> button.setDisable(newValue.length() < 6));
     }
 }
 

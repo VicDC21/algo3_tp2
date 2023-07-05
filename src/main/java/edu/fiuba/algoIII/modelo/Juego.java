@@ -26,30 +26,24 @@ public class Juego {
 
     //Solo se usa para probar la ruta JSon del mapa
     public Juego(String path) throws InvalidMap {
-        ObtenedorDeMapa obtenedorDeMapa = new ObtenedorDeMapa();
-        mapa = obtenedorDeMapa.obtenerMapa(path);
+        mapa = new ObtenedorDeMapa().obtenerMapa(path);
         jugador = new Jugador("test", 20, 100, new Constructor(mapa));
     }
 
     //Se usa para pruebas de JSON
     public Juego(String pathMapa, String pathEnemigos) throws InvalidMap {
-        ObtenedorDeMapa obtenedorDeMapa = new ObtenedorDeMapa();
-        ObtenedorDeEnemigos obtenedorDeEnemigos = new ObtenedorDeEnemigos();
-        mapa = obtenedorDeMapa.obtenerMapa(pathMapa);
-        mapa.cargarEnemigos(obtenedorDeEnemigos.obtenerEnemigos(pathEnemigos));
+        mapa = new ObtenedorDeMapa().obtenerMapa(pathMapa);
+        mapa.cargarEnemigos(new ObtenedorDeEnemigos().obtenerEnemigos(pathEnemigos));
         jugador = new Jugador("test", 20, 100, new Constructor(mapa));
-        mapa.setJugador(jugador);       // Esto hay que sacarlo
+        mapa.setJugador(jugador);
         logger.info("Juego Iniciado"); 
     }
 
     public Juego(String pathMapa, String pathEnemigos, String nombre) throws InvalidMap {
-        ObtenedorDeMapa obtenedorDeMapa = new ObtenedorDeMapa();
-        ObtenedorDeEnemigos obtenedorDeEnemigos = new ObtenedorDeEnemigos();
-        mapa = obtenedorDeMapa.obtenerMapa(pathMapa);
-        mapa.cargarEnemigos(obtenedorDeEnemigos.obtenerEnemigos(pathEnemigos));
-        Constructor constructor = new Constructor(mapa);
-        jugador = new Jugador(nombre, 20, 100, constructor);
-        mapa.setJugador(jugador);    // Esto hay que sacarlo
+        mapa = (new ObtenedorDeMapa()).obtenerMapa(pathMapa);
+        mapa.cargarEnemigos((new ObtenedorDeEnemigos()).obtenerEnemigos(pathEnemigos));
+        jugador = new Jugador(nombre, 20, 100, new Constructor(mapa));
+        mapa.setJugador(jugador);
         logger.info("Juego Iniciado");
     }
 
@@ -103,16 +97,17 @@ public class Juego {
     private void actualizarEstado() {
         if (!(this.jugador.estaVivo())) {
             estado = -1;
-        } else if (this.mapa.noQuedanEnemigos()) {
+        } else if (!(this.mapa.tieneEnemigos())) {
             estado = 1;
         }
     }
 
+    //Para pruebas de interfaz en terminal
     public String estadoJuego() {
         if (!(this.jugador.estaVivo())) {
             logger.info("Jugador pierde la partida");
             return "Derrota";
-        } else if (this.mapa.noQuedanEnemigos()) {
+        } else if (!(this.mapa.tieneEnemigos())) {
             logger.info("Jugador gana la partida");
             return "Victoria";
         }
