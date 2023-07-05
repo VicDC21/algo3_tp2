@@ -47,6 +47,11 @@ public class Pasarela extends Parcela {
     public void destruirConstruccion() { this.trampa = new TrampaNull(); }
 
     @Override
+    public boolean puedeContenerTorre() {
+        return false;
+    }
+
+    @Override
     public String obtenerImagen() {
         return "pasarela.png";
     }
