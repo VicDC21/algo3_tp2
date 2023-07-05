@@ -18,7 +18,6 @@ import javafx.scene.paint.Color;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
-import java.io.File;
 import java.net.URL;
 
 public class LayoutJuego extends BorderPane {
