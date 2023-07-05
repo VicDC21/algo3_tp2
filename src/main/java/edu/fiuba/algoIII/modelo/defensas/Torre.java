@@ -2,7 +2,6 @@ package edu.fiuba.algoIII.modelo.defensas;
 
 import edu.fiuba.algoIII.modelo.Mapa;
 import edu.fiuba.algoIII.modelo.parcelas.Parcela;
-import edu.fiuba.algoIII.modelo.parcelas.Tierra;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import org.slf4j.Logger;
@@ -60,7 +59,7 @@ public class Torre {
     }
 
     public boolean puedeConstruirseEnParcela(Parcela parcela){
-        return (parcela instanceof Tierra);
+        return parcela.puedeContenerTorre();
     }
 
     public void avanzarTurno(Mapa mapa, int fila, int columna) {

@@ -20,6 +20,11 @@ public class Rocoso extends Parcela {
     public void construirTrampa(Trampa trampa) { throw new ParcelaNoConstruible(); }
 
     @Override
+    public boolean puedeContenerTorre() {
+        return false;
+    }
+
+    @Override
     public String obtenerImagen() {
         return "rocoso.jpg";
     }

@@ -128,5 +128,7 @@ public abstract class Parcela {
         return enemigos;
     }
 
+    public abstract boolean puedeContenerTorre();
+
     public abstract String obtenerImagen();
 }

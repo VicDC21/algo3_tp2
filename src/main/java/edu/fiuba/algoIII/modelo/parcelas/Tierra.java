@@ -39,6 +39,11 @@ public class Tierra extends Parcela {
     }
 
     @Override
+    public boolean puedeContenerTorre() {
+        return true;
+    }
+
+    @Override
     public String obtenerImagen() {
         return "tierra.jpg";
     }
