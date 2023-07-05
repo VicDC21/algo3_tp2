@@ -23,7 +23,7 @@ public class MapaParser {
         Mapa mapa = new Mapa();
         JSONObject jsonObject;
         try {
-            jsonObject = (new JSONObject(FileUtils.readFileToString(new File(path)))).getJSONObject("Mapa");
+            jsonObject = (new JSONObject(FileUtils.readFileToString(new File(path), "UTF-8"))).getJSONObject("Mapa");
         } catch (IOException | JSONException e) {
             throw new InvalidMap();
         }

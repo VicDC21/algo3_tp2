@@ -52,7 +52,7 @@ public class EnemigosParser {
         ArrayList<List<Enemigo>> enemigosParseados = new ArrayList<>();
         JSONArray jsonEnemigos;
         try {
-            jsonEnemigos = new JSONArray(FileUtils.readFileToString(new File(path)));
+            jsonEnemigos = new JSONArray(FileUtils.readFileToString(new File(path), "UTF-8"));
         } catch (IOException | JSONException e) {
             throw new JsonDeEnemigosInvalido();
         }
