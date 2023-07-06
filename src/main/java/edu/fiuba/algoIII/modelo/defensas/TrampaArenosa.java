@@ -11,6 +11,7 @@ public class TrampaArenosa extends Trampa {
         this.turnosVigente++;
         if (this.vidaUtil < this.turnosVigente) {
             this.pasarelaConstruida.destruirConstruccion();
+            LOGGER.info("Trampa ha sido destruida");
         } else {
             this.aplicarEfecto();
         }
@@ -24,6 +25,7 @@ public class TrampaArenosa extends Trampa {
     @Override
     public void aplicarEfecto(){
         this.pasarelaConstruida.modificarVelocidad(modificadorVelocidad);
+        LOGGER.info("El efecto de la trampa arenosa ha sido activado. Velocidad reducida en " + modificadorVelocidad);
     }
 
 }
