@@ -19,24 +19,10 @@
         },
         {
             "type": "java",
-            "name": "App",
-            "request": "launch",
-            "mainClass": "edu.fiuba.algo3/edu.fiuba.algo3.App",
-            "projectName": "tp2"
-        },
-        {
-            "type": "java",
             "name": "Main",
             "request": "launch",
-            "mainClass": "edu.fiuba.algo3/edu.fiuba.algo3.Main",
+            "mainClass": "edu.fiuba.algo3/edu.fiuba.algoIII.Main",
             "projectName": "tp2"
         },
-        {
-            "type": "java",
-            "name": "Vista",
-            "request": "launch",
-            "mainClass": "edu.fiuba.algo3/edu.fiuba.algo3.modelo.JavaFX.Vista",
-            "projectName": "tp2"
-        }
     ]
 }
