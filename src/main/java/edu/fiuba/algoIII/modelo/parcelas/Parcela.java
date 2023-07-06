@@ -18,7 +18,7 @@ public abstract class Parcela {
     protected List<Enemigo> enemigos = new ArrayList<>();
     protected List<Enemigo> arribos = new ArrayList<>();
     protected static final Logger LOGGER = LoggerFactory.getLogger(Pasarela.class.getSimpleName());
-    Mapa mapa;
+    protected Mapa mapa;
 
     public Parcela(int fila, int columna, Mapa mapa)
     {

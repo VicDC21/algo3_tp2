@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory;
 
 public class Tierra extends Parcela {
     private static final Logger LOGGER = LoggerFactory.getLogger(Tierra.class.getSimpleName());
-    Torre torre = new TorreNull();
+    protected Torre torre = new TorreNull();
 
     public Tierra(int fila, int columna, Mapa mapa) {
         super(fila, columna, mapa);
