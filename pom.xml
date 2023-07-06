@@ -16,6 +16,7 @@
         <main-class>edu.fiuba.algoIII.Main</main-class>
         <sonar.jacoco.reportPath>${basedir}/target/jacoco_report/jacoco.xml</sonar.jacoco.reportPath>
         <jacoco.path>${basedir}/target/jacoco_report</jacoco.path>
+        <argLine>${surefireArgLine}</argLine>
     </properties>
     <dependencies>
         <dependency>
@@ -137,7 +138,7 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0-M5</version>
                 <configuration>
-                    <argLine>${argLine}</argLine>
+                    <argLine>${surefireArgLine}</argLine>
                 </configuration>
             </plugin>
             <plugin>
