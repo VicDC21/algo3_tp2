@@ -12,6 +12,11 @@ public class PasarelaNull extends Pasarela{
     public void avanzarTurno() {}
 
     @Override
+    public boolean puedeContenerTrampa() {
+        return false;
+    }
+
+    @Override
     public void construirTrampa(Trampa trampa) {}
 
     @Override

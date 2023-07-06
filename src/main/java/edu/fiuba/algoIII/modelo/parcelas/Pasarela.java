@@ -38,6 +38,10 @@ public class Pasarela extends Parcela {
         trampa.setPasarela(this);
     }
 
+    public boolean puedeContenerTrampa() {
+        return true;
+    }
+
     public void setPasarelaSiguiente(Pasarela pasarela) { this.pasarelaSiguiente = pasarela; }
 
     public void causarDanioJugador(int danio) {}

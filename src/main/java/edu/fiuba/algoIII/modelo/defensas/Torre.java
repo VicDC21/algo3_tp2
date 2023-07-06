@@ -4,12 +4,8 @@ import edu.fiuba.algoIII.modelo.Mapa;
 import edu.fiuba.algoIII.modelo.parcelas.Parcela;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
-public class Torre {
-    private static final Logger LOGGER = LoggerFactory.getLogger(Torre.class.getSimpleName());
-    int costo;
+public class Torre extends Defensa{
     int turnosParaConstruirse;
     int danio;
     int rango;
@@ -17,7 +13,7 @@ public class Torre {
     IntegerProperty tipoProperty = new SimpleIntegerProperty(tipo);
 
     public Torre(int costo, int turnosParaConstruirse, int rango, int danio, int tipo) {
-        this.costo = costo;
+        super(costo);
         this.turnosParaConstruirse = turnosParaConstruirse;
         this.rango = rango;
         this.danio = danio;
@@ -26,7 +22,7 @@ public class Torre {
     }
 
     public Torre(Torre torre) {        //shallow copy pero los atributos son inmutables.
-        this.costo = torre.getCosto();
+        super(torre.getCosto());
         this.turnosParaConstruirse = torre.getTurnosParaConstruirse();
         this.rango = torre.getRango();
         this.danio = torre.getDanio();
@@ -52,10 +48,6 @@ public class Torre {
 
     protected int getTurnosParaConstruirse() {
         return this.turnosParaConstruirse;
-    }
-
-    public boolean puedoConstruirConCreditos(int creditosDisponibles) {
-        return creditosDisponibles >= this.costo;
     }
 
     public boolean puedeConstruirseEnParcela(Parcela parcela){

@@ -130,5 +130,9 @@ public abstract class Parcela {
 
     public abstract boolean puedeContenerTorre();
 
+    public boolean puedeContenerTrampa() {
+        return false;
+    }
+
     public abstract String obtenerImagen();
 }

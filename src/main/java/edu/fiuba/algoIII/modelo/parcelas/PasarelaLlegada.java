@@ -13,6 +13,11 @@ public class PasarelaLlegada extends Pasarela {
     }
 
     @Override
+    public boolean puedeContenerTrampa() {
+        return false;
+    }
+
+    @Override
     public void avanzarTurno() { enemigos.clear(); }
 
     public void causarDanioJugador(int danio) { jugador.recibirDanio(danio); }

@@ -18,6 +18,11 @@ public class PasarelaSalida extends Pasarela {
     }
 
     @Override
+    public boolean puedeContenerTrampa() {
+        return false;
+    }
+
+    @Override
     public List<Enemigo> devolverEnemigos(){
         return enemigosPorTurno.get(0);
     }

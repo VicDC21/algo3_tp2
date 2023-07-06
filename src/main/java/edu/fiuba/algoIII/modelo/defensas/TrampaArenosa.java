@@ -1,10 +1,15 @@
 package edu.fiuba.algoIII.modelo.defensas;
 
+import edu.fiuba.algoIII.modelo.parcelas.Parcela;
+
 public class TrampaArenosa extends Trampa {
 
-    int costo = 25;
     int vidaUtil = 3;
     final double modificadorVelocidad = 0.5;
+
+    public TrampaArenosa() {
+        super(25);
+    }
 
     @Override
     public void avanzarTurno(){
@@ -17,9 +22,8 @@ public class TrampaArenosa extends Trampa {
         }
     }
 
-    @Override
-    public boolean puedoConstruirConCreditos(int creditosDisponibles) {
-        return (costo <= creditosDisponibles);
+    public boolean puedeConstruirseEnParcela(Parcela parcela) {
+        return parcela.puedeContenerTrampa();
     }
 
     @Override
