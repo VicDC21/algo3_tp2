@@ -14,6 +14,8 @@
         <archunit-version>1.0.0</archunit-version>
         <javafx-version>21-ea+17</javafx-version>
         <main-class>edu.fiuba.algoIII.Main</main-class>
+        <sonar.jacoco.reportPath>sonar.coverage.jacoco.xmlReportPaths: ${basedir}/target/jacoco_report/jacoco.xml</sonar.jacoco.reportPath>
+        <jacoco.path>jacoco.path: ${basedir}/target/jacoco_report</jacoco.path>
     </properties>
     <dependencies>
         <dependency>
