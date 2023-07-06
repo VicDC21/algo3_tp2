@@ -16,6 +16,7 @@
         <main-class>edu.fiuba.algoIII.Main</main-class>
         <sonar.jacoco.reportPath>${basedir}/target/jacoco_report/jacoco.xml</sonar.jacoco.reportPath>
         <jacoco.path>${basedir}/target/jacoco_report</jacoco.path>
+        <argLine>-Xmx2048m -Xms1024m</argLine>
     </properties>
     <dependencies>
         <dependency>
