@@ -38,10 +38,6 @@ public class Torre extends Defensa{
         return this.rango;
     }
 
-    public int getCosto() {
-        return this.costo;
-    }
-
     protected int getDanio() {
         return this.danio;
     }

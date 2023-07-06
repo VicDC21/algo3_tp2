@@ -12,6 +12,10 @@ public abstract class Defensa {
         this.costo = costo;
     }
 
+    public int getCosto() {
+        return costo;
+    }
+
     public boolean puedoConstruirConCreditos(int creditosDisponibles) {
         return (this.costo <= creditosDisponibles);
     }

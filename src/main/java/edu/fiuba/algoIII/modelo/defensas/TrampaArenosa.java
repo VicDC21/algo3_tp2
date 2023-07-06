@@ -3,7 +3,6 @@ package edu.fiuba.algoIII.modelo.defensas;
 import edu.fiuba.algoIII.modelo.parcelas.Parcela;
 
 public class TrampaArenosa extends Trampa {
-
     int vidaUtil = 3;
     final double modificadorVelocidad = 0.5;
 
