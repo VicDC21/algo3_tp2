@@ -1,5 +1,6 @@
 with:
   token: ${{secrets.CODECOV_TOKEN}}
+  version: "v0.1.15"
 
 ignore:
   - "src/main/java/edu/fiuba/algoIII/App.java"
