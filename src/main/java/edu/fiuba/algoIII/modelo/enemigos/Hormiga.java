@@ -1,6 +1,7 @@
 package edu.fiuba.algoIII.modelo.enemigos;
 
 import edu.fiuba.algoIII.modelo.parcelas.Pasarela;
+import edu.fiuba.algoIII.modelo.parcelas.PasarelaNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -14,7 +15,7 @@ public class Hormiga extends Enemigo {
     }
 
     public Hormiga() {
-        super(1, 1, 1, "Vivo", null);
+        super(1, 1, 1, "Vivo", new PasarelaNull());
     }
 
     @Override

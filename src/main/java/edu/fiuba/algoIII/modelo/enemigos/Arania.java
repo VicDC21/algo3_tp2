@@ -1,5 +1,6 @@
 package edu.fiuba.algoIII.modelo.enemigos;
 
+import edu.fiuba.algoIII.modelo.parcelas.ParcelaNull;
 import edu.fiuba.algoIII.modelo.parcelas.Pasarela;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,7 +15,7 @@ public class Arania extends Enemigo {
     }
 
     public Arania() {
-        super(2, 2, 2, "Vivo", null);
+        super(2, 2, 2, "Vivo", new ParcelaNull());
     }
 
     @Override

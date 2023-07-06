@@ -37,7 +37,7 @@ public abstract class Parcela {
 
     public void recibirEnemigo(Enemigo enemigo) {
         this.arribos.add(enemigo);
-        LOGGER.info("Pasarela "+ this.fila+ " " + this.columna +" recibiendo enemigo " + enemigo.getClass().getSimpleName());
+        LOGGER.info("Parcela "+ this.fila+ " " + this.columna +" recibiendo enemigo " + enemigo.getClass().getSimpleName());
 
     }
 
