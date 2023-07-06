@@ -24,6 +24,7 @@ import java.net.URL;
 public class LayoutJuego extends BorderPane {
     Stage stage;
     Juego juego;
+    String nombreJugador;
     Jugador jugador;
     MapaPane mapaPane;
     BarPane barDefensas;
@@ -34,9 +35,10 @@ public class LayoutJuego extends BorderPane {
 
     private static final float CENTER_ON_SCREEN_X_FRACTION = 1.0f / 2;
     private static final float CENTER_ON_SCREEN_Y_FRACTION = 1.0f / 3;
-    public LayoutJuego(Stage stage, Juego juego) {
+    public LayoutJuego(Stage stage, Juego juego, String nombreJugador) {
         this.juego = juego;
         this.stage = stage;
+        this.nombreJugador = nombreJugador;
 
         this.jugador = juego.getJugador();
         pantallaDerrotaMostrada = false;
@@ -83,10 +85,14 @@ public class LayoutJuego extends BorderPane {
         avanzarTurno.setOnAction(event -> {
             reproducirSonido("/click.mp3");
             int vidaAnterior = juego.mostrarVidaDelJugador();
+            int cantidadTorresAnterior = juego.cantidadDeTorres();
             juego.avanzarTurno();
             mapaPane.actualizarVisualEnemigos();
             if (vidaAnterior > juego.mostrarVidaDelJugador()) {
                 reproducirSonido("/jugadorDaniado.mp3");
+            }
+            if (cantidadTorresAnterior > juego.cantidadDeTorres()) {
+                reproducirSonido("/torreDestruida.mp3");
             }
         });
 

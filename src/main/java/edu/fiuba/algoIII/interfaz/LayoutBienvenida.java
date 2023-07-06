@@ -22,6 +22,7 @@ public class LayoutBienvenida extends VBox {
     Button button;
     TextField textField;
     MediaPlayer mediaPlayer;
+    String nombreJugador;
 
     public LayoutBienvenida(Stage stage) {
         super();
@@ -54,13 +55,16 @@ public class LayoutBienvenida extends VBox {
             mediaPlayer.play();
         }
 
-        textField.textProperty().addListener((observable, oldValue, newValue) -> button.setDisable(newValue.length() < 6));
+        textField.textProperty().addListener((observable, oldValue, newValue) -> {
+            button.setDisable(newValue.length() < 6);
+            nombreJugador = newValue;
+        });
+
         textField.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ENTER && !button.isDisabled()) {
                 iniciarPartida();
             }
         });
-
         button.setOnMouseClicked(event -> iniciarPartida());
 
         VBox.setMargin(button, new Insets(0, 0, 30, 0));
@@ -73,7 +77,7 @@ public class LayoutBienvenida extends VBox {
         Juego juego;
         try {
             juego = new Juego("src/main/resources/mapa.json", "src/main/resources/enemigosV2.json", textField.getText());
-            LayoutJuego layout = new LayoutJuego(stage, juego);
+            LayoutJuego layout = new LayoutJuego(stage, juego, nombreJugador);
             layout.getStylesheets().add("/styles.css");
             layout.show();
         } catch (InvalidMap e) {
