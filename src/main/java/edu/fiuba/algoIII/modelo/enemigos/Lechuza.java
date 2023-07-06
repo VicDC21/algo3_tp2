@@ -6,6 +6,7 @@ package edu.fiuba.algoIII.modelo.enemigos;
 // dps con menos de 50% de vida va en recta.
 
 import edu.fiuba.algoIII.modelo.parcelas.Parcela;
+import edu.fiuba.algoIII.modelo.parcelas.ParcelaNull;
 
 public class Lechuza extends Enemigo {
     final int creditos = 0;
@@ -17,7 +18,7 @@ public class Lechuza extends Enemigo {
     }
 
     public Lechuza() {
-        super(5, 5, 0, "Vivo", null);
+        super(5, 5, 0, "Vivo", new ParcelaNull());
     }
 
     @Override
@@ -29,18 +30,14 @@ public class Lechuza extends Enemigo {
                 proximaParcela = proximaParcela.proximaParcelaComoCatetoHastaLlegadaDesdeAca();
                 i++;
             }
-
-            proximaParcela.recibirEnemigo(this);
-            this.parcelaActual = proximaParcela;
         } else {
             while (i < this.velocidad && proximaParcela != proximaParcela.proximaParcelaEnLineaRectaHastaLlegadaDesdeAca()) {
                 proximaParcela = proximaParcela.proximaParcelaEnLineaRectaHastaLlegadaDesdeAca();
                 i++;
             }
-
-            proximaParcela.recibirEnemigo(this);
-            this.parcelaActual = proximaParcela;
         }
+        proximaParcela.recibirEnemigo(this);
+        this.parcelaActual = proximaParcela;
         destruirTorre();
     }
 

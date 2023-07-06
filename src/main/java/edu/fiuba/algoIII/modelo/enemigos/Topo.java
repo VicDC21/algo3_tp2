@@ -7,6 +7,7 @@ package edu.fiuba.algoIII.modelo.enemigos;
 
 // El topo no camina por la superficie, va enterrado y ninguna torre lo puede atacar.
 
+import edu.fiuba.algoIII.modelo.parcelas.ParcelaNull;
 import edu.fiuba.algoIII.modelo.parcelas.Pasarela;
 import edu.fiuba.algoIII.modelo.SuscriptorTurno;
 
@@ -23,7 +24,7 @@ public class Topo extends Enemigo implements SuscriptorTurno {
     }
 
     public Topo() {
-        super(1, 1, 1, "Vivo", null);
+        super(1, 1, 1, "Vivo", new ParcelaNull());
     }
 
     @Override
