@@ -1,9 +1,12 @@
 package edu.fiuba.algoIII.modelo.defensas;
 
 import edu.fiuba.algoIII.modelo.parcelas.Pasarela;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 // Debe conocer a la parcela parada para poder reducirle la velocidad a los enemigos.
-public class Trampa {
+public abstract class Trampa {
+    protected static final Logger LOGGER = LoggerFactory.getLogger(Trampa.class.getSimpleName());
     int costo;
     protected Pasarela pasarelaConstruida;
     protected int vidaUtil;
@@ -18,7 +21,7 @@ public class Trampa {
         }
     }
 
-    public void aplicarEfecto() {}
+    public abstract void aplicarEfecto();
 
     public boolean puedoConstruirConCreditos(int creditosDisponibles) {
         return (costo <= creditosDisponibles);
