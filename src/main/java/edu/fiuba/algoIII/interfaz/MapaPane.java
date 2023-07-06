@@ -1,10 +1,9 @@
 package edu.fiuba.algoIII.interfaz;
 
-import edu.fiuba.algoIII.modelo.defensas.TorreNull;
+import edu.fiuba.algoIII.modelo.defensas.*;
 import edu.fiuba.algoIII.modelo.enemigos.Enemigo;
 import edu.fiuba.algoIII.modelo.excepciones.CreditoInsuficiente;
 import edu.fiuba.algoIII.modelo.Jugador;
-import edu.fiuba.algoIII.modelo.defensas.Torre;
 import edu.fiuba.algoIII.modelo.parcelas.Parcela;
 import edu.fiuba.algoIII.modelo.parcelas.Tierra;
 import javafx.geometry.Pos;
@@ -20,7 +19,7 @@ import javafx.scene.shape.Rectangle;
 import java.util.List;
 
 public class MapaPane extends GridPane {
-    private Torre torreSeleccionada;
+    private Defensa defensaSeleccionada;
     final private Jugador jugador;
     final private List<Parcela> listaParcelas;
     final private int recHeight;
@@ -47,8 +46,8 @@ public class MapaPane extends GridPane {
         }
     }
 
-    public void setTorreSeleccionada(Torre torre) {
-        torreSeleccionada = torre;
+    public void setDefensaSeleccionada(Defensa defensa) {
+        defensaSeleccionada = defensa;
     }
 
     public void sombrearElementoEnActivo(Node node) {
@@ -60,21 +59,30 @@ public class MapaPane extends GridPane {
         rect.setStyle("-fx-stroke: black; -fx-stroke-width: 0.5; -fx-stroke-type: inside;");
     }
 
-    public void posicionarTorre(Parcela parcela, StackPane pane) {
-        if (torreSeleccionada != null && torreSeleccionada.puedeConstruirseEnParcela(parcela))
+    public void posicionarDefensa(Parcela parcela, StackPane pane) {
+        if (defensaSeleccionada != null)
             try {
-                if (torreSeleccionada.puedoConstruirConCreditos(jugador.mostrarCreditos())) {
-                    Torre nuevaTorre = new Torre(torreSeleccionada);
-                    ImageView torreImageView = new ImageView("construyendotorre.png");
-                    torreImageView.setFitHeight(recHeight);
-                    torreImageView.setFitWidth(recWidth);
-                    pane.getChildren().add(torreImageView);
-                    parcela.construirTorre(nuevaTorre);
-                    jugador.gastarCreditos(torreSeleccionada.getCosto());
+                if (defensaSeleccionada.puedeConstruirseEnParcela(parcela) && defensaSeleccionada.puedoConstruirConCreditos(jugador.mostrarCreditos())) {
+                    if (defensaSeleccionada instanceof Torre) {
+                        Torre nuevaTorre = new Torre((Torre) defensaSeleccionada);
+                        ImageView torreImageView = new ImageView("construyendotorre.png");
+                        torreImageView.setFitHeight(recHeight);
+                        torreImageView.setFitWidth(recWidth);
+                        pane.getChildren().add(torreImageView);
+                        parcela.construirTorre(nuevaTorre);
+                    } else if (defensaSeleccionada instanceof TrampaArenosa) {
+                        TrampaArenosa nuevaTrampaArenosa = new TrampaArenosa();
+                        ImageView trampaArenosaImageView = new ImageView("trampaArenosa.png");
+                        trampaArenosaImageView.setFitHeight(recHeight);
+                        trampaArenosaImageView.setFitWidth(recWidth);
+                        pane.getChildren().add(trampaArenosaImageView);
+                        parcela.construirTrampa(nuevaTrampaArenosa);
+                    }
+
+                    jugador.gastarCreditos(defensaSeleccionada.getCosto());
                 }
             } catch (CreditoInsuficiente ignored) {
             }
-        torreSeleccionada = null;
     }
     private StackPane crearVisual(Parcela parcela, int tileHeight, int tileWidth){
         Rectangle rect = new Rectangle();
@@ -85,7 +93,7 @@ public class MapaPane extends GridPane {
         sombrearElementoEnActivo(rect);
 
         StackPane pane = new StackPane(rect);
-        rect.setOnMouseClicked(event -> posicionarTorre(parcela, pane));
+        rect.setOnMouseClicked(event -> posicionarDefensa(parcela, pane));
         return pane;
     }
 

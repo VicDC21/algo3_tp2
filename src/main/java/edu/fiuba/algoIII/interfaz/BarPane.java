@@ -1,7 +1,7 @@
 package edu.fiuba.algoIII.interfaz;
 
 import edu.fiuba.algoIII.modelo.defensas.Torre;
-//import edu.fiuba.algoIII.modelo.defensas.TrampaArenosa;
+import edu.fiuba.algoIII.modelo.defensas.TrampaArenosa;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -18,23 +18,21 @@ public class BarPane extends HBox {
         TorreBlancaImagen.setFitHeight(tileHeight);
         TorreBlancaImagen.setFitWidth(tileWidth);
         TorreBlancaImagen.setPreserveRatio(true);
-        TorreBlancaImagen.setOnMouseClicked(event -> mapaPane.setTorreSeleccionada(torreBlanca));
+        TorreBlancaImagen.setOnMouseClicked(event -> mapaPane.setDefensaSeleccionada(torreBlanca));
 
         ImageView TorrePlateadaImagen = new ImageView("torrePlateada.png");
         Torre torrePlateada = new Torre(20, 2, 5, 2, 2);
         TorrePlateadaImagen.setFitHeight(tileHeight);
         TorrePlateadaImagen.setFitWidth(tileWidth);
         TorrePlateadaImagen.setPreserveRatio(true);
-        TorrePlateadaImagen.setOnMouseClicked(event -> mapaPane.setTorreSeleccionada(torrePlateada));
+        TorrePlateadaImagen.setOnMouseClicked(event -> mapaPane.setDefensaSeleccionada(torrePlateada));
 
         ImageView TrampaImagen = new ImageView("trampaArenosa.png");
-        //TrampaArenosa trampa = new TrampaArenosa();
+        TrampaArenosa trampa = new TrampaArenosa();
         TrampaImagen.setFitHeight(tileHeight);
         TrampaImagen.setFitWidth(tileWidth);
         TrampaImagen.setPreserveRatio(true);
-      //  TrampaImagen.setOnMouseClicked(event -> {
-      //      mapaPane.setTorreSeleccionada(trampa, TrampaImagen);
-     //   });
+        TrampaImagen.setOnMouseClicked(event -> mapaPane.setDefensaSeleccionada(trampa));
 
         List<ImageView> lista = new ArrayList<>();
         lista.add(TorreBlancaImagen);
