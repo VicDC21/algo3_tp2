@@ -6,6 +6,7 @@ import edu.fiuba.algoIII.modelo.enemigos.Enemigo;
 import edu.fiuba.algoIII.modelo.enemigos.Hormiga;
 import edu.fiuba.algoIII.modelo.parcelas.Parcela;
 import edu.fiuba.algoIII.modelo.parcelas.Pasarela;
+import edu.fiuba.algoIII.modelo.parcelas.PasarelaNull;
 import edu.fiuba.algoIII.modelo.parcelas.Tierra;
 import org.junit.jupiter.api.Test;
 
@@ -20,7 +21,7 @@ public class EnemigoTest {
     @Test
     public void unidadesEnemigasSonDaniadasDeAcuerdoAlDanioRecibido() {
         Mapa mapa = mock(Mapa.class);
-        Pasarela pasarela = new Pasarela(1, 2, mapa, null);
+        Pasarela pasarela = new Pasarela(1, 2, mapa, new PasarelaNull());
         Enemigo hormiga = new Hormiga(2, 1, 1, "Vivo", pasarela);
         pasarela.recibirEnemigo(hormiga);
         ArrayList<Parcela> pasarelasEnRango = new ArrayList<>();
@@ -38,7 +39,7 @@ public class EnemigoTest {
     @Test
     public void unidadesEnemigasSoloSeMuevanPorLaParcelaAutorizada() {
         Mapa mapa = mock(Mapa.class);
-        Pasarela pasarela = new Pasarela(1, 2, mapa, null);
+        Pasarela pasarela = new Pasarela(1, 2, mapa, new PasarelaNull());
         Tierra tierra = new Tierra(2, 2, mapa);
         Enemigo hormiga = new Hormiga(2, 1, 1, "Vivo", pasarela);
 
