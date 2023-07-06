@@ -18,7 +18,7 @@ on:
     # The branches below must be a subset of the branches above
     branches: [ "master" ]
   schedule:
-    - cron: '10 4 * * 4'
+    - cron: '15 4 * * 4'
 
 jobs:
   analyze:
@@ -75,8 +75,9 @@ jobs:
       with:
         category: "/language:${{matrix.language}}"
         
+    - name: Codecov
     - uses: actions/checkout@master
-    - uses: codecov/codecov-action@v3
+    - uses: codecov/codecov-action@v3.1.4
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
         files: ./coverage1.xml,./coverage2.xml # optional
