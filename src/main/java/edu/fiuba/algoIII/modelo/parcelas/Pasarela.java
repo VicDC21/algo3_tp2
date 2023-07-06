@@ -67,4 +67,8 @@ public class Pasarela extends Parcela {
             LOGGER.info("Reducida la velocidad del enemigo " + e.getClass().getSimpleName());
         }
     }
+
+    public Trampa getTrampa() {
+        return trampa;
+    }
 }

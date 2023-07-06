@@ -5,6 +5,7 @@ import edu.fiuba.algoIII.modelo.enemigos.Enemigo;
 import edu.fiuba.algoIII.modelo.excepciones.CreditoInsuficiente;
 import edu.fiuba.algoIII.modelo.Jugador;
 import edu.fiuba.algoIII.modelo.parcelas.Parcela;
+import edu.fiuba.algoIII.modelo.parcelas.Pasarela;
 import edu.fiuba.algoIII.modelo.parcelas.Tierra;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -74,7 +75,7 @@ public class MapaPane extends GridPane {
                         TrampaArenosa nuevaTrampaArenosa = new TrampaArenosa();
                         ImageView trampaArenosaImageView = new ImageView("trampaArenosa.png");
                         trampaArenosaImageView.setFitHeight(recHeight);
-                        trampaArenosaImageView.setFitWidth(recWidth);
+                        trampaArenosaImageView.setFitWidth(recWidth/1.5);
                         pane.getChildren().add(trampaArenosaImageView);
                         parcela.construirTrampa(nuevaTrampaArenosa);
                     }
@@ -104,6 +105,12 @@ public class MapaPane extends GridPane {
                 StackPane pane = gridPanes[fila][columna];
                 pane.getChildren().removeIf(node -> node instanceof GridPane);
                 sombrearElementoEnActivo(pane);
+                if (parcela instanceof Tierra) {
+                    actualizarVisualTorres((Tierra) parcela, pane);
+                }
+                if (parcela instanceof Pasarela) {
+                    actualizarVisualTrampas((Pasarela) parcela, pane);
+                }
                 if (parcela.tieneEnemigos()) {
                     List<Enemigo> enemigosParcela = parcela.devolverEnemigos();
 
@@ -129,9 +136,6 @@ public class MapaPane extends GridPane {
                     }
                     pane.getChildren().add(enemyGrid);
                 }
-                if (parcela instanceof Tierra) {
-                    actualizarVisualTorres((Tierra) parcela, pane);
-                }
             }
         }
     }
@@ -153,5 +157,18 @@ public class MapaPane extends GridPane {
         torre.setFitHeight(recHeight);
         torre.setFitWidth(recWidth);
         pane.getChildren().add(torre);
+    }
+
+    public void actualizarVisualTrampas(Pasarela pasarela, StackPane pane) {
+        pane.getChildren().removeIf(node -> node instanceof ImageView);
+        ImageView trampa;
+        if (pasarela.getTrampa() instanceof TrampaNull)
+            return;
+        else {
+            trampa = new ImageView("trampaArenosa.png");
+        }
+        trampa.setFitHeight(recHeight);
+        trampa.setFitWidth(recWidth/1.5);
+        pane.getChildren().add(trampa);
     }
 }
