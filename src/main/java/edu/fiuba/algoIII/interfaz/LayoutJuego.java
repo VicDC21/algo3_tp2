@@ -159,6 +159,7 @@ public class LayoutJuego extends BorderPane {
         Scene sceneVictoria = new Scene(new LayoutFinal(stage, nombreJugador, true), 640, 520);
         stage.setScene(sceneVictoria);
         stage.show();
+        stage.centerOnScreen();
         reproducirSonido("/victoria.mp3");
     }
 
@@ -166,6 +167,7 @@ public class LayoutJuego extends BorderPane {
         Scene sceneDerrota = new Scene(new LayoutFinal(stage, nombreJugador, false), 640, 520);
         stage.setScene(sceneDerrota);
         stage.show();
+        stage.centerOnScreen();
         reproducirSonido("/derrota.mp3");
     }
 
