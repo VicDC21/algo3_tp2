@@ -13,7 +13,6 @@ import org.slf4j.LoggerFactory;
 public class Constructor {
     private static final Logger LOGGER = LoggerFactory.getLogger(Jugador.class.getSimpleName());
     Map<String, Torre> tiposDeTorre;
-    //Map<String, Class> tiposDeTrampa;
     Mapa mapa;
     Jugador jugador;
 
@@ -22,8 +21,6 @@ public class Constructor {
         this.tiposDeTorre = new HashMap<>();
         tiposDeTorre.put("torreBlanca", new Torre(10,1,3,1, 1));
         tiposDeTorre.put("torrePlateada", new Torre(20,2,5,2, 2));
-        /*this.tiposDeTrampa = new HashMap<>();
-        tiposDeTrampa.put("TrampaArenosa", TrampaArenosa.class);*/
     }
 
     protected void setJugador(Jugador jugador) {
@@ -41,7 +38,7 @@ public class Constructor {
         }
     }
 
-    public void construirTrampa(/*String nombreTrampa,*/ int creditosDisponibles, int fila, int columna) {
+    public void construirTrampa(int creditosDisponibles, int fila, int columna) {
         Trampa trampa = new TrampaArenosa();
         if (trampa.puedoConstruirConCreditos(creditosDisponibles)) {
             mapa.construirTrampa(trampa, fila, columna);

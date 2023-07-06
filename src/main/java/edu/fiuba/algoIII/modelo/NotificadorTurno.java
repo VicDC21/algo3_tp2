@@ -10,15 +10,10 @@ public class NotificadorTurno {
         turno++;
         notificar();
     }
-
     public void suscribir(SuscriptorTurno suscriptor) {
         suscriptores.add(suscriptor);
     }
-
-    // problema: habria que desuscribirlos cuando se hayan muerto.
-    // podemos
     public void desuscribir(SuscriptorTurno suscriptor) { suscriptores.remove(suscriptor); }
-
     public void notificar() {
         for (SuscriptorTurno suscriptor: suscriptores) {
             suscriptor.notificar(turno);

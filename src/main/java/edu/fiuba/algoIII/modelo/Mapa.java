@@ -46,7 +46,7 @@ public class Mapa {
                 .collect(Collectors.toList());
     }
 
-    public int cantidadDeEnemigos() {       //revisar si puedo devolver long.
+    public int cantidadDeEnemigos() {
         return (int) parcelas.stream()
                 .filter(Parcela::tieneEnemigos)
                 .count();
@@ -97,7 +97,7 @@ public class Mapa {
 
     public Parcela obtenerParcela(int fila, int columna) {
         List<Parcela> listaDeParcelasEncontradas = this.parcelas.stream()
-                .filter(parcela -> parcela.enRadioDe(fila, columna, 0))         //Cambiar esto.
+                .filter(parcela -> parcela.enRadioDe(fila, columna, 0))
                 .collect(Collectors.toList());
 
         return listaDeParcelasEncontradas.get(0);

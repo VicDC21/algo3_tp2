@@ -62,7 +62,6 @@ public class Torre extends Defensa{
         turnosParaConstruirse--;
     }
 
-    // No debe considerar Topos.
     public void atacar(Mapa mapa, int fila, int columna) {
         mapa.obtenerParcelasEnArea(fila, columna, rango)
                 .stream()
