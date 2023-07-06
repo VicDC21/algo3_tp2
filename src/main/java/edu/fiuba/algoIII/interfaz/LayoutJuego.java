@@ -45,7 +45,6 @@ public class LayoutJuego extends BorderPane {
         pantallaVictoriaMostrada = false;
 
         reproducirMusicaConRepeticion("/musicaFondo.mp3");
-        stage.getIcons().add(new Image("arania.png"));
 
         Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
         
@@ -157,14 +156,14 @@ public class LayoutJuego extends BorderPane {
     }
 
     private void mostrarPantallaVictoria() {
-        Scene sceneVictoria = new Scene(new Label("¡Victoria!"));
+        Scene sceneVictoria = new Scene(new LayoutFinal(stage, nombreJugador, true), 640, 520);
         stage.setScene(sceneVictoria);
         stage.show();
         reproducirSonido("/victoria.mp3");
     }
 
     private void mostrarPantallaDerrota() {
-        Scene sceneDerrota = new Scene(new Label("¡Derrota!"));
+        Scene sceneDerrota = new Scene(new LayoutFinal(stage, nombreJugador, false), 640, 520);
         stage.setScene(sceneDerrota);
         stage.show();
         reproducirSonido("/derrota.mp3");
