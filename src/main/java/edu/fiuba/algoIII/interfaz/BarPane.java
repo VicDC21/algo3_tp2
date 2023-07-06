@@ -27,7 +27,7 @@ public class BarPane extends HBox {
         TorrePlateadaImagen.setPreserveRatio(true);
         TorrePlateadaImagen.setOnMouseClicked(event -> mapaPane.setTorreSeleccionada(torrePlateada));
 
-        ImageView TrampaImagen = new ImageView("trampa.png");
+        ImageView TrampaImagen = new ImageView("trampaArenosa.png");
         //TrampaArenosa trampa = new TrampaArenosa();
         TrampaImagen.setFitHeight(tileHeight);
         TrampaImagen.setFitWidth(tileWidth);
