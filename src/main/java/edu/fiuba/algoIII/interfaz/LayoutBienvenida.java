@@ -10,12 +10,18 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+
+import java.net.URL;
 
 public class LayoutBienvenida extends VBox {
     Stage stage;
     Button button;
     TextField textField;
+    MediaPlayer mediaPlayer;
 
     public LayoutBienvenida(Stage stage) {
         super();
@@ -39,6 +45,15 @@ public class LayoutBienvenida extends VBox {
         Image image = new Image("algoDefense.png");
         ImageView imageView = new ImageView(image);
 
+        URL resourceUrl = getClass().getResource("/musicaInicio.mp3");
+        if (resourceUrl != null) {
+            String rutaMedia = resourceUrl.toString();
+            mediaPlayer = new MediaPlayer(new Media(rutaMedia));
+            mediaPlayer.setVolume(0.25);
+            mediaPlayer.setOnEndOfMedia(() -> mediaPlayer.seek(Duration.ZERO));
+            mediaPlayer.play();
+        }
+
         textField.textProperty().addListener((observable, oldValue, newValue) -> button.setDisable(newValue.length() < 6));
         textField.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ENTER && !button.isDisabled()) {
@@ -54,6 +69,7 @@ public class LayoutBienvenida extends VBox {
     }
 
     private void iniciarPartida() {
+        mediaPlayer.stop();
         Juego juego;
         try {
             juego = new Juego("src/main/resources/mapa.json", "src/main/resources/enemigosV2.json", textField.getText());

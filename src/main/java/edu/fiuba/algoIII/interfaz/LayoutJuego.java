@@ -17,6 +17,7 @@ import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.net.URL;
 
@@ -28,6 +29,8 @@ public class LayoutJuego extends BorderPane {
     BarPane barDefensas;
     boolean pantallaDerrotaMostrada;
     boolean pantallaVictoriaMostrada;
+    MediaPlayer mediaPlayer;
+    MediaPlayer backgroundMusic;
 
     private static final float CENTER_ON_SCREEN_X_FRACTION = 1.0f / 2;
     private static final float CENTER_ON_SCREEN_Y_FRACTION = 1.0f / 3;
@@ -39,6 +42,7 @@ public class LayoutJuego extends BorderPane {
         pantallaDerrotaMostrada = false;
         pantallaVictoriaMostrada = false;
 
+        reproducirMusicaConRepeticion("/musicaFondo.mp3");
         stage.getIcons().add(new Image("arania.png"));
 
         Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
@@ -77,6 +81,7 @@ public class LayoutJuego extends BorderPane {
         avanzarTurno.getStyleClass().add("my-button");
 
         avanzarTurno.setOnAction(event -> {
+            reproducirSonido("/click.mp3");
             juego.avanzarTurno();
             mapaPane.actualizarVisualEnemigos();
         });
@@ -109,41 +114,56 @@ public class LayoutJuego extends BorderPane {
         juego.estadoProperty().addListener((observable, oldValue, newValue) -> {
 
             if (newValue.intValue() < 0) {
+                backgroundMusic.stop();
                 mostrarPantallaDerrota();
             }
             else if (newValue.intValue() > 0) {
-                 mostrarPantallaVictoria();
+                backgroundMusic.stop();
+                mostrarPantallaVictoria();
             }
          });
     }
 
-    private void reproducirSonidoFinDeJuego(){
-        URL resourceUrl = getClass().getResource("/victoria.mp3");
+    private void reproducirSonido(String path){
+        URL resourceUrl = getClass().getResource(path);
         if (resourceUrl != null) {
                 String rutaMedia = resourceUrl.toString();
                 Media media = new Media(rutaMedia);
-                MediaPlayer mediaPlayer = new MediaPlayer(media);
+                mediaPlayer = new MediaPlayer(media);
+                mediaPlayer.setVolume(0.25);
                 mediaPlayer.play();
         }
     }
 
+    private void reproducirMusicaConRepeticion(String path){
+        URL resourceUrl = getClass().getResource(path);
+        if (resourceUrl != null) {
+            String rutaMedia = resourceUrl.toString();
+            backgroundMusic = new MediaPlayer(new Media(rutaMedia));
+            backgroundMusic.setVolume(0.25);
+            backgroundMusic.setOnEndOfMedia(() -> backgroundMusic.seek(Duration.ZERO));
+            backgroundMusic.play();
+        }
+    }
+
     private void mostrarPantallaVictoria() {
-        Scene sceneVictoria = new Scene(new Label("Victoria!"));
+        Scene sceneVictoria = new Scene(new Label("¡Victoria!"));
         stage.setScene(sceneVictoria);
         stage.show();
-        reproducirSonidoFinDeJuego();
+        reproducirSonido("/victoria.mp3");
     }
 
     private void mostrarPantallaDerrota() {
-
         Scene sceneDerrota = new Scene(new Label("¡Derrota!"));
-
         stage.setScene(sceneDerrota);
         stage.show();
+        reproducirSonido("/derrota.mp3");
     }
+
     public void show() {
         stage.show();
     }
+
     private void centerOnScreen(Stage stage) {
         Rectangle2D bounds = Screen.getPrimary().getVisualBounds();
         double centerX = bounds.getMinX() + (bounds.getWidth() - stage.getWidth())
