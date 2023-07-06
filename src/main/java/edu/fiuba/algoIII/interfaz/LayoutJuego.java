@@ -82,8 +82,12 @@ public class LayoutJuego extends BorderPane {
 
         avanzarTurno.setOnAction(event -> {
             reproducirSonido("/click.mp3");
+            int vidaAnterior = juego.mostrarVidaDelJugador();
             juego.avanzarTurno();
             mapaPane.actualizarVisualEnemigos();
+            if (vidaAnterior > juego.mostrarVidaDelJugador()) {
+                reproducirSonido("/jugadorDaniado.mp3");
+            }
         });
 
         GridPane root = new GridPane();

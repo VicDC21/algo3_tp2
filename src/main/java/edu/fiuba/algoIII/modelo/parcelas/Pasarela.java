@@ -22,10 +22,10 @@ public class Pasarela extends Parcela {
 
     @Override
     public void avanzarTurno() {
+        trampa.avanzarTurno();
         if (!tieneEnemigos()) {
             return;
         }
-        trampa.avanzarTurno();
         enemigos.forEach(Enemigo::avanzar);
     }
 
