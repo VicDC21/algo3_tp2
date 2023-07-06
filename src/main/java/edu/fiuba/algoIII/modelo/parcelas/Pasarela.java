@@ -38,6 +38,7 @@ public class Pasarela extends Parcela {
         trampa.setPasarela(this);
     }
 
+    @Override
     public boolean puedeContenerTrampa() {
         return true;
     }
